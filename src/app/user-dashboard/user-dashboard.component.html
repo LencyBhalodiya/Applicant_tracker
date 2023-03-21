@@ -1,0 +1,53 @@
+<div>
+    <p>
+      <mat-toolbar>
+        <span>Dashboard</span>
+        <span class="spacer"></span>
+        <button mat-icon-button class="profile-icon" aria-label="icon-button with profile icon" routerLink="/applicant/edit">
+          <mat-icon>perm_identity</mat-icon>
+        </button>
+      </mat-toolbar>
+    </p>
+  </div>
+  <div>
+      <mat-horizontal-stepper>
+      <mat-step label="Screening Test">
+        <p>Screening Test</p>
+        <button mat-button matStepperNext>Check Next States</button>
+      </mat-step>
+      <mat-step label="Online Test">
+        <p>Online Test</p>
+        <button mat-button matStepperPrevious>Check Previous States</button>
+        <button mat-button matStepperNext>Check Next States</button>
+      </mat-step>
+      <mat-step label="Technical Test">
+        <p>Technical Test</p>
+        <button mat-button matStepperPrevious>Check Previous States</button>
+        <button mat-button matStepperNext>Check Next States</button>
+      </mat-step>
+      <mat-step label="HR Interview">
+        <p>HR Interview</p>
+        <button mat-button matStepperPrevious>Check Previous States</button>
+        <button mat-button matStepperNext>Check Next States</button>
+      </mat-step>
+      <mat-step label="Result">
+        <p>Result</p>
+        <button mat-button matStepperPrevious>Check Previous States</button>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+  <div>
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Round Information">
+        <div class="example-large-box mat-elevation-z4">
+          Round Information
+        </div>
+      </mat-tab>
+      <mat-tab label="Status">
+        <div class="example-large-box mat-elevation-z4">
+          Your Status
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  

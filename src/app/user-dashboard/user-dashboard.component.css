@@ -1,0 +1,12 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.example-large-box {
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  margin: 26px;
+  padding: 26px;
+  border-radius: 8px;
+}

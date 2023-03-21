@@ -1,0 +1,25 @@
+.login-container {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+    align-items: center;
+
+  }
+  .mat-mdc-card-header {
+  
+    padding-bottom: 50px;
+}
+  
+  mat-card {
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  .loginBtn{
+    margin:0 auto;
+    margin-top: 50px;
+    display: block;
+  }
