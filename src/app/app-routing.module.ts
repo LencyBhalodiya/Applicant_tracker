@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ProfileEditComponent } from './profile-edit/profile-edit.component';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { ProfileEditComponent } from './applicant/profile-edit/profile-edit.component';
+import { UserDashboardComponent } from './applicant/user-dashboard/user-dashboard.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,14 @@ const routes: Routes = [
   {
     path: 'applicant/edit',
     component: ProfileEditComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children:[{
+      path:'dashboard',
+      component: AdminDashboardComponent
+    }]
   },
   { path: '**', component: PageNotFoundComponent }, 
 ];
