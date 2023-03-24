@@ -59,6 +59,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   MatInputModule,
   MatListModule,
   MatMenuModule,
+  MatSidenavModule,
   MatProgressSpinnerModule,
   MatPaginatorModule,
   MatRippleModule,

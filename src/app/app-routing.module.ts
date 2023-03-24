@@ -6,11 +6,12 @@ import { ProfileEditComponent } from './applicant/profile-edit/profile-edit.comp
 import { UserDashboardComponent } from './applicant/user-dashboard/user-dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
-import { AddRecruiterComponent } from './admin/add-recruiter/add-recruiter.component';
 import { CustomRolesComponent } from './admin/custom-roles/custom-roles.component';
 import { InterviewCycleComponent } from './admin/interview-cycle/interview-cycle.component';
-import { ManageRecruiterComponent } from './admin/manage-recruiter/manage-recruiter.component';
 import { ReportsComponent } from './admin/reports/reports.component';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
+import { ManageApplicantComponent } from './admin/manage-applicant/manage-applicant.component';
+import { ManageStreamsComponent } from './admin/manage-streams/manage-streams.component';
 
 const routes: Routes = [
   {
@@ -34,8 +35,12 @@ const routes: Routes = [
         component: AdminDashboardComponent,
       },
       {
-        path: 'add-recruiter',
-        component: AddRecruiterComponent,
+        path: 'manage-user',
+        component: ManageUsersComponent,
+      },
+      {
+        path: 'manage-applicant',
+        component: ManageApplicantComponent,
       },
       {
         path: 'custom-roles',
@@ -46,12 +51,8 @@ const routes: Routes = [
         component: InterviewCycleComponent,
       },
       {
-        path: 'manage-recruiter',
-        component: ManageRecruiterComponent,
-      },
-      {
         path: 'manage-stream',
-        component: ManageRecruiterComponent,
+        component: ManageStreamsComponent,
       },
       {
         path: 'reports',

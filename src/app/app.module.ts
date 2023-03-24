@@ -11,12 +11,12 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
-import { ManageRecruiterComponent } from './admin/manage-recruiter/manage-recruiter.component';
 import { InterviewCycleComponent } from './admin/interview-cycle/interview-cycle.component';
 import { CustomRolesComponent } from './admin/custom-roles/custom-roles.component';
-import { AddRecruiterComponent } from './admin/add-recruiter/add-recruiter.component';
 import { ReportsComponent } from './admin/reports/reports.component';
 import { ManageStreamsComponent } from './admin/manage-streams/manage-streams.component';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
+import { ManageApplicantComponent } from './admin/manage-applicant/manage-applicant.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +27,12 @@ import { ManageStreamsComponent } from './admin/manage-streams/manage-streams.co
     LoginComponent,
     AdminComponent,
     AdminDashboardComponent,
-    ManageRecruiterComponent,
     InterviewCycleComponent,
     CustomRolesComponent,
-    AddRecruiterComponent,
     ReportsComponent,
-    ManageStreamsComponent
+    ManageStreamsComponent,
+    ManageUsersComponent,
+    ManageApplicantComponent
   ],
   imports: [
     BrowserModule,
