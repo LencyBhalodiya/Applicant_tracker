@@ -1,0 +1,33 @@
+.charts-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  font-family: Roboto, sans-serif;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.line-container ,.oil-container,.bar-chart{
+  width: 41.5vw;
+  border-radius: 0.75rem;
+  background-color: #fff;
+  margin-bottom: 2rem;
+}
+.pie-container{
+  width: 41.5vw;
+  height: 45.5vh;
+  border-radius: 0.75rem;
+  background-color: #fff;
+  margin-bottom: 2rem;
+}
+.pie-container canvas{
+  width:30rem !important;
+  height: 23rem !important;
+}
+ h1 {
+  background-color: #673ab7;
+  padding: 2px 6px;
+  color: #fff;
+  border-radius: 0.75rem 0.75rem 0.1rem 0.1rem;
+}
+
