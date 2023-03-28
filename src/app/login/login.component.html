@@ -1,28 +1,51 @@
-<div class="login-container">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="username" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input matInput formControlName="password" type="password" />
-        </mat-form-field>
-
-        <button
-          mat-raised-button
-          color="primary"
-          class="loginBtn"
-          [disabled]="loginForm.invalid"
+<body>
+  <div class="login-container">
+    <mat-card class="login-card">
+      <mat-icon class="customIconSize">account_circle</mat-icon>
+      <mat-card-header>
+        <mat-card-title
+          ><h1>Welcome !</h1>
+          <h3>Sign in to your account</h3></mat-card-title
         >
-          Login
-        </button>
-      </form>
-    </mat-card-content>
-  </mat-card>
-</div>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+
+            <input matInput formControlName="username" />
+            <mat-icon matPrefix>email</mat-icon>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+            />
+            <mat-icon matPrefix>password</mat-icon>
+            <mat-icon matSuffix (click)="togglePasswordVisibility()">
+              {{ showPassword ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </mat-form-field>
+          <div>
+            <a href="/forgot">Forgot Password</a>
+          </div>
+          <div class="signup-link">
+            Don't have an account? <a href="/register">Sign up</a>
+          </div>
+          <button
+            mat-raised-button
+            color="primary"
+            class="loginBtn"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+            <mat-icon>login</mat-icon>
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</body>
