@@ -14,7 +14,7 @@
   margin-bottom: 2rem;
 }
 .pie-container{
-  width: 40.5vw;
+  width: 40vw;
   height: 45.5vh;
   border-radius: 0.75rem;
   background-color: #fff;
@@ -26,7 +26,8 @@
 }
  h1 {
   background-color: #673ab7;
-  padding: 2px 6px;
+  padding: 2px 16px;
+  font-size: 1.3rem;
   color: #fff;
   border-radius: 0.75rem 0.75rem 0.1rem 0.1rem;
 }
