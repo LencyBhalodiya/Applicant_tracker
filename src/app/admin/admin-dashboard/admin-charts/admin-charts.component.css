@@ -8,20 +8,20 @@
 }
 
 .line-container ,.oil-container,.bar-chart{
-  width: 41.5vw;
+  width: 40.5vw;
   border-radius: 0.75rem;
   background-color: #fff;
   margin-bottom: 2rem;
 }
 .pie-container{
-  width: 41.5vw;
+  width: 40.5vw;
   height: 45.5vh;
   border-radius: 0.75rem;
   background-color: #fff;
   margin-bottom: 2rem;
 }
 .pie-container canvas{
-  width:30rem !important;
+  width:29rem !important;
   height: 23rem !important;
 }
  h1 {
