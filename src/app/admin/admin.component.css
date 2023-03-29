@@ -15,3 +15,11 @@
     align-items: center;
     justify-content: center;
 } 
+.dashboard{
+    position: absolute;   
+}
+.hover-sidenav-items:hover{
+    background-color: #F3F7FB;
+}
+
+
