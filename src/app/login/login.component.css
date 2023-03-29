@@ -1,7 +1,9 @@
 .login-container {
   padding-top: 100px;
   display: flex;
-  justify-content: center;
+  justify-content: right;
+  padding-top: 150px;
+  margin-right: 250px;
     align-items: center;
    
   }
@@ -40,4 +42,10 @@ button.loginBtn[disabled] {
   .loginBtn:hover {
     cursor: pointer;
   }
- 
+ .main-container{
+  height: 100%;
+  background-image: url("./loginbackground.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: auto !important;
+ }
