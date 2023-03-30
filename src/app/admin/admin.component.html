@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="tool-bar">
   <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu" ope>
     <mat-icon>menu</mat-icon>
   </button>
@@ -45,37 +45,37 @@
           >Dashboard</span
         >
       </mat-list-item>
-      <hr />
+      <!-- <hr>   -->
       <mat-list-item [routerLink]="['manage-user']" class="hover-sidenav-items">
-        <span>Manage Users</span>
+        <i class="bi bi-person-square"></i><span>Manage Users</span>
       </mat-list-item>
 
       <mat-list-item
         [routerLink]="['manage-applicant']"
         class="hover-sidenav-items"
       >
-        <span>Manage Applicants</span>
+        <i class="bi bi-people-fill"></i> <span>Manage Applicants</span>
       </mat-list-item>
       <mat-list-item
         [routerLink]="['interview-cycle']"
         class="hover-sidenav-items"
       >
-        <span>Manage Interviewcycle</span>
+        <i class="bi bi-people-fill"></i> <span>Manage Interview</span>
       </mat-list-item>
       <mat-list-item
         [routerLink]="['manage-stream']"
         class="hover-sidenav-items"
       >
-        <span>Manage Streams</span>
+        <i class="bi bi-card-list"></i> <span>Manage Streams</span>
       </mat-list-item>
       <mat-list-item
         [routerLink]="['custom-roles']"
         class="hover-sidenav-items"
       >
-        <span>Define Custom Roles</span>
+        <i class="bi bi-person-fill-gear"></i> <span>Define Custom Roles</span>
       </mat-list-item>
       <mat-list-item [routerLink]="['reports']" class="hover-sidenav-items">
-        <span>Reports</span>
+        <i class="bi bi-file-earmark-check-fill"></i><span>Reports</span>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
@@ -83,4 +83,5 @@
     <router-outlet> </router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
 <!-- rest of the content will be loaded between navbar and side bar -->

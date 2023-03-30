@@ -4,8 +4,11 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+
   }
-  
+  .row{
+    background-color: #f6f9ff;
+  }
   .login-container {
   padding: 10% 10% 0 10%;
   display: flex;
@@ -28,10 +31,8 @@
     height: 50px ;
     width: 50px ;
     margin-left: 42%;
-    color:#6F67FE
+    color:#7887f5
 }
-
-  
   mat-card-title {
   margin: 0;
   }
@@ -52,7 +53,7 @@
     margin-top: 50px;
     display: block;
     width: 100px;
-  background-color: #6F67FE !important;
+  background-color: #7887f5 !important;
 
   }
   .loginBtn:hover {
