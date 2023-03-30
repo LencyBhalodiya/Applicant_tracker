@@ -1,3 +1,9 @@
+
+.tool-bar{
+    background-color: #fff;
+    /* box-shadow: 0px 2px 20px rgba(1,41,112,0.1); */
+}
+
 .toolbar-item-spacer {
     flex: 1 1 auto;
 }
@@ -5,9 +11,23 @@
 .app-container {
     height: 90%;
     margin: 0;
-}  
+
+} 
+mat-list-item:hover{
+    background-color: #f6f9ff;
+}
+mat-list-item{
+    margin: 0.7rem 0em
+}
+span{
+    color:#012970 ;
+    font-weight: 500;
+}
+span:hover{
+    color:#4154f1;
+}
 .app-sidenav {
-    width: 230px;
+    width: 270px;
 }
 .app-sidenav-content {
     display: flex;
@@ -16,10 +36,21 @@
     justify-content: center;
 } 
 .dashboard{
+    font-weight: 500;
+    font-size: 1.2rem;
+    position: absolute;   
+    color: #7887f5;
+
+}
+.dashboard:hover{
     position: absolute;   
 }
 .hover-sidenav-items:hover{
-    background-color: #F3F7FB;
+    background-color: #f6f9ff;
+    
+}
+i{
+  margin-right: 10px;
 }
 
 

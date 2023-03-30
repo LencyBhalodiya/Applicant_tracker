@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="tool-bar">
   <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu" ope>
     <mat-icon>menu</mat-icon>
   </button>
@@ -45,38 +45,26 @@
           >Dashboard</span
         >
       </mat-list-item>
-      <hr />
+      <hr>  
       <mat-list-item [routerLink]="['manage-user']" class="hover-sidenav-items">
-        <span>Manage Users</span>
+        <i class="bi bi-person-square"></i><span>Manage Users</span>
       </mat-list-item>
-
-      <mat-list-item
-        [routerLink]="['manage-applicant']"
-        class="hover-sidenav-items"
-      >
+      
+      <mat-list-item [routerLink]="['manage-applicant']" class="hover-sidenav-items">
         <span>Manage Applicants</span>
       </mat-list-item>
-      <mat-list-item
-        [routerLink]="['interview-cycle']"
-        class="hover-sidenav-items"
-      >
-        <span>Manage Interviewcycle</span>
+      <mat-list-item [routerLink]="['interview-cycle']" class="hover-sidenav-items">
+        <span >Manage Interviewcycle</span>
       </mat-list-item>
-      <mat-list-item
-        [routerLink]="['manage-stream']"
-        class="hover-sidenav-items"
-      >
-        <span>Manage Streams</span>
+      <mat-list-item [routerLink]="['manage-stream']" class="hover-sidenav-items">
+        <span >Manage Streams</span>
       </mat-list-item>
-      <mat-list-item
-        [routerLink]="['custom-roles']"
-        class="hover-sidenav-items"
-      >
-        <span>Define Custom Roles</span>
+      <mat-list-item [routerLink]="['custom-roles']" class="hover-sidenav-items">
+        <span >Define Custom Roles</span>
       </mat-list-item>
       <mat-list-item [routerLink]="['reports']" class="hover-sidenav-items">
-        <span>Reports</span>
-      </mat-list-item>
+        <span >Reports</span>
+      </mat-list-item>           
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

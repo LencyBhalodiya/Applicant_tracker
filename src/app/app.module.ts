@@ -18,6 +18,7 @@ import { ManageStreamsComponent } from './admin/manage-streams/manage-streams.co
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { ManageApplicantComponent } from './admin/manage-applicant/manage-applicant.component';
 import { AdminChartsComponent } from './admin/admin-dashboard/admin-charts/admin-charts.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AdminChartsComponent } from './admin/admin-dashboard/admin-charts/admin
     BrowserAnimationsModule,
     MaterialDesignModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

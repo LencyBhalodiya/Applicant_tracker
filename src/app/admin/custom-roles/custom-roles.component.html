@@ -1,19 +1,97 @@
-<div class="inputbox">
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
+<!-- heading
+<div class="heading">
+  <div class="headingname">
+    <h1>Add Custom Roles</h1>
+  </div>
+</div> -->
+<div class="header">
+  <h1>Custom Roles</h1>
 </div>
-<div class="matcard">
-  <mat-card>
-    <div class="checklist">
-      <mat-selection-list class="matselectionlist">
-        <mat-list-option *ngFor="let roles of manageRoles" class="matlistoption">
-          {{roles}}
-        </mat-list-option>
-      </mat-selection-list>
-    </div>
-    <!-- <div></div> -->
 
-    <div class="header">
-      <button type="button" class="btn btn-primary">Add Custom Roles</button>
+<mat-card class="width">
+  <mat-card-content>
+    <div class="input">
+      <mat-card class="matcontentsize">
+        <mat-card-content>
+          <input matInput class="no-outline" placeholder="Enter Hr Name">
+        </mat-card-content>
+      </mat-card>
     </div>
-  </mat-card>
-</div>
+
+      <div class="spacing">
+        <mat-card>
+          <mat-card-content>
+            <label name="DashBorad" class="adjustalign">DashBorad</label>
+            <mat-checkbox color="primary" style="float: right;">
+            </mat-checkbox>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="spacing">
+        <mat-card>
+          <mat-card-content>
+            <label name="dashbord" class="adjustalign">Add Recruiter</label>
+            <mat-checkbox color="primary" style="float: right;">
+            </mat-checkbox>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+      <div class="spacing">
+        <mat-card>
+          <mat-card-content>
+            <label for="Manage Recruiter" class="adjustalign">Manage Recruiter</label>
+            <mat-checkbox color="primary" style="float: right;">
+            </mat-checkbox>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+      <div class="spacing">
+        <mat-card>
+          <mat-card-content>
+            <label for="Manage Recruiter" class="adjustalign">Manage Applicants</label>
+            <mat-checkbox color="primary" style="float: right;">
+            </mat-checkbox>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+      <div class="spacing">
+        <mat-card>
+          <mat-card-content>
+            <label for="Report" class="adjustalign">Report</label>
+            <mat-checkbox color="primary" style="float: right;">
+            </mat-checkbox>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+      <div class="spacing">
+        <mat-card>
+          <mat-card-content>
+            <label for="Manage Streams" class="adjustalign">Manage Streams</label>
+            <mat-checkbox color="primary" style="float: right;">
+            </mat-checkbox>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="spacing">
+        <mat-card>
+          <mat-card-content>
+            <label for="Manage Streams" class="adjustalign">Add Custom Roles</label>
+            <mat-checkbox color="primary" style="float: right;">
+            </mat-checkbox>
+          </mat-card-content>
+        </mat-card>
+      </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- <app-stream *ngFor="let items of streams" [streamName]="items">{{items}}</app-stream> -->

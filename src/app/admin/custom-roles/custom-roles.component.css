@@ -1,39 +1,94 @@
-.header {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-.inputbox {
+/* .heading{
     display: flex;
     justify-content: center;
     margin-top: 50px;
-}
-.form-control{
-    width: 50%;
-}
-.filed {
-    width: 500px;
-}
-
-.matselectionlist {
-   width: 90%;
-   margin-left: 50px;
-}
-
-
-mat-card {
     
-    height: 75%;
-    border: 1px solid purple;
-    margin-top: 6%;
-    width: 1150px;
+}
+.headingname{
+    font-size: large;
+    width: 250px;
+    background-color: aquamarine;
+    text-align: center;
+    border-radius: 5px;
+}
+h1{
+    margin-top: 10px;
+} */
+.collection div,.input div{
+    padding:10px;
+}
+.adjustalign{
+    margin-top: 10px;
+    font-size: large;
+}
+mat-card{
+
+    margin-left: 20px;
+    border:2px solid #673ab7;
+    background-color: rgb(246, 244, 244);
+}
+[mat-fab]{
+    float:right;
+    
+}
+
+input {
+    border: hidden;
+    padding-top:15px;
+    width:40%;
+    font-size:18px;
+    font-weight: bold;
+    background-color: rgb(246, 244, 244);
+  }
+  
+  .no-outline:focus {
+    
+    border-bottom-style:groove;
+    border-bottom: 4px solid #e5e5e5;
+    outline: none;
+    animation: line 0.5s;
+    border-color: #7887F5;
+      
+}
+
+@keyframes line {
+    from {
+      width: 0px;
+    }
+    to {
+      width: 40%;
+    }
+  }
+
+mat-card:hover{
+    transition: scale 1s ease;
+	box-shadow: -4px -4px 5px #7887F5, 4px 4px 5px #7887F5;
+}
+button:hover{
+
+    background-color: aliceblue;
+    color:black;
    
 }
-mat-list-option[aria-selected="true"] {
-    background:#00FB76;
-  }
-.matcard{
-    display: flex;
-    justify-content: center;
+.header h1{
+    text-align:center;
+    padding:5px;
+    font-weight:bold;
+    font-size:40px;
+    color:#7887F5
+}
+.matcontentsize{
+    width: 450px;
+    height: 70px;
+}
+.width{
+    width: 50%;
+    height: 80%;
+
+}
+.width mat-card-content{
+    padding-top: 10px;
+}
+.spacing{
+    margin-top: 10px;
 }
