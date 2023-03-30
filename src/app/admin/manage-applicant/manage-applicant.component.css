@@ -1,0 +1,12 @@
+#panel{
+    background-color: aqua !important;
+    color: aqua !important;
+}
+
+.btn-purple{
+    background-color: #673ab7;
+    color: #fff;
+}
+.profile-image{
+    height: 2.5rem;
+}

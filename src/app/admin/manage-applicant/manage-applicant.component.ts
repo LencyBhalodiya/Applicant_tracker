@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./manage-applicant.component.css']
 })
 export class ManageApplicantComponent {
+  selected = 'none';
+  selected2 = 'none';
+  selected3 = 'none';
+  panelOpenState = false;
 
+  // let panel:HTMLElement = document.getElementById('expPanel');
+  showExpPanel(){
+    this.panelOpenState = (!this.panelOpenState);    
+  }
 }
