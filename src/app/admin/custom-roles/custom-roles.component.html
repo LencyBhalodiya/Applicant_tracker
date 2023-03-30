@@ -1,1 +1,19 @@
-<p>custom-roles works!</p>
+<div class="inputbox">
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name">
+</div>
+<div class="matcard">
+  <mat-card>
+    <div class="checklist">
+      <mat-selection-list class="matselectionlist">
+        <mat-list-option *ngFor="let roles of manageRoles" class="matlistoption">
+          {{roles}}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+    <!-- <div></div> -->
+
+    <div class="header">
+      <button type="button" class="btn btn-primary">Add Custom Roles</button>
+    </div>
+  </mat-card>
+</div>

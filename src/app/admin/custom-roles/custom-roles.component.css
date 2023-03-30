@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.inputbox {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.form-control{
+    width: 50%;
+}
+.filed {
+    width: 500px;
+}
+
+.matselectionlist {
+   width: 90%;
+   margin-left: 50px;
+}
+
+
+mat-card {
+    
+    height: 75%;
+    border: 1px solid purple;
+    margin-top: 6%;
+    width: 1150px;
+   
+}
+mat-list-option[aria-selected="true"] {
+    background:#00FB76;
+  }
+.matcard{
+    display: flex;
+    justify-content: center;
+}
