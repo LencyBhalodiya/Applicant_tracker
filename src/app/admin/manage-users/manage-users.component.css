@@ -9,7 +9,9 @@
 
 .main-content {
   padding-top: 100px;
+  background-color: #f6f9ff;
   padding-bottom: 100px;
+  width: 100%;
 }
 
 .table {
@@ -30,11 +32,11 @@
   text-align: center;
 }
 .table tbody tr {
-  box-shadow: 10px 17px 21px 10px rgba(174, 173, 173, 0.44);
-
+  box-shadow: 10px 17px 21px 10px rgba(199, 199, 199, 0.44);
   border-radius: 150px;
 }
 .table tbody tr td {
+  padding: 15px;
   background: #fff;
 }
 .table tbody tr td:nth-child(1) {
@@ -67,11 +69,11 @@
 
 .btn-primary {
   color: #ffffff;
-  background-color: #673ab7;
-  border: #673ab7;
+  background-color: #012970;
+  border: #012970;
 }
-/* searchbar */
 
+/* searchbar */
 .search {
   width: 100%;
   position: relative;
@@ -80,7 +82,7 @@
 
 .searchTerm {
   width: 80%;
-  border: 3px solid #673ab7;
+  border: 3px solid #012970;
   border-right: none;
   padding: 5px;
   height: 40px;
@@ -96,8 +98,8 @@
 .searchButton {
   width: 40px;
   height: 40px;
-  border: 1px solid #673ab7;
-  background: #673ab7;
+  border: 1px solid #012970;
+  background: #012970;
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
@@ -105,7 +107,6 @@
   font-size: 20px;
   margin-right: 60px;
 }
-
 /* searchbar */
 
 /* modal design */
@@ -119,3 +120,5 @@
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
 }
+
+/* modal design */

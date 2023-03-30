@@ -10,11 +10,19 @@ export class ManageUsersComponent {
   display = 'none';
 
   users: { name: string; email: string; status: string }[] = [
-    { name: 'rahil', email: 'abc@gmail.com', status: 'Active' },
+    { name: 'Rahil Acharya', email: 'abc@gmail.com', status: 'Active' },
     { name: 'rahil1', email: 'abcdefd@gmail.com', status: 'Inactive' },
-    { name: 'rahil12', email: 'abcxyz@gmail.com', status: 'Active' },
-    { name: 'rahil12', email: 'abcxyz@gmail.com', status: 'Active' },
-    { name: 'rahil12', email: 'abcxyz@gmail.com', status: 'Active' },
+    {
+      name: 'dd',
+      email: 'abcxyz@gmail.com',
+      status: 'Active',
+    },
+    { name: 'Rahil12', email: 'abcxyz@gmail.com', status: 'Active' },
+    { name: 'Rahil1277', email: 'abcxyz@gmail.com', status: 'Active' },
+    { name: 'Rahil1277', email: 'abcxyz@gmail.com', status: 'Inactive' },
+    { name: 'Rahil1277', email: 'abcxyz@gmail.com', status: 'Active' },
+    { name: 'Rahil1277', email: 'abcxyz@gmail.com', status: 'Inactive' },
+    { name: 'Rahil1277', email: 'abcxyz@gmail.com', status: 'Active' },
   ];
 
   openModal() {
@@ -23,5 +31,9 @@ export class ManageUsersComponent {
 
   onCloseHandled() {
     this.display = 'none';
+  }
+
+  onAddUser() {
+    this.display = 'block';
   }
 }

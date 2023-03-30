@@ -9,7 +9,9 @@
             <button type="submit" class="searchButton">
               <i class="fa fa-search"></i>
             </button>
-            <button class="btn btn-primary">Add User</button>
+            <button class="btn btn-primary" (click)="onAddUser()">
+              Add User
+            </button>
           </div>
         </div>
         <!-- search -->
@@ -47,13 +49,13 @@
                 <span
                   class="active-circle bg-success"
                   *ngIf="user.status === 'Active'"
-                  >{{ user.status }}</span
-                >
+                ></span>
                 <span
                   class="active-circle bg-danger"
                   *ngIf="user.status === 'Inactive'"
                 >
-                </span>
+                </span
+                >{{ user.status }}
               </td>
               <td>{{ user.email }}</td>
               <td>+91 9876543215</td>
@@ -69,7 +71,7 @@
       </div>
     </section>
 
-    <!-- modal template html -->
+    <!-- edit modal template html -->
 
     <div
       class="modal custom-backdrop"
@@ -140,5 +142,97 @@
         </div>
       </div>
     </div>
+    <!--edit model ended-->
+
+    <!--ADD USER MODEL -->
+
+    <div
+      class="modal custom-backdrop"
+      tabindex="-1"
+      role="dialog"
+      [ngStyle]="{ display: display }"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Information</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="onCloseHandled()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- modal body -->
+
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Name</label
+                >
+                <input type="text" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Status
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Email
+                </label>
+                <input type="tel" class="form-control" />
+              </div>
+
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Text input with dropdown button"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary dropdown-toggle"
+                    type="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Dropdown
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                  </div>
+                </div>
+              </div>
+              <!-- modal footer  -->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-default"
+              (click)="onCloseHandled()"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--ADD USER MODEL ENDED-->
   </body>
 </html>
