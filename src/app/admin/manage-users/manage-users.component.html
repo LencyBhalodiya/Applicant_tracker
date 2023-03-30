@@ -9,6 +9,7 @@
             <button type="submit" class="searchButton">
               <i class="fa fa-search"></i>
             </button>
+            <button class="btn btn-primary">Add User</button>
           </div>
         </div>
         <!-- search -->
@@ -22,93 +23,122 @@
               <th>Status</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Details</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor="let user of users">
               <td>
                 <div class="user-info">
                   <div class="user-info__img">
                     <img src="assets/profile.png" alt="User Img" />
                   </div>
                   <div class="user-info__basic">
-                    <h3 class="mb-0">Rahil Acharya</h3>
+                    <h3 class="mb-0">{{ user.name }}</h3>
                   </div>
                 </div>
               </td>
-              <td><span class="active-circle bg-success"></span> Active</td>
-              <td>abc@gmail.com</td>
+              <td>
+                <!-- <span
+                  class="active-circle bg-success"
+                  [ngClass]="{ online: 'active' === 'active' }"
+                ></span>
+                {{ user.status }} -->
+                <span
+                  class="active-circle bg-success"
+                  *ngIf="user.status === 'Active'"
+                  >{{ user.status }}</span
+                >
+                <span
+                  class="active-circle bg-danger"
+                  *ngIf="user.status === 'Inactive'"
+                >
+                </span>
+              </td>
+              <td>{{ user.email }}</td>
               <td>+91 9876543215</td>
               <td>
-                <button class="btn btn-primary btn-sm">Edit Details</button>
+                <button class="btn btn-lg" (click)="openModal()">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-lg"><i class="bi bi-trash"></i></button>
               </td>
-              <td><i class="fa fa-trash mr-1"></i> Delete</td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user-info">
-                  <div class="user-info__img">
-                    <img src="assets/profile.png" alt="User Img" />
-                  </div>
-                  <div class="user-info__basic">
-                    <h3 class="mb-0">Rahil Acharya</h3>
-                  </div>
-                </div>
-              </td>
-              <td><span class="active-circle bg-success"></span> Active</td>
-              <td>abc@gmail.com</td>
-              <td>+91 9876543215</td>
-              <td>
-                <button class="btn btn-primary btn-sm">Edit Details</button>
-              </td>
-              <td><i class="fa fa-trash mr-1"></i> Delete</td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user-info">
-                  <div class="user-info__img">
-                    <img src="assets/profile.png" alt="User Img" />
-                  </div>
-                  <div class="user-info__basic">
-                    <h3 class="mb-0">Rahil Acharya</h3>
-                  </div>
-                </div>
-              </td>
-              <td><span class="active-circle bg-danger"></span> Inactive</td>
-              <td>abc@gmail.com</td>
-              <td>+91 9876543215</td>
-              <td>
-                <button class="btn btn-primary btn-sm">Edit Details</button>
-              </td>
-              <td><i class="fa fa-trash mr-1"></i> Delete</td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="user-info">
-                  <div class="user-info__img">
-                    <img src="assets/profile.png" alt="User Img" />
-                  </div>
-                  <div class="user-info__basic">
-                    <h3 class="mb-0">Rahil Acharya</h3>
-                  </div>
-                </div>
-              </td>
-              <td><span class="active-circle bg-success"></span> Active</td>
-              <td>abc@gmail.com</td>
-              <td>+91 9876543215</td>
-              <td>
-                <button class="btn btn-primary btn-sm">Edit Details</button>
-              </td>
-              <td><i class="fa fa-trash mr-1"></i> Delete</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
+
+    <!-- modal template html -->
+
+    <div
+      class="modal custom-backdrop"
+      tabindex="-1"
+      role="dialog"
+      [ngStyle]="{ display: display }"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Information</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="onCloseHandled()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- modal body -->
+
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Name</label
+                >
+                <input type="text" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Status
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Email
+                </label>
+                <input type="tel" class="form-control" />
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Phone
+                </label>
+                <input type="tel" class="form-control" />
+              </div>
+
+              <!-- modal footer  -->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-default"
+              (click)="onCloseHandled()"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
