@@ -23,7 +23,7 @@ h1{
 }
 mat-card{
 
-    margin-left: 20px;
+    margin-left: 30px;
     border:2px solid #673ab7;
     background-color: rgb(246, 244, 244);
 }
@@ -84,7 +84,7 @@ button:hover{
 .width{
     width: 50%;
     height: 80%;
-
+    margin-top: 20px;
 }
 .width mat-card-content{
     padding-top: 10px;
