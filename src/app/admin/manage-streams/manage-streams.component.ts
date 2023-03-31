@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-manage-streams',
@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./manage-streams.component.css']
 })
 export class ManageStreamsComponent {
+
+  streams=["Java","QA","UI","Flutter","DevOps","DBA","C#","SRE","Project Coordinator"];
+
+  addStream(inputStream:HTMLInputElement){
+    this.streams.unshift(inputStream.value)
+    inputStream.value=''
+  }
+
+  deleteStream(ele:HTMLElement){
+      ele.remove();
+  }
 
 }

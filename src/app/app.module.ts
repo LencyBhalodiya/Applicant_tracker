@@ -17,6 +17,7 @@ import { ReportsComponent } from './admin/reports/reports.component';
 import { ManageStreamsComponent } from './admin/manage-streams/manage-streams.component';
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { ManageApplicantComponent } from './admin/manage-applicant/manage-applicant.component';
+import { StreamComponent } from './admin/manage-streams/stream/stream.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ManageApplicantComponent } from './admin/manage-applicant/manage-applic
     ReportsComponent,
     ManageStreamsComponent,
     ManageUsersComponent,
-    ManageApplicantComponent
+    ManageApplicantComponent,
+    StreamComponent
   ],
   imports: [
     BrowserModule,
