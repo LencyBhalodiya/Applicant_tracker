@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-custom-roles',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class CustomRolesComponent {
 
-//   selectedOptions=[];
+  selectedOptions:any[]=[];
 // selectedOption = "";
 
   adminname="Jignesh Tanna"
@@ -17,4 +18,21 @@ export class CustomRolesComponent {
   //   console.log($event);
   //   this.selectedOption=$event;
   // }
+  constructor(private _snackBar: MatSnackBar) {}
+
+  openSnackBar(message: string) {
+
+   
+    this._snackBar.open(message,'',{duration:3000});
+  }
+
+  getData(value:HTMLElement){
+        //console.log(value.innerHTML)
+      
+      this.selectedOptions.push(String(value.innerHTML))
+  }
+
+  getValue(){
+          console.log(this.selectedOptions)
+  }
 }

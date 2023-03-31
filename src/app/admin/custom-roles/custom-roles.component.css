@@ -22,25 +22,23 @@ h1{
     font-size: large;
 }
 mat-card{
-
     margin-left: 30px;
-    border:2px solid #673ab7;
+    border:2px solid beige;
     background-color: rgb(246, 244, 244);
 }
 [mat-fab]{
     float:right;
-    
 }
 
 input {
     border: hidden;
     padding-top:15px;
-    width:40%;
+    width:45%;
     font-size:18px;
     font-weight: bold;
     background-color: rgb(246, 244, 244);
   }
-  
+
   .no-outline:focus {
     
     border-bottom-style:groove;
@@ -51,6 +49,7 @@ input {
       
 }
 
+
 @keyframes line {
     from {
       width: 0px;
@@ -60,9 +59,9 @@ input {
     }
   }
 
-mat-card:hover{
+mat-card:not(.data):hover{
     transition: scale 1s ease;
-	box-shadow: -4px -4px 5px #7887F5, 4px 4px 5px #7887F5;
+	box-shadow:  4px 4px 5px #7887F5;
 }
 button:hover{
 
@@ -71,24 +70,90 @@ button:hover{
    
 }
 .header h1{
-    text-align:center;
     padding:5px;
     font-weight:bold;
-    font-size:40px;
+    font-size:20px;
     color:#7887F5
 }
 .matcontentsize{
-    width: 450px;
+    
     height: 70px;
 }
 .width{
-    width: 50%;
-    height: 80%;
     margin-top: 20px;
+    width:50%
 }
-.width mat-card-content{
-    padding-top: 10px;
+
+.data mat-card{
+    margin:21px;
+}
+.data{
+    padding:10px
+}
+
+
+/* .width{
+    display:flexbox;
+} */
+
+
+/* #image{
+    padding:100px;
+} */
+
+mat-card mat-card-content #image{
+   margin-top:0px;
+    width:45%;
+}
+#image{
+    float:right;
+    margin:100px;
+    height:600px;
+}
+.header{
+    padding:20px
 }
 .spacing{
-    margin-top: 10px;
+    width:40%;
+    margin:6px;
+  
 }
+.roles {
+    padding:20px;
+    height: fit-content;
+    padding-top:0px
+}
+
+.roles mat-card Button{
+    margin-left:300px;
+    font-size:25px;
+    width:150px;
+    background-color:#7887F5
+}
+@media only screen and (width<1300px) {
+    .roles #image {
+      display:none;
+    }
+    .roles mat-card mat-card-content .spacing{
+        width:100%;
+        padding:30px
+    }
+
+    .roles mat-card Button{
+        margin-left:80px;
+        
+    }
+  }
+  @media only screen and (width<432px) {
+   
+    .roles{
+        padding:0px;
+    }
+
+    
+  }
+  #matcontentsize{
+       margin-left:35px;
+        width:38%;
+  }
+  
