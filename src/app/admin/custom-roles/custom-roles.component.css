@@ -125,9 +125,9 @@ mat-card mat-card-content #image{
 }
 
 .roles mat-card Button{
-    margin-left:300px;
+    margin-left:250px;
     font-size:25px;
-    width:150px;
+    width:200px;
     background-color:#7887F5
 }
 @media only screen and (width<1300px) {
