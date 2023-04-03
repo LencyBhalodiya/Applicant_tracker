@@ -1,12 +1,22 @@
-#panel{
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+#panel {
     background-color: aqua !important;
     color: aqua !important;
 }
 
-.btn-purple{
-    background-color: #673ab7;
+.btn-purple {
+    background-color: #6476ed;
     color: #fff;
 }
-.profile-image{
+
+.profile-image {
     height: 2.5rem;
+}
+
+body {
+    background-color: #f6f9ff;
+}
+.hide-col{
+    /* visibility: hidden; */
 }
