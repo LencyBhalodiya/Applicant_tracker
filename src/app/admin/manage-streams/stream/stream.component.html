@@ -2,12 +2,11 @@
     <div #del>
         <mat-card>
         <mat-card-content >
-            <img src="./assets/asite.png" height="100" width="100" />
+            <img src="./assets/asite.png" id="img" />
             <span id="stream">{{streamName}}</span>
             <button mat-fab color="primary" (click)="openSnackBar('Stream Deleted',del)">
                 <mat-icon>delete</mat-icon>
             </button>
-            <!-- <button class="btn btn-primary" (click)="deleteStream(del)">Delete</button> -->
         </mat-card-content>
         </mat-card>
     </div>

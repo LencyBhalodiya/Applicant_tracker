@@ -13,8 +13,7 @@ export class StreamComponent {
   constructor(private _snackBar: MatSnackBar) {}
 
   openSnackBar(message: string,ele:HTMLElement) {
-    let snackBarRef=this._snackBar.open(message,'',{duration:3000});
-  
+    this._snackBar.open(message,'',{duration:3000});
     this.deleteStream(ele)
   }
 

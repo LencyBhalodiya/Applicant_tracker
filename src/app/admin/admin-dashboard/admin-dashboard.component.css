@@ -1,0 +1,28 @@
+@import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css");
+
+/*  #673ab7; pruplr  #F3F7FB #background */
+.dashboard{
+    background-color: #f6f9ff;
+}
+.bg-primary{
+    background-color: #6476ed !important;
+}
+h2{
+    padding: 0.5rem;
+    margin: 0.7rem 0;
+    font-size: 1.8rem;
+}
+
+  
+  
+
+
+
+/* Webpixels CSS */
+/* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+/* URL: https://github.com/webpixels/css */
+
+

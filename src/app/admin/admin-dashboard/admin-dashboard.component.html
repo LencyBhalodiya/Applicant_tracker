@@ -1,1 +1,44 @@
-<p>admin-dashboard works!</p>
+<div class="dashboard container-fluid">
+  <h2 >Dashboard</h2>
+
+  <div class="cards">
+    <!-- Card stats -->
+    <div class="row g-6 mb-6">
+      <div class="col-xl-3 col-sm-6 col-12" *ngFor="let card of CardsData">
+        <div class="card shadow border-0">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <span class="h6 font-semibold text-muted text-sm d-block mb-2">
+                  {{ card.title }}
+                </span>
+                <span class="h3 font-bold mb-0"> {{ card.value }} </span>
+              </div>
+              <div class="col-auto">
+                <div
+                  class="icon icon-shape bg-primary text-white text-lg rounded-circle"
+                >
+                  <i ngClass="{{ card.icon }}"></i>
+                </div>
+              </div>
+            </div>
+            <div class="mt-2 mb-0 text-sm">
+              <span class="badge badge-pill bg-soft-success text-success me-2">
+                <i class="bi bi-arrow-up me-1"></i> {{ card.change }}
+              </span>
+              <span class="text-nowrap text-xs text-muted"
+                >Since last month</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- charts section -->
+
+    <app-admin-charts></app-admin-charts>
+    
+</div>

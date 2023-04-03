@@ -1,15 +1,9 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
+<mat-toolbar class="tool-bar">
+  <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu" ope>
     <mat-icon>menu</mat-icon>
   </button>
-  <span>ConcretePage.com</span>
+  <span>ATRACKER</span>
   <span class="toolbar-item-spacer"></span>
-  <button mat-icon-button matTooltip="Like">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button matTooltip="Share">
-    <mat-icon>share</mat-icon>
-  </button>
   <button mat-icon-button matTooltip="Notifications">
     <mat-icon>notifications</mat-icon>
   </button>
@@ -43,34 +37,49 @@
     mode="side"
     [class.mat-elevation-z4]="true"
     class="app-sidenav"
+    opened="Dashboard"
   >
     <mat-nav-list>
-      <mat-list-item routerLink="#">
-        <mat-icon>dashboard</mat-icon><span>Dashboard</span>
+      <mat-list-item [routerLink]="['dashboard']">
+        <mat-icon>dashboard</mat-icon>&nbsp;<span class="dashboard"
+          >Dashboard</span
+        >
       </mat-list-item>
-      <mat-expansion-panel [class.mat-elevation-z0]="true">
-        <mat-expansion-panel-header> Mobile Phone </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a mat-list-item routerLink="#">
-            <mat-icon>apple</mat-icon><span>iOS</span>
-          </a>
-          <a mat-list-item routerLink="#">
-            <mat-icon>android</mat-icon><span>Android</span>
-          </a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-      <mat-expansion-panel [class.mat-elevation-z0]="true">
-        <mat-expansion-panel-header> Frameworks </mat-expansion-panel-header>
-        <mat-nav-list>
-          <a mat-list-item routerLink="#">Spring</a>
-          <a mat-list-item routerLink="#">Hibernate</a>
-          <a mat-list-item routerLink="#">Struts</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
+      <!-- <hr>   -->
+      <mat-list-item [routerLink]="['manage-user']" class="hover-sidenav-items">
+        <i class="bi bi-person-square"></i><span>Manage Users</span>
+      </mat-list-item>
+
+      <mat-list-item
+        [routerLink]="['manage-applicant']"
+        class="hover-sidenav-items"
+      >
+        <i class="bi bi-people-fill"></i> <span>Manage Applicants</span>
+      </mat-list-item>
+      <mat-list-item
+        [routerLink]="['interview-cycle']"
+        class="hover-sidenav-items"
+      >
+        <i class="bi bi-people-fill"></i> <span>Manage Interview</span>
+      </mat-list-item>
+      <mat-list-item
+        [routerLink]="['manage-stream']"
+        class="hover-sidenav-items"
+      >
+        <i class="bi bi-card-list"></i> <span>Manage Streams</span>
+      </mat-list-item>
+      <mat-list-item
+        [routerLink]="['custom-roles']"
+        class="hover-sidenav-items"
+      >
+      <i class="bi bi-person-fill-gear"></i> <span>Define Custom Roles</span>
+      </mat-list-item>
+      <mat-list-item [routerLink]="['reports']" class="hover-sidenav-items">
+        <i class="bi bi-file-earmark-check-fill"></i><span>Reports</span>
+      </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet> </router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<!-- rest of the content will be loaded between navbar and side bar -->

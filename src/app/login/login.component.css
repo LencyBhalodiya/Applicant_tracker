@@ -3,13 +3,25 @@
   display: flex;
   justify-content: center;
     align-items: center;
-
+   
   }
+ 
+  .customIconSize {
+    font-size: 50px;
+    height: 50px ;
+    width: 50px ;
+    margin-left: 42%;
+    color:#7d00b8;
+}
+
   .mat-mdc-card-header {
   
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
-  
+
+button.loginBtn[disabled] {
+  background-color: #a28bff !important;
+}
   mat-card {
     max-width: 400px;
     width: 100%;
@@ -22,4 +34,10 @@
     margin:0 auto;
     margin-top: 50px;
     display: block;
+    width: 100px;
+
   }
+  .loginBtn:hover {
+    cursor: pointer;
+  }
+ 

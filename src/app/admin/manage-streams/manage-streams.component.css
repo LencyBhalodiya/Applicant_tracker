@@ -1,110 +1,111 @@
-.collection div,.input div{
-    padding:10px;
+.collection div,
+.input div {
+  padding: 10px;
 }
-mat-card{
-    width:100%;
-    border:2px solid beige
-    
-   
+
+mat-card {
+  width: 100%;
+  border: 2px solid beige
 }
-[mat-fab]{
-    float:right;
-    
+
+[mat-fab] {
+  float: right;
+
 }
 
 input {
-    border: hidden;
-    padding-top:15px;
-    width:40%;
-    font-size:18px;
-    font-weight: bold;
-   
-  }
-  
-  .no-outline:focus {
-    
-    border-bottom-style:groove;
-    border-bottom: 4px solid #e5e5e5;
-    outline: none;
-    animation: line 0.5s;
-    border-color: #673ab7;
+  border: hidden;
+  padding-top: 15px;
+  width: 40%;
+  font-size: 18px;
+  font-weight: bold;
 
-      
+}
+
+.no-outline:focus {
+
+  border-bottom-style: groove;
+  border-bottom: 4px solid #e5e5e5;
+  outline: none;
+  animation: line 0.5s;
+  border-color: #673ab7;
+
+
 }
 
 @keyframes line {
-    from {
-      width: 0px;
-    }
-    to {
-      width: 40%;
-    }
+  from {
+    width: 0px;
   }
 
-/* mat-card:hover{
-    transition: scale 1s ease;
-	box-shadow: -4px -4px 5px #673ab7, 4px 4px 5px #673ab7;
-} */
-button:hover{
+  to {
+    width: 40%;
+  }
+}
 
-    background-color: aliceblue;
-    color:black;
-   
+button:hover {
+
+  background-color: aliceblue;
+  color: black;
+
 }
-.header h1{
-    font-weight:bold;
-    font-size:40px;
-    color:#8263b7
+
+.header h1 {
+  font-weight: bold;
+  font-size: 40px;
+  color: #8263b7
 }
-.header{
-  padding:10px;
+
+.header {
+  padding: 10px;
 }
-.header mat-card{
-  width:100%
+
+.header mat-card {
+  width: 100%
 }
-/* .input{
-  padding:10px;
-  
-  
-} */
-#top mat-card{
-  width:40%;
+
+#top mat-card {
+  width: 40%;
   border-radius: 30px;
-  box-shadow:  12px 12px 36px #a4a1a1,
-             -12px -12px 36px #ffffff;
+  box-shadow: 12px 12px 36px #a4a1a1,
+    -12px -12px 36px #ffffff;
 }
 
-.input #img{
-  width:50%;
-  float:right;
+.input #img {
+  width: 59%;
+  height: 113vh;
+  margin-top: 0px;
+  float: right;
 }
-.header mat-card h1{
-  padding:20px
+
+.header mat-card h1 {
+  padding: 20px
 }
+
 @media only screen and (width<1300px) {
-  #img{
-    display:none;
-  }
-  .input #no{
-      width:100%;
+  #img {
+    display: none;
   }
 
-  /* .roles mat-card Button{
-      margin-left:80px;
-      
-  } */
+  .input #no {
+    width: 100%;
+  }
 }
+
 @media only screen and (width<401px) {
-  .header h1{
-    font-size:30px
+  .header h1 {
+    font-size: 30px
   }
-
-  /* .roles mat-card Button{
-      margin-left:80px;
-      
-  } */
 }
 
-/* .input mat-card:not(#no){
-  background-color: rgb(241, 244, 247);
-} */
+.input .data mat-card-content #top #no mat-card-content #asite {
+  width: 10%;
+}
+
+.input .data {
+  background-color: #f6f9ff;
+}
+
+.input .data #top #no mat-card-content input {
+  padding: 20px
+}
