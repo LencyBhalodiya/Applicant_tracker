@@ -1,1 +1,240 @@
-<p>manage-users works!</p>
+<html lang="en">
+  <body>
+    <section class="main-content">
+      <div class="container">
+        <!-- search -->
+        <div class="wrap">
+          <div class="search">
+            <input type="text" class="searchTerm" placeholder="Search " />
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+            <button class="btn btn-primary" (click)="onAddUser()">
+              Add User
+            </button>
+          </div>
+        </div>
+        <!-- search -->
+        <br />
+        <br />
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Status</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>
+                <div class="user-info">
+                  <div class="user-info__img">
+                    <i class="bi bi-person-fill"></i>
+                    <img src="assets/profile.png" alt="User Img" />
+                  </div>
+                  &nbsp;
+                  <div class="user-info__basic">
+                    <h3 class="mb-0">{{ user.name }}</h3>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <!-- <span
+                  class="active-circle bg-success"
+                  [ngClass]="{ online: 'active' === 'active' }"
+                ></span>
+                {{ user.status }} -->
+                <span
+                  class="active-circle bg-success"
+                  *ngIf="user.status === 'Active'"
+                ></span>
+                <span
+                  class="active-circle bg-danger"
+                  *ngIf="user.status === 'Inactive'"
+                >
+                </span
+                >{{ user.status }}
+              </td>
+              <td>{{ user.email }}</td>
+              <td>+91 9876543215</td>
+              <td>
+                <button class="btn btn-lg" (click)="openModal()">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-lg"><i class="bi bi-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- edit modal template html -->
+
+    <div
+      class="modal custom-backdrop"
+      tabindex="-1"
+      role="dialog"
+      [ngStyle]="{ display: display }"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Information</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="onCloseHandled()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- modal body -->
+
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Name</label
+                >
+                <input type="text" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Status
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Email
+                </label>
+                <input type="tel" class="form-control" />
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Phone
+                </label>
+                <input type="tel" class="form-control" />
+              </div>
+
+              <!-- modal footer  -->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-default"
+              (click)="onCloseHandled()"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--edit model ended-->
+
+    <!--ADD USER MODEL -->
+
+    <div
+      class="modal custom-backdrop"
+      tabindex="-1"
+      role="dialog"
+      [ngStyle]="{ display: display }"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add User Information</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="onCloseHandled()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- modal body -->
+
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Name</label
+                >
+                <input type="text" class="form-control" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Status
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Email
+                </label>
+                <input type="tel" class="form-control" />
+              </div>
+
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Text input with dropdown button"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary dropdown-toggle"
+                    type="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Dropdown
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                  </div>
+                </div>
+              </div>
+              <!-- modal footer  -->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-default"
+              (click)="onCloseHandled()"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--ADD USER MODEL ENDED-->
+  </body>
+</html>

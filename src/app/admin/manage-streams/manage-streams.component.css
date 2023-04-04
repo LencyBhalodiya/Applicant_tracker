@@ -1,0 +1,113 @@
+.collection div,
+.input div {
+  padding: 10px;
+}
+
+mat-card {
+  width: 100%;
+  border: 2px solid beige;
+
+}
+
+[mat-fab] {
+  float: right;
+  background-color: #B0DAFF;
+}
+
+input {
+  border: hidden;
+  padding-top: 15px;
+  width: 40%;
+  font-size: 18px;
+  font-weight: bold;
+
+}
+
+.no-outline:focus {
+
+  border-bottom-style: groove;
+  border-bottom: 4px solid #e5e5e5;
+  outline: none;
+  animation: line 0.5s;
+  border-color: #B0DAFF;
+
+
+}
+
+@keyframes line {
+  from {
+    width: 0px;
+  }
+
+  to {
+    width: 40%;
+  }
+}
+
+button:hover {
+
+  background-color: aliceblue;
+  color: black;
+
+}
+
+.header h1 {
+  font-weight: bold;
+  font-size: 30px;
+  color: #B0DAFF
+}
+
+.header {
+  padding: 10px;
+}
+
+.header mat-card {
+  width: 100%
+}
+
+#top mat-card {
+  width: 40%;
+  border-radius: 30px;
+  box-shadow: 12px 12px 36px #a4a1a1,
+    -12px -12px 36px #ffffff;
+}
+
+.input #img {
+  width: 59%;
+  height: 113vh;
+  margin-top: 0px;
+  float: right;
+}
+
+.header mat-card h1 {
+  padding: 20px
+}
+
+@media only screen and (width<1300px) {
+  #img {
+    display: none;
+  }
+
+  .input #no {
+    width: 100%;
+  }
+}
+
+@media only screen and (width<401px) {
+  .header h1 {
+    font-size: 30px
+  }
+}
+
+.input .data mat-card-content #top #no mat-card-content #asite {
+  width: 10%;
+}
+
+.input .data {
+  background-color: #f6f9ff;
+}
+
+.input .data #top #no mat-card-content input {
+  padding: 20px
+}
+

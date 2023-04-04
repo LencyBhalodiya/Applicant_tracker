@@ -6,7 +6,6 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { MatFabButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +16,9 @@ export class LoginComponent {
   public showPassword: boolean = false;
   constructor() {}
   loginForm = new FormGroup({
-    username: new FormControl('', [
+    email: new FormControl('', [
       Validators.required,
-      Validators.pattern('^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$'),
+      Validators.pattern('[a-z0-9]+@[a-z]+.[a-z]{2,3}'),
     ]),
     password: new FormControl('', [
       Validators.required,
