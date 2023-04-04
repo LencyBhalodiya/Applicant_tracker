@@ -1,0 +1,20 @@
+
+.container{
+    margin:25px auto;
+    padding:0;
+    width:90%;
+}
+
+p{
+    font-weight: 500;
+}
+
+mat-form-field{
+    width:100%;
+}
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
