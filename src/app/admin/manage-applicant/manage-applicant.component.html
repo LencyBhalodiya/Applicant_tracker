@@ -1,1 +1,68 @@
-<p>manage-applicant works!</p>
+<body>
+        <mat-card class="mb-2">
+                <mat-card-content>
+                <form action="">
+                        <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+                          <div class="input-group">
+                            <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+                            <div class="input-group-append">
+                              <button id="button-addon1" type="submit" class="btn btn-purple"><i class="bi bi-search"></i></button>
+                              <button id="button-filter" type="submit" class="btn btn-purple ml-2"><i class="bi bi-filter"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+        </mat-card-content>
+        </mat-card>
+        <div class="d-block text-right mb-5 mt-2 mr-3">
+                <button class="btn btn-purple" [hidden]="hideBlkBtn" (click)="openDialog()" >Give Feedback</button>
+                <button class="btn btn-purple ml-3" (click)="bulkFeedback()">Bulk Feedback</button>
+        </div>
+        <div class="card  border-0 mb-7 ml-3 mr-3">
+                <div class="card-header">
+                        <h2 class="mb-0">Applications</h2>
+                </div>
+                <div class="table-responsive">
+                        <table class="table table-hover table-nowrap">
+                                <thead class="thead-light text-center">
+                                        <tr>
+                                                <th class="hide-col d-none">select</th>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Stage</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">Actions</th>
+                                        </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                        <tr *ngFor="let no of numberOfRaw">
+                                                <td class="hide-col d-none"><mat-checkbox
+                                                                color="primary"></mat-checkbox></td>
+                                                <td>12</td>
+                                                <td>
+                                                        <img src="../../../assets/images/profile.png"
+                                                                class="profile-image" alt="abc"> Bhargav Dhamecha
+                                                </td>
+
+                                                <td>Screening</td>
+                                                <td><i class="bi bi-record-fill text-success"></i> passed</td>
+                                                <td>
+                                                        <button class="btn" data-toggle="tooltip"
+                                                                title="edit"><mat-icon>edit</mat-icon></button>
+                                                        <button class="btn" data-toggle="tooltip" (click)="openDialog()"
+                                                                title="feedback"><mat-icon>comment</mat-icon></button>
+                                                        <button class="btn" data-toggle="tooltip"
+                                                                title="delete"><mat-icon>delete</mat-icon></button>
+                                                </td>
+                                        </tr>
+                                </tbody>
+
+                        </table>
+                </div>
+                <!-- <div class="card-footer border-0 py-5"> <span class="text-muted text-sm">Showing 10 items out of 250
+                                results
+                                found</span> </div> -->
+        </div>
+
+
+</body>

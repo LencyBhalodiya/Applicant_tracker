@@ -1,28 +1,57 @@
-<div class="login-container">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="username" />
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input matInput formControlName="password" type="password" />
-        </mat-form-field>
-
-        <button
-          mat-raised-button
-          color="primary"
-          class="loginBtn"
-          [disabled]="loginForm.invalid"
-        >
-          Login
-        </button>
-      </form>
-    </mat-card-content>
-  </mat-card>
+<div class="row">
+  <div class="back-image">
+    <img src="../../assets/images/loginbackground.svg" alt="Image" />
+  </div>
+  <div class="login-container">
+    <mat-card class="login-card">
+      <mat-icon class="custom-icon-size">account_circle</mat-icon>
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>Welcome !</mat-card-title>
+          <mat-card-subtitle>Sign in to your account</mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              placeholder="example@asite.com"
+            />
+            <mat-icon matPrefix>email</mat-icon>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+            />
+            <mat-icon matPrefix>password</mat-icon>
+            <mat-icon matSuffix (click)="togglePasswordVisibility()">
+              {{ showPassword ? "visibility_off" : "visibility" }}
+            </mat-icon>
+          </mat-form-field>
+          <div class="forgot-link">
+            <a href="/forgot">Forgot Password</a>
+          </div>
+          <div class="signup-link">
+            Don't have an account? <a href="/register">Sign up</a>
+          </div>
+          <button
+            mat-raised-button
+            color="primary"
+            class="login-btn"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+            <mat-icon>login</mat-icon>
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

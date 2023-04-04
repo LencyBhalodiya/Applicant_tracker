@@ -1,33 +1,45 @@
 .charts-section {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   font-family: Roboto, sans-serif;
   justify-content: space-between;
   margin-top: 1.5rem;
 }
+.charts {
+  height: 41.5vh;
+  width:46%;
+  max-width: 100% ;
+  margin: 1.4rem 1rem;
+  border-radius: 0.75rem;
+  background-color: #fff;
+  border: none;
+ box-shadow: 7px 7px 12px -6px rgb(172, 167, 172) !important;
+}
+canvas{
+  max-height: 34vh !important;
+  padding: 1rem;
+}
+@media screen and (max-width: 968px) {
+  .charts {
+    width: 100%;
+    margin: 1.4rem 0;
+  }
+}
+@media screen and (max-width: 498px) {
+  canvas{
+    height: 33vh !important;
+    max-height: 34vh !important;
+    padding: 1rem;
+  }
+}
 
-.line-container ,.oil-container,.bar-chart{
-  width: 41.5vw;
-  border-radius: 0.75rem;
-  background-color: #fff;
-  margin-bottom: 2rem;
-}
-.pie-container{
-  width: 41.5vw;
-  height: 45.5vh;
-  border-radius: 0.75rem;
-  background-color: #fff;
-  margin-bottom: 2rem;
-}
-.pie-container canvas{
-  width:30rem !important;
-  height: 23rem !important;
-}
- h1 {
-  background-color: #673ab7;
-  padding: 2px 6px;
-  color: #fff;
+h1 {
+  /* background-color: #84abf1; */
+  font-weight: 500;
+  padding: 10px 1px 2px 1px;
+  font-size: 1.3rem;
+  color: #042c72;
+  text-align: center;
   border-radius: 0.75rem 0.75rem 0.1rem 0.1rem;
 }
-

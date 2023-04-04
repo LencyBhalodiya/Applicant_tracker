@@ -1,0 +1,39 @@
+.collection div{
+    padding:10px;
+}
+mat-card{
+    border:2px solid beige;
+    border-radius:30px;
+    width:40%;
+    box-shadow:  12px 12px 36px #a4a1a1,
+             -12px -12px 36px #ffffff;
+}
+[mat-fab]{
+    float:right;  
+    background-color:#B0DAFF
+}
+button:hover{
+
+    background-color: aliceblue;
+    color:black;
+   
+}
+#stream{
+    font-size:18px;
+    font-weight: bold;
+    padding:20px
+}
+mat-card:not(#stream):hover{
+    transition: scale 1s ease;
+	box-shadow: 4px 4px 5px #B0DAFF;
+}
+@media only screen and (width<1300px) {
+    
+    .collection div mat-card{
+        width:100%;
+    }
+  
+  }
+  .collection div mat-card #img{
+    width:10%;
+  }

@@ -18,7 +18,8 @@ import { ManageStreamsComponent } from './admin/manage-streams/manage-streams.co
 import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { ManageApplicantComponent } from './admin/manage-applicant/manage-applicant.component';
 import { AdminChartsComponent } from './admin/admin-dashboard/admin-charts/admin-charts.component';
-
+import { FeedbackComponent } from "./admin/manage-applicant/feedback/feedback.component";
+import { StreamComponent } from "./admin/manage-streams/stream/stream.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,8 @@ import { AdminChartsComponent } from './admin/admin-dashboard/admin-charts/admin
     ManageUsersComponent,
     ManageApplicantComponent,
     AdminChartsComponent,
+    FeedbackComponent,
+    StreamComponent
   ],
   imports: [
     BrowserModule,

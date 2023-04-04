@@ -1,1 +1,27 @@
-<p>interview-cycle works!</p>
+<div class="interview-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Manage Interview Cycle</mat-card-title>
+    </mat-card-header>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let panel of panels" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ panel.title }}</mat-panel-title>
+          <mat-panel-description
+            >{{ panel.description }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{ panel.content }}</p>
+
+        <button
+          mat-raised-button
+          class="addBtn"
+          color="primary"
+          (click)="onAddRoundClick(panel.description)"
+        >
+          Add Round
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>
+</div>

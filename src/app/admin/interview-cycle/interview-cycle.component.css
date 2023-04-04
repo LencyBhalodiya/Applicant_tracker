@@ -1,0 +1,31 @@
+.interview-container {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+      align-items: center;
+  
+    }
+    mat-card-title {
+        margin-bottom: 10px;
+      }
+      
+      mat-form-field {
+        margin-bottom: 10px;
+
+      }
+mat-card {
+    max-width: 700px;
+    width: 100%;
+  }
+
+  .addBtn{
+ margin-left: 34%;
+
+  
+  }
+  .mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+  mat-form-field {
+    width: 50%;
+  }

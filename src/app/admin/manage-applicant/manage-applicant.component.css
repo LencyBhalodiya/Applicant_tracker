@@ -1,0 +1,27 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+.btn-purple {
+    background-color: #6476ed;
+    color: #fff;
+}
+
+.profile-image {
+    height: 2.5rem;
+}
+
+body {
+    background-color: #f6f9ff;
+}
+.form-control:focus {
+    box-shadow: none;
+  }
+  .form-control-underlined {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+  }
+
+button:focus{
+    box-shadow: none;
+}
