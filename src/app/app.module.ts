@@ -19,6 +19,7 @@ import { ManageUsersComponent } from './admin/manage-users/manage-users.componen
 import { ManageApplicantComponent } from './admin/manage-applicant/manage-applicant.component';
 import { AdminChartsComponent } from './admin/admin-dashboard/admin-charts/admin-charts.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { HttpClientModule } from "@angular/common/http";
 // import {MatSnackBarModule} from '@angular/material/snack-bar';
 // import {MatIconModule} from '@angular/material/icon';
 
@@ -47,7 +48,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MaterialDesignModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
