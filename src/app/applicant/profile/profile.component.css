@@ -1,0 +1,148 @@
+
+mat-toolbar{
+    margin-bottom: 0.5rem;
+ box-shadow: 3px 5px 10px -6px rgb(172, 167, 172) !important;
+}
+span{
+    color:#012970 ;
+    font-weight: 500;
+}
+span:hover{
+    color:#4154f1;
+}
+i{
+    margin-right: 10px;
+}
+.tool-bar{
+    background-color: #fff;
+}
+.toolbar-item-spacer {
+    flex: 1 1 auto;
+}
+
+
+.profile-section{
+    height: 100vh;
+    background-color: var(--background-color);
+}
+.profile-wrapper{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: fill;
+}
+hr{
+    background-color: lightgray;
+    opacity: 0.5;
+    margin-top: 8px;
+  }
+.left-profile{
+    width: 34%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
+    margin: 2rem;
+    border-radius: 0.5rem;
+}
+
+.profile-image{
+    width: 220px;
+    border-radius: 50%;
+    box-shadow: var(--box-shadow);
+}
+.right-profile{
+    width: 65%;
+    height: 70vh;
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
+    margin: 2rem;
+    border-radius: 0.5rem;
+}
+.profile-name{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 1rem;
+    text-align: center;
+}
+.left-profile h3,button{
+    margin: 0.5rem;
+    padding: 0.3rem;
+    cursor: pointer;
+}
+
+.btn{
+    width: 22%;
+    margin: 0 auto;
+    padding: 12.5px 30px;
+    margin-top: 0.7rem;
+    border: 0;
+    border-radius: 100px;
+    background-color: var(--main-color);
+    color: #ffffff;
+    font-weight: Bold;
+    transition: all 0.5s;
+    box-shadow: var(--box-shadow);
+  }
+  .btn-edit{
+    width: 90px !important;
+    font-size: 1.1rem;
+    margin-left: 0.7rem;
+  }
+  .profile-details{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+  }
+  .p-value{
+        margin-left: 5rem;
+        font-size: 1.2rem;
+  }
+.details-wrapper{
+    margin: 2rem 1rem;
+}
+
+  @media screen and (max-width: 768px) {
+    .left-profile{
+        width: 100%;
+        margin: 0;
+    }
+    .right-profile{
+        width: 100%;
+        height: inherit;
+        margin: 0;
+    }
+    .profile-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+    .p-value{
+        margin-left: 3rem;
+        font-size: 1.2rem;
+  }
+}
+  @media screen and (max-width: 1168px) {
+
+    .right-profile{
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+    }
+
+}
+    
+  
+

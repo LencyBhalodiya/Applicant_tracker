@@ -1,0 +1,55 @@
+<mat-toolbar class="tool-bar">
+    <button mat-icon-button matTooltip="Menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>ATRACKER</span>
+    <span class="toolbar-item-spacer"></span>
+    <button mat-icon-button matTooltip="Notifications">
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      matTooltip="My Account"
+      [matMenuTriggerFor]="userAccountMenu"
+    >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+      <button mat-menu-item routerLink="#">
+        <mat-icon>person</mat-icon><span>My Account</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="#">
+        <mat-icon>exit_to_app</mat-icon>Logout
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+  
+  <div class="profile-section">
+    <div class="profile-wrapper">
+      <div class="left-profile">
+        <div class="profile-image">
+          <img
+            src="https://customerthink.com/wp-content/uploads/kissclipart-professional-man-and-woman-cartoon-clipart-busines-5fe2dff6275ed00e.jpg"
+            alt="profile"
+          />
+        </div>
+        <div class="profile-name">
+          <h3>John Doe</h3>
+          <p>UI/UX Designer</p>
+          <button class="btn">Resume</button>
+        </div>
+      </div>
+      <div class="right-profile">
+        <div class = "details-wrapper" *ngFor="let card of profileData">
+          <div class="profile-details">
+            <h3> {{card.title}} :</h3>
+            <p class="p-value"> {{card.value}} </p>
+          </div>
+          <hr />
+        </div>
+        <button class="btn btn-edit">Edit</button>
+      </div>
+    </div>
+  </div>
+  
