@@ -1,0 +1,76 @@
+/*-------------------------------------
+  Common Styles
+-------------------------------------*/
+
+.section div {
+  padding: 10px;
+}
+
+/*-------------------------------------
+  Mat Card Styles
+-------------------------------------*/
+
+mat-card {
+  border-radius: 30px;
+  width: 40%;
+  box-shadow: var(--box-shadow)
+}
+
+mat-card:not(#stream):hover {
+  transition: scale 1s ease;
+  box-shadow: 4px 4px 5px #B0DAFF;
+}
+
+.section div mat-card {
+  height: 6em
+}
+
+/*-------------------------------------
+  Mat Card Content Styles
+-------------------------------------*/
+
+[mat-fab] {
+  float: right;
+  background-color: #B0DAFF;
+  height: 50px;
+}
+
+button:hover {
+
+  background-color: aliceblue;
+  color: black;
+
+}
+
+#stream {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px
+}
+
+.section div mat-card #img {
+  width: 6%;
+}
+
+
+/*-------------------------------------
+  Media Queries For Responsiveness
+-------------------------------------*/
+
+@media only screen and (width<1300px) {
+
+  .section div mat-card {
+    width: 100%;
+  }
+
+  .section div mat-card #img {
+    width: 4%;
+    margin-top: -10px
+  }
+}
+
+@media only screen and (width<1000px) {
+  #img {
+    display: none;
+  }
+}

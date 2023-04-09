@@ -1,1 +1,30 @@
-<p>manage-streams works!</p>
+<!-- Header -->
+<div class="header">
+    <mat-card>
+      <mat-card-content>
+        <h1>Manage Streams</h1>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  <!-- Taking New Stream as input and Showing Streams -->
+  <div class="section">
+    <mat-card class="dataContainer">
+      <mat-card-content>
+        <div id="firstCard">
+          <mat-card id="inputCard">
+            <mat-card-content>
+              <img src="./assets/images/asite.png" id="asite" />
+              <input matInput type="text" #inputValue (input)="enable(btn,inputValue.value)" class="no-outline"
+                placeholder="Enter The Stream">
+              <button mat-fab color="primary" (click)="addStream(inputValue.value)" disabled #btn>
+                <mat-icon>add</mat-icon>
+              </button>
+            </mat-card-content>
+          </mat-card>
+          <img src="./assets/images/custom-roles.png" id=img />
+        </div>
+        <app-stream *ngFor="let item of stream" [streamData]="item">{{item}}</app-stream>
+      </mat-card-content>
+    </mat-card>
+  </div>

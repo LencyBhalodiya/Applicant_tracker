@@ -1,1 +1,67 @@
-<p>custom-roles works!</p>
+<!-- header -->
+<div class="header">
+    <mat-card>
+      <mat-card-content>
+        <h1>Custom Roles</h1>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  <!-- Managing Custom Roles -->
+  <div class="roles">
+  
+    <!-- Showing Roles Assigned -->
+    <div #role *ngFor="let item of rolesData,let i=index" id="data">
+      <mat-card id="showData">
+        <mat-card-content>
+          <span>User</span>
+          <span id="userName">{{item.name | uppercase}}</span><br/><br/>
+          <span>Roles</span>
+          <form id="formdata">
+            <mat-form-field class="example-chip-list" appearance="fill">
+              <mat-label>{{item.name}} Roles</mat-label>
+              <mat-chip-grid #chipGrid aria-label="Role selection" >
+                <mat-chip-row *ngFor="let roles of item.roles" (removed)="remove(roles,i)">
+                  {{roles}}
+                  <button matChipRemove [attr.aria-label]="'remove ' + roles " id="chip">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+              </mat-chip-grid>
+               <input placeholder="New Role..." #roleInput 
+                [matChipInputFor]="chipGrid" [matAutocomplete]="auto"/>
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event,i)">
+                <mat-option  *ngFor="let roles of manageRoles" [value]="roles">
+                  {{roles.access}}
+                </mat-option>
+              </mat-autocomplete> 
+            </mat-form-field>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+  
+    <!-- Taking Custom Roles Data -->
+    <div class="inputCard">
+      <mat-card id="matcontentsize">
+        <mat-card-content>
+          <input matInpt class="no-outline"  placeholder="Enter Roles " #name (input)="enable(btn,name.value)">
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+  
+    <!-- Showing Available Roles -->
+    <div class="spacing" id="roleDetail" *ngFor="let roles of manageRoles" #div>
+      <mat-card>
+        <mat-card-content>
+          <label for="Manage Streams" #label class="adjustalign">{{roles.access}}</label>
+          <mat-checkbox id="checkbox" color="primary" (click)="getData(label)"></mat-checkbox>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <br>
+    <Button (click)="getValue(name,btn)" (click)="openSnackBar('Roles Added')" id="addRoles" #btn disabled >Add Roles</Button>
+  
+  </div>

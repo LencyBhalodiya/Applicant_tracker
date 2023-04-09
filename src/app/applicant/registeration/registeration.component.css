@@ -1,0 +1,75 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  
+  .address {
+    width: 100%;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  form {
+    width: 80%;
+    margin: 2em auto;
+    padding: 2em;
+  }
+  
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+  }
+  
+  .radioContainer {
+    width: fit-content;
+  }
+  
+  .radioGroupContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  }
+  
+  .previousBtn {
+    margin-top: 25px;
+    float: left;
+  }
+  
+  .nextBtn {
+    margin-top: 25px;
+    float: right;
+  }
+  
+  .submitBtn {
+    margin-top: 25px;
+  }
+  
+  .profileDropBox{
+    display: block;
+   
+  }
+  
+  .resumeDropBox{
+    display: block;
+    
+  }
+  
+  .uploadImage{
+    height: 40%;
+    width: 35%;
+  }
+  
+  .mainDiv{
+    margin: 200px;
+    display: flex;
+  }
+  
+  .card{
+  flex: 1;
+  border-radius: 20%;
+  }

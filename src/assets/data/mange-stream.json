@@ -1,0 +1,11 @@
+[
+  { "id": 1, "streamName": "Java" },
+  { "id": 2, "streamName": "QA" },
+  { "id": 3, "streamName": "UI" },
+  { "id": 4, "streamName": "Flutter" },
+  { "id": 5, "streamName": "DevOps" },
+  { "id": 6, "streamName": "DBA" },
+  { "id": 7, "streamName": "C#" },
+  { "id": 8, "streamName": "SRE" },
+  { "id": 9, "streamName": "Project Coordinator" }
+]

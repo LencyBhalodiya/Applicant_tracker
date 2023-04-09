@@ -9,13 +9,15 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { AuthComponent } from './shared/auth/auth.component';
 import { NavbarsComponent } from './shared/navbars/navbars.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterationComponent } from './applicant/registeration/registeration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
     AuthComponent,
-    NavbarsComponent
+    NavbarsComponent,
+    RegisterationComponent
   ],
   imports: [
     BrowserModule,

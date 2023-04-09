@@ -1,0 +1,14 @@
+<!-- Showing list of Stream -->
+<div class="section">
+    <div #delete>
+        <mat-card>
+            <mat-card-content>
+                <img src="./assets/images/asite.png" id="img" />
+                <span id="stream">{{streamData.streamName}}</span>
+                <button mat-fab color="primary" (click)="openSnackBar('Stream Deleted',delete)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

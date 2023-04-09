@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CustomRolesRoutingModule } from './custom-roles-routing.module';
 import { CustomRolesComponent } from './custom-roles.component';
+import { MaterialDesignModule } from 'src/app/shared/material-design/material-design.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { CustomRolesComponent } from './custom-roles.component';
   ],
   imports: [
     CommonModule,
-    CustomRolesRoutingModule
+    CustomRolesRoutingModule,
+    MaterialDesignModule
   ]
 })
 export class CustomRolesModule { }

@@ -1,0 +1,13 @@
+[
+  {
+    "name": "HR1",
+
+    "roles": ["Dashboard", "Add Recruiter", "Manage Recruiter"]
+  },
+
+  {
+    "name": "HR2",
+
+    "roles": ["Dashboard", "Add Recruiter", "Manage Applicants"]
+  }
+]

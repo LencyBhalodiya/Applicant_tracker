@@ -1,0 +1,242 @@
+<mat-stepper [linear]="isLinear" #stepper>
+    <mat-step>
+      <form [formGroup]="firstFormGroup" (keydown.enter)="true">
+        <ng-template matStepLabel>Address Details</ng-template>
+        <div class="formGroupContainer">
+          <mat-form-field appearance="outline" class="address">
+            <mat-label>Which Residence's information you are filling?</mat-label>
+            <mat-select formControlName="ChooseResidence" required>
+              <mat-option value="permenant residence's">permenant residence's</mat-option>
+              <mat-option value="current residence's">current residence's</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="address" appearance="outline">
+            <mat-label>Address</mat-label>
+            <textarea matInput placeholder="Address" formControlName="address"></textarea>
+          </mat-form-field>
+          <br>
+          <div class="gridContainer">
+            <mat-form-field class="country" appearance="outline">
+              <mat-label>Country</mat-label>
+              <input matInput placeholder="India" formControlName="country">
+            </mat-form-field>
+            <mat-form-field class="state" appearance="outline">
+              <mat-label>State</mat-label>
+              <input matInput placeholder="Gujarat" formControlName="state">
+            </mat-form-field>
+            <mat-form-field class="city" appearance="outline">
+              <mat-label>City</mat-label>
+              <input matInput placeholder="Rajkot" formControlName="city">
+            </mat-form-field>
+            <mat-form-field class="postalCode" appearance="outline">
+              <mat-label>Postal Code</mat-label>
+              <input matInput #postalCode maxlength="10" placeholder="Ex. 360003" formControlName="postalCode">
+              <mat-hint align="end">{{postalCode.value.length}} / 10</mat-hint>
+            </mat-form-field>
+          </div>
+  
+          <div>
+            <button class="nextBtn" mat-raised-button color="primary" matStepperNext>Check Next Status</button>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Profile Details</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>Streams</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let streams of streamList" [value]="streams">{{streams}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Positions</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let positions of positionList" [value]="positions">{{positions}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="designation" appearance="outline">
+          <mat-label>What is your current designation</mat-label>
+          <textarea matInput placeholder="designation"></textarea>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="info-about-roles" appearance="outline">
+          <mat-label>Few lines about your roles</mat-label>
+          <textarea matInput placeholder="Few lines about your roles"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline" appearance="outline">
+          <mat-label>How did you know about this position ?</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let reference of referenceList" [value]="reference">
+              {{reference}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="radioGroupContainer">
+          <div class="radioContainer">
+            <label class="radioLabel">Any offer in hand?</label>
+            <mat-radio-group formControlName="anyOffer">
+              <mat-radio-button>Yes</mat-radio-button>
+              <mat-radio-button>No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="radioContainer">
+            <label class="radioLabe">Any interview lined-up?</label>
+            <mat-radio-group formControlName="anyInterview">
+              <mat-radio-button>Yes</mat-radio-button>
+              <mat-radio-button>No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="radioContainer">
+            <label class="radioLabel">Are you willing to relocate to ahmedabad?</label>
+            <mat-radio-group formControlName="willingToRelocate">
+              <mat-radio-button>Yes</mat-radio-button>
+              <mat-radio-button>No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div>
+            <div class="radioContainer">
+              <mat-label class="radioLabel">Choose you are Fresher Or Experienced ?</mat-label>
+              <mat-radio-group formControlName="freshersOrexperienced">
+                <mat-radio-button (click)="fresherFunction()" name="radio">Fresher</mat-radio-button>
+                <mat-radio-button (click)="experiencedFunction()" name="radio">Experienced</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+        </div>
+  
+        <div class="f&e" *ngIf="Fresh">
+          <b class="fre">Fresher</b>
+          <div>
+            <mat-form-field class="freshers-experience" appearance="outline">
+              <mat-label>If you have any experience then mantion it here</mat-label>
+              <textarea matInput placeholder="Your Experience"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="f&e" *ngIf="Expe">
+          <b class="exp">Experienced</b>
+          <div>
+            <mat-form-field class="freshers-experience" appearance="outline">
+              <mat-label>Please mantion your experience here</mat-label>
+              <textarea matInput placeholder="Your Experience"></textarea>
+            </mat-form-field>
+          </div>
+          <br>
+          <div>
+            <mat-form-field class="freshers-experience" appearance="outline">
+              <mat-label>If you have any experience then mantion it here</mat-label>
+              <textarea matInput placeholder="Your Experience"></textarea>
+            </mat-form-field>
+          </div>
+          <br>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>What is your old CTC?</mat-label>
+              <textarea matInput placeholder="Old CTC"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Write expected CTC?</mat-label>
+              <textarea matInput placeholder="Expected CTC" formControlName="expectedCTC"></textarea>
+            </mat-form-field>
+          </div>
+          <br>
+          <div>
+            <mat-form-field class="noticePeriod" appearance="outline">
+              <mat-label>Any Notice Period?</mat-label>
+              <textarea matInput placeholder="Enter on how much Notice Period you are?"></textarea>
+            </mat-form-field>
+            <mat-form-field class="changeReason" appearance="outline">
+              <mat-label>Reason for change?</mat-label>
+              <textarea matInput placeholder="Write Here.."></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="btnContainer">
+          <button mat-raised-button color="primary" class="previousBtn" matStepperPrevious>Check Previous Status</button>
+          &nbsp;
+          <button mat-raised-button color="primary" class="nextBtn" matStepperNext>Check Next Status</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Uploads</ng-template>
+        <div class="mainDiv">
+          <div class="card">
+              <mat-card>
+                  <mat-card-content>
+                      <div class="profileDropBox">
+                          <h3>Upload your Profile Picture here</h3>
+                          <ngx-file-drop dropZoneLabel="Drop your Profile Picture Here" (onFileDrop)="dropped($event)"
+                              (onFileOver)="onFileOver($event)" (onFileLeave)="onFileLeave($event)" accept=".png">
+                              <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                                  <button mat-icon-button class="profile-icon" (click)="openFileSelector()"
+                                      aria-label="icon-button with profile icon">
+                                      <mat-icon>upload_file</mat-icon>
+                                  </button>
+                              </ng-template>
+                          </ngx-file-drop>
+                          <div class="UploadTable">
+                              <table>
+                                  <tr>
+                                      <td>
+                                          Name
+                                      </td>
+                                  </tr>
+                                  <tr *ngFor="let item of files; let i=index">
+                                      <td>
+                                          {{item.relativePath}}
+                                      </td>
+                                  </tr>
+                              </table>
+                          </div>
+                      </div>
+                  </mat-card-content>
+              </mat-card>
+          </div>
+          <div class="card">
+              <mat-card>
+                  <mat-card-content>
+                      <div class="resumeDropBox">
+                          <h3>Upload your CV here</h3>
+                          <ngx-file-drop dropZoneLabel="Drop your CV Here" (onFileDrop)="dropped($event)"
+                              (onFileOver)="onFileOver($event)" (onFileLeave)="onFileLeave($event)" accept=".pdf">
+                              <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                                  <button mat-icon-button class="profile-icon" (click)="openFileSelector()"
+                                      aria-label="icon-button with profile icon">
+                                      <mat-icon>upload_file</mat-icon>
+                                  </button>
+                              </ng-template>
+                          </ngx-file-drop>
+      
+                          <div class="UploadTable">
+                              <table>
+                                  <tr>
+                                      <td>
+                                          Name
+                                      </td>
+                                  </tr>
+                                  <tr *ngFor="let item of files; let i=index">
+                                      <td>
+                                          {{item.relativePath}}
+                                      </td>
+                                  </tr>
+                              </table>
+                          </div>
+                      </div>
+                  </mat-card-content>
+              </mat-card>
+      
+          </div>
+      </div>
+        <button mat-raised-button color="primary" class="previousBtn" matStepperPrevious>Check Previous Status</button>
+        &nbsp;
+        <button mat-raised-button color="primary" class="submitBtn">Submit</button>
+      </form>
+    </mat-step>
+  </mat-stepper>
