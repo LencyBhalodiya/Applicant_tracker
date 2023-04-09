@@ -1,0 +1,42 @@
+[
+  {
+    "roundId": 1,
+    "roundName": "Online Discussion",
+    "createdTime": null,
+    "createdBy": null,
+    "stages": [
+      {
+        "stageId": 2,
+        "stageName": "Latest Tech",
+        "createdTime": "2001-02-01T00:00:00",
+        "createdBy": null
+      },
+      {
+        "stageId": 1,
+        "stageName": "General Topic",
+        "createdTime": "2023-03-11T00:00:00",
+        "createdBy": null
+      }
+    ]
+  },
+  {
+    "roundId": 2,
+    "roundName": "Screening",
+    "createdTime": null,
+    "createdBy": null,
+    "stages": [
+      {
+        "stageId": 2,
+        "stageName": "Base Screening",
+        "createdTime": "2001-02-01T00:00:00",
+        "createdBy": null
+      },
+      {
+        "stageId": 1,
+        "stageName": "Advance Screening",
+        "createdTime": "2023-03-11T00:00:00",
+        "createdBy": null
+      }
+    ]
+  }
+]

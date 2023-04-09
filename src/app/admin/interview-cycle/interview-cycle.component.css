@@ -1,0 +1,52 @@
+.main{
+    background-color: var(--background-color);
+    min-height:100%;
+  }
+  .main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    margin: 0 10% 0 10%;
+    padding-bottom: 10%;
+   
+  }
+  mat-card {
+    flex: 0 0 calc(50% - 1.5rem);
+    margin-bottom: 1.5rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+    padding: 2.5rem;
+    margin-top: 8rem;
+    min-height: 30rem;
+    min-width: 20rem;
+    height: 100%; 
+  }
+  
+  mat-card-header {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1.5rem;
+  }
+  
+  mat-card-title {
+    font-size: 2rem;
+    font-weight: 500;
+      color:var(--text-color);
+  }
+  
+  mat-list-item {
+    margin-bottom: 0.5rem;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  .add-btn{
+    background-color: var(--main-color) !important;
+    color:#fff !important;
+  }
+  mat-card,mat-list-item {
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 0.5rem;
+  }
+  

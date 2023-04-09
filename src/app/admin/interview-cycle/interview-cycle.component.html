@@ -1,1 +1,34 @@
-<p>interview-cycle works!</p>
+<div class="main">
+    <div class="main-container">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Stages</mat-card-title></mat-card-header
+        >
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item *ngFor="let round of rounds">
+              <button mat-button (click)="getStages(round.roundName)">
+                {{ round.roundName }}
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Rounds</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item *ngFor="let item of stages">
+              {{ item.stageName }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <button mat-raised-button class="add-btn" (click)="openDialog()">
+        Add Stage And Round
+      </button>
+    </div>
+  </div>
+  

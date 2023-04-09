@@ -1,0 +1,38 @@
+<form>
+  <div>
+    <mat-card-header>
+      <mat-card-title>Add Round To Stage</mat-card-title></mat-card-header
+    >
+    <mat-form-field>
+      <mat-label>Select Stage</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let round of rounds" value=""
+          >{{round.roundName}}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Add New Round</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <button mat-raised-button class="add-btn">
+      Add Round to Selected Stage
+    </button>
+  </div>
+  <div>
+    <mat-card-header>
+      <mat-card-title>Add New Stage and Round</mat-card-title></mat-card-header
+    >
+    <mat-form-field>
+      <mat-label>Add New Stage</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Add Round to New Stage</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <button mat-raised-button class="add-btn">Add New Stage and Round</button>
+  </div>
+</form>
