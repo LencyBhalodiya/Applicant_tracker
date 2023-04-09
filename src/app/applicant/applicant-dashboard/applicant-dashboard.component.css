@@ -1,0 +1,13 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+  
+  .status {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    margin: 26px;
+    padding: 26px;
+    border-radius: 8px;
+  }
+  

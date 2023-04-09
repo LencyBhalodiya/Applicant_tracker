@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "fname": "ritesh",
+    "lname": "narin",
+    "email": "sp@gmail.com",
+    "phoneno": 9725002567,
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "fname": "Smit",
+    "lname": "Patel",
+    "email": "sp@gmail.com",
+    "phoneno": 9725002567,
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "fname": "Smit",
+    "lname": "Patel",
+    "email": "sp@gmail.com",
+    "phoneno": 9725002567,
+    "status": "InActive"
+  },
+  {
+    "id": 4,
+    "fname": "Smit",
+    "lname": "Patel",
+    "email": "sp@gmail.com",
+    "phoneno": 9725002567,
+    "status": "Active"
+  },
+  {
+    "id": 5,
+    "fname": "xyz",
+    "lname": "Patel",
+    "email": "sp@gmail.com",
+    "phoneno": 9725002567,
+    "status": "InActive"
+  },
+  {
+    "id": 5,
+    "fname": "Smit",
+    "lname": "Patel",
+    "email": "sp@gmail.com",
+    "phoneno": 9725002567,
+    "status": "Active"
+  },
+  {
+    "id": 6,
+    "fname": "Smit",
+    "lname": "Patel",
+    "email": "sp@gmail.com",
+    "phoneno": 9725002567,
+    "status": "Active"
+  },
+  {
+    "id": 7,
+    "fname": "Smit Patel",
+    "lname": "Patel",
+    "email": "sp@gmail.com",
+    "phoneno": 9725002567,
+    "status": "Active"
+  },
+  {
+    "id": 8,
+    "fname": "Smit",
+    "lname": "Patel",
+    "email": "sp@gmail.com",
+    "phoneno": 9725002567,
+    "status": "Active"
+  },
+  {
+    "id": 9,
+    "fname": "yxz",
+    "lname": "Patel",
+    "email": "sp@gmail.com",
+    "phoneno": 9725002567,
+    "status": "Active"
+  }
+]

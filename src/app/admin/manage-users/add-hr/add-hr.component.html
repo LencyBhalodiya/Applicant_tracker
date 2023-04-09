@@ -1,0 +1,77 @@
+<div class="container">
+  <form [formGroup]="addHrForm">
+    <mat-grid-list cols="1" rowHeight="800px">
+      <mat-grid-tile>
+        <div class="example-container">
+          <mat-form-field appearance="outline" class="width-50">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="fname">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="width-50 ml-2">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lname">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline" class="width-100">
+            <mat-label>Email address</mat-label>
+            <input matInput formControlName="email" placeholder="Ex. pat@example.com">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline" class="width-100">
+            <mat-label>Enter password</mat-label>
+            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="outline" class="width-100">
+            <mat-label>Mobile No</mat-label>
+            <input matInput formControlName="phoneno">
+          </mat-form-field>
+          <br>
+
+          <label id="example-radio-group-label">Date of birth: </label>
+          <br><br>
+
+          <mat-form-field appearance="outline" class="width-100">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dob">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <br>
+          <label id="example-radio-group-label">Assigned Role </label>
+          <br><br>
+          <mat-form-field appearance="outline" class="width-100">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+              <mat-option [value]="6">
+                All Access
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+
+          <label id="example-radio-group-label">Gender: </label>
+          <br><br>
+          <mat-radio-group aria-label="Select an option" formControlName="gender">
+            <mat-radio-button value="1">Male</mat-radio-button>
+            <mat-radio-button class="example-radio-button" value="2">Female</mat-radio-button>
+            <mat-radio-button class="example-radio-button" value="3">Custom</mat-radio-button>
+          </mat-radio-group>
+          <br>
+          <mat-dialog-actions align="end">
+            <button mat-raised-button class="btn-save" mat-dialog-close (click)="addHr(addHrForm)">Save</button>
+            <button mat-raised-button class="btn-close" mat-dialog-close>Close</button>
+          </mat-dialog-actions>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+
+</div>
