@@ -1,12 +1,13 @@
 .main-container {
-    background-image: url("/assets/images/custom-roles.png");
+    background-image: url("/assets/images/loginbackground.svg");
     background-size: cover;
     padding: 10% 10% 0 10%;
     display: flex;
+    flex-direction: row;
     justify-items: left;
   
   }
-  
+
   @media (max-width: 767px) {
     .back-image {
       display: none;
