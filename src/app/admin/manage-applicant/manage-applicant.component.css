@@ -1,0 +1,56 @@
+/* Structure */
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.container{
+  margin: 2rem 2rem 3rem 2rem;
+}
+.table-container{
+  overflow-x: scroll;
+  border-radius: 2px;
+
+}
+
+@media(max-width: 600px) {
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+        font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row { 
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+  }
+  table{
+    overflow: scroll;
+  }
+}
+
+.passed{
+  color: rgb(35, 210, 35);
+  font-size: 0.7rem;
+}
+.rejected{
+  color: rgb(213, 10, 10);
+  font-size: 0.7rem;
+}
+.pending{
+  color: rgb(203, 203, 3);
+  font-size: 0.7rem;
+}
+
+.header{
+  background-color: var(--main-color) !important;
+  color: #fff !important;
+}

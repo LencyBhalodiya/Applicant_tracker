@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RegisterationComponent } from './applicant/registeration/registeration.component';
 import { AuthComponent } from './shared/auth/auth.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { NavbarsComponent } from './shared/navbars/navbars.component';
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
+  },
+  {
+    path: 'auth/register',
+    component: RegisterationComponent,
   },
   {
     path: 'applicant',

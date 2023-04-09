@@ -1,0 +1,32 @@
+<div class="interview-modal">
+    <!-- {{schedulingForm.value | json}} -->
+    <h2 *ngIf="data">{{data.name}}</h2>
+    <form action="" [formGroup]="schedulingForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Select Round to Schedule</mat-label>
+            <mat-select formControlName="round">
+              <mat-option *ngFor="let round of rounds" [value]="round">{{round}}</mat-option> 
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Choose a date</mat-label>
+            <input matInput formControlName="date" [matDatepicker]="picker">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Interviewer Name</mat-label>
+            <input formControlName="interviewername" matInput placeholder="Name of Interviewer" value="">
+          </mat-form-field>
+          <mat-radio-group class="radio-container" formControlName="mode" aria-label="Mode of an Interview">
+            <mat-radio-button [ngStyle]="{'vertical-align':'middle'}" value="online" color="primary"></mat-radio-button><label for="mat-radio-2-input">Online</label>
+            <mat-radio-button value="offline" color="primary"></mat-radio-button><label for="mat-radio-3-input">Offline</label>
+            <mat-radio-button value="telephonic" color="primary"></mat-radio-button><label for="mat-radio-4-input">Telephonic</label>
+          </mat-radio-group>
+    </form>
+    <mat-dialog-actions align="end">
+        <button type="submit" mat-raised-button mat-dialog-close [disabled]="schedulingForm.invalid" (click)="scheduleInterview()" color="primary">Schedule</button>
+        <button mat-raised-button mat-dialog-close color="primary">Cancel</button>
+      </mat-dialog-actions>
+</div>

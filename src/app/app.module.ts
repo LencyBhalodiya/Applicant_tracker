@@ -10,6 +10,8 @@ import { AuthComponent } from './shared/auth/auth.component';
 import { NavbarsComponent } from './shared/navbars/navbars.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterationComponent } from './applicant/registeration/registeration.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {  NgxFileDropModule } from "ngx-file-drop";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,10 @@ import { RegisterationComponent } from './applicant/registeration/registeration.
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialDesignModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxFileDropModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

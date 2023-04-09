@@ -1,1 +1,133 @@
-<p>auth works!</p>
+<div class="row" #signup>
+    <div class="back-image">
+      <img src="/assets/images/custom-rols.png" alt="Image" />
+    </div>
+    <div class="login-container">
+      <mat-card class="login-card">
+        <mat-icon class="custom-icon-size">account_circle</mat-icon>
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>Welcome !</mat-card-title>
+            <mat-card-subtitle>Sign in to your account</mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                formControlName="email"
+                placeholder="example@asite.com"
+              />
+              <mat-icon matPrefix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                formControlName="password"
+                [type]="showPassword ? 'text' : 'password'"
+                name="password"
+              />
+              <mat-icon matPrefix>password</mat-icon>
+              <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                {{ showPassword ? "visibility_off" : "visibility" }}
+              </mat-icon>
+            </mat-form-field>
+  
+   <div class="forgot-link">
+              <a href="/forgot">Forgot Password</a>
+            </div>
+            <div class="signup-link">
+              Don't have an account? <a  (click)="dispalyHide(signup,signin)">Sign up</a>
+            </div>
+            <button
+              mat-raised-button
+              color="primary"
+              class="login-btn"
+              [disabled]="loginForm.invalid"
+            >
+              Login
+              <mat-icon>login</mat-icon>
+            </button>
+          </form>
+        </mat-card-content>
+        
+      </mat-card>
+      
+    </div>
+  </div>
+  
+   
+  
+  <!--- registerForm -->
+  <div class="row" style="display: none;" #signin>
+    <div class="back-image">
+      <img src="../../assets/loginbackground.svg" alt="Image" />
+    </div>
+    <div class="login-container">
+      <mat-card class="login-card">    
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title><img src="../../assets/Logo - PNG.png" class="logoRegister" /></mat-card-title>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+  
+            <mat-form-field>
+              <mat-label>Frist Name</mat-label>
+              <input 
+              matInput 
+              formControlName="fname" 
+              placeholder="Enter Frist Name" />
+            </mat-form-field>
+  
+            <mat-form-field>
+              <mat-label>Last Name</mat-label>
+              <input 
+              matInput 
+              formControlName="lname" 
+              placeholder="Enter Last Name" />
+            </mat-form-field>
+            
+              <mat-label>Gender</mat-label>
+              <mat-radio-group aria-label="Select an option" color="primary" formControlName="gender"  style="width: 900px;">
+              <mat-radio-button  value="Male" >Male</mat-radio-button>
+              <mat-radio-button value="Female">Female</mat-radio-button>
+            </mat-radio-group>
+        
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input 
+              matInput 
+              formControlName="email" 
+              placeholder="example@asite.com" />
+            </mat-form-field>
+  
+         
+          
+            <mat-form-field>
+              <mat-label>Telephone</mat-label>
+              <span matPrefix>+91 &nbsp;</span>
+              <input 
+              type="tel" 
+              formControlName="phoneNumber" 
+              matInput placeholder="555-555-1234" />
+            </mat-form-field>
+  
+  
+            <button
+              mat-raised-button
+              color="primary"
+              class="login-btn" 
+              >
+              registerUser
+              
+              </button> 
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>                                                                                                                                                              

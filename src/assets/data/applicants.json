@@ -1,0 +1,93 @@
+[
+    {
+        "id": 1,
+        "name": "Ritesh",
+        "stream": "java",
+        "stage": "screening",
+        "status": "passed"
+    },
+    {
+        "id": 2,
+        "name": "Bhargav Dhamecha",
+        "stream": "java",
+        "stage": "scrseening",
+        "status": "passed"
+    },
+    {
+        "id": 3,
+        "name": "Bhargav Dhamecha",
+        "stream": "java",
+        "stage": "screening",
+        "status": "pending"
+    },
+    {
+        "id": 4,
+        "name": "Bhargav Dhamecha",
+        "stream": "java",
+        "stage": "screening",
+        "status": "passed"
+    },
+    {
+        "id": 5,
+        "name": "xyz",
+        "stream": "UI",
+        "stage": "screening",
+        "status": "rejected"
+    },
+    {
+        "id": 5,
+        "name": "Bhargav Dhamecha",
+        "stream": "UI",
+        "stage": "screening",
+        "status": "passed"
+    },
+    {
+        "id": 6,
+        "name": "Bhargav Dhamecha",
+        "stream": "UI",
+        "stage": "screening",
+        "status": "passed"
+    },
+    {
+        "id": 7,
+        "name": "Bhargav Dhamecha",
+        "stream": "UI",
+        "stage": "screening",
+        "status": "passed"
+    },
+    {
+        "id": 8,
+        "name": "Bhargav Dhamecha",
+        "stream": "UI",
+        "stage": "screening",
+        "status": "passed"
+    },
+    {
+        "id": 8,
+        "name": "Bhargav Dhamecha",
+        "stream": "UI",
+        "stage": "screening",
+        "status": "passed"
+    },
+    {
+        "id": 8,
+        "name": "Bhargav Dhamecha",
+        "stream": "UI",
+        "stage": "screening",
+        "status": "passed"
+    },
+    {
+        "id": 8,
+        "name": "Bhargav Dhamecha",
+        "stream": "UI",
+        "stage": "screening",
+        "status": "passed"
+    },
+    {
+        "id": 9,
+        "name": "yxz",
+        "stream": "java",
+        "stage": "screening",
+        "status": "rejected"
+    }
+]

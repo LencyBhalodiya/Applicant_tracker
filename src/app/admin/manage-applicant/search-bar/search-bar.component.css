@@ -1,0 +1,107 @@
+
+
+.btn-purple {
+    background-color: #6476ed;
+    color: #fff;
+}
+
+.profile-image {
+    height: 2.5rem;
+}
+
+body {
+    background-color: #f6f9ff;
+}
+.form-control:focus {
+    box-shadow: none;
+  }
+  .form-control-underlined {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+  }
+
+button:focus{
+    box-shadow: none;
+}
+
+button{
+    margin-right: 5px;
+}
+
+td{
+    vertical-align: center;
+}
+
+.search-form{
+    width:100%;
+    display: flex;
+    margin:5px;
+    /* border:5px solid #673ab7;
+    border-radius:10px; */
+}
+
+
+
+mat-form-field{
+    width:100%;
+}
+
+.search-input{
+    width:100%;
+    border:none;
+    border:2px solid grey;
+    border-radius: 5px;
+}
+
+.search-container{
+    margin:10px;
+}
+
+.mat-expansion-panel-header{
+    height: max-content;
+}
+
+.search-btn{
+    margin-left:5px;
+    margin-right:-1px;
+}
+
+.filter-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top:15px;
+    /* margin-bottom:-15px; */
+}
+
+mat-icon{
+    display: inline;
+    vertical-align: middle;
+}
+
+.apply-btn{
+    display: flex;
+    justify-content: end;
+}
+
+.accordion-container{
+    margin:25px;
+}
+
+.checkbox-label{
+    margin-bottom:0;
+}
+
+.mat-expansion-panel-body{
+    padding:0 24px !important;
+}
+
+mat-expansion-panel-header{
+    padding:10px;
+}
+
+.btn-purple{
+    background-color: var(--main-color) !important;
+}
