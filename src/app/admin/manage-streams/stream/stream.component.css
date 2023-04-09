@@ -11,7 +11,7 @@
 -------------------------------------*/
 
 mat-card {
-  border-radius: 30px;
+  border-radius: 5px;
   width: 40%;
   box-shadow: var(--box-shadow)
 }

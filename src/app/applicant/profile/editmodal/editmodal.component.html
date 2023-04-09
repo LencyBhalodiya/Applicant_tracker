@@ -1,0 +1,41 @@
+<div class="edit-form">
+  <h1 mat-dialog-title>Edit Details</h1>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Name" value="{{ data[0].value }}" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Email" value="{{ data[1].value }}" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Phone</mat-label>
+    <input matInput placeholder="Phone" value="" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Date Of Birth</mat-label>
+    <input matInput [matDatepicker]="picker" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Permananent Address</mat-label>
+    <input matInput placeholder="Permananent Address" value="" />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Present Address</mat-label>
+    <input matInput placeholder="present Address" value="" />
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button class="editbtn">Update</button>
+
+    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Cance</button>
+  </div>
+</div>

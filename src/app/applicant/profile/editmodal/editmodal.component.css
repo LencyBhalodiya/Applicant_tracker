@@ -1,0 +1,10 @@
+.example-full-width {
+  width: 100%;
+  padding: 5%;
+  padding-bottom: 0px !important;
+}
+.editbtn {
+  margin-left: 35%;
+  background-color: var(--main-color) !important;
+  color: white !important;
+}
