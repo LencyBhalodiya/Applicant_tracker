@@ -8,10 +8,11 @@ import { MaterialDesignModule } from './shared/material-design/material-design.m
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { AuthComponent } from './shared/auth/auth.component';
 import { NavbarsComponent } from './shared/navbars/navbars.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterationComponent } from './applicant/registeration/registeration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  NgxFileDropModule } from "ngx-file-drop";
+import { AuthInterceptor } from './shared/auth/auth-services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import {  NgxFileDropModule } from "ngx-file-drop";
     ReactiveFormsModule,
     NgxFileDropModule,
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

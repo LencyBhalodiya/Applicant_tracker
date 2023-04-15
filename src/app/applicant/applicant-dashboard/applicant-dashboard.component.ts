@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-console.warn('ApplicantDashboardComponent');
 
 @Component({
   selector: 'app-applicant-dashboard',

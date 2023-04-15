@@ -1,5 +1,7 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from './auth-services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -8,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AuthComponent {
   public showPassword: boolean = false;
-  constructor() {}
+  constructor(private auth: AuthService) {}
  loginForm = new FormGroup({
    email: new FormControl('', [
      Validators.required,
@@ -20,7 +22,7 @@ export class AuthComponent {
    ]),
  });
  loginUser() {
-   console.log(this.loginForm.value);
+   this.auth.signIn(this.loginForm.value)
  }
  public togglePasswordVisibility(): void {
    this.showPassword = !this.showPassword;
@@ -29,27 +31,39 @@ export class AuthComponent {
  ngOnInit(): void {}
 
  registerForm = new FormGroup({
-   fname : new FormControl('',[
+   firstname : new FormControl('',[
      Validators.required
    ]),
-   lname : new FormControl('',[
+   lastname : new FormControl('',[
      Validators.required
    ]),
    email: new FormControl('', [
      Validators.required,
      Validators.pattern('[a-z0-9]+@[a-z]+.[a-z]{2,3}'),
    ]),
-   phoneNumber : new FormControl('',[
-     Validators.required,
-     Validators.maxLength(10),
-     Validators.minLength(10)
+   password: new FormControl('', [
+    Validators.required,
+    Validators.minLength(7),
+  ]),
+  //  phoneNumber : new FormControl('',[
+  //    Validators.required,
+  //    Validators.maxLength(10),
+  //    Validators.minLength(10)
+  //  ]),
+   dob: new FormControl('',[
+
    ]),
    gender :new FormControl('',[
      Validators.required
    ])
  })
  registerUser(){
-   console.log(this.registerForm.value);
+  var datePipe = new DatePipe('en-US');
+  var setDob = datePipe.transform(this.registerForm.value.dob, 'yyyy-MM-dd');
+   console.log(setDob);
+   
+  setDob = this.registerForm.value.dob = setDob;
+   this.auth.signUp(this.registerForm.value)
  }
  dispalyHide(signup:HTMLElement,signin:HTMLElement){
    signup.style.display="none"

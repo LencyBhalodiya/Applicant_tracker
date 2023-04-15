@@ -1,102 +1,80 @@
-
-
-  @media (max-width: 767px) {
-    .back-image {
-      display: none;
-    }
-  
-    .login-container {
-      flex-direction: column;
-    }
-  
-    .login-card {
-      width: 250px;
-    }
+@media (max-width: 767px) {
+  .back-image {
+    display: none;
   }
-
-
-  .login-container {
-    padding: 200px 0% 0 10%;
-  }
-  
   .login-card {
-    width: 500px;
-    min-width: 250px;
-    padding: 20px;
-  }
-  
-  .row {
-    display:flex;
-    background-color:var(--background-color);
-    justify-content: center;
     width: 100%;
-    height: 100%;
-    padding: 0% 5% 5% 5%
+    min-width: unset;
   }
-  
   .custom-icon-size {
-    font-size: 50px;
-    height: 50px;
-    width: 50px;
-    margin-left: 42%;
-  
-    color: #7887f5
+    margin-left: auto;
+    margin-right: auto;
   }
-  
-  mat-form-field {
-    padding-top: 5%;
-    width: 100%;
+}
+@media (min-width: 768px) {
+  .login-container {
+    padding: 9rem 0% 0 10%;
   }
-  
-  .forgot-link,
-  .signup-link {
-    text-align: center;
-    margin: 0 0 10px 0;
+  .login-card {
+    width: 31.25rem;
+    min-width: 15.625rem;
+    padding: 1.25rem;
   }
-  
-  .login-btn {
-    margin: 30px auto 30px auto;
-    display: block;
-    width: 150px;
-    height: 50px;
-    background-color: #7887f5 !important;
-  }
-  
-  .login-btn:hover {
-    cursor: pointer;
-  }
-  
-  button.login-btn[disabled] {
-    background-color: #a28bff !important;
-  }
-  
-  .logoRegister{
-    height: 40%;
-    width: 40%;
-    margin-left: 110px;
-  }
-  
-  /* .register-container {
-    padding: 200px 10% 0 10%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .register-card {
-    width: 500px;
-    min-width: 250px;
-    padding: 20px;
-  } */
-  
-  /* .register-container {
-    padding: 200px 10% 0 10%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .register-card {
-    width: 500px;
-    min-width: 250px;
-    padding: 20px;
-    margin-right: 950px;
-  } */
+}
+mat-card-subtitle {
+  padding-bottom: 0.5rem;
+}
+.row {
+  display: flex;
+  background-color: var(--background-color);
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  padding: 0% 5% 5% 5%;
+}
+.custom-icon-size {
+  font-size: 3.125rem;
+  height: 3.125rem;
+  width: 3.125rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--main-color);
+}
+mat-form-field {
+  padding-top: 3%;
+  width: 100%;
+}
+.forgot-link,
+.signup-link {
+  text-align: center;
+  margin: 0 0 0.625rem 0;
+}
+.signup-link a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.login-btn {
+  margin: 1.875rem auto;
+  display: block;
+  width: 100%;
+  max-width: 9.375rem;
+  height: 3.125rem;
+  background-color: var(--main-color) !important;
+}
+.login-btn:hover {
+  cursor: pointer;
+}
+button.login-btn[disabled] {
+  color: #fff;
+  background-color: lightgray !important;
+}
+button{
+  color:white;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+.registerButton{
+  color:white;
+  font-weight: 600;
+  font-size: 1.25rem;
+}

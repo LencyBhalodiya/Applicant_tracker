@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterationComponent } from './applicant/registeration/registeration.component';
+import { AuthGuard } from './shared/auth/auth-services/auth.guard';
+import { UserCheckGuard } from './shared/auth/auth-services/user-check.guard';
 import { AuthComponent } from './shared/auth/auth.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { NavbarsComponent } from './shared/navbars/navbars.component';
@@ -21,6 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'applicant',
+    canLoad: [UserCheckGuard],
     loadChildren: () =>
       import('./applicant/applicant-dashboard/applicant-dashboard.module').then(
         (m) => m.ApplicantDashboardModule
@@ -29,6 +32,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: NavbarsComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -84,15 +88,9 @@ const routes: Routes = [
       },
     ],
   },
-
-  {
-    path: 'error',
-    component: ErrorPageComponent,
-  },
   {
     path: '**',
-    redirectTo: '404',
-    pathMatch: 'full',
+    component: ErrorPageComponent,
   },
 ];
 
