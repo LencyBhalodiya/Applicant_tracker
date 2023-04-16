@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Chart,registerables } from 'chart.js';
+import { map } from 'rxjs';
 import { DashboardservicesService } from '../services/dashboardservices.service';
 
 @Component({
@@ -20,55 +21,51 @@ export class AdminChartsComponent {
   }
 
   totalApplicantFn(): void {
-    let labels!: string[];
-    let data!: number[];
-    this.chartData.totalApplicantData().subscribe((res: any) => {
-
-      labels = res.map((item: any) => (labels = item.title));
-      data = res.map((item: any) => (data = item.total));
- 
-      this.chartData.createBarChart("totalApplicant",labels, data);
-    });
+    // let labels!: string[];
+    // let data!: number[];
+    // this.chartData.totalApplicantData().subscribe((res: any) => console.log(res));
+    
+      
   }
 
   interviewToRejectionFn() {
 
-    let labels!: string[];
-    let data!: number[];
-    this.chartData.totalApplicantData().subscribe((res: any) => {
+    // let labels!: string[];
+    // let data!: number[];
+    // this.chartData.totalApplicantData().subscribe((res: any) => {
 
-      labels = res.map((item: any) => (labels = item.title));
-      data = res.map((item: any) => (data = item.total));
+    //   labels = res.map((item: any) => (labels = item.title));
+    //   data = res.map((item: any) => (data = item.total));
  
-      this.chartData.createPieChart("Rejection",labels, data);
-    });
+    //   this.chartData.createPieChart("Rejection",labels, data);
+    // });
 
       }
 
   offerGraphFn() {
 
-    let labels!: string[];
-    let data!: number[];
-    this.chartData.totalApplicantData().subscribe((res: any) => {
+    // let labels!: string[];
+    // let data!: number[];
+    // this.chartData.totalApplicantData().subscribe((res: any) => {
 
-      labels = res.map((item: any) => (labels = item.title));
-      data = res.map((item: any) => (data = item.total));
+    //   labels = res.map((item: any) => (labels = item.title));
+    //   data = res.map((item: any) => (data = item.total));
  
-      this.chartData.createPieChart("OfferGraph",labels, data);
-    });
+    //   this.chartData.createPieChart("OfferGraph",labels, data);
+    // });
 
       }
 
   backoutGraphFn(): void {
-    let labels!: string[];
-    let data!: number[];
-    this.chartData.totalApplicantData().subscribe((res: any) => {
+    // let labels!: string[];
+    // let data!: number[];
+    // this.chartData.totalApplicantData().subscribe((res: any) => {
 
-      labels = res.map((item: any) => (labels = item.title));
-      data = res.map((item: any) => (data = item.total));
+    //   labels = res.map((item: any) => (labels = item.title));
+    //   data = res.map((item: any) => (data = item.total));
  
-      this.chartData.createBarChart("backoutGraph",labels, data);
-    });
+    //   this.chartData.createBarChart("backoutGraph",labels, data);
+    // });
 
   }
 }

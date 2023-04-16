@@ -55,24 +55,24 @@ export class AuthService {
     return authToken !== null ? true : false;
   }
 
-  getTokenRole() {
-    let token  = localStorage.getItem('access_token');
-    if(!token) this.router.navigate(['auth']);
- 
-    let role:any = jwt_decode(token!);
-    role = role.sub.split(',')[1]
-    
-    return role;
-  }
-  getUserId(){
-    var token  = localStorage.getItem('access_token');
-    if(!token) this.router.navigate(['auth']);
- 
-    let roleId:any = jwt_decode(token!);
-    roleId = roleId.sub.split(',')[0]
-    
-    return roleId;
-  }
+    getTokenRole() {
+      let token  = localStorage.getItem('access_token');
+      if(!token) this.router.navigate(['auth']);
+  
+      let role:any = jwt_decode(token!);
+      role = role.sub.split(',')[1]
+      
+      return role;
+    }
+    getUserId(){
+      var token  = localStorage.getItem('access_token');
+      if(!token) this.router.navigate(['auth']);
+  
+      let roleId:any = jwt_decode(token!);
+      roleId = roleId.sub.split(',')[0]
+      
+      return roleId;
+    }
   logOut() {
     localStorage.removeItem('access_token');
     this.router.navigate(['auth']);

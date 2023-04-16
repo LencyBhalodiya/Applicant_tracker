@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Chart } from 'chart.js';
+import { map } from 'rxjs';
 
 
 @Injectable({
@@ -10,9 +11,11 @@ export class DashboardservicesService {
 
 
   constructor( private http: HttpClient) {}
-
-  totalApplicantData() {
-    return this.http.get('./assets/data/chart.json')    
+ private url  = 'http://192.168.102.92:8002/main/api/admin/stream-count';
+//  url = './assets/charts.json'  
+  
+ totalApplicantData() {
+    return this.http.get(this.url).pipe(map((res: any) => console.log(res)));    
   }
 
   createBarChart(id:any,labels:string[], data:number[]) {
