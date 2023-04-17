@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ManageStreamService } from '../service/manage-stream.service';
 
 @Component({
   selector: 'app-stream',
@@ -8,17 +9,36 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class StreamComponent {
 
-  @Input() streamData!:{id:number,streamName:string};
+  @Input() streamData!:{streamId:number,streamName:string};
 
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(private _snackBar: MatSnackBar , private data:ManageStreamService) {}
 
-  openSnackBar(message: string,element:HTMLElement) {
+  //Showing SnackBar when stream deleted
+  openSnackBar(message: string) {
     this._snackBar.open(message,'',{duration:3000});
-    this.deleteStream(element)
   }
 
-  deleteStream(element:HTMLElement){
+  //Function to Delete Stream
+  deleteStream(element:HTMLElement,streamid:number){
     element.remove()
+    this.data.deleteStreams(streamid).subscribe(res=>console.log("Success"))
   }
 
+  //Function to edit Stream
+  editStream(edit:HTMLInputElement){
+    if(edit.readOnly){
+      edit.readOnly=false;
+    }
+    else{
+      edit.readOnly=true
+    }
+  }
+
+   //Function to submit changes on enter key
+  edt(event:any,ida:any,name:any){
+    if(event.keyCode==13){
+      event.target.readOnly=true 
+    }
+  }
+  
 }

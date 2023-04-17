@@ -31,7 +31,8 @@ mat-card:not(#stream):hover {
 
 [mat-fab] {
   float: right;
-  background-color: #B0DAFF;
+  background-color: var(--main-color);
+  color:white;
   height: 50px;
 }
 
@@ -42,7 +43,7 @@ button:hover {
 
 }
 
-#stream {
+#inputStream {
   font-size: 18px;
   font-weight: bold;
   padding: 20px
@@ -52,6 +53,18 @@ button:hover {
   width: 6%;
 }
 
+input {
+  border: hidden;
+  padding-top: 15px;
+  width: 40%;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#inputStream:focus {
+  outline: none;
+  border-color: #B0DAFF;
+}
 
 /*-------------------------------------
   Media Queries For Responsiveness

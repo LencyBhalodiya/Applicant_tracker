@@ -4,8 +4,8 @@
         <mat-card>
             <mat-card-content>
                 <img src="./assets/images/asite.png" id="img" />
-                <span id="stream">{{streamData.streamName}}</span>
-                <button mat-fab color="primary" (click)="openSnackBar('Stream Deleted',delete)">
+                <input matInput [value]="streamData.streamName | uppercase" id="inputStream" readonly (click)="editStream(edit)" (keypress)="edt($event,streamData.streamId,edit)" #edit />
+                <button mat-fab color="primary" (click)="openSnackBar('Stream Deleted')" (click)="deleteStream(delete,streamData.streamId)">
                     <mat-icon>delete</mat-icon>
                 </button>
             </mat-card-content>
