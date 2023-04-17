@@ -11,11 +11,11 @@ export class DashboardservicesService {
 
 
   constructor( private http: HttpClient) {}
- private url  = 'http://192.168.102.92:8002/main/api/admin/stream-count';
-//  url = './assets/charts.json'  
-  
+ private totalApplicanturl  = 'http://192.168.102.92:8002/main/api/admin/stream-count';
+ private  graphUrl = 'http://192.168.102.92:8002/main/api/admin/candidatesSelectionToRejection'
+ private totalData = []
  totalApplicantData() {
-    return this.http.get(this.url).pipe(map((res: any) => console.log(res)));    
+    return this.http.get(this.totalApplicanturl)
   }
 
   createBarChart(id:any,labels:string[], data:number[]) {
@@ -37,10 +37,12 @@ export class DashboardservicesService {
   }
   
   
-
-  getPieChartData() {
-    return this.http.get('./assets/charts.json')    
+  graphLink()
+  {
+     return this.http.get(this.graphUrl);
   }
+   
+
 
   createPieChart(id:any,labels:string[], data:number[]) {
     let oilData: any = {
