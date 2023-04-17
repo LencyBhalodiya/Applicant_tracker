@@ -8,53 +8,68 @@ import { IApplicants } from '../manage-applicant/models/applicants';
 import { AddHrComponent } from './add-hr/add-hr.component';
 import { EditHrComponent } from './edit-hr/edit-hr.component';
 import { ManageHrService } from './services/manage-hr.service';
-console.warn("this hr loaded");
 
 @Component({
   selector: 'app-manage-users',
   templateUrl: './manage-users.component.html',
-  styleUrls: ['./manage-users.component.css']
+  styleUrls: ['./manage-users.component.css'],
 })
 export class ManageUsersComponent {
-  displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'phoneno', 'status', 'action'];
+  displayedColumns: string[] = [
+    'id',
+    'fname',
+    'lname',
+    'email',
+    'phoneno',
+    'role',
+    'status',
+    'action',
+  ];
   public Elementdata!: IApplicants[];
   public response!: any;
   public dataSource!: MatTableDataSource<any>;
   private _checkedArr: number[] = [];
+  public isActive: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   checked: boolean = false;
 
-
-  constructor(private _aService: ManageHrService, private _formBuilder: FormBuilder, public dialog: MatDialog) { }
-
-
-  changeStatus(data: any) {
-
-    data.status = data.status === 'Active' ? 'Inactive' : 'Active';
-
+  id: number = 0;
+  constructor(
+    private manageHrService: ManageHrService,
+    private _formBuilder: FormBuilder,
+    public dialog: MatDialog
+  ) {
+    this.manageHrService.listen().subscribe((m) => {
+      console.log(m);
+      this.getAllApplicants();
+    });
   }
 
+  changeStatus(data: any) {
+    data.status = data.status === 'Active' ? 'Inactive' : 'Active';
+  }
 
+  getid() {
+    return this.id + 1;
+  }
 
   ngOnInit() {
     this.getAllApplicants();
   }
 
-
   getAllApplicants() {
-    this._aService.getData().subscribe({
+    this.manageHrService.getData().subscribe({
       next: (res) => {
-        this.dataSource = new MatTableDataSource<any>(res as IApplicants[])
+        this.dataSource = new MatTableDataSource<any>(res as IApplicants[]);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
       error(err) {
-        console.error(err);
-
-      }
-    })
+        console.error(err.message);
+      },
+    });
   }
 
   applyFilter(event: Event) {
@@ -66,42 +81,34 @@ export class ManageUsersComponent {
     }
   }
 
-
-
-
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string) {
-
     const dialogRef = this.dialog.open(AddHrComponent, {
       width: '550px',
       disableClose: true,
       panelClass: 'my-custom-container',
-      backdropClass: "bdrop",
+      backdropClass: 'bdrop',
       enterAnimationDuration,
-      exitAnimationDuration
-
+      exitAnimationDuration,
     });
-
-
   }
 
-  openDialogEdit(enterAnimationDuration: string, exitAnimationDuration: string, row: any) {
-
+  openDialogEdit(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string,
+    row: any
+  ) {
     const dialogRef = this.dialog.open(EditHrComponent, {
       width: '550px',
       disableClose: true,
       data: row,
       panelClass: 'my-custom-container',
-      backdropClass: "bdrop",
+      backdropClass: 'bdrop',
       enterAnimationDuration,
-      exitAnimationDuration
-
+      exitAnimationDuration,
     });
-
-
   }
 
-
   print(row: any) {
-    console.log(row)
+    console.log(row);
   }
 }
