@@ -19,3 +19,11 @@ color:var(--div-color);
   background-color:var(--main-color) ;
   color:var(--div-color);
 }
+
+.myFilter {
+  max-width: 200px;
+}
+
+::ng-deep .mat-select-panel{
+  max-height: 200px !important;
+}
