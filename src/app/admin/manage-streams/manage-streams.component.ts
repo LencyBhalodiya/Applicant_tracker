@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatFabButton } from '@angular/material/button';
 import { ManageStreamService } from './service/manage-stream.service';
 
@@ -7,33 +7,28 @@ import { ManageStreamService } from './service/manage-stream.service';
   templateUrl: './manage-streams.component.html',
   styleUrls: ['./manage-streams.component.css']
 })
-export class ManageStreamsComponent {
+export class ManageStreamsComponent implements OnInit{
   
-  stream!: any
+  stream!:any[]
 
   constructor(private data: ManageStreamService) { }
 
   //Function to add New Stream
   addStream(inputStream: any) {
-
-    //this.stream.streamName=inputStream
-    // this.streams.unshift(inputStream.value)
-    // inputStream.value=''
+    if(inputStream.value=="")
+    {
+      return;
+    }
+    this.data.setStreams({streamName:inputStream.value}).subscribe((response)=>this.stream.push(response))
+    inputStream.value=''
   }
 
   //Calling API
   ngOnInit() {
-    this.data.getStreams().subscribe((stream) =>{ 
-      console.log('calling');
-      
-      this.stream = stream})
+    this.data.getStreams().subscribe((stream) => {
+      this.stream=stream.filter((item)=> item.isActive==true)
+  })
   }
-
-  // ngAfterViewInit(stream:any){
-  //  // console.log(stream)
-  //  // this.data.setStreams(stream).subscribe(response=>response)
-  //  this.data.setStreams({streamName:stream}).subscribe(response=>response)
-  // }
 
   //Method for input Validation
   enable(btn: MatFabButton, inputvalue: string) {

@@ -1,62 +1,31 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatCheckbox } from '@angular/material/checkbox';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PassDataService } from './services/pass-data.service';
-
-//Interface For Roles Data
-interface manageroles {
-  id: number;
-  access: string
-}
 
 @Component({
   selector: 'app-custom-roles',
   templateUrl: './custom-roles.component.html',
   styleUrls: ['./custom-roles.component.css']
 })
-export class CustomRolesComponent {
+export class CustomRolesComponent implements OnInit{
 
-  manageRoles: manageroles[] = [
-    {
-      id: 1,
-      access: "DashBord"
-    },
-    {
-      id: 2,
-      access: "Add Recruiter"
-    },
-    {
-      id: 3,
-      access: "Manage Recruiter"
-    },
-    {
-      id: 4,
-      access: "Manage Applicants"
-    },
-    {
-      id: 5,
-      access: " Report"
-    },
-    {
-      id: 6,
-      access: " Manage Streams"
-    },
-    {
-      id: 7,
-      access: " Add Custom Roles"
-    },
-  ]
+  
+  managePermissions!:any[]
   selectedOptions: any[] = [];
-  rolesData!: any //Property to store username and its roles
+  rolesData!: any[] //Property to store username and its roles
   @ViewChild('roleInput') roleInput!: ElementRef<HTMLInputElement>;
-  roleCtrl = new FormControl('');
-  // separatorKeysCodes: number[] = [ENTER, COMMA];
+  isSelected!:boolean
 
   constructor(private _snackBar: MatSnackBar, private passDataroles: PassDataService) { }
 
   //Getting Roles Data
   ngOnInit() {
+    this.passDataroles.getPermisson().subscribe((role) =>{
+      this.managePermissions = role
+    })
     this.passDataroles.getRoles().subscribe((role) => {
       this.rolesData = role
     })
@@ -67,23 +36,32 @@ export class CustomRolesComponent {
   }
 
   //Function to store Selected Checkbox
-  getData(val: HTMLElement) {
-    this.selectedOptions.push(val.innerHTML)
+  getData(val: number,name:string,check:MatCheckbox) {
+    if(check.checked==false)
+    {
+      this.selectedOptions=this.selectedOptions.filter((item)=>{return item.id !== val})
+    }
+    else{
+      
+      this.selectedOptions.push({id:val,name:name})
+    }
+        
   }
 
   //Function to store username and roles 
   getValue(name: HTMLInputElement, btn: HTMLElement) {
-    this.rolesData.push({
-      name: name.value,
-      roles: this.selectedOptions
-    })
+    this.isSelected=false
+    for(let element of this.rolesData){
+      if(element.rolename.toLowerCase().trim().split(" ").join("")==name.value.toLowerCase().trim().split(" ").join("")){
+          this.openSnackBar("Role Already Exist")
+          return
+      }
+    }
+    this.passDataroles.setRoles({rolename:name.value,permissions:this.selectedOptions}).subscribe((res)=>this.rolesData.push(res))
+    this.openSnackBar('Roles Added')
     name.value = "";
     (<HTMLButtonElement>btn).disabled = true;
   }
-
-  // ngAfterViewInit(){
-  //   this.passDataroles.setRoles(this.rolesData).subscribe((result)=>result)
-  // }
 
   //Input Validation
   enable(element: HTMLElement, userName: string) {
@@ -97,17 +75,29 @@ export class CustomRolesComponent {
   
   //Function to Remove Roles Assigned to user
   remove(roles: any, ind: number): void {
-    const index = this.rolesData[ind].roles.indexOf(roles);
+    const index = this.rolesData[ind].permissions.indexOf(roles);
     if (index >= 0) {
-      this.rolesData[ind].roles.splice(index, 1);
+      this.rolesData[ind].permissions.splice(index, 1);
+      this.passDataroles.updateRoles({id:this.rolesData[ind].id,rolename:this.rolesData[ind].rolename,permissions: this.rolesData[ind].permissions}).subscribe(res=>console.log(res))
     }
   }
 
   //Function to add Roles from dropdown menu
-  selected(event: MatAutocompleteSelectedEvent, index: number): void {
-    this.rolesData[index].roles.push(event.option.viewValue);
-    this.roleInput.nativeElement.value = '';
-    this.roleCtrl.setValue(null);
+  selected(event: any, index: number): void {
+    
+    let flag=true;
+    for(let role of this.rolesData[index].permissions){
+      if(event.option.viewValue.toLowerCase()==role.name.toLowerCase())
+      {
+          flag=false;
+      }
+    }
+    if(flag==true){
+      this.rolesData[index].permissions.push({id:event.option.value.id,name:event.option.value.name});
+      this.roleInput.nativeElement.value = '';
+      console.log(this.rolesData[index])
+      this.passDataroles.updateRoles({id:this.rolesData[index].id,rolename:this.rolesData[index].rolename,permissions: this.rolesData[index].permissions}).subscribe(res=>console.log(res))
+    }
   }
 
 
