@@ -20,12 +20,16 @@ export class DashboardComponent implements OnInit{
     this.getGraphData();
   }
   sumArray : graphData = {total: 11 , selected: 11 , rejected: 11 , backOut: 11};
- 
+  
   getGraphData (){
     this.dashboardData.graphLink().subscribe((res:any) => {
       this.sumArray.selected = res.offered;
       this.sumArray.rejected = res.rejected;
       this.sumArray.backOut = res.BackedOut;
+      this.dashboardData.sumData.subscribe((res)=> {
+        this.sumArray.total = res;
+      });
+      
     });
   }
 

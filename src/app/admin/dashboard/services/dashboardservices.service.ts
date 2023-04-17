@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Chart } from 'chart.js';
-import { map } from 'rxjs';
+import { map, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -13,7 +13,7 @@ export class DashboardservicesService {
   constructor( private http: HttpClient) {}
  private totalApplicanturl  = 'http://192.168.102.92:8002/main/api/admin/stream-count';
  private  graphUrl = 'http://192.168.102.92:8002/main/api/admin/candidatesSelectionToRejection'
- private totalData = []
+  sumData = new Subject<number>();
  totalApplicantData() {
     return this.http.get(this.totalApplicanturl)
   }

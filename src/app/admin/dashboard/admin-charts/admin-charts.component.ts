@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import { map } from 'rxjs';
+import { map, Subject } from 'rxjs';
 import { DashboardservicesService } from '../services/dashboardservices.service';
 
 @Component({
@@ -9,7 +9,6 @@ import { DashboardservicesService } from '../services/dashboardservices.service'
   styleUrls: ['./admin-charts.component.css'],
 })
 export class AdminChartsComponent {
-
   constructor(private chartData: DashboardservicesService) {
     Chart.register(...registerables);
   }
@@ -22,12 +21,14 @@ export class AdminChartsComponent {
     this.backoutGraphFn();
   }
 
+   sumData = new Subject<number>();
   totalApplicantFn(): void {
     let labels!: string[];
     let data!: number[];
     this.chartData.totalApplicantData().subscribe((res: any) => {
       labels = Object.keys(res);
       data = Object.values(res);
+      this.chartData.sumData.next(data.reduce((a, b) => a + b));
       this.chartData.createBarChart('totalApplicant', labels, data);
     });
   }
