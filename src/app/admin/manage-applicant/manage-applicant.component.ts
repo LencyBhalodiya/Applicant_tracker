@@ -52,8 +52,7 @@ export class ManageApplicantComponent {
     
     this._aService.getData(this.p).subscribe({
       next: (res: any) => {
-        console.log(res);
-        this.dataSource = (res as IApplicants[])
+      this.dataSource = (res as IApplicants[])
       },
       error: (err: any) => {
         this.errorApplicant = this._aService.handleError(err);

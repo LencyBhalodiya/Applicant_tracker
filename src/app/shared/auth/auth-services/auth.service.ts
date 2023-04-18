@@ -16,9 +16,8 @@ export class AuthService {
     return this.http.post(api, data).subscribe(
       (res: any) => {
         localStorage.setItem('access_token', res.token);
-        console.log(res);
-        this.roleName = res.role.roleName;
-        if (res.role.roleName === 'user') this.router.navigate(['applicant']);
+        const role = this.getTokenRole()
+        if (role === 'user') this.router.navigate(['applicant']);
         else this.router.navigate(['admin']);
       },
       (error) => {
@@ -58,16 +57,18 @@ export class AuthService {
     getTokenRole() {
       let token  = localStorage.getItem('access_token');
       if(!token) this.router.navigate(['auth']);
-  
+      
       let role:any = jwt_decode(token!);
+
       role = role.sub.split(',')[1]
+      console.log(role);
       
       return role;
     }
     getUserId(){
       var token  = localStorage.getItem('access_token');
       if(!token) this.router.navigate(['auth']);
-  
+   
       let roleId:any = jwt_decode(token!);
       roleId = roleId.sub.split(',')[0]
       
