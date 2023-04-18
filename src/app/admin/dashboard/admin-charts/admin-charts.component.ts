@@ -72,9 +72,6 @@ export class AdminChartsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // this.totalApplicantFn();
-    // this.offerGraphFn();
-    // this.interviewToRejectionFn();
-    // this.backoutGraphFn();
-  }
+    this.sumData.unsubscribe();
+    }
 }
