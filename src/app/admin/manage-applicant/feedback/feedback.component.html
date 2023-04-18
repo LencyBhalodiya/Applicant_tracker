@@ -1,40 +1,40 @@
-<div class="feedback-modal">
+<div class="dialog-title" *ngIf="data.name; else bulkTitle">Applicant Review : {{data.name}}</div>
+<ng-template #bulkTitle>
+  <div class="dialog-title">Batch Review</div>
+</ng-template>
+<div mat-dialog-content class="feedback-modal">
   <!-- {{feedbackForm.value | json}} -->
-  <h2 *ngIf="data.name">{{data.name}}</h2>
-  <form action=""  [formGroup]="feedbackForm">
+
+  <form action="" [formGroup]="feedbackForm">
     <mat-form-field appearance="outline">
-      <mat-label>Select Round to promote</mat-label>
-      <mat-select formControlName="round">
-        <mat-option *ngFor="let round of rounds" [value]="round">{{round}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Status :</mat-label>
+      <mat-label>Status</mat-label>
       <mat-select formControlName="status">
         <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field *ngIf="rejectionHide" appearance="outline">
-      <mat-label>Select Rejection Reason</mat-label>
-      <input type="text"
-              placeholder="Pick one"
-              aria-label="Number"
-              matInput
-              formControlName="rejectionReason"
-              [matAutocomplete]="auto">
+
+    <div class="radio-group" *ngIf="rejectionHide">
+      <mat-radio-group aria-label="" formControlName="futureRef">
+        <mat-label>Save for future reference?</mat-label>
+        <mat-radio-button color="primary" value="true">Yes</mat-radio-button>
+        <mat-radio-button color="primary" value="false">No</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Feedback</mat-label>
+      <input type="text" placeholder="Pick one" aria-label="Number" matInput formControlName="review"
+        [matAutocomplete]="auto">
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of options " [value]="option">
+        <mat-option *ngFor="let option of options" [value]="option">
           {{option}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <mat-form-field appearance="outline" *ngIf="!rejectionHide">
-      <mat-label>Any Feedback...</mat-label>
-      <textarea formControlName="feedback" matInput></textarea>
-    </mat-form-field>  
   </form>
-    <mat-dialog-actions align="end">
-      <button mat-raised-button type="submit" [disabled]="feedbackForm.invalid" (click)="submitFeedback()" mat-dialog-close color="primary">Submit</button>
-      <button mat-raised-button mat-dialog-close color="primary">Cancel</button>
-    </mat-dialog-actions>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button type="submit" [disabled]="feedbackForm.invalid" (click)="submitFeedback()"
+      mat-dialog-close color="primary">Update</button>
+    <button mat-raised-button mat-dialog-close color="primary">Cancel</button>
+  </mat-dialog-actions>
 </div>

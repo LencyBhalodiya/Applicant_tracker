@@ -14,6 +14,7 @@ export class DashboardservicesService {
  private totalApplicanturl  = 'http://192.168.102.92:8002/main/api/admin/stream-count';
  private  graphUrl = 'http://192.168.102.92:8002/main/api/admin/candidatesSelectionToRejection'
   sumData = new Subject<number>();
+  
  totalApplicantData() {
     return this.http.get(this.totalApplicanturl)
   }

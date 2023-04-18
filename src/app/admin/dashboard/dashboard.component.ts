@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit{
   ngOnInit(): void {
     this.getGraphData();
   }
-  sumArray : graphData = {total: 11 , selected: 11 , rejected: 11 , backOut: 11};
+  sumArray : graphData = {total: 16 , selected: 11 , rejected: 11 , backOut: 11};
   
   getGraphData (){
     this.dashboardData.graphLink().subscribe((res:any) => {

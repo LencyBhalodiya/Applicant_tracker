@@ -8,6 +8,11 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { InterviewScheduleComponent } from './interview-schedule/interview-schedule.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialDesignModule } from 'src/app/shared/material-design/material-design.module';
+import { PromoteComponent } from './promote/promote.component';
+import { ColorPipe } from './services/color.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
 
 
 @NgModule({
@@ -16,12 +21,16 @@ import { MaterialDesignModule } from 'src/app/shared/material-design/material-de
     FeedbackComponent,
     SearchBarComponent,
     InterviewScheduleComponent,
+    PromoteComponent,
+    ColorPipe
   ],
   imports: [
     CommonModule,
     ManageApplicantRoutingModule,
     ReactiveFormsModule,
-    MaterialDesignModule
-  ]
+    MaterialDesignModule,
+    NgxPaginationModule
+  ],
+  exports:[SearchBarComponent]
 })
 export class ManageApplicantModule { }
