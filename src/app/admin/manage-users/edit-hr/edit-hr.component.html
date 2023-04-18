@@ -1,32 +1,43 @@
 <div class="container">
+  <form [formGroup]="editHrForm">
+    <mat-grid-list cols="1" rowHeight="500px">
+      <mat-grid-tile>
+        <div class="example-container">
+          <mat-form-field appearance="outline" class="width-50">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="fname" />
+          </mat-form-field>
 
-    {{editData}}
-    <form [formGroup]="editHrForm">
-        <mat-grid-list cols="1" rowHeight="500px">
-            <mat-grid-tile>
-                <div class="example-container">
-                    <mat-form-field appearance="outline" class="width-50">
-                        <mat-label>First Name</mat-label>
-                        <input matInput formControlName="fname">
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline" class="width-50 ml-2">
-                        <mat-label>Last Name</mat-label>
-                        <input matInput formControlName="lname" [value]="">
-                    </mat-form-field>
-                    <br>
-                    <mat-form-field appearance="outline" class="width-100">
-                        <mat-label>Email address</mat-label>
-                        <input matInput formControlName="email" placeholder="Ex. pat@example.com" value="">
-                    </mat-form-field>
-                    <br>
-                    <mat-dialog-actions align="end">
-                        <button mat-raised-button class="btn-save" mat-dialog-close (click)="updateHr(editHrForm)">Update</button>
-                        <button mat-raised-button class="btn-close" mat-dialog-close>Close</button>
-                    </mat-dialog-actions>
-                </div>
-            </mat-grid-tile>
-        </mat-grid-list>
-    </form>
-
+          <mat-form-field appearance="outline" class="width-50 ml-2">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lname" [value]="" />
+          </mat-form-field>
+          <br />
+          <mat-form-field appearance="outline" class="width-100">
+            <mat-label>Email address</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              placeholder="Ex. pat@example.com"
+              value=""
+            />
+          </mat-form-field>
+          <br />
+          <mat-dialog-actions align="end">
+            <button
+              mat-raised-button
+              class="btn-save"
+              mat-dialog-close
+              (click)="updateHr(editHrForm)"
+            >
+              Update
+            </button>
+            <button mat-raised-button class="btn-close" mat-dialog-close>
+              Close
+            </button>
+          </mat-dialog-actions>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
 </div>
