@@ -10,13 +10,15 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class InterviewScheduleComponent implements OnInit{
   constructor(private fb : FormBuilder,@Inject(MAT_DIALOG_DATA) public data : any){ }
 
-  rounds:string[] = ["Screening","Online Apptitude Test","Technical Interview","Technical Interview II","HR Interview"];
+  rounds: string[] = ["Screening Round 1 ", "Technical Interview 1", "Technical Interview 2", "HR Interview"];
+  stages = ["screening","Technical","HR"]
 
   schedulingForm!:FormGroup;
 
   // ng on init
   ngOnInit(): void {
     this.schedulingForm=this.fb.group({
+      stage : new FormControl('',{validators:[Validators.required]}),
       round:new FormControl('',{validators:[Validators.required]}),
       date:new FormControl('',{validators:[Validators.required]}),
       interviewername: new FormControl('',{validators:[Validators.required]}),

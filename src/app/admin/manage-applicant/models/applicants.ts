@@ -3,5 +3,6 @@ export interface IApplicants {
     name: string,
     stream: string,
     stage: string,
-    status: string
+    status: string,
+    round:string
 }

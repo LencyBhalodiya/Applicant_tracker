@@ -2,6 +2,12 @@
     <!-- {{schedulingForm.value | json}} -->
     <h2 *ngIf="data">{{data.name}}</h2>
     <form action="" [formGroup]="schedulingForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Select stage to promote</mat-label>
+        <mat-select formControlName="stage">
+          <mat-option *ngFor="let stage of stages" [value]="stage">{{stage}}</mat-option>
+        </mat-select>
+      </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Select Round to Schedule</mat-label>
             <mat-select formControlName="round">

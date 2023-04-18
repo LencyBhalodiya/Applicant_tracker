@@ -1,21 +1,44 @@
+
+
 mat-form-field {
     width: 100%;
+  }
+  
+/* .feedback-modal{
+  padding:25px;
+  box-sizing: border-box;
+} */
+
+.dialog-title{
+  display: flex;
+  height: 50px;
+  padding-left:10px;
+  align-items: center;
+  font-size:large;
+  font-weight:bold;
+  color:white;
+  vertical-align: middle;
+  background-color: var(--main-color);
 }
 
-.feedback-modal{
-    margin:25px;
-    box-sizing: border-box;
+
+
+.radio-group{
+  margin-bottom:20px;
 }
 
-
-
+.applicant_details{
+  /* margin:25px;
+  margin-left: 0; */
+  padding: 10px;
+  margin-bottom: 25px;
+}
 
 
 .action-btn-container{
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
-
 /* .mat-mdc-form-field + .mat-mdc-form-field {
     margin-left: 8px;
   } */

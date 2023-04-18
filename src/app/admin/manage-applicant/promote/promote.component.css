@@ -1,0 +1,30 @@
+mat-form-field {
+  width: 100%;
+}
+
+/* .feedback-modal{
+margin:25px;
+box-sizing: border-box;
+} */
+
+.dialog-title {
+  display: flex;
+  height: 50px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  vertical-align: middle;
+  background-color: var(--main-color);
+}
+
+.applicant_details {
+  padding: 10px;
+  margin-bottom: 25px;
+}
+
+.action-btn-container {
+  display: flex;
+  justify-content: space-evenly;
+}
