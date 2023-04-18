@@ -64,7 +64,6 @@ export class AdminChartsComponent implements OnInit, OnDestroy {
     let labels!: string[];
     let data!: number[];
     this.chartData.graphLink().subscribe((res: any) => {
-      console.log(res);
       
       labels = res.streamData.map((item: any) => (labels = item.stream));
       data = res.streamData.map((item: any) => (data = item.BackOut));
@@ -73,9 +72,9 @@ export class AdminChartsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.totalApplicantFn();
-    this.offerGraphFn();
-    this.interviewToRejectionFn();
-    this.backoutGraphFn();
+    // this.totalApplicantFn();
+    // this.offerGraphFn();
+    // this.interviewToRejectionFn();
+    // this.backoutGraphFn();
   }
 }
