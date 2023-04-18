@@ -63,10 +63,10 @@
         <li *ngFor="let j of dataSource2" class="table-row">
             <div class="col col-1" data-label="select"><span><mat-checkbox color="primary" style="vertical-align: top;" [value]="j.id" (change)="toggle($event)"></mat-checkbox></span></div>
             <div class="col col-2" data-label="Job Id">{{j.id}}</div>
-            <div class="col col-3" data-label="Name">{{j.name}}</div>
+            <div class="col col-3" data-label="Name">{{j.firstname + " " +j.lastname}}</div>
             <div class="col col-4" data-label="stream">{{j.stream}}</div>
             <div class="col col-7" data-label="actions">
-                <button mat-icon-button matTooltip="promote" [id]="j.id"  (click)="promote(j.id)">
+                <button mat-icon-button matTooltip="promote" [id]="j.id"  (click)="addToProcess(j)">
                     <mat-icon>add</mat-icon>
                 </button>
                 

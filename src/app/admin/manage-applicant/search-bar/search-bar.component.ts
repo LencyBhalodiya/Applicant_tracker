@@ -69,7 +69,7 @@ export class SearchBarComponent implements OnInit, DoCheck {
     console.log(this.filterForm.value);
     let url = '/';
     url += this.filterForm.value.stages?`${this.filterForm.value.stages}/`:'';
-    url += this.filterForm.value.rounds?`${this.filterForm.value.rounds}/`:'';
+    // url += this.filterForm.value.rounds?`${this.filterForm.value.rounds}/`:'';
     url += this.filterForm.value.statuses?`${this.filterForm.value.statuses}/`:'';
     url += this.filterForm.value.streams?`${this.filterForm.value.streams}/`:'';
     console.log(url);
