@@ -72,10 +72,7 @@ export class AddHrComponent implements OnInit {
       error: (e) => console.log(e),
       complete: () => console.log('user added'),
     });
-    // of(this.hrSer.addhr(data)).subscribe({
-    //   next: (res) => console.log(res),
-    //   error: (e) => console.log(e.message),
-    // });
+
     this.hrSer.getData().subscribe((res) => {
       console.log(res);
     });

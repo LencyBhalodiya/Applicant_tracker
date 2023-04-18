@@ -36,7 +36,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="header">
           Last Name
         </th>
-        <td mat-cell *matCellDef="let row">{{ row.lastname }}</td>
+        <td mat-cell *matCellDef="let row">{{ row.email }}</td>
       </ng-container>
 
       <!-- Stream Column -->
@@ -44,15 +44,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="header">
           Email
         </th>
-        <td mat-cell *matCellDef="let row">{{ row.email }}</td>
-      </ng-container>
-
-      <!-- Stage Column -->
-      <ng-container matColumnDef="phoneno">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header ngClass="header">
-          Mobile No
-        </th>
-        <td mat-cell *matCellDef="let row">{{ row.phoneno }}</td>
+        <td mat-cell *matCellDef="let row">{{ row.lastname }}</td>
       </ng-container>
 
       <!-- Status Column -->
@@ -65,10 +57,9 @@
             <mat-slide-toggle
               class="toggle-btn"
               color="primary"
-              [checked]="row.isActive === true"
-              (click)="changeStatus(row)"
+              [checked]="row.isActive"
+              (change)="changeStatus(row, $event)"
             >
-              {{ row.isActive ? "Active" : "Inactive" }}
             </mat-slide-toggle>
           </span>
         </td>

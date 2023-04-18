@@ -8,6 +8,7 @@ import { IApplicants } from '../manage-applicant/models/applicants';
 import { AddHrComponent } from './add-hr/add-hr.component';
 import { EditHrComponent } from './edit-hr/edit-hr.component';
 import { ManageHrService } from './services/manage-hr.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-manage-users',
@@ -20,7 +21,6 @@ export class ManageUsersComponent {
     'fname',
     'lname',
     'email',
-    'phoneno',
     'role',
     'status',
     'action',
@@ -37,6 +37,7 @@ export class ManageUsersComponent {
 
   id: number = 0;
   constructor(
+    private _snackBar: MatSnackBar,
     private manageHrService: ManageHrService,
     private _formBuilder: FormBuilder,
     public dialog: MatDialog
@@ -47,8 +48,23 @@ export class ManageUsersComponent {
     });
   }
 
-  changeStatus(data: any) {
+  changeStatus(data: any, event: any) {
     data.status = data.status === 'Active' ? 'Inactive' : 'Active';
+    //console.log('data: ' + data.isActive);
+    console.log(event.checked);
+    event.checked === false
+      ? this.manageHrService.inactiveHr(data.id).subscribe((msg) => {
+          console.log('inactive api: ' + data);
+        })
+      : this.manageHrService.activeHr(data.id).subscribe(
+          (msg) => {
+            console.log('active api: ' + msg);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+    console.log(data);
   }
 
   getid() {
@@ -67,6 +83,8 @@ export class ManageUsersComponent {
         this.dataSource.sort = this.sort;
       },
       error(err) {
+        //let snackBarRef = this._snackBar.open('Message archived');
+
         console.error(err.message);
       },
     });
