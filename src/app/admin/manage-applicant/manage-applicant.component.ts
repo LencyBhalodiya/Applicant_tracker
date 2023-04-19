@@ -2,7 +2,7 @@
 import { ManageApplicantService } from './services/manage-applicant.service';
 import { IApplicants } from './models/applicants';
 import { MatSort } from '@angular/material/sort';
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import {  Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormBuilder } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
@@ -11,7 +11,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { PromoteComponent } from './promote/promote.component';
 import { INewApplicants } from './models/newApplicants';
 import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
-import { BehaviorSubject } from 'rxjs';
 
 
 
@@ -60,14 +59,6 @@ export class ManageApplicantComponent {
         this.errorApplicant = this._aService.handleError(err);
       }
     })
-
-    // setTimeout(()=>console.log("this is temp",this.temp),1000);
-
-    // const timer = 5;
-    // setTimeout(() => {
-    //     console.log(new Date());
-    //     this.getAllApplicants();
-    // }, timer * 1000);
   }
 
   //  checkbox toggle
@@ -100,17 +91,6 @@ export class ManageApplicantComponent {
       panelClass: 'pane', data: data, width: '40%'
     })
   }
-
-  // schedule dialog 
-  // scheduleDialog(userData?: any) {
-  //   if (!userData) {
-  //     userData = { applicantId: this._checkedArr }
-  //   }
-  //   this.dialog.open(InterviewScheduleComponent,
-  //     {
-  //       panelClass: 'pane', data: userData, width: '800px'
-  //     })
-  // }
 
   // get new applicants
   getNewApplicants() {
