@@ -37,7 +37,7 @@
       </div>
       <div class="profile-name">
         <span>{{ profile.firstname }} {{ profile.lastname }} </span>
-        <p>UI/UX Designer</p>
+        <p>UI/UX Developer</p>
 
         <button class="btn">Resume</button>
       </div>
@@ -62,7 +62,7 @@
       <div class="details-wrapper">
         <div class="profile-details">
           <h3 class="profile-content">Phone</h3>
-          <p class="p-value">{{ profile.phone || 89899898989 }}</p>
+          <p class="p-value">{{ profile.phone || 9945785612 }}</p>
         </div>
         <hr />
       </div>
@@ -78,7 +78,7 @@
       <div class="details-wrapper">
         <div class="profile-details">
           <h3 class="profile-content">Present Address</h3>
-          <p class="p-value">{{ profile.presentAddress || "Bhuj Kutch" }}</p>
+          <p class="p-value">{{ profile.presentAddress || "not available" }}</p>
         </div>
         <hr />
       </div>
@@ -86,7 +86,7 @@
       <div class="details-wrapper">
         <div class="profile-details">
           <h3 class="profile-content">Permananent Address</h3>
-          <p class="p-value">{{ profile.permanentAddress }}</p>
+          <p class="p-value">{{ profile.permanentAddress || "not available"}}</p>
         </div>
         <hr />
       </div>
@@ -94,7 +94,7 @@
       <div class="details-wrapper" *ngIf="true">
         <div class="profile-details">
           <h3 class="profile-content">Refereal Source</h3>
-          <p class="p-value">{{ profile.referealSource }}</p>
+          <p class="p-value">{{ profile.referealSource || "Alisha Mehta" }}</p>
         </div>
         <hr />
       </div>
