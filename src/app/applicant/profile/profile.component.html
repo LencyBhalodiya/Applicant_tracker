@@ -36,19 +36,77 @@
         />
       </div>
       <div class="profile-name">
-        <span>Rahil Acharya</span>
+        <span>{{ profile.firstname }} {{ profile.lastname }} </span>
         <p>UI/UX Designer</p>
+
         <button class="btn">Resume</button>
       </div>
     </div>
     <div class="right-profile">
-      <div class="details-wrapper" *ngFor="let card of profileData">
+      <div class="details-wrapper">
         <div class="profile-details">
-          <h3 class="profile-content">{{ card.title }} :</h3>
-          <p class="p-value">{{ card.value }}</p>
+          <h3 class="profile-content">Name</h3>
+          <p class="p-value">{{ profile.firstname }} {{ profile.lastname }}</p>
         </div>
         <hr />
       </div>
+
+      <div class="details-wrapper">
+        <div class="profile-details">
+          <h3 class="profile-content">Email</h3>
+          <p class="p-value">{{ profile.email }}</p>
+        </div>
+        <hr />
+      </div>
+
+      <div class="details-wrapper">
+        <div class="profile-details">
+          <h3 class="profile-content">Phone</h3>
+          <p class="p-value">{{ profile.phone || 89899898989 }}</p>
+        </div>
+        <hr />
+      </div>
+
+      <div class="details-wrapper">
+        <div class="profile-details">
+          <h3 class="profile-content">Date Of Birth</h3>
+          <p class="p-value">{{ profile.dob }}</p>
+        </div>
+        <hr />
+      </div>
+
+      <div class="details-wrapper">
+        <div class="profile-details">
+          <h3 class="profile-content">Present Address</h3>
+          <p class="p-value">{{ profile.presentAddress || "Bhuj Kutch" }}</p>
+        </div>
+        <hr />
+      </div>
+
+      <div class="details-wrapper">
+        <div class="profile-details">
+          <h3 class="profile-content">Permananent Address</h3>
+          <p class="p-value">{{ profile.permanentAddress }}</p>
+        </div>
+        <hr />
+      </div>
+
+      <div class="details-wrapper" *ngIf="true">
+        <div class="profile-details">
+          <h3 class="profile-content">Refereal Source</h3>
+          <p class="p-value">{{ profile.referealSource }}</p>
+        </div>
+        <hr />
+      </div>
+
+      <div class="details-wrapper">
+        <div class="profile-details">
+          <h3 class="profile-content">Gender</h3>
+          <p class="p-value">{{ profile.gender }}</p>
+        </div>
+        <hr />
+      </div>
+
       <button class="btn btn-edit" (click)="openDialog()">Edit</button>
     </div>
   </div>

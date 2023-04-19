@@ -1,8 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import jwt_decode from "jwt-decode";
-
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +15,7 @@ export class AuthService {
     return this.http.post(api, data).subscribe(
       (res: any) => {
         localStorage.setItem('access_token', res.token);
-        const role = this.getTokenRole()
+        const role = this.getTokenRole();
         if (role === 'user') this.router.navigate(['applicant']);
         else this.router.navigate(['admin']);
       },
@@ -35,7 +34,7 @@ export class AuthService {
     };
     data.gender = data.gender.toUpperCase();
     data.role = role;
-     
+
     return this.http.post(api, data).subscribe(
       (res: any) => {
         console.log(res);
@@ -54,29 +53,29 @@ export class AuthService {
     return authToken !== null ? true : false;
   }
 
-    getTokenRole() {
-      let token  = localStorage.getItem('access_token');
-      if(!token) this.router.navigate(['auth']);
-      
-      let role:any = jwt_decode(token!);
+  getTokenRole() {
+    let token = localStorage.getItem('access_token');
+    if (!token) this.router.navigate(['auth']);
 
-      role = role.sub.split(',')[1]
-      console.log(role);
-      
-      return role;
-    }
-    getUserId(){
-      var token  = localStorage.getItem('access_token');
-      if(!token) this.router.navigate(['auth']);
-   
-      let roleId:any = jwt_decode(token!);
-      roleId = roleId.sub.split(',')[0]
-      
-      return roleId;
-    }
+    let role: any = jwt_decode(token!);
+
+    role = role.sub.split(',')[1];
+    console.log(role);
+
+    return role;
+  }
+
+  getUserId() {
+    var token = localStorage.getItem('access_token');
+    if (!token) this.router.navigate(['auth']);
+
+    let roleId: any = jwt_decode(token!);
+    roleId = roleId.sub.split(',')[0];
+
+    return roleId;
+  }
   logOut() {
     localStorage.removeItem('access_token');
     this.router.navigate(['auth']);
   }
-
 }
