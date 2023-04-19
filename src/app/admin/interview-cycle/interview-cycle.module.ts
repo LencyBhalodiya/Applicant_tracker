@@ -5,17 +5,16 @@ import { InterviewCycleRoutingModule } from './interview-cycle-routing.module';
 import { InterviewCycleComponent } from './interview-cycle.component';
 import { MaterialDesignModule } from 'src/app/shared/material-design/material-design.module';
 import { AddRoundDialog } from './add-stage-round-dialog/addround-dialog';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    InterviewCycleComponent,
-    AddRoundDialog
-  ],
+  declarations: [InterviewCycleComponent, AddRoundDialog],
   imports: [
     CommonModule,
     InterviewCycleRoutingModule,
-    MaterialDesignModule
-  ]
+    MaterialDesignModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
 })
-export class InterviewCycleModule { }
+export class InterviewCycleModule {}

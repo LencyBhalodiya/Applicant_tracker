@@ -1,38 +1,36 @@
-<form>
-  <div>
+<div class="dialog-container">
+  <form [formGroup]="addRound" (ngSubmit)="addRoundToSelectedStage()">
     <mat-card-header>
       <mat-card-title>Add Round To Stage</mat-card-title></mat-card-header
     >
     <mat-form-field>
       <mat-label>Select Stage</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let round of rounds" value=""
-          >{{round.roundName}}</mat-option
-        >
+      <mat-select formControlName="stagename">
+        <ng-container *ngFor="let stage of stages">
+          <mat-option *ngIf="stage.isActive" value="{{stage.stageId}}">
+            {{stage.stageName}}
+          </mat-option>
+        </ng-container>
       </mat-select>
     </mat-form-field>
-  </div>
-  <div>
     <mat-form-field>
       <mat-label>Add New Round</mat-label>
-      <input matInput />
+      <input formControlName="stageround" matInput />
     </mat-form-field>
-    <button mat-raised-button class="add-btn">
+    <button mat-raised-button class="add-btn" [disabled]="addRound.invalid">
       Add Round to Selected Stage
     </button>
-  </div>
-  <div>
+  </form>
+  <form [formGroup]="addStage" (ngSubmit)="addNewStage">
     <mat-card-header>
-      <mat-card-title>Add New Stage and Round</mat-card-title></mat-card-header
+      <mat-card-title>Add New Stage</mat-card-title></mat-card-header
     >
     <mat-form-field>
       <mat-label>Add New Stage</mat-label>
-      <input matInput />
+      <input matInput formControlName="stagename" />
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Add Round to New Stage</mat-label>
-      <input matInput />
-    </mat-form-field>
-    <button mat-raised-button class="add-btn">Add New Stage and Round</button>
-  </div>
-</form>
+    <button mat-raised-button class="add-btn" (click)="addNewStage()">
+      Add New Stage
+    </button>
+  </form>
+</div>

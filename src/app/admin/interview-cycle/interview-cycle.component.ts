@@ -6,32 +6,34 @@ import { InterviewCycleService } from './services/interview-cycle.service';
 @Component({
   selector: 'app-interview-cycle',
   templateUrl: './interview-cycle.component.html',
-  styleUrls: ['./interview-cycle.component.css']
+  styleUrls: ['./interview-cycle.component.css'],
 })
 export class InterviewCycleComponent {
-  rounds!: any[];
   stages!: any[];
+  rounds!: any[];
   constructor(
     public dialog: MatDialog,
     private interviewService: InterviewCycleService
-  ) {}
-  ngOnInit() {
-    this.interviewService.getRounds().subscribe((data) => {
-      this.rounds = data;
+  ) {
+    this.interviewService.getStages().subscribe((data) => {
+      this.stages = data;
     });
   }
-  getStages(roundName: string) {
+  ngOnInit() {}
+  getRoundsByStage(stageId: number) {
+    this.interviewService.getRoundsByStage(stageId).subscribe((rounds) => {
+      this.rounds = rounds;
+    });
+  }
+  updateStageStatus(stage: any) {
+    stage.isActive = stage.isActive === true ? false : true;
     this.interviewService
-      .getStagesByRoundName(roundName)
-      .subscribe((stages) => {
-        this.stages = stages;
+      .updateStageStatus(stage.stageId, stage.isActive)
+      .subscribe((data) => {
+        console.log(data);
       });
   }
   openDialog() {
-    const dialogRef = this.dialog.open(AddRoundDialog);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog.open(AddRoundDialog);
   }
 }

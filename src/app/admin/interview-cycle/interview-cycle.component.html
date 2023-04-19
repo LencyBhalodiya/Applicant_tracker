@@ -1,34 +1,48 @@
 <div class="main">
-    <div class="main-container">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Stages</mat-card-title></mat-card-header
-        >
-        <mat-card-content>
-          <mat-list>
-            <mat-list-item *ngFor="let round of rounds">
-              <button mat-button (click)="getStages(round.roundName)">
-                {{ round.roundName }}
-              </button>
-            </mat-list-item>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Rounds</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-list>
-            <mat-list-item *ngFor="let item of stages">
-              {{ item.stageName }}
-            </mat-list-item>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
-      <button mat-raised-button class="add-btn" (click)="openDialog()">
-        Add Stage And Round
-      </button>
-    </div>
+  <div class="main-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Stages</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stages-title">
+          <mat-card-subtitle>Stage Name</mat-card-subtitle>
+          <mat-card-subtitle>Stage Status</mat-card-subtitle>
+        </div>
+        <mat-list *ngFor="let stage of stages">
+          <mat-list-item (click)="getRoundsByStage(stage.stageId)">
+            <span class="stage-list">
+              {{ stage.stageName }}
+              <mat-slide-toggle
+                color="var(--main-color)"
+                [checked]="stage.isActive"
+                (change)="updateStageStatus(stage)"
+              >
+              </mat-slide-toggle>
+            </span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Rounds</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stages-title">
+          <mat-card-subtitle>Round Name</mat-card-subtitle>
+        </div>
+        <mat-list *ngFor="let round of rounds">
+          <mat-list-item>
+            <span class="stage-list">
+              {{ round.roundName }}
+            </span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+    <button mat-raised-button class="add-btn" (click)="openDialog()">
+      Add Stage And Round
+    </button>
   </div>
-  
+</div>
