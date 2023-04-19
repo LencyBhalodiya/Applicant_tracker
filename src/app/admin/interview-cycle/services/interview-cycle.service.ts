@@ -16,7 +16,9 @@ export class InterviewCycleService {
       catchError((error) => {
         console.error('Error getting stages', error);
         return throwError(() => {
-          error;
+          this.snackBar.open('Error getting stages', '', {
+            duration: 3000,
+          });
         });
       })
     );

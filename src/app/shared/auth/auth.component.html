@@ -58,7 +58,7 @@
   <div class="back-image">
     <img src="/assets/images/loginbackground.svg" alt="Image" />
   </div>
-  <div class="login-container">
+  <div class="register-container">
     <mat-card class="login-card">
       <mat-icon class="custom-icon-size">account_circle</mat-icon>
       <mat-card-content>
@@ -120,7 +120,6 @@
             formControlName="gender"
             style="width: 900px"
           >
-          
             <mat-radio-button value="Male">Male</mat-radio-button>
             <mat-radio-button value="Female">Female</mat-radio-button>
           </mat-radio-group>
@@ -133,7 +132,7 @@
           </button>
           <div class="signup-link">
             Already have an account?
-            <a class="registerButton" (click)="dispalyHide(signin, signup)">Sign in</a>
+            <a (click)="dispalyHide(signin, signup)">Sign in</a>
           </div>
         </form>
       </mat-card-content>
