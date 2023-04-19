@@ -27,7 +27,6 @@ export class AdminChartsComponent implements OnInit, OnDestroy {
   }
 
   sumData = new Subject<number>();
-  
   totalApplicantFn(): void {
     let labels!: string[];
     let data!: number[];
@@ -64,7 +63,6 @@ export class AdminChartsComponent implements OnInit, OnDestroy {
     let labels!: string[];
     let data!: number[];
     this.chartData.graphLink().subscribe((res: any) => {
-      
       labels = res.streamData.map((item: any) => (labels = item.stream));
       data = res.streamData.map((item: any) => (data = item.BackOut));
       this.chartData.createBarChart('backoutGraph', labels, data);
@@ -72,6 +70,6 @@ export class AdminChartsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sumData.unsubscribe();
-    }
+    // this.sumData.unsubscribe();
+  }
 }
