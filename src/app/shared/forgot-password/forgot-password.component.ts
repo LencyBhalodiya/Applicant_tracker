@@ -22,17 +22,13 @@ export class ForgotPasswordComponent {
     ])
   });
 
+  // on submit send email
   resetPassword(){
     // console.log(this.forgotPassword.value);
     var email:any = this.forgotPassword.value.email;
     this.forgotPassword.reset();
     this._shared.postEmail(email);
     this.snackBar.open("email sent successfully", "ok", { duration: 5000 });
-
-    
-       
-    // alert(res)
-
   }
 
 

@@ -11,7 +11,7 @@ import { IApplicants } from '../models/applicants';
 export class ManageApplicantService {
   private _url: string = 'http://192.168.102.92:8002/main/api/admin';
   private _urlNewApplicants: string = 'http://192.168.102.92:8002/main/api/admin/getNewUser';
-  private _filterUrl = 'http://192.168.102.92:8002/main/api/admin/get';
+  private _filterUrl:string = 'http://192.168.102.92:8002/main/api/admin/get';
   
 
   statuses: string[] = [
@@ -31,7 +31,6 @@ export class ManageApplicantService {
   // get all Approved applicants
   getData(page: number) {
     this._http.get(this._url + "/getAllUser" + "?page=" + page + "?pageSize = 15").subscribe((res)=>this.datasource.next(res));
-    
     return this.datasource;
   }
 

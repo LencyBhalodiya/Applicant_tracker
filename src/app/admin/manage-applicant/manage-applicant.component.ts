@@ -1,18 +1,12 @@
-// import { MatTableDataSource, _MatTableDataSource } from '@angular/material/table';
 import { ManageApplicantService } from './services/manage-applicant.service';
 import { IApplicants } from './models/applicants';
-import { MatSort } from '@angular/material/sort';
-import {  Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { FormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PromoteComponent } from './promote/promote.component';
 import { INewApplicants } from './models/newApplicants';
 import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
-
-
 
 /**
  * @title Table with filtering
@@ -24,7 +18,7 @@ import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
 })
 export class ManageApplicantComponent {
   displayedColumns: string[] = ['select', 'id', 'name', 'stream', 'stage', 'status', 'action'];
-  public Elementdata!: IApplicants[];
+  public Elementdata: IApplicants[] | undefined;
   public response!: any;
   public dataSource!: any;
   public dataSource2!: any;
@@ -37,9 +31,11 @@ export class ManageApplicantComponent {
   errorNewApplicant!: string;
   p: number = 1;
   total: number = 0;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  constructor(private _aService: ManageApplicantService, private _formBuilder: FormBuilder, private dialog: MatDialog,private authService : AuthService) { }
+  private _Service!:ManageApplicantService;
+  constructor(
+    private _aService: ManageApplicantService,
+    private dialog: MatDialog,
+    private authService: AuthService) { }
 
 
   // on init
@@ -49,11 +45,12 @@ export class ManageApplicantComponent {
 
   // get all Applicants
   getAllApplicants() {
-    
+
     this._aService.getData(this.p).subscribe({
       next: (res: any) => {
-      this.dataSource = (res as IApplicants[]);
-      
+        this.dataSource = (res as IApplicants[]);
+        console.log(this.dataSource);
+        
       },
       error: (err: any) => {
         this.errorApplicant = this._aService.handleError(err);
@@ -72,7 +69,6 @@ export class ManageApplicantComponent {
     }
     // console.log(this._checkedArr);
   }
-
 
   // feedback dialog
   feedbackDialog(userData?: any) {
@@ -101,6 +97,7 @@ export class ManageApplicantComponent {
           this.dataSource2 = (res as INewApplicants[])
         },
         error: (err: any) => {
+          
           this.errorNewApplicant = this._aService.handleError(err);
         }
       })
@@ -120,23 +117,21 @@ export class ManageApplicantComponent {
   }
 
   // promote single applicant 
-  addToProcess(data:any){
+  addToProcess(data: any) {
     console.log(data);
-    let response:any = {};
-    response['stage']='Screening Stage';
-    response['status']='pending';
-    response['round']='Screening Test';
-    response['tracking']={
-      recruiter : {
-        uid:this.authService.getUserId()
+    let response: any = {};
+    response['stage'] = 'Screening Stage';
+    response['status'] = 'pending';
+    response['round'] = 'Screening Test';
+    response['tracking'] = {
+      recruiter: {
+        uid: this.authService.getUserId()
       },
-      user:{
-        uid:data.id
+      user: {
+        uid: data.id
       }
     }
     console.log(response);
     // this._aService.addToProcess(response);
   }
-
-  
 }
