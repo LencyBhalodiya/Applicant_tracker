@@ -29,7 +29,7 @@ export class ManageApplicantComponent {
   btnLabel: string = 'new Applicants';
   errorApplicant!: string;
   errorNewApplicant!: string;
-  p: number = 1;
+  p: number = 0;
   total: number = 0;
   private _Service!:ManageApplicantService;
   constructor(

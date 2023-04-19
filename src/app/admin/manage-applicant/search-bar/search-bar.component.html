@@ -12,7 +12,7 @@
   <form action="" [formGroup]="filterForm" class="filter-container">
     <mat-form-field appearance="outline">
       <mat-label>Stages</mat-label>
-      <mat-select formControlName="stages">
+      <mat-select formControlName="stages" (selectionChange)="stageChange()">
         <ng-container *ngFor="let stage of stages">
           <mat-option *ngIf="stage.isActive" [value]="stage.stageName">{{stage.stageName}}</mat-option>
         </ng-container>
