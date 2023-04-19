@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PromoteComponent } from './promote/promote.component';
 import { INewApplicants } from './models/newApplicants';
 import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 
@@ -52,12 +53,15 @@ export class ManageApplicantComponent {
     
     this._aService.getData(this.p).subscribe({
       next: (res: any) => {
-      this.dataSource = (res as IApplicants[])
+      this.dataSource = (res as IApplicants[]);
+      
       },
       error: (err: any) => {
         this.errorApplicant = this._aService.handleError(err);
       }
     })
+
+    // setTimeout(()=>console.log("this is temp",this.temp),1000);
 
     // const timer = 5;
     // setTimeout(() => {
@@ -150,7 +154,8 @@ export class ManageApplicantComponent {
         uid:data.id
       }
     }
-    this._aService.addToProcess(response);
+    console.log(response);
+    // this._aService.addToProcess(response);
   }
 
   

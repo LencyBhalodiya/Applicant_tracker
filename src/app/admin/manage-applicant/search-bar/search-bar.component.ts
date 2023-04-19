@@ -10,14 +10,7 @@ import { ManageApplicantService } from '../services/manage-applicant.service';
 })
 export class SearchBarComponent implements OnInit, DoCheck {
   filterForm!: FormGroup;
-  statuses: string[] = [
-    'Offered',
-    'Rejected',
-    'Test Cleared',
-    'Pending',
-    'On Hold',
-    'Backed-out',
-  ];
+  statuses:string[]= [];
   rounds: any;
   streams:any;
   stages!: any;
@@ -43,6 +36,7 @@ export class SearchBarComponent implements OnInit, DoCheck {
       query: new FormControl(''),
     });
 
+    this.statuses = this._aService.getStatuses();
     this._aService.getStages().subscribe((stages) => (this.stages = stages));
     this._aService
       .getStreams()
@@ -78,6 +72,8 @@ export class SearchBarComponent implements OnInit, DoCheck {
 
   // search data
   searchData() {
-    console.log(this.searchForm.value);
+    if(this.searchForm.value['query'].trim()==='')
+      this._aService.getData(1);
+    this._aService.search(this.searchForm.value['query']);
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IApplicants } from '../models/applicants';
 
@@ -12,23 +12,27 @@ export class ManageApplicantService {
   private _url: string = 'http://192.168.102.92:8002/main/api/admin';
   private _urlNewApplicants: string = 'http://192.168.102.92:8002/main/api/admin/getNewUser';
   private _filterUrl = 'http://192.168.102.92:8002/main/api/admin/get';
+  
 
   statuses: string[] = [
     'Offered',
     'Rejected',
     'Test Cleared',
-    'Pending',
+    'pending',
     'On Hold',
     'Backed-out',
   ];
   // http://192.168.102.92
   rounds!: string[];
   errorMessage!: string;
+  datasource = new BehaviorSubject<any>(null);
   constructor(private _http: HttpClient) { }
 
   // get all Approved applicants
   getData(page: number) {
-    return this._http.get(this._url + "/getAllUser" + "?page=" + page + "?pageSize = 15");
+    this._http.get(this._url + "/getAllUser" + "?page=" + page + "?pageSize = 15").subscribe((res)=>this.datasource.next(res));
+    
+    return this.datasource;
   }
 
   // get new applicants
@@ -97,7 +101,7 @@ export class ManageApplicantService {
   //  filter
   applyFilter(url: string) {
     console.log(this._filterUrl + url);
-    return this._http.get(this._filterUrl + url).subscribe(res => console.log(res));
+    return this._http.get(this._filterUrl + url).subscribe(res => this.datasource.next(res));
   }
 
   // add to procedure
@@ -105,6 +109,9 @@ export class ManageApplicantService {
     return this._http.post(this._url + '/createTracking', response).subscribe(res => console.log(res));
   }
 
-
+  search(url:string){
+    this._http.get(this._url + '/SearchAllUser/' + url).subscribe(res=>this.datasource.next(res));
+    return this.datasource;
+  }
 }
 
