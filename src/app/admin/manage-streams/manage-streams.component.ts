@@ -20,6 +20,9 @@ export class ManageStreamsComponent implements OnInit{
       return;
     }
     this.data.setStreams({streamName:inputStream.value}).subscribe((response)=>this.stream.push(response))
+    this.data.getStreams().subscribe((stream) => {
+      this.stream=stream.filter((item)=> item.isActive==true)
+   });
     inputStream.value=''
   }
 
