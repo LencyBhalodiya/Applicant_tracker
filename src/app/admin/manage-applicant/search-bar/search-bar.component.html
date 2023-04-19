@@ -1,8 +1,8 @@
 <div class="search-container">
   <form action="" class="search-form" [formGroup]="searchForm">
-    <input matInput class="search-input" formControlName="query" placeholder="Search here" value="">
-    <button mat-raised-button class="search-btn" color="primary" ngClass="btn-purple"
-      (click)="searchData()"><span><mat-icon>search</mat-icon></span></button>
+    <input matInput class="search-input" formControlName="query" (keyup)="searchData()" placeholder="Search here" value="">
+    <!-- <button mat-raised-button class="search-btn" color="primary" ngClass="btn-purple"
+      (click)="searchData()"><span><mat-icon>search</mat-icon></span></button> -->
     <button mat-raised-button class="search-btn" (click)="openAccordion()" ngClass="btn-purple"
       color="primary"><span><mat-icon>filter_list</mat-icon></span></button>
   </form>

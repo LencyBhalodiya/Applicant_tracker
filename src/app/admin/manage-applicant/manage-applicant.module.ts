@@ -5,7 +5,6 @@ import { ManageApplicantRoutingModule } from './manage-applicant-routing.module'
 import { ManageApplicantComponent } from './manage-applicant.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import { InterviewScheduleComponent } from './interview-schedule/interview-schedule.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialDesignModule } from 'src/app/shared/material-design/material-design.module';
 import { PromoteComponent } from './promote/promote.component';
@@ -20,7 +19,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ManageApplicantComponent,
     FeedbackComponent,
     SearchBarComponent,
-    InterviewScheduleComponent,
     PromoteComponent,
     ColorPipe
   ],

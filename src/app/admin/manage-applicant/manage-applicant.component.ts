@@ -7,10 +7,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { FormBuilder } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { FeedbackComponent } from './feedback/feedback.component';
-import { InterviewScheduleComponent } from './interview-schedule/interview-schedule.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PromoteComponent } from './promote/promote.component';
 import { INewApplicants } from './models/newApplicants';
+import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 
 
@@ -39,7 +40,7 @@ export class ManageApplicantComponent {
   total: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private _aService: ManageApplicantService, private _formBuilder: FormBuilder, private dialog: MatDialog) { }
+  constructor(private _aService: ManageApplicantService, private _formBuilder: FormBuilder, private dialog: MatDialog,private authService : AuthService) { }
 
 
   // on init
@@ -52,12 +53,15 @@ export class ManageApplicantComponent {
     
     this._aService.getData(this.p).subscribe({
       next: (res: any) => {
-      this.dataSource = (res as IApplicants[])
+      this.dataSource = (res as IApplicants[]);
+      
       },
       error: (err: any) => {
         this.errorApplicant = this._aService.handleError(err);
       }
     })
+
+    // setTimeout(()=>console.log("this is temp",this.temp),1000);
 
     // const timer = 5;
     // setTimeout(() => {
@@ -98,15 +102,15 @@ export class ManageApplicantComponent {
   }
 
   // schedule dialog 
-  scheduleDialog(userData?: any) {
-    if (!userData) {
-      userData = { applicantId: this._checkedArr }
-    }
-    this.dialog.open(InterviewScheduleComponent,
-      {
-        panelClass: 'pane', data: userData, width: '800px'
-      })
-  }
+  // scheduleDialog(userData?: any) {
+  //   if (!userData) {
+  //     userData = { applicantId: this._checkedArr }
+  //   }
+  //   this.dialog.open(InterviewScheduleComponent,
+  //     {
+  //       panelClass: 'pane', data: userData, width: '800px'
+  //     })
+  // }
 
   // get new applicants
   getNewApplicants() {
@@ -136,17 +140,23 @@ export class ManageApplicantComponent {
   }
 
   // promote single applicant 
-  promote(id:number){
-    let btn = document.getElementById(id.toString());
-    if (btn != null) {
-      btn.innerHTML = 'added to procedure';
-      btn.style.fontSize = '1rem'
-      btn.style.width ='2rem'
+  addToProcess(data:any){
+    console.log(data);
+    let response:any = {};
+    response['stage']='Screening Stage';
+    response['status']='pending';
+    response['round']='Screening Test';
+    response['tracking']={
+      recruiter : {
+        uid:this.authService.getUserId()
+      },
+      user:{
+        uid:data.id
+      }
     }
+    console.log(response);
+    // this._aService.addToProcess(response);
   }
 
-  // Apply filter
-  filter(){
-    
-  }
+  
 }
