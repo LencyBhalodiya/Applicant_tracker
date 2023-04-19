@@ -36,7 +36,7 @@ export class ManageApplicantComponent {
   btnLabel: string = 'new Applicants';
   errorApplicant!: string;
   errorNewApplicant!: string;
-  p: number = 1;
+  p: number = 0;
   total: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -54,7 +54,6 @@ export class ManageApplicantComponent {
     this._aService.getData(this.p).subscribe({
       next: (res: any) => {
       this.dataSource = (res as IApplicants[]);
-      
       },
       error: (err: any) => {
         this.errorApplicant = this._aService.handleError(err);
