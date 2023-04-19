@@ -41,10 +41,6 @@ table {
     overflow: scroll;
   }
   button{
-    /* display: flex;
-    align-items: center;
-    margin: auto; */
-    /* text-align: center; */
     margin: 0.5rem;
   }
 }
@@ -75,7 +71,6 @@ table {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   margin-top: 15px;
-  /* margin-bottom:-15px; */
 }
 
 .accordion-container {
@@ -156,4 +151,11 @@ li {
   color: red;
   /* font-weight: bold; */
   font-size: 1.3rem;
+}
+
+.button-container {
+  display: flex;
+  margin: 2rem 0rem 2rem 0rem;
+  justify-content: flex-end  ;
+  /* align-content: flex-end; */
 }

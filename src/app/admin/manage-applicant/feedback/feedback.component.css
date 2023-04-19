@@ -4,10 +4,6 @@ mat-form-field {
     width: 100%;
   }
   
-/* .feedback-modal{
-  padding:25px;
-  box-sizing: border-box;
-} */
 
 .dialog-title{
   display: flex;
@@ -43,3 +39,5 @@ mat-form-field {
     margin-left: 8px;
   } */
   
+
+
