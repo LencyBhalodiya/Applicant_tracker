@@ -24,7 +24,7 @@ export class ManageApplicantService {
   // http://192.168.102.92
   rounds!: string[];
   errorMessage!: string;
-  datasource = new BehaviorSubject<any>({});
+  datasource = new BehaviorSubject<any>([]);
   constructor(private _http: HttpClient) {}
 
   // get all Approved applicants

@@ -75,9 +75,14 @@ export class ManageApplicantComponent {
     if (!userData) {
       userData = { applicantId: this._checkedArr }
     }
-    this.dialog.open(FeedbackComponent, {
-      panelClass: 'pane', data: userData, width: '40%',
+    let feedbackDialog = this.dialog.open(FeedbackComponent, {
+      panelClass:'pane',
+      data: userData,
+      width:'40%',
+      backdropClass:'back-drop',
+      disableClose:true,
     })
+    feedbackDialog.afterClosed().subscribe((res)=>this.getAllApplicants());
     // location.reload()
   }
 
