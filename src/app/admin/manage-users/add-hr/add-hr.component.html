@@ -1,11 +1,13 @@
 <div class="container">
+  <div class="dialog-title">ADD HR :</div>
+
   <form [formGroup]="addHrForm">
     <mat-grid-list cols="1" rowHeight="880px">
       <mat-grid-tile>
         <div class="example-container">
           <mat-form-field appearance="outline" class="width-50">
             <mat-label>First Name</mat-label>
-            <input matInput formControlName="firstname" />
+            <input matInput formControlName="firstname" ng-required="true" />
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="width-50 ml-2">
@@ -95,10 +97,17 @@
               class="btn-save"
               mat-dialog-close
               (click)="addHr(addHrForm.value); onClose()"
+              [disabled]="addHrForm.invalid"
+              cdkFocusInitial
             >
               Save
             </button>
-            <button mat-raised-button class="btn-close" mat-dialog-close>
+            <button
+              mat-raised-button
+              class="btn-close"
+              mat-dialog-close
+              cdkFocusInitial
+            >
               Close
             </button>
           </mat-dialog-actions>

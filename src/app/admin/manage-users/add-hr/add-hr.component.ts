@@ -25,7 +25,10 @@ export class AddHrComponent implements OnInit {
 
   addHrForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private hrSer: ManageHrService) {}
+  constructor(
+    private fb: FormBuilder,
+    private manageHrService: ManageHrService
+  ) {}
 
   ngOnInit(): void {
     this.addHrForm = this.fb.group({
@@ -48,7 +51,7 @@ export class AddHrComponent implements OnInit {
       ]),
     });
 
-    this.hrSer.getRole().subscribe((res) => {
+    this.manageHrService.getRole().subscribe((res) => {
       this.roles = res;
       console.log(res);
     });
@@ -62,23 +65,18 @@ export class AddHrComponent implements OnInit {
     // console.log(this.rolen);
     console.log(data);
 
-    this.hrSer.addhr(data).subscribe({
-      // (res) => {
-      //   console.log(res);
-      // },
-      // (error) => console.log(error),
-      // () => console.log('user added')
+    this.manageHrService.addHr(data).subscribe({
       next: (res) => console.log(res),
       error: (e) => console.log(e),
       complete: () => console.log('user added'),
     });
 
-    this.hrSer.getData().subscribe((res) => {
-      console.log(res);
-    });
+    // this.manageHrService.getAllHrData().subscribe((res) => {
+    //   console.log(res);
+    // });
   }
 
   onClose(): void {
-    this.hrSer.filter('Click');
+    this.manageHrService.filter('Click');
   }
 }

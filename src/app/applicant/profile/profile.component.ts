@@ -39,6 +39,7 @@ export class ProfileComponent {
   }
   ngOnInit() {
     this.getUserInfo();
+    // this.getUserAddress();
   }
   getUserInfo() {
     this._profileService
@@ -48,6 +49,16 @@ export class ProfileComponent {
         console.log(res);
       });
   }
+
+  getUserAddress() {
+    this._profileService
+      .getUserAddress(this._authService.getUserId())
+      .subscribe((res) => {
+        this.profile = res;
+        console.log(res);
+      });
+  }
+
   doLogout() {
     this.authService.logOut();
   }

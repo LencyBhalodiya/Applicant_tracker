@@ -26,10 +26,9 @@ export class ManageUsersComponent {
     'action',
   ];
   public Elementdata!: IApplicants[];
-  public response!: any;
-  public dataSource!: MatTableDataSource<any>;
-  private _checkedArr: number[] = [];
+  public dataSource!: MatTableDataSource<IApplicants>;
   public isActive: any;
+  public isLoading: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -48,7 +47,9 @@ export class ManageUsersComponent {
     });
   }
 
-  changeStatus(data: any, event: any) {
+  changeStatus(data: IApplicants, event: any) {
+    console.log(data);
+
     data.status = data.status === 'Active' ? 'Inactive' : 'Active';
     //console.log('data: ' + data.isActive);
     console.log(event.checked);
@@ -56,14 +57,9 @@ export class ManageUsersComponent {
       ? this.manageHrService.inactiveHr(data.id).subscribe((msg) => {
           console.log('inactive api: ' + data);
         })
-      : this.manageHrService.activeHr(data.id).subscribe(
-          (msg) => {
-            console.log('active api: ' + msg);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
+      : this.manageHrService.activeHr(data.id).subscribe((msg) => {
+          console.log('active api' + data);
+        });
     console.log(data);
   }
 
@@ -76,15 +72,17 @@ export class ManageUsersComponent {
   }
 
   getAllApplicants() {
-    this.manageHrService.getData().subscribe({
+    this.isLoading = true;
+    this.manageHrService.getAllHrData().subscribe({
       next: (res) => {
-        this.dataSource = new MatTableDataSource<any>(res as IApplicants[]);
+        this.dataSource = new MatTableDataSource<IApplicants>(
+          res as IApplicants[]
+        );
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.isLoading = false;
       },
       error(err) {
-        //let snackBarRef = this._snackBar.open('Message archived');
-
         console.error(err.message);
       },
     });

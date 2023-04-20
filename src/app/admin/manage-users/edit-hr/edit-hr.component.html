@@ -1,5 +1,6 @@
 <div class="container">
   <form [formGroup]="editHrForm">
+    <div class="dialog-title">EDIT HR :</div>
     <mat-grid-list cols="1" rowHeight="500px">
       <mat-grid-tile>
         <div class="example-container">
@@ -32,7 +33,12 @@
             >
               Update
             </button>
-            <button mat-raised-button class="btn-close" mat-dialog-close>
+            <button
+              mat-raised-button
+              class="btn-close"
+              mat-dialog-close
+              cdkFocusInitial
+            >
               Close
             </button>
           </mat-dialog-actions>

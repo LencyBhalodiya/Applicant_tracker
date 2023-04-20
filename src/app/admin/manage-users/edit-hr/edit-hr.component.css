@@ -1,21 +1,43 @@
-.example-radio-button{margin-left: 7px;}
-mat-grid-tile {
-  background:#fafafa;
+.example-radio-button {
+  margin-left: 7px;
 }
-.width-50{width: 49%;}
-.ml-1{margin-left: 1%;}
-.ml-2{margin-left: 2%;}
-.width-100{width: 100%;}
-.width-25{width: 25%;}
+mat-grid-tile {
+  background: #fafafa;
+}
+.width-50 {
+  width: 49%;
+}
+.ml-1 {
+  margin-left: 1%;
+}
+.ml-2 {
+  margin-left: 2%;
+}
+.width-100 {
+  width: 100%;
+}
+.width-25 {
+  width: 25%;
+}
 
-.btn-save{
+.btn-save {
   background-color: var(--main-color);
-  color:var(--div-color);
-  
-  }
-  
-  .btn-close{
-    background-color:var(--main-color) ;
-    color:var(--div-color);
-  }
+  color: var(--div-color);
+}
 
+.btn-close {
+  background-color: var(--main-color);
+  color: var(--div-color);
+}
+
+.dialog-title {
+  display: flex;
+  height: 50px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  vertical-align: middle;
+  background-color: var(--main-color);
+}

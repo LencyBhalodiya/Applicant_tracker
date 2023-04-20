@@ -13,22 +13,17 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class ManageHrService {
-  private _getAllHr: string =
-    'http://192.168.102.92:8002/main/api/admin/getManagedUser';
-  private _getAllRole: string =
-    'http://192.168.102.92:8002/main/api/admin/getAllRole';
-  private _AddHr: string =
-    'http://192.168.102.92:8002/authentication/api/v1/auth/register';
+  private _api = 'http://192.168.102.92:8002/';
 
-  private _inactiveHr =
-    'http://192.168.102.92:8002/main/api/admin/deactiveManagedUser/';
-
-  private _activeHr =
-    'http://192.168.102.92:8002/main/api/admin/activeManagedUser/';
+  private _getAllHr: string = `${this._api}main/api/admin/getManagedUser`;
+  private _getAllRole: string = `${this._api}main/api/admin/getAllRole`;
+  private _AddHr: string = `${this._api}authentication/api/v1/auth/register`;
+  private _inactiveHr = `${this._api}main/api/admin/deactiveManagedUser/`;
+  private _activeHr = `${this._api}main/api/admin/activeManagedUser/`;
 
   constructor(private _http: HttpClient) {}
 
-  getData() {
+  getAllHrData() {
     return this._http.get(this._getAllHr);
   }
 
@@ -36,15 +31,15 @@ export class ManageHrService {
     return this._http.get(this._getAllRole);
   }
 
-  addhr(data: any) {
+  addHr(data: any) {
     return this._http.post(this._AddHr, data);
   }
 
-  inactiveHr(id: any) {
+  inactiveHr(id: number) {
     return this._http.put(this._inactiveHr + id, {});
   }
 
-  activeHr(id: any) {
+  activeHr(id: number) {
     return this._http.put(this._activeHr + id, {});
   }
 
