@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { IApplicants } from '../models/applicants';
+import { BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +19,7 @@ export class ManageApplicantService {
     'On Hold',
     'Backed-out',
   ];
+  
   // http://192.168.102.92
   rounds!: string[];
   errorMessage!: string;

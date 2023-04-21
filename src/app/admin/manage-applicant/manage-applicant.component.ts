@@ -26,7 +26,7 @@ export class ManageApplicantComponent {
   hideBlkBtn: boolean = true;
   visibleFlag: boolean = false;
   newapplicantsFlag: boolean = false;
-  btnLabel: string = 'new Applicants';
+  btnLabel: string = 'New Applicants';
   errorApplicant!: string;
   errorNewApplicant!: string;
   p: number = 0;
