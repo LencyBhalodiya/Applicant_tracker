@@ -1,11 +1,10 @@
 import { ManageApplicantService } from './services/manage-applicant.service';
-import { IApplicants } from './models/applicants';
+import { IApplicants, INewApplicants } from './models/models.interface';
 import { Component } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PromoteComponent } from './promote/promote.component';
-import { INewApplicants } from './models/newApplicants';
 import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
 
 /**
@@ -18,11 +17,11 @@ import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
 })
 export class ManageApplicantComponent {
   displayedColumns: string[] = ['select', 'id', 'name', 'stream', 'stage', 'status', 'action'];
-  public Elementdata: IApplicants[] | undefined;
+  public Elementdata!: IApplicants[];
   public response!: any;
   public dataSource!: any;
   public dataSource2!: any;
-  _checkedArr: any[] = [];
+  _checkedArr: string[] = [];
   hideBlkBtn: boolean = true;
   visibleFlag: boolean = false;
   newapplicantsFlag: boolean = false;
@@ -31,9 +30,8 @@ export class ManageApplicantComponent {
   errorNewApplicant!: string;
   p: number = 0;
   total: number = 0;
-  private _Service!:ManageApplicantService;
   constructor(
-    private _aService: ManageApplicantService,
+    private _apiService: ManageApplicantService,
     private dialog: MatDialog,
     private authService: AuthService) { }
 
@@ -45,15 +43,9 @@ export class ManageApplicantComponent {
 
   // get all Applicants
   getAllApplicants() {
-
-    this._aService.getData(this.p).subscribe({
+    this._apiService.getData(this.p).subscribe({
       next: (res: any) => {
-        this.dataSource = (res as IApplicants[]);
-        console.log(this.dataSource);
-        
-      },
-      error: (err: any) => {
-        this.errorApplicant = this._aService.handleError(err);
+        this.dataSource = (res as IApplicants[]);        
       }
     })
   }
@@ -67,7 +59,6 @@ export class ManageApplicantComponent {
       const index: number = this._checkedArr.indexOf(event.source.value)
       this._checkedArr.splice(index, 1)
     }
-    // console.log(this._checkedArr);
   }
 
   // feedback dialog
@@ -83,7 +74,6 @@ export class ManageApplicantComponent {
       disableClose:true,
     })
     feedbackDialog.afterClosed().subscribe((res)=>this.getAllApplicants());
-    // location.reload()
   }
 
   // add to next round 
@@ -97,21 +87,17 @@ export class ManageApplicantComponent {
   getNewApplicants() {
     if (this.newapplicantsFlag == false) {
       this.newapplicantsFlag = true;
-      this._aService.getNewApplicants().subscribe({
+      this._apiService.getNewApplicants().subscribe({
         next: (res: any) => {
           this.dataSource2 = (res as INewApplicants[])
-        },
-        error: (err: any) => {
-          
-          this.errorNewApplicant = this._aService.handleError(err);
         }
       })
-      this.btnLabel = 'old Applicants'
+      this.btnLabel = 'Old Applicants'
     }
     else {
       this.newapplicantsFlag = false;
       this.getAllApplicants()
-      this.btnLabel = 'new Applicants'
+      this.btnLabel = 'New Applicants'
     }
   }
 
@@ -139,4 +125,6 @@ export class ManageApplicantComponent {
     console.log(response);
     // this._aService.addToProcess(response);
   }
+  
+
 }

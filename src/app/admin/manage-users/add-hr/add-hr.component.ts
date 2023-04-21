@@ -69,7 +69,7 @@ export class AddHrComponent implements OnInit {
       // (error) => console.log(error),
       // () => console.log('user added')
       next: (res) => console.log(res),
-      error: (e) => console.log(e),
+      // error: (e) => console.log(e),
       complete: () => console.log('user added'),
     });
 

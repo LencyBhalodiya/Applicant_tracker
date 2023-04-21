@@ -58,28 +58,28 @@ export class ManageApplicantService {
   // update feedback
   updateFeedback(response: any) {
     return this._http
-      .post<any>(this._url + '/updateTracking', response)
+      .post(this._url + '/updateTracking', response,{responseType:'text'})
       .subscribe((res) => console.log(res));
   }
 
   // bulk feedback
   bulkFeedback(response: any) {
     return this._http
-      .post<any>(this._url + '/BulkUpdateFeedback', response)
+      .post(this._url + '/BulkUpdateFeedback', response,{responseType:'text'})
       .subscribe((res) => console.log(res));
   }
 
   // promote applicant
   promoteApplicant(response: any) {
     return this._http
-      .post<any>(this._url + '/updateTracking', response)
+      .post(this._url + '/updateTracking', response,{responseType:'text'})
       .subscribe((res) => console.log(res));
   }
 
   // bulk Promote
   bulkPromote(response: any) {
     return this._http
-      .post<any>(this._url + '/BulkUpdateCreate', response)
+      .post(this._url + '/BulkUpdateCreate', response,{responseType:'text'})
       .subscribe(
         (res) => console.log(res),
         (err) => console.log(err)
@@ -115,7 +115,7 @@ export class ManageApplicantService {
       .post(this._url + '/createTracking', response)
       .subscribe((res) => console.log(res));
   }
-
+// searchbar  
   search(url: string) {
     url = url.toLowerCase();
     this._http

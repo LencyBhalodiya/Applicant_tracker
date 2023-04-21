@@ -12,7 +12,7 @@ import { SharedService } from '../services/shared.service';
 })
 export class ForgotPasswordComponent {
 
-  public successStatus!:number
+  public successStatus!: number
   constructor(private _url: Router, public dialog: MatDialog, private _shared: SharedService, public snackBar: MatSnackBar) { }
   forgotPassword = new FormGroup({
     email: new FormControl('', [
@@ -24,14 +24,15 @@ export class ForgotPasswordComponent {
   // on submit send email
   resetPassword() {
     var email: any = this.forgotPassword.value.email;
-    this.forgotPassword.reset();
     let response = this._shared.postEmail(email);
     response.subscribe(res => this.successStatus = res)
-      if (this.successStatus === 200)
-        this.snackBar.open("email sent successfully", "ok", { duration: 5000 });
-      else if(this.successStatus == 400)
-        this.snackBar.open("user does not exist", "ok", { duration: 5000 });
-      else
-        this.snackBar.open("something went wrong", "try again", { duration: 5000 });
+    if (this.successStatus === 200){
+      this.snackBar.open("email sent successfully", "ok", { duration: 5000 });
+      this.forgotPassword.reset();
     }
+    else if (this.successStatus == 400)
+      this.snackBar.open("user does not exist", "ok", { duration: 5000 });
+    // else
+    //   this.snackBar.open("something went wrong", "try again", { duration: 5000 });
   }
+}
