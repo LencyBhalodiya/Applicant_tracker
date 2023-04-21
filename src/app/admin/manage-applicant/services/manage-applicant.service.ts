@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { IApplicants } from '../models/applicants';
+import { BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,10 +19,11 @@ export class ManageApplicantService {
     'On Hold',
     'Backed-out',
   ];
+  
   // http://192.168.102.92
   rounds!: string[];
   errorMessage!: string;
-  datasource = new BehaviorSubject<any>({});
+  datasource = new BehaviorSubject<any>([]);
   constructor(private _http: HttpClient) {}
 
   // get all Approved applicants
@@ -59,28 +58,28 @@ export class ManageApplicantService {
   // update feedback
   updateFeedback(response: any) {
     return this._http
-      .post<any>(this._url + '/updateTracking', response)
+      .post(this._url + '/updateTracking', response,{responseType:'text'})
       .subscribe((res) => console.log(res));
   }
 
   // bulk feedback
   bulkFeedback(response: any) {
     return this._http
-      .post<any>(this._url + '/BulkUpdateFeedback', response)
+      .post(this._url + '/BulkUpdateFeedback', response,{responseType:'text'})
       .subscribe((res) => console.log(res));
   }
 
   // promote applicant
   promoteApplicant(response: any) {
     return this._http
-      .post<any>(this._url + '/updateTracking', response)
+      .post(this._url + '/updateTracking', response,{responseType:'text'})
       .subscribe((res) => console.log(res));
   }
 
   // bulk Promote
   bulkPromote(response: any) {
     return this._http
-      .post<any>(this._url + '/BulkUpdateCreate', response)
+      .post(this._url + '/BulkUpdateCreate', response,{responseType:'text'})
       .subscribe(
         (res) => console.log(res),
         (err) => console.log(err)
@@ -116,7 +115,7 @@ export class ManageApplicantService {
       .post(this._url + '/createTracking', response)
       .subscribe((res) => console.log(res));
   }
-
+// searchbar  
   search(url: string) {
     url = url.toLowerCase();
     this._http

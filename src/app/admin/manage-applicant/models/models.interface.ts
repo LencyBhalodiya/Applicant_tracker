@@ -6,3 +6,9 @@ export interface IApplicants {
     status: string,
     round:string
 }
+
+export interface INewApplicants {
+    id:number,
+    name: string,
+    stream: string,
+}
