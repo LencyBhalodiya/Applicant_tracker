@@ -19,7 +19,7 @@ import { ResetPasswordComponent } from './shared/reset-password/reset-password.c
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorPageComponent,
+    // ErrorPageComponent,
     AuthComponent,
     NavbarsComponent,
     RegisterationComponent,

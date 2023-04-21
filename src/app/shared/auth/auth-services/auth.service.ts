@@ -9,7 +9,7 @@ import jwt_decode from 'jwt-decode';
 export class AuthService {
   constructor(private http: HttpClient, public router: Router) {}
   private roleName!: string;
-  signIn(data: any) {
+  signIn(data:any) {
     let api =
       'http://192.168.102.92:8002/authentication/api/v1/auth/authenticate';
     return this.http.post(api, data).subscribe(
