@@ -103,7 +103,7 @@
               {{ showPassword ? "visibility_off" : "visibility" }}
             </mat-icon>
           </mat-form-field>
-
+           
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Select Your Birth Date</mat-label>
             <mat-icon matPrefix>calendar_today</mat-icon>
@@ -112,6 +112,11 @@
               <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
             </mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Phone number</mat-label>
+            <mat-icon matPrefix>phone</mat-icon>
+            <input matInput formControlName="phoneNumber" />
           </mat-form-field>
           <mat-label>Gender</mat-label>
           <mat-radio-group

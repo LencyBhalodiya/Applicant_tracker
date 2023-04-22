@@ -45,11 +45,11 @@ export class AuthComponent {
     Validators.required,
     Validators.minLength(7),
   ]),
-  //  phoneNumber : new FormControl('',[
-  //    Validators.required,
-  //    Validators.maxLength(10),
-  //    Validators.minLength(10)
-  //  ]),
+   phoneNumber : new FormControl('',[
+     Validators.required,
+     Validators.maxLength(10),
+     Validators.minLength(10)
+   ]),
    dob: new FormControl('',[
 
    ]),
@@ -60,9 +60,10 @@ export class AuthComponent {
  registerUser(){
   var datePipe = new DatePipe('en-US');
   var setDob = datePipe.transform(this.registerForm.value.dob, 'yyyy-MM-dd');
-   console.log(setDob);
    
   setDob = this.registerForm.value.dob = setDob;
+  console.log(this.registerForm.value);
+  
    this.auth.signUp(this.registerForm.value)
  }
  dispalyHide(signup:HTMLElement,signin:HTMLElement){

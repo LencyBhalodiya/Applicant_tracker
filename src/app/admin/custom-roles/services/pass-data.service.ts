@@ -23,7 +23,7 @@ export class PassDataService {
    setRoles(roles:any){
      return  this.http.post<any[]>("http://192.168.102.92:8002/main/api/admin/addRole",roles)
      //return  this.http.post(this.baseurl,roles)
-   }
+   }  
  
    updateRoles(roles:any){
      return this.http.post("http://192.168.102.92:8002/main/api/admin/updateRole",roles)

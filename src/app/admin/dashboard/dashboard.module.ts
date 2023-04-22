@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { AdminChartsComponent } from './admin-charts/admin-charts.component';
+import { MaterialDesignModule } from 'src/app/shared/material-design/material-design.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { AdminChartsComponent } from './admin-charts/admin-charts.component';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    MaterialDesignModule
   ]
 })
 export class DashboardModule { }

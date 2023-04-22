@@ -1,18 +1,22 @@
 <div class="charts-section">
     <div class="bar-chart shadow border-0 charts">
       <h1>Total Application graph</h1>
-      <canvas id="totalApplicant"></canvas>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+      <canvas id="totalApplicant" ></canvas>
     </div>
     <div class="line-container shadow border-0 charts">
       <h1> Rejection</h1>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
       <canvas id="rejection"></canvas>
     </div>
     <div class="pie-container shadow border-0 charts">
       <h1>Offer graph</h1>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
       <canvas id="offerGraph" height="150"></canvas>
     </div>
     <div class="bar-chart shadow border-0 charts">
       <h1>Backout graph</h1>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
       <canvas id="backoutGraph"></canvas>
     </div>
   </div>

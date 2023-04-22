@@ -96,6 +96,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./admin/reports/reports.module').then((m) => m.ReportsModule),
       },
+      {
+        path: 'future-reference',
+        loadChildren: () =>
+          import('./admin/future-reference/future-reference.module').then((m) => m.FutureReferenceModule),
+      },
     ],
   },
   {
