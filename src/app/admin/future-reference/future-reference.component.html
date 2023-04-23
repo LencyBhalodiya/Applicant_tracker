@@ -5,7 +5,7 @@
   </div>
   <mat-form-field>
     <mat-label>Search Applicants</mat-label>
-    <input matInput  placeholder="Search" #input />
+    <input matInput  placeholder="Search" #input (keyup)="filter(input.value)" />
   </mat-form-field>
   <div class="mat-elevation-z8 table-container">
     <li class="table-header">

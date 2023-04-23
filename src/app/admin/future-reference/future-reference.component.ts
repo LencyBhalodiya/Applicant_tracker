@@ -5,26 +5,34 @@ import { RefServicesService } from './services/ref-services.service';
 @Component({
   selector: 'app-future-reference',
   templateUrl: './future-reference.component.html',
-  styleUrls: ['./future-reference.component.css']
+  styleUrls: ['./future-reference.component.css'],
 })
 export class FutureReferenceComponent implements OnInit {
-   data:any = [{}]
+  data: any = [{}];
 
-  constructor(private _refService: RefServicesService,private router: Router ) { 
+  constructor(
+    private _refService: RefServicesService,
+    private router: Router
+  ) {}
+
+  getData() {
+    this._refService.futureRef().subscribe((res) => {
+      this.data = res;
+    });
   }
-
-  getData(){
-   this._refService.futureRef().subscribe((res)=>{
-    this.data = res;
-    console.log(this.data);
-    
-   })
+  filter(name: string) {
+    if (name == '') {
+      this.getData();
+    } else {
+      this._refService.searchFilter(name).subscribe((res) => {
+        this.data = res;
+      });
+    }
   }
   ngOnInit(): void {
     this.getData();
   }
-  onRoute(id:number)
-  {
-    this.router.navigate(['applicant/profile/',id]);
+  onRoute(id: number) {
+    this.router.navigate(['applicant/profile/', id]);
   }
 }
