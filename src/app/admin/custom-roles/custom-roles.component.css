@@ -1,9 +1,12 @@
+body{
+    background-color: var(--background-color);
+}
 
 .header h1 {
     padding: 5px;
     font-weight: bold;
     font-size: 20px;
-    color: var(--text-color)
+    color: var(--main-color)
 }
 
 mat-card {
@@ -25,7 +28,7 @@ mat-card {
 Button:not(#chip){
     border-radius: 30px;
     box-shadow: var(--box-shadow);
-    background-color: var(--text-color);
+    background-color: var(--main-color);
     color:whitesmoke;
     cursor: pointer;
 }
@@ -128,7 +131,6 @@ input {
     margin-left: 280px;
     width: 10%;
     height: 2em;
-
 }
 
 #checkbox {
