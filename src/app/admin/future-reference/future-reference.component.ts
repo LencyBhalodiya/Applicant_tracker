@@ -25,6 +25,6 @@ export class FutureReferenceComponent implements OnInit {
   }
   onRoute(id:number)
   {
-    this.router.navigate(['applicant/profile/']);
+    this.router.navigate(['applicant/profile/',id]);
   }
 }

@@ -1,0 +1,43 @@
+<div class="search-container">
+  <form action="" class="search-form" [formGroup]="searchForm">
+    <input matInput class="search-input" formControlName="query" (keyup)="searchData()" placeholder="Search here" value="">
+    <!-- <button mat-raised-button class="search-btn" color="primary" ngClass="btn-purple"
+      (click)="searchData()"><span><mat-icon>search</mat-icon></span></button> -->
+    <button mat-raised-button class="search-btn" (click)="openAccordion()" ngClass="btn-purple"
+      color="primary"><span><mat-icon>filter_list</mat-icon></span></button>
+      <button mat-raised-button color="primary" (click)="exportexcel()" ngClass="btn-purple ">Download Report</button>
+  </form>
+</div>
+<div *ngIf="accordionHide" class="accordion-container">
+
+  <form action="" [formGroup]="filterForm" class="filter-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Stages</mat-label>
+      <mat-select formControlName="stages" (selectionChange)="stageChange()">
+        <ng-container *ngFor="let stage of stages">
+          <mat-option *ngIf="stage.isActive" [value]="stage.stageName">{{stage.stageName}}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>status</mat-label>
+      <mat-select formControlName="statuses">
+        <mat-option *ngFor="let status of statuses" [value]="status">
+          {{status}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Stream</mat-label>
+      <mat-select formControlName="streams">
+        <mat-option *ngFor="let stream of streams" [value]="stream.streamName">
+          {{stream.streamName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <div class="apply-btn">
+    <button mat-raised-button color="primary" ngClass="btn-purple" (click)="applyFilter()">Apply</button>
+  </div>
+</div>
+
