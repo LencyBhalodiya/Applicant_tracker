@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="dialog-title">ADD HR :</div>
-
+  <div class="dialog-title">Add Hr Details </div>
   <form [formGroup]="addHrForm">
-    <mat-grid-list cols="1" rowHeight="880px">
+    <mat-grid-list cols="1" rowHeight="650px">
       <mat-grid-tile>
+     
         <div class="example-container">
           <mat-form-field appearance="outline" class="width-50">
             <mat-label>First Name</mat-label>
-            <input matInput formControlName="firstname" ng-required="true" />
+            <input matInput formControlName="firstname" />
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="width-50 ml-2">
@@ -44,7 +44,7 @@
           <br />
           <mat-form-field appearance="outline" class="width-100">
             <mat-label>Mobile No</mat-label>
-            <input matInput formControlName="phoneno" />
+            <input matInput formControlName="phoneNumber" type="number"/>
           </mat-form-field>
           <br />
           <mat-form-field appearance="outline" class="width-100">
@@ -94,20 +94,16 @@
           <mat-dialog-actions align="end">
             <button
               mat-raised-button
-              class="btn-save"
               mat-dialog-close
-              (click)="addHr(addHrForm.value); onClose()"
-              [disabled]="addHrForm.invalid"
-              cdkFocusInitial
+              class="btn-save"
+              [class.deactive]="this.addHrForm.invalid" 
+              [disabled]="this.addHrForm.invalid"
+              (click)="addHr(addHrForm.value);playSound()"
+              
             >
               Save
             </button>
-            <button
-              mat-raised-button
-              class="btn-close"
-              mat-dialog-close
-              cdkFocusInitial
-            >
+            <button mat-raised-button class="btn-close" mat-dialog-close>
               Close
             </button>
           </mat-dialog-actions>

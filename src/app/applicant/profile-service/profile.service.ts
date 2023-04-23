@@ -11,6 +11,8 @@ export class ProfileService {
 
   private _userAddress = 'http://192.168.102.92:8002/main/api/user/getAddress/';
 
+  // http://192.168.102.92:8002/main/api/user/getAddress/100
+
   getProfileData(id: any) {
     return this._http.get(this._profileData + id);
   }

@@ -8,14 +8,19 @@ import { AddHrComponent } from './add-hr/add-hr.component';
 import { EditHrComponent } from './edit-hr/edit-hr.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
-  declarations: [ManageUsersComponent, AddHrComponent, EditHrComponent],
+  declarations: [
+    ManageUsersComponent,
+    AddHrComponent,
+    EditHrComponent
+  ],
   imports: [
     CommonModule,
     ManageUsersRoutingModule,
     MaterialDesignModule,
     FormsModule,
-    ReactiveFormsModule,
-  ],
+    ReactiveFormsModule
+  ]
 })
-export class ManageUsersModule {}
+export class ManageUsersModule { }

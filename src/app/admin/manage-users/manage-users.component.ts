@@ -9,6 +9,7 @@ import { AddHrComponent } from './add-hr/add-hr.component';
 import { EditHrComponent } from './edit-hr/edit-hr.component';
 import { ManageHrService } from './services/manage-hr.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-manage-users',
@@ -16,6 +17,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   styleUrls: ['./manage-users.component.css'],
 })
 export class ManageUsersComponent {
+  isLoading: boolean = true;
+
   displayedColumns: string[] = [
     'id',
     'fname',
@@ -26,30 +29,23 @@ export class ManageUsersComponent {
     'action',
   ];
   public Elementdata!: IApplicants[];
-  public dataSource!: MatTableDataSource<IApplicants>;
+  public response!: any;
+  public dataSource!: MatTableDataSource<any>;
+  private _checkedArr: number[] = [];
   public isActive: any;
-  public isLoading: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   checked: boolean = false;
 
-  id: number = 0;
   constructor(
     private _snackBar: MatSnackBar,
     private manageHrService: ManageHrService,
     private _formBuilder: FormBuilder,
     public dialog: MatDialog
-  ) {
-    this.manageHrService.listen().subscribe((m) => {
-      console.log(m);
-      this.getAllApplicants();
-    });
-  }
+  ) {}
 
-  changeStatus(data: IApplicants, event: any) {
-    console.log(data);
-
+  changeStatus(data: any, event: any) {
     data.status = data.status === 'Active' ? 'Inactive' : 'Active';
     //console.log('data: ' + data.isActive);
     console.log(event.checked);
@@ -57,14 +53,15 @@ export class ManageUsersComponent {
       ? this.manageHrService.inactiveHr(data.id).subscribe((msg) => {
           console.log('inactive api: ' + data);
         })
-      : this.manageHrService.activeHr(data.id).subscribe((msg) => {
-          console.log('active api' + data);
-        });
+      : this.manageHrService.activeHr(data.id).subscribe(
+          (msg) => {
+            console.log('active api: ' + msg);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
     console.log(data);
-  }
-
-  getid() {
-    return this.id + 1;
   }
 
   ngOnInit() {
@@ -72,17 +69,15 @@ export class ManageUsersComponent {
   }
 
   getAllApplicants() {
-    this.isLoading = true;
-    this.manageHrService.getAllHrData().subscribe({
+    this.manageHrService.getData().subscribe({
       next: (res) => {
-        this.dataSource = new MatTableDataSource<IApplicants>(
-          res as IApplicants[]
-        );
+        this.isLoading = false;
+        this.dataSource = new MatTableDataSource<any>(res as IApplicants[]);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        this.isLoading = false;
       },
       error(err) {
+        //let snackBarRef = this._snackBar.open('Message archived');
         console.error(err.message);
       },
     });
@@ -106,6 +101,10 @@ export class ManageUsersComponent {
       enterAnimationDuration,
       exitAnimationDuration,
     });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.manageHrService.getData();
+    });
   }
 
   openDialogEdit(
@@ -121,6 +120,10 @@ export class ManageUsersComponent {
       backdropClass: 'bdrop',
       enterAnimationDuration,
       exitAnimationDuration,
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.manageHrService.getData();
     });
   }
 

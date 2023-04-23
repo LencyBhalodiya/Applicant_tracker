@@ -4,7 +4,7 @@ import {
   HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IApplicants } from '../models/applicants';
 import { Subject } from 'rxjs';
@@ -13,43 +13,52 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class ManageHrService {
-  private _api = 'http://192.168.102.92:8002/';
+  public dataSource = new BehaviorSubject({});
 
-  private _getAllHr: string = `${this._api}main/api/admin/getManagedUser`;
-  private _getAllRole: string = `${this._api}main/api/admin/getAllRole`;
-  private _AddHr: string = `${this._api}authentication/api/v1/auth/register`;
-  private _inactiveHr = `${this._api}main/api/admin/deactiveManagedUser/`;
-  private _activeHr = `${this._api}main/api/admin/activeManagedUser/`;
+  // private _api:string = 'http://192.168.102.92:8002/main/api/admin/';
+  private _getAllHr: string =
+    'http://192.168.102.92:8002/main/api/admin/getManagedUser';
+  private _getAllRole: string =
+    'http://192.168.102.92:8002/main/api/admin/getAllRole';
+  private _AddHr: string =
+    'http://192.168.102.92:8002/authentication/api/v1/auth/register';
+
+  private _inactiveHr =
+    'http://192.168.102.92:8002/main/api/admin/deactiveManagedUser/';
+
+  private _activeHr =
+    'http://192.168.102.92:8002/main/api/admin/activeManagedUser/';
+
+  private _editHr =
+    'http://192.168.102.92:8002/main/api/user/updateUserDetails/';
 
   constructor(private _http: HttpClient) {}
 
-  getAllHrData() {
-    return this._http.get(this._getAllHr);
+  getData() {
+    this._http.get(this._getAllHr).subscribe((res) => {
+      this.dataSource.next(res);
+    });
+
+    return this.dataSource;
   }
 
   getRole() {
     return this._http.get(this._getAllRole);
   }
 
-  addHr(data: any) {
+  addhr(data: any) {
     return this._http.post(this._AddHr, data);
   }
 
-  inactiveHr(id: number) {
+  editHr(data: any, id: any) {
+    return this._http.post(this._editHr + id, data);
+  }
+
+  inactiveHr(id: any) {
     return this._http.put(this._inactiveHr + id, {});
   }
 
-  activeHr(id: number) {
+  activeHr(id: any) {
     return this._http.put(this._activeHr + id, {});
-  }
-
-  private _listners = new Subject<any>();
-
-  listen(): Observable<any> {
-    return this._listners.asObservable();
-  }
-
-  filter(filterBy: string) {
-    this._listners.next(filterBy);
   }
 }

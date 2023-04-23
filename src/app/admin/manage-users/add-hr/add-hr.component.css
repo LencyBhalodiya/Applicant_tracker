@@ -1,21 +1,27 @@
 .example-radio-button {
   margin-left: 7px;
 }
+
 mat-grid-tile {
   background: #fafafa;
 }
+
 .width-50 {
   width: 49%;
 }
+
 .ml-1 {
   margin-left: 1%;
 }
+
 .ml-2 {
   margin-left: 2%;
 }
+
 .width-100 {
   width: 100%;
 }
+
 .width-25 {
   width: 25%;
 }
@@ -31,9 +37,11 @@ mat-grid-tile {
   vertical-align: middle;
   background-color: var(--main-color);
 }
+
 .btn-save {
   background-color: var(--main-color);
   color: var(--div-color);
+
 }
 
 .btn-close {
@@ -48,3 +56,8 @@ mat-grid-tile {
 ::ng-deep .mat-select-panel {
   max-height: 200px !important;
 }
+
+.deactive{
+  opacity:0.5;
+}
+

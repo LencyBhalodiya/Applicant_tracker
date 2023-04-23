@@ -1,55 +1,60 @@
 <div>
-    <p>
-      <mat-toolbar>
-        <span>Dashboard</span>
-        <span class="spacer"></span>
-        <button mat-icon-button class="profile-icon" aria-label="icon-button with profile icon" [routerLink]="['profile']">
-          <mat-icon>perm_identity</mat-icon>
-        </button>
-        <button mat-icon-button class="edit-icon" aria-label="icon-button with edit icon">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </mat-toolbar>
-    </p>
-  </div>
-  <div>
-    <mat-horizontal-stepper>
-      <mat-step label="Screening Test">
-        <p>Screening Test</p>
-        <button mat-button matStepperNext>Check Next States</button>
-      </mat-step>
-      <mat-step label="Online Test">
-        <p>Online Test</p>
-        <button mat-button matStepperPrevious>Check Previous States</button>
-        <button mat-button matStepperNext>Check Next States</button>
-      </mat-step>
-      <mat-step label="Techenical Test">
-        <p>Techenical Test</p>
-        <button mat-button matStepperPrevious>Check Previous States</button>
-        <button mat-button matStepperNext>Check Next States</button>
-      </mat-step>
-      <mat-step label="HR Interview">
-        <p>HR Interview</p>
-        <button mat-button matStepperPrevious>Check Previous States</button>
-        <button mat-button matStepperNext>Check Next States</button>
-      </mat-step>
-      <mat-step label="Result">
-        <p>Result</p>
-        <button mat-button matStepperPrevious>Check Previous States</button>
-      </mat-step>
-    </mat-horizontal-stepper>
-  </div>
-  <div>
-    <mat-tab-group dynamicHeight>
-      <mat-tab label="Round Information">
-        <div class="status mat-elevation-z4">
-          Round Information
-        </div>
-      </mat-tab>
-      <mat-tab label="Status">
-        <div class="status mat-elevation-z4">
-          Your Status
-        </div>
-      </mat-tab>
-    </mat-tab-group>
-  </div>
+  <p>
+    <mat-toolbar>
+      <span>Dashboard</span>
+      <span class="spacer"></span>
+      <button
+        mat-icon-button
+        class="profile-icon"
+        aria-label="icon-button with profile icon"
+        [routerLink]="['profile/' + getUserId()]"
+      >
+        <mat-icon>perm_identity</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="edit-icon"
+        aria-label="icon-button with edit icon"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+</div>
+<div>
+  <mat-horizontal-stepper>
+    <mat-step label="Screening Test">
+      <p>Screening Test</p>
+      <button mat-button matStepperNext>Check Next States</button>
+    </mat-step>
+    <mat-step label="Online Test">
+      <p>Online Test</p>
+      <button mat-button matStepperPrevious>Check Previous States</button>
+      <button mat-button matStepperNext>Check Next States</button>
+    </mat-step>
+    <mat-step label="Techenical Test">
+      <p>Techenical Test</p>
+      <button mat-button matStepperPrevious>Check Previous States</button>
+      <button mat-button matStepperNext>Check Next States</button>
+    </mat-step>
+    <mat-step label="HR Interview">
+      <p>HR Interview</p>
+      <button mat-button matStepperPrevious>Check Previous States</button>
+      <button mat-button matStepperNext>Check Next States</button>
+    </mat-step>
+    <mat-step label="Result">
+      <p>Result</p>
+      <button mat-button matStepperPrevious>Check Previous States</button>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
+<div>
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Round Information">
+      <div class="status mat-elevation-z4">Round Information</div>
+    </mat-tab>
+    <mat-tab label="Status">
+      <div class="status mat-elevation-z4">Your Status</div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
