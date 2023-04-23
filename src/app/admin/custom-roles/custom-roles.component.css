@@ -49,7 +49,7 @@ Button:not(#chip){
 }
 
 [appearance="fill"] {
-    margin-left: 120px;
+    margin-left: 50px;
 }
 
 #data #showData #formdata{
@@ -173,6 +173,7 @@ input {
         height: fit-content;
         width: fit-content;
         border-radius:none;
+        padding:10px
     }
 }
 

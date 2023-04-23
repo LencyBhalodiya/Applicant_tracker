@@ -21,13 +21,18 @@ export class ManageStreamsComponent implements OnInit{
     }
     this.data.setStreams({streamName:inputStream.value}).subscribe((response)=>this.stream.push(response))
     inputStream.value=''
+    setTimeout(()=>{
+      this.data.getStreams().subscribe((stream) => {
+        this.stream=stream.filter((item)=> item.isActive==true)
+      })
+    },1500)
   }
 
   //Calling API
   ngOnInit() {
     this.data.getStreams().subscribe((stream) => {
       this.stream=stream.filter((item)=> item.isActive==true)
-  })
+    })
   }
 
   //Method for input Validation
@@ -38,6 +43,5 @@ export class ManageStreamsComponent implements OnInit{
     else {
       btn.disabled = false;
     }
-
   }
 }

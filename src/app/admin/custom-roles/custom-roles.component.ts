@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatCheckbox } from '@angular/material/checkbox';
@@ -17,7 +17,7 @@ export class CustomRolesComponent implements OnInit{
   selectedOptions: any[] = [];
   rolesData!: any[] //Property to store username and its roles
   @ViewChild('roleInput') roleInput!: ElementRef<HTMLInputElement>;
-  isSelected!:boolean
+  @ViewChildren('check') private myCheckboxes !: QueryList<any>;
 
   constructor(private _snackBar: MatSnackBar, private passDataroles: PassDataService) { }
 
@@ -50,17 +50,21 @@ export class CustomRolesComponent implements OnInit{
 
   //Function to store username and roles 
   getValue(name: HTMLInputElement, btn: HTMLElement) {
-    this.isSelected=false
     for(let element of this.rolesData){
       if(element.rolename.toLowerCase().trim().split(" ").join("")==name.value.toLowerCase().trim().split(" ").join("")){
           this.openSnackBar("Role Already Exist")
           return
       }
     }
-    this.passDataroles.setRoles({rolename:name.value,permissions:this.selectedOptions}).subscribe((res)=>this.rolesData.push(res))
+    this.passDataroles.setRoles({rolename:name.value,permissions:this.selectedOptions}).subscribe((res)=>console.log(res))
     this.openSnackBar('Roles Added')
     name.value = "";
     (<HTMLButtonElement>btn).disabled = true;
+    setTimeout(()=>{
+      this.passDataroles.getRoles().subscribe((role) => {
+        this.rolesData = role
+      })
+    },1500)
   }
 
   //Input Validation
@@ -100,5 +104,12 @@ export class CustomRolesComponent implements OnInit{
     }
   }
 
+  unchecked(){
+    let myCheckboxes=this.myCheckboxes.toArray()
+    for(let i=0 ; i<myCheckboxes.length ; i++)
+    {
+      myCheckboxes[i].checked=false
+    }
+  }
 
 }
