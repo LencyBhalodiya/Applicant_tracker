@@ -1,16 +1,13 @@
 import { ReportsService } from './services/reports.service';
 import { IApplicants } from './models/applicants';
 import { MatSort } from '@angular/material/sort';
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import {  Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormBuilder } from '@angular/forms';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/shared/auth/auth-services/auth.service'; 
 
-import html2canvas from 'html2canvas';
-import { ElementRef } from '@angular/core'; 
-import jsPDF from 'jspdf';
+
 /**
  * @title Table with filtering
  */
@@ -49,12 +46,10 @@ export class ReportsComponent {
     private authService: AuthService
   ) {}
 
-  // on init
   ngOnInit() {
     this.getAllApplicants();
   }
 
-  // get all Applicants
   getAllApplicants() {
     this._aService.getData(this.p).subscribe({
       next: (res: any) => {
@@ -66,7 +61,6 @@ export class ReportsComponent {
     });
   }
 
-  // pagination event
   pageChangeEvent(event: number): void {
     this.p = event;
     this.getAllApplicants();

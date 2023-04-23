@@ -1,6 +1,5 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
 import { ReportsService } from '../services/reports.service';
 import * as XLSX from 'xlsx';
 
