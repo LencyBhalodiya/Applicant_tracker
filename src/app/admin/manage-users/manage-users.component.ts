@@ -9,6 +9,7 @@ import { AddHrComponent } from './add-hr/add-hr.component';
 import { EditHrComponent } from './edit-hr/edit-hr.component';
 import { ManageHrService } from './services/manage-hr.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-manage-users',
@@ -16,6 +17,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   styleUrls: ['./manage-users.component.css'],
 })
 export class ManageUsersComponent {
+  isLoading: boolean = true;
+
   displayedColumns: string[] = [
     'id',
     'fname',
@@ -35,18 +38,12 @@ export class ManageUsersComponent {
   @ViewChild(MatSort) sort!: MatSort;
   checked: boolean = false;
 
-  id: number = 0;
   constructor(
     private _snackBar: MatSnackBar,
     private manageHrService: ManageHrService,
     private _formBuilder: FormBuilder,
     public dialog: MatDialog
-  ) {
-    this.manageHrService.listen().subscribe((m) => {
-      console.log(m);
-      this.getAllApplicants();
-    });
-  }
+  ) {}
 
   changeStatus(data: any, event: any) {
     data.status = data.status === 'Active' ? 'Inactive' : 'Active';
@@ -67,10 +64,6 @@ export class ManageUsersComponent {
     console.log(data);
   }
 
-  getid() {
-    return this.id + 1;
-  }
-
   ngOnInit() {
     this.getAllApplicants();
   }
@@ -78,10 +71,15 @@ export class ManageUsersComponent {
   getAllApplicants() {
     this.manageHrService.getData().subscribe({
       next: (res) => {
+        this.isLoading = false;
         this.dataSource = new MatTableDataSource<any>(res as IApplicants[]);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      }
+      },
+      error(err) {
+        //let snackBarRef = this._snackBar.open('Message archived');
+        console.error(err.message);
+      },
     });
   }
 
@@ -103,6 +101,10 @@ export class ManageUsersComponent {
       enterAnimationDuration,
       exitAnimationDuration,
     });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.manageHrService.getData();
+    });
   }
 
   openDialogEdit(
@@ -118,6 +120,10 @@ export class ManageUsersComponent {
       backdropClass: 'bdrop',
       enterAnimationDuration,
       exitAnimationDuration,
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      this.manageHrService.getData();
     });
   }
 

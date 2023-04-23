@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 import { ListComponent } from './list/list.component';
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
-  styleUrls: ['./reports.component.css']
+  styleUrls: ['./reports.component.css'],
 })
 export class ReportsComponent {
-
-  downloadPage(){
+  downloadPage() {
     // let DATA: any = document.getElementById('htmlData');
     // html2canvas(DATA).then((canvas) => {
     //   let fileWidth = 208;
@@ -20,6 +17,5 @@ export class ReportsComponent {
     //   PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
     //   PDF.save('angular-demo.pdf');
     // })
-
   }
 }

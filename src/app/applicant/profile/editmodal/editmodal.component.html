@@ -2,17 +2,17 @@
   <h1 mat-dialog-title>Edit Details</h1>
   <mat-form-field class="example-full-width">
     <mat-label>Name</mat-label>
-    <input matInput placeholder="Name" value="" />
+    <input matInput placeholder="Name" value="{{ data.firstname }}" />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Email</mat-label>
-    <input matInput placeholder="Email" value="" />
+    <input matInput placeholder="Email" value="{{ data.email }}" />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Phone</mat-label>
-    <input matInput placeholder="Phone" value="" />
+    <input matInput placeholder="Phone" value="{{ data.phoneNumber }}" />
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -20,7 +20,7 @@
     <input matInput [matDatepicker]="picker" />
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker #picker>{{ data.dob }}</mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -36,6 +36,6 @@
   <div mat-dialog-actions>
     <button mat-raised-button class="editbtn">Update</button>
 
-    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Cance</button>
+    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Cancel</button>
   </div>
 </div>

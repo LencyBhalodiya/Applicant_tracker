@@ -1,33 +1,91 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ManageHrService } from '../services/manage-hr.service';
+import { BehaviorSubject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-edit-hr',
   templateUrl: './edit-hr.component.html',
-  styleUrls: ['./edit-hr.component.css']
+  styleUrls: ['./edit-hr.component.css'],
 })
 export class EditHrComponent implements OnInit {
+  roles: any;
 
-  editHrForm!: FormGroup
-  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public editData: any) { }
+  rolen: any = {};
+
+  editHrForm!: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public editData: any,
+    private hrSer: ManageHrService,
+    public snackbar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.editHrForm = this.fb.group({
+      firstname: new FormControl(this.editData.firstname),
+      lastname: new FormControl(this.editData.lastname),
+      email: new FormControl(this.editData.email),
+      role: new FormControl(this.editData.rolename),
+    });
 
+    this.hrSer.getRole().subscribe((res) => {
+      console.log(res, 'duhejkms');
+      this.roles = res;
+    });
+  }
 
-      fname: new FormControl(this.editData.fname),
-      lname: new FormControl(this.editData.lname),
-      email: new FormControl()
-
-
-    })
-
+  playSound() {
+    console.log('click');
+    let audio = new Audio();
+    audio.src = '../../../../assets/sounds/n1.mp3';
+    audio.play();
   }
 
   updateHr(data: any): void {
+    console.log(data);
+    let res = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      role: {
+        id: 0,
+        rolename: '',
+      },
+    };
 
-    console.log(data.value);
+    res.firstName = data.email;
+    res.lastName = data.firstname;
+    res.email = data.lastname;
+    let role1 = this.roles.find((role: any) => {
+      return role.rolename === data.role;
+    });
+    let role = { id: 0, rolename: '' };
+    role.id = role1.id;
+    role.rolename = role1.rolename;
+
+    // this.rolen.id = data.role.id;
+    // this.rolen.name = data.role.rolename;
+    res.role = role;
+
+    //console.log(res);
+
+    this.hrSer.editHr(res, this.editData.id).subscribe({
+      next: (res) => {
+        this.snackbar.open('User Updated Sucessfully', 'OK', {
+          duration: 3000,
+        });
+      },
+      error: (e) => console.log(e),
+      complete: () => console.log('user edited'),
+    });
   }
-
 }

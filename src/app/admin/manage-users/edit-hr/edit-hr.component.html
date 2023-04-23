@@ -1,34 +1,44 @@
 <div class="container">
+  <div class="dialog-title">Edit HR Details</div>
   <form [formGroup]="editHrForm">
     <mat-grid-list cols="1" rowHeight="500px">
       <mat-grid-tile>
         <div class="example-container">
           <mat-form-field appearance="outline" class="width-50">
             <mat-label>First Name</mat-label>
-            <input matInput formControlName="fname" />
+            <input matInput formControlName="email" />
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="width-50 ml-2">
             <mat-label>Last Name</mat-label>
-            <input matInput formControlName="lname"/>
+            <input matInput formControlName="firstname" />
           </mat-form-field>
           <br />
           <mat-form-field appearance="outline" class="width-100">
-            <mat-label>Email address</mat-label>
-            <input
-              matInput
-              formControlName="email"
-              placeholder="Ex. pat@example.com"
-              
-            />
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="lastname" />
           </mat-form-field>
           <br />
+          <mat-form-field appearance="outline" class="width-100">
+            <mat-label>Choose any Role</mat-label>
+            <mat-select formControlName="role">
+              <ng-container *ngFor="let role of roles">
+                <mat-option
+                  *ngIf="role.id !== 1 && role.id !== 3"
+                  [value]="role.rolename"
+                >
+                  {{ role.rolename }}
+                </mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+
           <mat-dialog-actions align="end">
             <button
               mat-raised-button
               class="btn-save"
               mat-dialog-close
-              (click)="updateHr(editHrForm)"
+              (click)="updateHr(editHrForm.value); playSound()"
             >
               Update
             </button>

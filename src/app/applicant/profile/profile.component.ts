@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from '../profile-service/profile.service';
 import { EditmodalComponent } from './editmodal/editmodal.component';
 import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
@@ -15,22 +15,13 @@ export class ProfileComponent {
     private router: Router,
     private authService: AuthService,
     private _profileService: ProfileService,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _activatedRoute: ActivatedRoute
   ) {}
-  profile: any;
-  profileData = [
-    { title: 'Full Name', value: 'MySelf Saxena' },
-    { title: 'Email', value: 'zoro45@gmail.com' },
-    { title: 'Phone', value: 99133434343 },
-    { title: 'Dirth of Birth', value: '21-11-2000' },
-    { title: 'Permanent Address', value: 'Bay Area, San Francisco, CA' },
-    {
-      title: 'Present Address',
-      value: ' pg, Iskon cross road, ahmedbadad pg, Iskon cross road',
-    },
-    { title: 'Refereal Source', value: 'Alish Methta' },
-    { title: 'Gender', value: 'Male' },
-  ];
+  private _userId!: string;
+  profileData: any;
+  profileAddressData: any;
+
   openDialog() {
     this.dialog.open(EditmodalComponent, {
       data: this.profileData,
@@ -38,16 +29,27 @@ export class ProfileComponent {
     });
   }
   ngOnInit() {
+    this._userId = this._activatedRoute.snapshot.params['id'];
     this.getUserInfo();
+
+    this.getUserAddress();
   }
   getUserInfo() {
-    this._profileService
-      .getProfileData(this._authService.getUserId())
-      .subscribe((res) => {
-        this.profile = res;
-        console.log(res);
-      });
+    this._profileService.getProfileData(this._userId).subscribe((res) => {
+      this.profileData = res;
+      console.log('ddd' + res);
+    });
   }
+
+  getUserAddress() {
+    this._profileService.getUserAddress(this._userId).subscribe((res) => {
+      this.profileAddressData = res;
+      console.log(res);
+
+      //console.log(this.profileData);
+    });
+  }
+
   doLogout() {
     this.authService.logOut();
   }

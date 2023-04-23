@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { of } from 'rxjs';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+
 import {
   FormArrayName,
   FormBuilder,
@@ -9,6 +10,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ManageHrService } from '../services/manage-hr.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-hr',
@@ -25,13 +27,17 @@ export class AddHrComponent implements OnInit {
 
   addHrForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private hrSer: ManageHrService) {}
+  constructor(
+    private fb: FormBuilder,
+    private hrSer: ManageHrService,
+    public snackbar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.addHrForm = this.fb.group({
       firstname: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.pattern('')]),
+      email: new FormControl('', [Validators.required]),
       password: new FormControl('', [
         Validators.required,
         Validators.pattern(''),
@@ -42,7 +48,7 @@ export class AddHrComponent implements OnInit {
         Validators.required,
         Validators.pattern(''),
       ]),
-      phoneno: new FormControl('', [
+      phoneNumber: new FormControl('', [
         Validators.required,
         Validators.pattern(''),
       ]),
@@ -53,6 +59,42 @@ export class AddHrComponent implements OnInit {
       console.log(res);
     });
   }
+  playSound() {
+    let audio = new Audio();
+    audio.src = '../../../../assets/sounds/n1.mp3';
+    audio.play();
+  }
+
+  // get firstname()
+  // {
+  //   return this.addHrForm.get('firstname');
+
+  // }
+
+  //   get lastname()
+  // {
+  //   return this.addHrForm.get('lastname');
+  // }
+
+  // get email()
+  // {
+  //   return this.addHrForm.get('email');
+  // }
+
+  // get password()
+  // {
+  //   return this.addHrForm.get('password');
+  // }
+
+  // get dob()
+  // {
+  //   return this.addHrForm.get('dob');
+  // }
+
+  // get role()
+  // {
+  //   return this.addHrForm.get('role');
+  // }
 
   addHr(data: any): any {
     data.dob = this.datePipe.transform(data.dob, 'yyyy-MM-dd');
@@ -68,17 +110,15 @@ export class AddHrComponent implements OnInit {
       // },
       // (error) => console.log(error),
       // () => console.log('user added')
-      next: (res) => console.log(res),
-      // error: (e) => console.log(e),
+      next: (res) => {
+        this.snackbar.open('User Added Sucessfully', 'OK', { duration: 3000 });
+      },
+      error: (e) => console.log(e),
       complete: () => console.log('user added'),
     });
 
     this.hrSer.getData().subscribe((res) => {
       console.log(res);
     });
-  }
-
-  onClose(): void {
-    this.hrSer.filter('Click');
   }
 }

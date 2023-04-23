@@ -1,3 +1,5 @@
+<!-- <mat-spinner></mat-spinner> -->
+
 <mat-toolbar class="tool-bar">
   <button mat-icon-button matTooltip="Menu">
     <mat-icon>menu</mat-icon>
@@ -36,8 +38,8 @@
         />
       </div>
       <div class="profile-name">
-        <span>{{ profile.firstname }} {{ profile.lastname }} </span>
-        <p>UI/UX Developer</p>
+        <span>{{ profileData.firstname }} {{ profileData.lastname }} </span>
+        <p>UI/UX Designer</p>
 
         <button class="btn">Resume</button>
       </div>
@@ -46,15 +48,16 @@
       <div class="details-wrapper">
         <div class="profile-details">
           <h3 class="profile-content">Name</h3>
-          <p class="p-value">{{ profile.firstname }} {{ profile.lastname }}</p>
+          <p class="p-value">
+            {{ profileData.firstname }} {{ profileData.lastname }}
+          </p>
         </div>
         <hr />
       </div>
-
       <div class="details-wrapper">
         <div class="profile-details">
           <h3 class="profile-content">Email</h3>
-          <p class="p-value">{{ profile.email }}</p>
+          <p class="p-value">{{ profileData.email }}</p>
         </div>
         <hr />
       </div>
@@ -62,7 +65,7 @@
       <div class="details-wrapper">
         <div class="profile-details">
           <h3 class="profile-content">Phone</h3>
-          <p class="p-value">{{ profile.phone || 9945785612 }}</p>
+          <p class="p-value">{{ profileData.phoneNumber || 89899898989 }}</p>
         </div>
         <hr />
       </div>
@@ -70,7 +73,7 @@
       <div class="details-wrapper">
         <div class="profile-details">
           <h3 class="profile-content">Date Of Birth</h3>
-          <p class="p-value">{{ profile.dob }}</p>
+          <p class="p-value">{{ profileData.dob }}</p>
         </div>
         <hr />
       </div>
@@ -78,7 +81,11 @@
       <div class="details-wrapper">
         <div class="profile-details">
           <h3 class="profile-content">Present Address</h3>
-          <p class="p-value">{{ profile.presentAddress || "not available" }}</p>
+          <p class="p-value">
+            {{
+              profileData.presentAddress || "G-9, Iscon Cross Road, Ahemadabad"
+            }}
+          </p>
         </div>
         <hr />
       </div>
@@ -86,7 +93,9 @@
       <div class="details-wrapper">
         <div class="profile-details">
           <h3 class="profile-content">Permananent Address</h3>
-          <p class="p-value">{{ profile.permanentAddress || "not available"}}</p>
+          <p class="p-value">
+            {{ profileAddressData[0].city || "Bhuj Kutch" }}
+          </p>
         </div>
         <hr />
       </div>
@@ -94,7 +103,9 @@
       <div class="details-wrapper" *ngIf="true">
         <div class="profile-details">
           <h3 class="profile-content">Refereal Source</h3>
-          <p class="p-value">{{ profile.referealSource || "Alisha Mehta" }}</p>
+          <p class="p-value">
+            {{ profileData.referealSource || "Alisha Mehta" }}
+          </p>
         </div>
         <hr />
       </div>
@@ -102,7 +113,7 @@
       <div class="details-wrapper">
         <div class="profile-details">
           <h3 class="profile-content">Gender</h3>
-          <p class="p-value">{{ profile.gender }}</p>
+          <p class="p-value">{{ profileData.gender }}</p>
         </div>
         <hr />
       </div>
