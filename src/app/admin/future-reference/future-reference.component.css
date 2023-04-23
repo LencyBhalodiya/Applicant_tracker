@@ -159,12 +159,15 @@ table {
     justify-content: flex-end  ;
   }
   .heading{
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
   h2{
     margin: 1rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #012970;
+  }
+  span{
+    color: rgb(106, 105, 105);
   }
   mat-spinner{
     position: absolute;
