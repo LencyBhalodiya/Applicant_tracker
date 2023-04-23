@@ -101,3 +101,11 @@ mat-expansion-panel-header {
 .btn-purple {
   background-color: var(--main-color) !important;
 }
+
+
+@media(max-width: 600px) {
+  .filter-container{
+    display: block;
+  }
+  
+}

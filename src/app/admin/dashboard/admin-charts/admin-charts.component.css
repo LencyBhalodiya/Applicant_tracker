@@ -28,6 +28,8 @@ h1 {
     margin-top: 1.5rem;
   }
   .charts {
+    position: relative;
+
     height: 43.5vh;
     width:46%;
     max-width: 46%;
@@ -39,10 +41,12 @@ h1 {
    box-shadow: 7px 7px 12px -6px rgb(172, 167, 172) !important;
   }
 
-  
-  /*---------------------------------------
-    For Mobile Responsive
-    ------------------------------------- */
+  mat-spinner{
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    z-index: 2;
+  }
   
   @media screen and (max-width: 988px) {
     .charts {

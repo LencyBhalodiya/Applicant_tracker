@@ -28,3 +28,7 @@ box-sizing: border-box;
   display: flex;
   justify-content: space-evenly;
 }
+
+.btn-purple{
+  background-color: var(--main-color);
+}

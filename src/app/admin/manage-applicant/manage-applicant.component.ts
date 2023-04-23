@@ -1,19 +1,11 @@
-// import { MatTableDataSource, _MatTableDataSource } from '@angular/material/table';
 import { ManageApplicantService } from './services/manage-applicant.service';
-import { IApplicants } from './models/applicants';
-import { MatSort } from '@angular/material/sort';
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { FormBuilder } from '@angular/forms';
+import { IApplicants, INewApplicants } from './models/models.interface';
+import { Component } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PromoteComponent } from './promote/promote.component';
-import { INewApplicants } from './models/newApplicants';
 import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
-import { BehaviorSubject } from 'rxjs';
-
-
 
 /**
  * @title Table with filtering
@@ -29,18 +21,19 @@ export class ManageApplicantComponent {
   public response!: any;
   public dataSource!: any;
   public dataSource2!: any;
-  _checkedArr: any[] = [];
+  _checkedArr: string[] = [];
   hideBlkBtn: boolean = true;
   visibleFlag: boolean = false;
   newapplicantsFlag: boolean = false;
-  btnLabel: string = 'new Applicants';
+  btnLabel: string = 'New Applicants';
   errorApplicant!: string;
   errorNewApplicant!: string;
-  p: number = 1;
+  p: number = 0;
   total: number = 0;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  constructor(private _aService: ManageApplicantService, private _formBuilder: FormBuilder, private dialog: MatDialog,private authService : AuthService) { }
+  constructor(
+    private _apiService: ManageApplicantService,
+    private dialog: MatDialog,
+    private authService: AuthService) { }
 
 
   // on init
@@ -50,24 +43,11 @@ export class ManageApplicantComponent {
 
   // get all Applicants
   getAllApplicants() {
-    
-    this._aService.getData(this.p).subscribe({
+    this._apiService.getData(this.p).subscribe({
       next: (res: any) => {
-      this.dataSource = (res as IApplicants[]);
-      
-      },
-      error: (err: any) => {
-        this.errorApplicant = this._aService.handleError(err);
+        this.dataSource = (res as IApplicants[]);        
       }
     })
-
-    // setTimeout(()=>console.log("this is temp",this.temp),1000);
-
-    // const timer = 5;
-    // setTimeout(() => {
-    //     console.log(new Date());
-    //     this.getAllApplicants();
-    // }, timer * 1000);
   }
 
   //  checkbox toggle
@@ -79,19 +59,21 @@ export class ManageApplicantComponent {
       const index: number = this._checkedArr.indexOf(event.source.value)
       this._checkedArr.splice(index, 1)
     }
-    // console.log(this._checkedArr);
   }
-
 
   // feedback dialog
   feedbackDialog(userData?: any) {
     if (!userData) {
       userData = { applicantId: this._checkedArr }
     }
-    this.dialog.open(FeedbackComponent, {
-      panelClass: 'pane', data: userData, width: '40%',
+    let feedbackDialog = this.dialog.open(FeedbackComponent, {
+      panelClass:'pane',
+      data: userData,
+      width:'40%',
+      backdropClass:'back-drop',
+      disableClose:true,
     })
-    // location.reload()
+    feedbackDialog.afterClosed().subscribe((res)=>this.getAllApplicants());
   }
 
   // add to next round 
@@ -101,35 +83,21 @@ export class ManageApplicantComponent {
     })
   }
 
-  // schedule dialog 
-  // scheduleDialog(userData?: any) {
-  //   if (!userData) {
-  //     userData = { applicantId: this._checkedArr }
-  //   }
-  //   this.dialog.open(InterviewScheduleComponent,
-  //     {
-  //       panelClass: 'pane', data: userData, width: '800px'
-  //     })
-  // }
-
   // get new applicants
   getNewApplicants() {
     if (this.newapplicantsFlag == false) {
       this.newapplicantsFlag = true;
-      this._aService.getNewApplicants().subscribe({
+      this._apiService.getNewApplicants().subscribe({
         next: (res: any) => {
           this.dataSource2 = (res as INewApplicants[])
-        },
-        error: (err: any) => {
-          this.errorNewApplicant = this._aService.handleError(err);
         }
       })
-      this.btnLabel = 'old Applicants'
+      this.btnLabel = 'Old Applicants'
     }
     else {
       this.newapplicantsFlag = false;
       this.getAllApplicants()
-      this.btnLabel = 'new Applicants'
+      this.btnLabel = 'New Applicants'
     }
   }
 
@@ -140,23 +108,23 @@ export class ManageApplicantComponent {
   }
 
   // promote single applicant 
-  addToProcess(data:any){
+  addToProcess(data: any) {
     console.log(data);
-    let response:any = {};
-    response['stage']='Screening Stage';
-    response['status']='pending';
-    response['round']='Screening Test';
-    response['tracking']={
-      recruiter : {
-        uid:this.authService.getUserId()
+    let response: any = {};
+    response['stage'] = 'Screening Stage';
+    response['status'] = 'pending';
+    response['round'] = 'Screening Test';
+    response['tracking'] = {
+      recruiter: {
+        uid: this.authService.getUserId()
       },
-      user:{
-        uid:data.id
+      user: {
+        uid: data.id
       }
     }
     console.log(response);
     // this._aService.addToProcess(response);
   }
-
   
+
 }

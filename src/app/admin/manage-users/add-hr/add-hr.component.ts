@@ -2,7 +2,6 @@ import { DatePipe } from '@angular/common';
 import { of } from 'rxjs';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-
 import {
   FormArrayName,
   FormBuilder,
@@ -28,7 +27,11 @@ export class AddHrComponent implements OnInit {
 
   addHrForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private hrSer: ManageHrService,public snackbar:MatSnackBar) { }
+  constructor(
+    private fb: FormBuilder,
+    private hrSer: ManageHrService,
+    public snackbar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.addHrForm = this.fb.group({
@@ -51,10 +54,6 @@ export class AddHrComponent implements OnInit {
       ]),
     });
 
-
-
-
-
     this.hrSer.getRole().subscribe((res) => {
       this.roles = res;
       console.log(res);
@@ -62,42 +61,40 @@ export class AddHrComponent implements OnInit {
   }
   playSound() {
     let audio = new Audio();
-    audio.src = "../../../../assets/sounds/n1.mp3";
+    audio.src = '../../../../assets/sounds/n1.mp3';
     audio.play();
   }
-  
-  
 
-    // get firstname()
-    // {
-    //   return this.addHrForm.get('firstname');
+  // get firstname()
+  // {
+  //   return this.addHrForm.get('firstname');
 
-    // }
+  // }
 
-    //   get lastname()
-    // {
-    //   return this.addHrForm.get('lastname');
-    // }
+  //   get lastname()
+  // {
+  //   return this.addHrForm.get('lastname');
+  // }
 
-    // get email()
-    // {
-    //   return this.addHrForm.get('email');
-    // }
+  // get email()
+  // {
+  //   return this.addHrForm.get('email');
+  // }
 
-    // get password()
-    // {
-    //   return this.addHrForm.get('password');
-    // }
+  // get password()
+  // {
+  //   return this.addHrForm.get('password');
+  // }
 
-    // get dob()
-    // {
-    //   return this.addHrForm.get('dob');
-    // }
+  // get dob()
+  // {
+  //   return this.addHrForm.get('dob');
+  // }
 
-    // get role()
-    // {
-    //   return this.addHrForm.get('role');
-    // }
+  // get role()
+  // {
+  //   return this.addHrForm.get('role');
+  // }
 
   addHr(data: any): any {
     data.dob = this.datePipe.transform(data.dob, 'yyyy-MM-dd');
@@ -113,7 +110,9 @@ export class AddHrComponent implements OnInit {
       // },
       // (error) => console.log(error),
       // () => console.log('user added')
-      next: (res) => {this.snackbar.open("User Added Sucessfully","OK",{duration:3000})},
+      next: (res) => {
+        this.snackbar.open('User Added Sucessfully', 'OK', { duration: 3000 });
+      },
       error: (e) => console.log(e),
       complete: () => console.log('user added'),
     });
@@ -122,8 +121,4 @@ export class AddHrComponent implements OnInit {
       console.log(res);
     });
   }
-
- 
 }
-
-

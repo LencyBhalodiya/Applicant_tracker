@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Chart } from 'chart.js';
-import { map, Subject } from 'rxjs';
+import {  Subject } from 'rxjs';
 
 
 @Injectable({

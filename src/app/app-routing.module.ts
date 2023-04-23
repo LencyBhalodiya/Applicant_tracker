@@ -6,6 +6,8 @@ import { UserCheckGuard } from './shared/auth/auth-services/user-check.guard';
 import { AuthComponent } from './shared/auth/auth.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { NavbarsComponent } from './shared/navbars/navbars.component';
+import { ForgotPasswordComponent } from './shared/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,14 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
   },
   {
     path: 'auth/register',
@@ -85,6 +95,11 @@ const routes: Routes = [
         path: 'reports',
         loadChildren: () =>
           import('./admin/reports/reports.module').then((m) => m.ReportsModule),
+      },
+      {
+        path: 'future-reference',
+        loadChildren: () =>
+          import('./admin/future-reference/future-reference.module').then((m) => m.FutureReferenceModule),
       },
     ],
   },

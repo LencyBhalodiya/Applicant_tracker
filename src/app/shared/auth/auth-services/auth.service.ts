@@ -9,9 +9,10 @@ import jwt_decode from 'jwt-decode';
 export class AuthService {
   constructor(private http: HttpClient, public router: Router) {}
   private roleName!: string;
-  signIn(data: any) {
+  signIn(data:any) {
     let api =
       'http://192.168.102.92:8002/authentication/api/v1/auth/authenticate';
+      
     return this.http.post(api, data).subscribe(
       (res: any) => {
         localStorage.setItem('access_token', res.token);
@@ -34,10 +35,11 @@ export class AuthService {
     };
     data.gender = data.gender.toUpperCase();
     data.role = role;
-
+    
     return this.http.post(api, data).subscribe(
       (res: any) => {
-        console.log(res);
+        console.log(res,"res:  sucess");
+        alert("registration successfull, please login to continue")
       },
       (error) => {
         console.log('registeration:  ', error);

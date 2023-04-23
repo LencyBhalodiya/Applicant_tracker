@@ -18,7 +18,7 @@ export class AdminChartsComponent implements OnInit, OnDestroy {
   constructor(private chartData: DashboardservicesService) {
     Chart.register(...registerables);
   }
-
+  isLoading:boolean = true;
   ngOnInit(): void {
     this.totalApplicantFn();
     this.offerGraphFn();
@@ -27,11 +27,11 @@ export class AdminChartsComponent implements OnInit, OnDestroy {
   }
 
   sumData = new Subject<number>();
-  
   totalApplicantFn(): void {
     let labels!: string[];
     let data!: number[];
     this.chartData.totalApplicantData().subscribe((res: any) => {
+      this.isLoading = false;
       labels = Object.keys(res);
       data = Object.values(res);
       this.chartData.sumData.next(data.reduce((a, b) => a + b, 0));
@@ -64,14 +64,12 @@ export class AdminChartsComponent implements OnInit, OnDestroy {
     let labels!: string[];
     let data!: number[];
     this.chartData.graphLink().subscribe((res: any) => {
-      
       labels = res.streamData.map((item: any) => (labels = item.stream));
-      data = res.streamData.map((item: any) => (data = item.BackOut));
+      data = res.streamData.map((item: any) => (data = item.BackedOut));
       this.chartData.createBarChart('backoutGraph', labels, data);
     });
   }
 
   ngOnDestroy(): void {
-    this.sumData.unsubscribe();
-    }
+  }
 }
