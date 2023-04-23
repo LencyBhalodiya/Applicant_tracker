@@ -17,18 +17,18 @@
       <div class="col col-7">Profile</div>
     </li>
 
-    <li class="table-row">
+    <li class="table-row" *ngFor="let user of data">
       
       <div class="col col-2" data-label="Name">
         <!-- <mat-spinner></mat-spinner> -->
-        <p> lency</p>
+        <p> {{user.firstname }} </p>
       </div>
-      <div class="col col-3" data-label="stream">JAVA</div>
-      <div class="col col-4" data-label="stage">Techincal</div>
-      <div class="col col-5" data-label="stage">Rond</div>
-      <div class="col col-6" #status data-label="Status">accepted</div>
+      <div class="col col-3" data-label="stream">{{user.stream}}</div>
+      <div class="col col-4" data-label="stage">{{user.stage}} </div>
+      <div class="col col-5" data-label="stage">{{user.round}} </div>
+      <div class="col col-6" #status data-label="Status">{{user.status}} </div>
       <div class="col col-7" data-label="actions">
-        <button mat-icon-button matTooltip="Profile">
+        <button mat-icon-button matTooltip="Profile" (click)="onRoute(user.id)">
       <mat-icon>account_circle</mat-icon>
         </button>
 
