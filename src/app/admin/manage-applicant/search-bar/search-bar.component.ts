@@ -8,7 +8,7 @@ import { ManageApplicantService } from '../services/manage-applicant.service';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css'],
 })
-export class SearchBarComponent implements OnInit, DoCheck {
+export class SearchBarComponent implements OnInit{
   filterForm!: FormGroup;
   statuses:string[]= [];
   rounds: any;
@@ -29,7 +29,7 @@ export class SearchBarComponent implements OnInit, DoCheck {
       // rounds: new FormControl(''),
       streams: new FormControl(''),
       statuses: new FormControl(''),
-      stages: new FormControl('Screening Stage', { nonNullable: true }),
+      stages: new FormControl(''),
     });
 
     this.searchForm = this.fb.group({
@@ -43,7 +43,7 @@ export class SearchBarComponent implements OnInit, DoCheck {
       .subscribe((streams) => (this.streams = streams));
   }
 
-  ngDoCheck() {
+  stageChange() {
     if (this.stages) {
       let index = this.stages.findIndex(
         (stage: any) => stage.stageName === this.filterForm.value['stages']
@@ -73,7 +73,8 @@ export class SearchBarComponent implements OnInit, DoCheck {
   // search data
   searchData() {
     if(this.searchForm.value['query'].trim()==='')
-      this._aService.getData(1);
-    this._aService.search(this.searchForm.value['query']);
+      this._aService.getData(0);
+    else
+      this._aService.search(this.searchForm.value['query']);
   }
 }

@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { IApplicants } from '../manage-applicant/models/applicants';
+import { IApplicants } from '../manage-applicant/models/models.interface';
 import { AddHrComponent } from './add-hr/add-hr.component';
 import { EditHrComponent } from './edit-hr/edit-hr.component';
 import { ManageHrService } from './services/manage-hr.service';
@@ -81,12 +81,7 @@ export class ManageUsersComponent {
         this.dataSource = new MatTableDataSource<any>(res as IApplicants[]);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      },
-      error(err) {
-        //let snackBarRef = this._snackBar.open('Message archived');
-
-        console.error(err.message);
-      },
+      }
     });
   }
 

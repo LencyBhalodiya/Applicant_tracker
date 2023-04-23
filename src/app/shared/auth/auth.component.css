@@ -15,6 +15,9 @@
   .login-container {
     padding: 9rem 0% 0 10%;
   }
+  .register-container{
+    padding: 3rem 0% 0 10%;
+  }
   .login-card {
     width: 31.25rem;
     min-width: 15.625rem;
@@ -50,6 +53,7 @@ mat-form-field {
   margin: 0 0 0.625rem 0;
 }
 .signup-link a {
+  color:black;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -77,4 +81,26 @@ button{
   color:white;
   font-weight: 600;
   font-size: 1.25rem;
+}
+
+.example-tel-input-container {
+  display: flex;
+}
+
+.example-tel-input-element {
+  border: none;
+  background: none;
+  padding: 0;
+  outline: none;
+  font: inherit;
+  text-align: center;
+}
+
+.example-tel-input-spacer {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+:host.example-floating .example-tel-input-spacer {
+  opacity: 1;
 }

@@ -1,9 +1,9 @@
 <div class="container">
+    <!-------------------- search-bar ------------------->
     <app-search-bar></app-search-bar>
     <div class="button-container">
-        <button mat-raised-button ngClass="header" [hidden]="hideBlkBtn">Give Feedback</button>
         <button mat-raised-button color="primary" style="margin-right: 1rem;" ngClass="header"
-            (click)="feedbackDialog(_checkedArr)">Bulk Feedback</button>
+            *ngIf="!newapplicantsFlag" (click)="feedbackDialog(_checkedArr)">Bulk Feedback</button>
         <button mat-raised-button color="primary" ngClass="header" (click)="nextRound(_checkedArr)">Bulk Promote</button>
         <button mat-raised-button color="primary" style="margin-left: 1rem;" ngClass="header"
             (click)="getNewApplicants()">{{btnLabel}}</button>
@@ -16,23 +16,24 @@
 
     <!-- approved applicants  -->
     <div *ngIf="!newapplicantsFlag" class="mat-elevation-z8 table-container">
-        <span class="errorMessage">{{errorApplicant}}</span>
         <li class="table-header">
             <div class="col col-1">select</div>
-            <div class="col col-2">id</div>
-            <div class="col col-3">Name</div>
-            <div class="col col-4">Stream</div>
-            <div class="col col-5">Stage</div>
+            <!-- <div class="col col-2">id</div> -->
+            <div class="col col-2">Name</div>
+            <div class="col col-3">Stream</div>
+            <div class="col col-4">Stage</div>
+            <div class="col col-5">Round</div>
             <div class="col col-6">Status</div>
             <div class="col col-7">Action</div>
         </li>
 
         <li *ngFor="let i of dataSource | paginate: {itemsPerPage: 15, currentPage: p, totalItems: total}" class="table-row">
             <div class="col col-1" data-label="select"><span><mat-checkbox color="primary" style="vertical-align: top;" [value]="i" (change)="toggle($event)"></mat-checkbox></span></div>
-            <div class="col col-2" data-label="Id">{{i.id}}</div>
-            <div class="col col-3" data-label="Name">{{i.name}}</div>
-            <div class="col col-4" data-label="stream">{{i.stream}}</div>
-            <div class="col col-5" data-label="stage">{{i.stage}}</div>
+            <!-- <div class="col col-2" data-label="Id">{{i.id}}</div> -->
+            <div class="col col-2" data-label="Name"><a routerLink="#">{{i.name}}</a></div>
+            <div class="col col-3" data-label="stream">{{i.stream}}</div>
+            <div class="col col-4" data-label="stage">{{i.stage}}</div>
+            <div class="col col-5" data-label="stage">{{i.round}}</div>
             <div class="col col-6" #status data-label="Status">{{i.status | color:status}}</div>
             <div class="col col-7" data-label="actions">
                 <button mat-icon-button (click)="nextRound(i)" matTooltip="Promote">
@@ -41,9 +42,6 @@
                 <button mat-icon-button matTooltip="Review" (click)="feedbackDialog(i)">
                     <mat-icon>comment</mat-icon>
                 </button>
-                <!-- <button mat-icon-button (click)="scheduleDialog(i)" matTooltip="schedule">
-                    <mat-icon>schedule</mat-icon>
-                </button> -->
             </div>
         </li>
         <li><pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls></li>
@@ -51,10 +49,9 @@
 
     <!-- new applicants -->
     <div *ngIf="newapplicantsFlag" class="mat-elevation-z8 table-container">
-        <span class="errorMessage">{{errorNewApplicant}}</span>
         <li class="table-header">
             <div class="col col-1">select</div>
-            <div class="col col-2">id</div>
+            <!-- <div class="col col-2">id</div> -->
             <div class="col col-3">Name</div>
             <div class="col col-4">Stream</div>
             <div class="col col-7">Action</div>
@@ -62,14 +59,13 @@
 
         <li *ngFor="let j of dataSource2" class="table-row">
             <div class="col col-1" data-label="select"><span><mat-checkbox color="primary" style="vertical-align: top;" [value]="j.id" (change)="toggle($event)"></mat-checkbox></span></div>
-            <div class="col col-2" data-label="Job Id">{{j.id}}</div>
+            <!-- <div class="col col-2" data-label="Job Id">{{j.id}}</div> -->
             <div class="col col-3" data-label="Name">{{j.firstname + " " +j.lastname}}</div>
             <div class="col col-4" data-label="stream">{{j.stream}}</div>
             <div class="col col-7" data-label="actions">
                 <button mat-icon-button matTooltip="promote" [id]="j.id"  (click)="addToProcess(j)">
                     <mat-icon>add</mat-icon>
-                </button>
-                
+                </button>   
             </div>
         </li>
     </div>

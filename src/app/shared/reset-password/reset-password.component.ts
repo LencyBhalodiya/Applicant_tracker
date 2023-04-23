@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SharedService } from '../services/shared.service';
 
@@ -12,25 +12,20 @@ import { SharedService } from '../services/shared.service';
 export class ResetPasswordComponent {
   public showPassword: boolean = false;
   public showConfirmPassword: boolean = false;
-  private _uId:number =0;
-  private _data:object = {};
-  constructor (private _route:ActivatedRoute, private _shared:SharedService, public snackBar:MatSnackBar){}
+  private _uId: string | null | undefined;
+  private _data: object = {};
+  constructor(private _route: ActivatedRoute, private _shared: SharedService, public snackBar: MatSnackBar) { }
   resetPassword = new FormGroup({
-      password: new FormControl('',[
-          Validators.required,
-          Validators.minLength(8)
-      ]),
-      confirmPassword: new FormControl('',[
-          Validators.required,
-          Validators.minLength(8)
-      ])
+    password: new FormControl('',[
+      Validators.required,
+      Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/)
+    ]),
+    confirmPassword: new FormControl('',[
+      Validators.required,
+      Validators.pattern(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/)
+    ])
   });
 
-  // on init 
-  ngOnInit(){
-    this._uId = parseInt(this._route.snapshot.paramMap.get("uId")||'');
-    console.log(this._route.snapshot.queryParamMap.get("uid"));
-  }
 
   // password visibility
   public togglePasswordVisibility(): void {
@@ -43,21 +38,21 @@ export class ResetPasswordComponent {
   }
 
   // send post request
-  onSubmit(){
-      console.log(this.resetPassword.value);
-      let pwd = this.resetPassword.value.password;
-      let confirmPwd = this.resetPassword.value.confirmPassword;
-     if (pwd === confirmPwd) {
-      this._data = {uid: this._uId, password: pwd}
+  onSubmit() {
+    let pwd = this.resetPassword.value.password;
+    let confirmPwd = this.resetPassword.value.confirmPassword;
+    let uid = this._route.snapshot.paramMap.get("uid")
+    if (pwd === confirmPwd) {
+      this._data = { uid: 2, password: pwd }
       this._shared.setPassword(this._data);
-      this.snackBar.open("password set successfully", "ok", {
-        duration: 5000
-      })
-     }
-     else{this.snackBar.open("Password didn't match!", "ok", {
-      duration: 5000
-    })
-     }
+      console.log(this._shared.successPasswordFlag.subscribe((res:any)=>{return res}))
+      if (this._shared.successPasswordFlag.subscribe((res:boolean)=>{return res}))
+        this.snackBar.open("password set successfully", "ok", { duration: 5000 })
+      else
+        this.snackBar.open("Something went wrong please try again", "ok", { duration: 5000 })
+    }
+    else
+      this.snackBar.open("Password didn't match!", "ok", { duration: 5000 })
   }
-
 }
+

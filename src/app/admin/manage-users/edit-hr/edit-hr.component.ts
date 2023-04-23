@@ -18,7 +18,7 @@ export class EditHrComponent implements OnInit {
 
       fname: new FormControl(this.editData.fname),
       lname: new FormControl(this.editData.lname),
-      email: new FormControl(this.editData.email)
+      email: new FormControl()
 
 
     })

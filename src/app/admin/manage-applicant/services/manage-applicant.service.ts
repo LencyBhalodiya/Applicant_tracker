@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { IApplicants } from '../models/applicants';
-
+import { BehaviorSubject} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ManageApplicantService {
   private _url: string = 'http://192.168.102.92:8002/main/api/admin';
-  private _urlNewApplicants: string = 'http://192.168.102.92:8002/main/api/admin/getNewUser';
+  private _urlNewApplicants: string =
+    'http://192.168.102.92:8002/main/api/admin/getNewUser';
   private _filterUrl = 'http://192.168.102.92:8002/main/api/admin/get';
-  
 
   statuses: string[] = [
     'Offered',
@@ -22,16 +19,19 @@ export class ManageApplicantService {
     'On Hold',
     'Backed-out',
   ];
+  
   // http://192.168.102.92
   rounds!: string[];
   errorMessage!: string;
-  datasource = new BehaviorSubject<any>(null);
-  constructor(private _http: HttpClient) { }
+  datasource = new BehaviorSubject<any>([]);
+  constructor(private _http: HttpClient) {}
 
   // get all Approved applicants
   getData(page: number) {
-    this._http.get(this._url + "/getAllUser" + "?page=" + page + "?pageSize = 15").subscribe((res)=>this.datasource.next(res));
-    
+    this._http
+      .get(this._url + '/getAllUser/'+ page+'/15/id')
+      .subscribe((res:any) => this.datasource.next(res.content));
+
     return this.datasource;
   }
 
@@ -42,13 +42,12 @@ export class ManageApplicantService {
 
   // get stages
   getStages() {
-    return this._http.get<any>("http://192.168.102.92:8002/main/api/admin/getAllStage");
+    return this._http.get<any>(this._url + '/getAllStage');
   }
-
 
   // get streams
   getStreams() {
-    return this._http.get<any>('http://192.168.102.92:8002/main/api/admin/getAllStream');
+    return this._http.get<any>(this._url + '/getAllStream');
   }
 
   // get Status
@@ -59,26 +58,28 @@ export class ManageApplicantService {
   // update feedback
   updateFeedback(response: any) {
     return this._http
-      .post<any>(this._url + '/updateTracking', response)
+      .post(this._url + '/updateTracking', response,{responseType:'text'})
       .subscribe((res) => console.log(res));
   }
 
   // bulk feedback
   bulkFeedback(response: any) {
-    return this._http.post<any>(this._url + '/BulkUpdateFeedback', response).subscribe(res => console.log(res));
+    return this._http
+      .post(this._url + '/BulkUpdateFeedback', response,{responseType:'text'})
+      .subscribe((res) => console.log(res));
   }
 
-  // promote applicant 
+  // promote applicant
   promoteApplicant(response: any) {
     return this._http
-      .post<any>(this._url + '/updateTracking', response)
+      .post(this._url + '/updateTracking', response,{responseType:'text'})
       .subscribe((res) => console.log(res));
   }
 
   // bulk Promote
   bulkPromote(response: any) {
     return this._http
-      .post<any>(this._url + '/BulkUpdateCreate', response)
+      .post(this._url + '/BulkUpdateCreate', response,{responseType:'text'})
       .subscribe(
         (res) => console.log(res),
         (err) => console.log(err)
@@ -93,7 +94,9 @@ export class ManageApplicantService {
     } else {
       this.errorMessage = error.message;
       console.error(
-        `Backend returned code ${error.status}, body was: `, error.error);
+        `Backend returned code ${error.status}, body was: `,
+        error.error
+      );
     }
     return this.errorMessage;
   }
@@ -101,17 +104,23 @@ export class ManageApplicantService {
   //  filter
   applyFilter(url: string) {
     console.log(this._filterUrl + url);
-    return this._http.get(this._filterUrl + url).subscribe(res => this.datasource.next(res));
+    return this._http
+      .get(this._filterUrl + url)
+      .subscribe((res) => this.datasource.next(res));
   }
 
   // add to procedure
   addToProcess(response: any) {
-    return this._http.post(this._url + '/createTracking', response).subscribe(res => console.log(res));
+    return this._http
+      .post(this._url + '/createTracking', response)
+      .subscribe((res) => console.log(res));
   }
-
-  search(url:string){
-    this._http.get(this._url + '/SearchAllUser/' + url).subscribe(res=>this.datasource.next(res));
+// searchbar  
+  search(url: string) {
+    url = url.toLowerCase();
+    this._http
+      .get(this._url + '/SearchAllUser/' + url)
+      .subscribe((res) => this.datasource.next(res));
     return this.datasource;
   }
 }
-

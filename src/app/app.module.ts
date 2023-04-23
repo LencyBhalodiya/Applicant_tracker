@@ -11,20 +11,21 @@ import { NavbarsComponent } from './shared/navbars/navbars.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterationComponent } from './applicant/registeration/registeration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {  NgxFileDropModule } from "ngx-file-drop";
+import { NgxFileDropModule } from 'ngx-file-drop';
 import { AuthInterceptor } from './shared/auth/auth-services/auth.interceptor';
 import { ForgotPasswordComponent } from './shared/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
+import { HttpErrorInterceptor } from './shared/services/http-error-interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorPageComponent,
+    // ErrorPageComponent,
     AuthComponent,
     NavbarsComponent,
     RegisterationComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,9 @@ import { ResetPasswordComponent } from './shared/reset-password/reset-password.c
     ReactiveFormsModule,
     NgxFileDropModule,
   ],
-  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

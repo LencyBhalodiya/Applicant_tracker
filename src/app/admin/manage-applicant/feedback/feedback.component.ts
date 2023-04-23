@@ -73,6 +73,5 @@ export class FeedbackComponent implements OnInit {
     // console.log('inside submit feedback', response);
     this._aService.updateFeedback(response);
     this.feedbackForm.reset();
-    location.reload()
   }
 }
