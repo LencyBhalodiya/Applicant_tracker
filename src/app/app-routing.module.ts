@@ -6,8 +6,9 @@ import { UserCheckGuard } from './shared/auth/auth-services/user-check.guard';
 import { AuthComponent } from './shared/auth/auth.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { NavbarsComponent } from './shared/navbars/navbars.component';
-import { ForgotPasswordComponent } from './shared/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './shared/forgot-password/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './shared/reset-password/reset-password/reset-password.component';
+
 
 const routes: Routes = [
   {
@@ -75,6 +76,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./admin/manage-applicant/manage-applicant.module').then(
             (m) => m.ManageApplicantModule
+          ),
+      },
+      {
+        path: 'manage-applicants/profile/:id',
+        loadChildren: () =>
+          import('./applicant/profile/profile.module').then(
+            (m) => m.ProfileModule
           ),
       },
       {

@@ -5,6 +5,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { ManageApplicantService } from '../services/manage-applicant.service';
 import { DatePipe } from '@angular/common';
+import { ID,Round,Stage } from '../models/models.interfaces';
+import { InterviewCycleService } from '../../interview-cycle/services/interview-cycle.service';
 
 @Component({
   selector: 'app-promote',
@@ -12,27 +14,28 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./promote.component.css'],
 })
 export class PromoteComponent {
-  rounds: any;
+  rounds!: Round[];
   statuses!: string[];
+
   options: string[] = ['Technical Skill', 'Communication Skills', 'Other'];
-  stages: any;
+  stages!: Stage[];
   stageWiseRounds!: string[];
 
-  feedbackForm!: FormGroup;
+  promotionForm!: FormGroup;
   customReason: boolean = true;
   datePipe = new DatePipe('en-US');
 
   constructor(
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private _aService: ManageApplicantService
+    private _aService: ManageApplicantService,
+    private iService: InterviewCycleService
   ) {}
 
-  // do check
-  ngDoCheck() {
+  stageChange(value: string) {
     if (this.stages) {
       let index = this.stages.findIndex(
-        (stage: any) => stage.stageName === this.feedbackForm.value['stage']
+        (stage: any) => stage.stageName === value
       );
       this.rounds = this.stages[index].rounds;
     }
@@ -40,9 +43,8 @@ export class PromoteComponent {
 
   // on init
   ngOnInit(): void {
-    this.feedbackForm = this.fb.group({
-      stage: new FormControl('Screening Stage', {
-        nonNullable: true,
+    this.promotionForm = this.fb.group({
+      stage: new FormControl('', {
         validators: [Validators.required],
       }),
       round: new FormControl('', {
@@ -50,41 +52,40 @@ export class PromoteComponent {
       }),
       start_date: new FormControl(''),
       end_date: new FormControl(''),
-      status: new FormControl('pending'),
+      status: new FormControl('Pending'),
     });
 
-    this._aService.getStages().subscribe((stages) => (this.stages = stages));
+    this.iService.getStages().subscribe((stages) => (this.stages = stages));
     this.statuses = this._aService.getStatuses();
   }
 
   // submit feedback
-  submitFeedback() {
-    let response: any;
-    this.feedbackForm.value['end_date'] = this.datePipe.transform(
+  submitForm() {
+    this.promotionForm.value['end_date'] = this.datePipe.transform(
       new Date(),
       'yyyy/mm/dd hh:mm:ss'
     );
-    this.feedbackForm.value['start_date'] = this.datePipe.transform(
+    this.promotionForm.value['start_date'] = this.datePipe.transform(
       new Date(),
       'yyyy/mm/dd hh:mm:ss'
     );
     if (Array.isArray(this.data)) {
-      response = {
-        ids: [],
-      };
+      let arr: ID[] = [];
       this.data.forEach((entity) => {
-        response.ids.push({ trackingId: entity.trackingId });
+        arr.push({ trackingId: entity.trackingId });
       });
-      response.data = this.feedbackForm.value;
+      let response = {
+        ids: arr,
+        data: this.promotionForm.value,
+      };
       this._aService.bulkPromote(response);
     } else {
-      response = this.feedbackForm.value;
+      let response = this.promotionForm.value;
       response['tracking'] = {
-        tid:this.data.trackingId
+        tid: this.data.trackingId,
       };
       this._aService.promoteApplicant(response);
     }
-    console.log(response);
-    this.feedbackForm.reset();
+    this.promotionForm.reset();
   }
 }

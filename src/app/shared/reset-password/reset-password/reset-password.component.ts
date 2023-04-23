@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SharedService } from '../services/shared.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -12,7 +12,7 @@ import { SharedService } from '../services/shared.service';
 export class ResetPasswordComponent {
   public showPassword: boolean = false;
   public showConfirmPassword: boolean = false;
-  private _uId: string | null | undefined;
+  private _uId!: number;
   private _data: object = {};
   constructor(private _route: ActivatedRoute, private _shared: SharedService, public snackBar: MatSnackBar) { }
   resetPassword = new FormGroup({
@@ -27,6 +27,13 @@ export class ResetPasswordComponent {
   });
 
 
+  ngOnInit(){
+      this._route.queryParams.subscribe((params)=>{
+        this._uId = parseInt(params['uid']);
+        console.log(this._uId);
+        
+      })
+  }
   // password visibility
   public togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
@@ -41,9 +48,8 @@ export class ResetPasswordComponent {
   onSubmit() {
     let pwd = this.resetPassword.value.password;
     let confirmPwd = this.resetPassword.value.confirmPassword;
-    let uid = this._route.snapshot.paramMap.get("uid")
     if (pwd === confirmPwd) {
-      this._data = { uid: 2, password: pwd }
+      this._data = { uid: this._uId, password: pwd };
       this._shared.setPassword(this._data);
       console.log(this._shared.successPasswordFlag.subscribe((res:any)=>{return res}))
       if (this._shared.successPasswordFlag.subscribe((res:boolean)=>{return res}))

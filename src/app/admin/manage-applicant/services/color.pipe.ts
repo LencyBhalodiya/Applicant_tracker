@@ -5,28 +5,28 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ColorPipe implements PipeTransform {
   transform(value: string, ...args: any[]): unknown {
-    switch (value.toLowerCase()) {
-      case "pending":
+    switch (value) {
+      case "Pending":
         args[0].style.color = "orange";
         break;
 
-      case "test cleared":
+      case "Test Cleared":
         args[0].style.color = "rgba(5, 94, 189, 0.941)";
         break
 
-      case 'offered':
+      case 'Offered':
         args[0].style.color = "green";
         break;
 
-      case "rejected":
+      case "Rejected":
         args[0].style.color = "red";
         break
 
-      case "on hold":
+      case "On Hold":
         args[0].style.color = "brown";
         break
 
-      case "backed-out":
+      case "Backed-out":
         args[0].style.color = "grey";
         break
     

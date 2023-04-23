@@ -1,7 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject} from 'rxjs';
-
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+  BulkUpdateCreateForm,
+  BulkUpdateFeedbackForm,
+  PromoteForm,
+  Stage,
+  UpdateFeedbackForm,
+} from '../models/models.interfaces';
 @Injectable({
   providedIn: 'root',
 })
@@ -9,28 +21,27 @@ export class ManageApplicantService {
   private _url: string = 'http://192.168.102.92:8002/main/api/admin';
   private _urlNewApplicants: string =
     'http://192.168.102.92:8002/main/api/admin/getNewUser';
-  private _filterUrl = 'http://192.168.102.92:8002/main/api/admin/get';
+  private _filterUrl = 'http://192.168.102.92:8002/main/api/admin';
 
   statuses: string[] = [
     'Offered',
     'Rejected',
     'Test Cleared',
-    'pending',
+    'Pending',
     'On Hold',
-    'Backed-out',
+    'BackedOut',
   ];
-  
-  // http://192.168.102.92
+
   rounds!: string[];
   errorMessage!: string;
   datasource = new BehaviorSubject<any>([]);
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient, private snackbar: MatSnackBar) {}
 
   // get all Approved applicants
   getData(page: number) {
     this._http
-      .get(this._url + '/getAllUser/'+ page+'/15/id')
-      .subscribe((res:any) => this.datasource.next(res.content));
+      .get(this._url + '/getAllUser/' + page + '/15/id')
+      .subscribe((res: any) => this.datasource.next(res.content));
 
     return this.datasource;
   }
@@ -39,15 +50,9 @@ export class ManageApplicantService {
   getNewApplicants() {
     return this._http.get(this._urlNewApplicants);
   }
-
-  // get stages
-  getStages() {
-    return this._http.get<any>(this._url + '/getAllStage');
-  }
-
   // get streams
   getStreams() {
-    return this._http.get<any>(this._url + '/getAllStream');
+    return this._http.get(this._url + '/getAllStream');
   }
 
   // get Status
@@ -56,66 +61,108 @@ export class ManageApplicantService {
   }
 
   // update feedback
-  updateFeedback(response: any) {
+  updateFeedback(response: UpdateFeedbackForm) {
     return this._http
-      .post(this._url + '/updateTracking', response,{responseType:'text'})
+      .put(this._url + '/updateUserTracking', response)
+      .pipe(
+        catchError((error) => {
+          console.log('Error while giving feedback', error);
+          return throwError(() => {
+            this.snackbar.open('Something Went Wrong...', '', {
+              duration: 2000,
+            });
+          });
+        })
+      )
       .subscribe((res) => console.log(res));
   }
 
   // bulk feedback
-  bulkFeedback(response: any) {
+  bulkFeedback(response: BulkUpdateFeedbackForm) {
     return this._http
-      .post(this._url + '/BulkUpdateFeedback', response,{responseType:'text'})
+      .post(this._url + '/BulkUpdateFeedback', response)
+      .pipe(
+        catchError((error) => {
+          console.log('Error in bulkReview', error);
+          return throwError(() => {
+            this.snackbar.open('Something Went Wrong..', '', {
+              duration: 2000,
+            });
+          });
+        })
+      )
       .subscribe((res) => console.log(res));
   }
 
   // promote applicant
-  promoteApplicant(response: any) {
+  promoteApplicant(response: PromoteForm) {
     return this._http
-      .post(this._url + '/updateTracking', response,{responseType:'text'})
+      .put(this._url + '/updateUserTracking', response)
+      .pipe(
+        catchError((error) => {
+          console.log('Error in promoting...', error);
+          return throwError(() => {
+            this.snackbar.open('Something went wrong...', '', {
+              duration: 2000,
+            });
+          });
+        })
+      )
       .subscribe((res) => console.log(res));
   }
 
   // bulk Promote
-  bulkPromote(response: any) {
+  bulkPromote(response: BulkUpdateCreateForm) {
     return this._http
-      .post(this._url + '/BulkUpdateCreate', response,{responseType:'text'})
-      .subscribe(
-        (res) => console.log(res),
-        (err) => console.log(err)
-      );
+      .post<any>(this._url + '/BulkUpdateCreate', response)
+      .pipe(
+        catchError((error) => {
+          console.log('error in bulk promotion', error);
+          return throwError(() => {
+            this.snackbar.open('Something Went Wrong', '', { duration: 2000 });
+          });
+        })
+      )
+      .subscribe((res) => console.log(res));
   }
 
-  // error handler
-  handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      this.errorMessage = error.message;
-      console.error('An error occurred:', error.error);
-    } else {
-      this.errorMessage = error.message;
-      console.error(
-        `Backend returned code ${error.status}, body was: `,
-        error.error
-      );
-    }
-    return this.errorMessage;
-  }
+ 
 
   //  filter
   applyFilter(url: string) {
     console.log(this._filterUrl + url);
     return this._http
       .get(this._filterUrl + url)
+      .pipe(
+        catchError((error) => {
+          console.log('error in filtering', error);
+          return throwError(() => {
+            this.snackbar.open('Something Went Wrong...', '', {
+              duration: 2000,
+            });
+          });
+        })
+      )
       .subscribe((res) => this.datasource.next(res));
   }
 
   // add to procedure
-  addToProcess(response: any) {
+  addToProcess(response: PromoteForm) {
     return this._http
-      .post(this._url + '/createTracking', response)
+      .post(this._url + '/createUserTracking', response)
+      .pipe(
+        catchError((error) => {
+          console.log('Error occured while adding to process', error);
+          return throwError(() => {
+            this.snackbar.open('Something Went Wrong...', '', {
+              duration: 2000,
+            });
+          });
+        })
+      )
       .subscribe((res) => console.log(res));
   }
-// searchbar  
+
   search(url: string) {
     url = url.toLowerCase();
     this._http

@@ -53,4 +53,10 @@ export class ProfileComponent {
   doLogout() {
     this.authService.logOut();
   }
+
+  getRole() {
+    let role = this.authService.getTokenRole();
+    console.log(role);
+    return role == 'user' ? true : false;
+  }
 }

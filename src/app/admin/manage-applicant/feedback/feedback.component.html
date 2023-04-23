@@ -1,4 +1,4 @@
-<div class="dialog-title" *ngIf="data.name; else bulkTitle">Applicant Review : {{data.name}}</div>
+<div class="dialog-title" *ngIf="data.name; else bulkTitle">Applicant Review : {{data.name | titlecase}}</div>
 <ng-template #bulkTitle>
   <div class="dialog-title">Batch Review</div>
 </ng-template>
@@ -8,7 +8,7 @@
   <form action="" [formGroup]="feedbackForm">
     <mat-form-field appearance="outline">
       <mat-label>Status</mat-label>
-      <mat-select formControlName="status">
+      <mat-select formControlName="status" (valueChange)="rejectionToggle($event)">
         <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -35,6 +35,6 @@
   <mat-dialog-actions align="end">
     <button mat-raised-button type="submit" [disabled]="feedbackForm.invalid" (click)="submitFeedback()"
       mat-dialog-close color="primary">Update</button>
-    <button mat-raised-button mat-dialog-close color="primary" class="btn-purple">Cancel</button>
+    <button mat-raised-button mat-dialog-close color="primary">Cancel</button>
   </mat-dialog-actions>
 </div>

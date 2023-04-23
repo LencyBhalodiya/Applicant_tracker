@@ -8,6 +8,8 @@ import {
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageApplicantService } from '../services/manage-applicant.service';
 import { DatePipe } from '@angular/common';
+import { IDs } from '../models/models.interfaces';
+
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
@@ -26,10 +28,8 @@ export class FeedbackComponent implements OnInit {
     private _aService: ManageApplicantService
   ) {}
 
-  // do check
-  ngDoCheck() {
-    this.rejectionHide =
-      this.feedbackForm.controls['status'].value === 'Rejected';
+  rejectionToggle(value: string) {
+    this.rejectionHide = value === 'Rejected';
   }
 
   // on init
@@ -46,32 +46,29 @@ export class FeedbackComponent implements OnInit {
 
   // submit feedback
   submitFeedback() {
-    // let response = this.feedbackForm.value;
     this.feedbackForm.value['end_date'] = this.datePipe.transform(
       new Date(),
       'yyyy/mm/dd hh:mm:ss'
     );
-    let response: any;
+
     if (Array.isArray(this.data)) {
-      response = {
-        ids: [],
-      };
-
+      let arr: IDs[] = [];
       this.data.forEach((entity) => {
-        response.ids.push({ id: entity.id, trackingId: entity.trackingId });
+        arr.push({ id: entity.id, trackingId: entity.trackingId });
       });
-
-      response.data = this.feedbackForm.value;
+      let response = {
+        ids: arr,
+        data: this.feedbackForm.value,
+      };
       this._aService.bulkFeedback(response);
     } else {
-      response = this.feedbackForm.value;
-      response['id'] = this.data.id;
+      let response = this.feedbackForm.value;
       response['tracking'] = {
         tid: this.data.trackingId,
       };
+      response['id'] = this.data.id;
+      this._aService.updateFeedback(response);
     }
-    // console.log('inside submit feedback', response);
-    this._aService.updateFeedback(response);
     this.feedbackForm.reset();
   }
 }

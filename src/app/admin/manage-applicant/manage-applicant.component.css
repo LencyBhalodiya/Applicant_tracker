@@ -9,17 +9,23 @@ table {
 }
 
 .container {
-  padding: 2rem 2rem 3rem 2rem;
+  padding: 0rem 2rem 3rem 2rem;
   background-color: var(--background-color);
   height: 100vh;
+  position: relative;
 }
 
-.table-container{
+mat-spinner{
+  position: absolute;
+  left:45%;
+  top:40%;
+}
+
+.table-container {
   border-radius: 10px;
-
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .mobile-label {
     width: 80px;
     display: inline-block;
@@ -39,40 +45,23 @@ table {
   table {
     overflow: scroll;
   }
-  button{
+  button {
     margin: 0.5rem;
   }
-  li{
-    width: 50%;
-  }
 }
 
-.passed {
-  color: rgb(35, 210, 35);
-  font-size: 0.7rem;
-}
-
-.rejected {
-  color: rgb(213, 10, 10);
-  font-size: 0.7rem;
-}
-
-.pending {
-  color: rgb(203, 203, 3);
-  font-size: 0.7rem;
-}
 
 .header {
   background-color: var(--main-color) !important;
   color: #fff !important;
 }
 
-
 .filter-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   margin-top: 15px;
+  /* margin-bottom:-15px; */
 }
 
 .accordion-container {
@@ -81,32 +70,27 @@ table {
 
 .apply-btn {
   display: flex;
-  justify-content: flex-end;
+  justify-content: end;
 }
 
 /* ul li code */
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-
-li {
+.li {
   border-radius: 3px;
   display: flex;
   justify-content: space-between;
 }
 
+
+
 .table-header {
   background-color: var(--main-color);
   color: #fff;
-  font-size: 1rem;
+  font-size: 1em;
   text-transform: capitalize;
   letter-spacing: 0.03em;
   padding: 0.8rem 0.8rem;
   border-radius: 10px 10px 0 0;
-  font-weight: 500;
-
+  font-weight: 700;
 }
 
 .table-row {
@@ -115,11 +99,11 @@ li {
 }
 
 .col-1 {
-  flex-basis: 10%;
+  flex-basis: 5%;
 }
 
 .col-2 {
-  flex-basis: 15%;
+  flex-basis: 5%;
 }
 
 .col-3 {
@@ -141,17 +125,41 @@ li {
 .col-7 {
   flex-basis: 15%;
 }
+.col-8 {
+  flex-basis: 15%;
+}
 
 .col {
   display: flex;
-  align-items: center;
+  align-items: center;  
   padding: 5px 5px;
   text-align: center;
+  font-size: 1em;
   justify-content: space-evenly;
 }
+
 
 .button-container {
   display: flex;
   margin: 2rem 0rem 2rem 0rem;
   justify-content: flex-end  ;
+}
+
+.heading {
+  margin-bottom: 2rem;
+}
+h2 {
+  margin: 1rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #012970;
+}
+span {
+  color: rgb(106, 105, 105);
+}
+
+
+button{
+  font-size:1em;
+  font-weight: 700;
+  height: 48px;
 }
