@@ -1,16 +1,16 @@
 <div class="dialog-title">Edit Stage</div>
 <div class="dialog-container">
   <form [formGroup]="editStage" (submit)="editStageDetails()">
-    <mat-form-field>
-      <mat-label>Update Stage Name</mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>Stage Name</mat-label>
       <input
         matInput
         [(ngModel)]="data.stageName"
         formControlName="stagename"
       />
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Update Stage Sequence</mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>Stage Sequence</mat-label>
       <input
         type="number"
         [(ngModel)]="data.sequenceNo"

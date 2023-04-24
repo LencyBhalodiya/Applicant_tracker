@@ -1,6 +1,7 @@
 .dialog-container {
   max-width: 600px;
   padding-left: 20%;
+  padding-top: 5%;
   padding-right: 10%;
   display: flex;
   justify-content: center;
@@ -8,7 +9,7 @@
 }
 .dialog-title {
   display: flex;
-  height: 30px;
+  height: 50px;
   padding-left: 10px;
   align-items: center;
   font-size: large;
