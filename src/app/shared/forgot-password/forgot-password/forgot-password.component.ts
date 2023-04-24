@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SharedService } from '../services/shared.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -18,6 +18,7 @@ export class ForgotPasswordComponent {
     email: new FormControl('', [
       Validators.required,
       Validators.email,
+      Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
     ])
   });
 
@@ -32,7 +33,7 @@ export class ForgotPasswordComponent {
     }
     else if (this.successStatus == 400)
       this.snackBar.open("user does not exist", "ok", { duration: 5000 });
-    // else
-    //   this.snackBar.open("something went wrong", "try again", { duration: 5000 });
+    else
+      this.snackBar.open("something went wrong", "try again", { duration: 5000 });
   }
 }

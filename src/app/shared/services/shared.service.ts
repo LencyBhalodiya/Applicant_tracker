@@ -34,9 +34,6 @@ export class SharedService {
       .subscribe({
         next: (res) => {
           this.successPasswordFlag.next(true);
-        },
-        error: (err: any) => {
-          console.log("error", err);
         }
       })
     return this.successPasswordFlag

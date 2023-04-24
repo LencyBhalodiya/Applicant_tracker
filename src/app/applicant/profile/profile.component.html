@@ -1,6 +1,6 @@
 <!-- <mat-spinner></mat-spinner> -->
 
-<mat-toolbar class="tool-bar">
+<mat-toolbar *ngIf="getRole()" class="tool-bar">
   <button mat-icon-button matTooltip="Menu">
     <mat-icon>menu</mat-icon>
   </button>
@@ -116,7 +116,7 @@
         <hr />
       </div>
 
-      <button class="btn btn-edit" (click)="openDialog()">Edit</button>
+      <button class="btn btn-edit" (click)="openDialog()" *ngIf="getRole()">Edit</button>
     </div>
   </div>
 </div>

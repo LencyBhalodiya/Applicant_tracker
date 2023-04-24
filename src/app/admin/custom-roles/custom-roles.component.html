@@ -16,10 +16,10 @@
         <mat-card-content>
           <span>User</span>
           <span id="userName">{{item.rolename | uppercase}}</span><br /><br />
-          <span>Roles</span>
+          <span>Permissions</span><br/><br/>
           <form id="formdata">
             <mat-form-field class="example-chip-list" appearance="fill">
-              <mat-label>{{item.rolename}} Roles</mat-label>
+              <mat-label>{{item.rolename}} Permissions</mat-label>
               <mat-chip-grid #chipGrid aria-label="Role selection">
                 <mat-chip-row *ngFor="let permission of item.permissions" (removed)="remove(permission,i)">
                   {{permission.name | titlecase}}
@@ -56,12 +56,12 @@
       <mat-card>
         <mat-card-content>
           <label for="Manage Streams" #label class="adjustalign">{{roles.name | titlecase}}</label>
-          <mat-checkbox id="checkbox" color="primary" (click)="getData(roles.id,roles.name,check)" [checked]="isSelected"
+          <mat-checkbox id="checkbox" color="primary" (click)="getData(roles.id,roles.name,check)"
             #check></mat-checkbox>
         </mat-card-content>
       </mat-card>
     </div>
     <br>
-    <Button (click)="getValue(name,btn)" id="addRoles" #btn disabled>Add Roles</Button>
+    <Button (click)="getValue(name,btn);unchecked()" id="addRoles" #btn disabled>Add Roles</Button>
   
   </div>

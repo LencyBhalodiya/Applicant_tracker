@@ -29,8 +29,8 @@ export class ManageStreamsComponent implements OnInit {
   //Calling API
   ngOnInit() {
     this.data.getStreams().subscribe((stream) => {
-      this.stream = stream.filter((item) => item.isActive == true);
-    });
+      this.stream=stream.filter((item)=> item.isActive==true)
+    })
   }
 
   //Method for input Validation

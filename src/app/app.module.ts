@@ -13,9 +13,8 @@ import { RegisterationComponent } from './applicant/registeration/registeration.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { AuthInterceptor } from './shared/auth/auth-services/auth.interceptor';
-import { ForgotPasswordComponent } from './shared/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
-import { HttpErrorInterceptor } from './shared/services/http-error-interceptor';
+import { ForgotPasswordComponent } from './shared/forgot-password/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './shared/reset-password/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [

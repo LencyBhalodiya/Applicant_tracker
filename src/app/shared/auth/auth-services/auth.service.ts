@@ -39,7 +39,7 @@ export class AuthService {
     return this.http.post(api, data).subscribe(
       (res: any) => {
         console.log(res,"res:  sucess");
-        alert("registration successfull, please login to continue")
+        alert("registration successful, please login to continue")
       },
       (error) => {
         console.log('registeration:  ', error);
