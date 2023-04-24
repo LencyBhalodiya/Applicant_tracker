@@ -35,7 +35,7 @@
             <div class="col col-1" data-label="select"><span><mat-checkbox color="primary" style="vertical-align: top;"
                         [value]="i" (change)="toggle($event)"></mat-checkbox></span></div>
             <div class="col col-2" >{{dataSource.indexOf(i)+1}}</div>
-            <div class="col col-3" data-label="Name"><a  style="text-decoration: none; color: black;" routerLink="profile/{{i.id}}">{{i.firstname + " " +i.lastname | titlecase}}</a></div>
+            <div class="col col-3" data-label="Name"><a  style="text-decoration: none; color: black;" routerLink="profile/{{i.uid}}">{{i.firstname + " " +i.lastname | titlecase}}</a></div>
             <div class="col col-4" data-label="stream">{{i.stream | titlecase}}</div>
             <div class="col col-5" data-label="stage">{{i.stage}}</div>
             <div class="col col-6" data-label="stage">{{i.round}}</div>
