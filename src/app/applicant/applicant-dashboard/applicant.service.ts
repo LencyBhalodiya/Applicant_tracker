@@ -52,4 +52,28 @@ export class ApplicantService {
       )
     );
   }
+
+  updateStageStatus(stageId: any, stageStatus: any): Observable<any> {
+    return this.http
+      .put(
+        `${this.apiUrl}/updateStage/${stageId}`,
+        {},
+        {
+          params: {
+            stageId,
+            isActive: stageStatus,
+          },
+        }
+      )
+      .pipe(
+        catchError((error) => {
+          console.error('Error updating stage status', error);
+          return throwError(() => {
+            this.snackBar.open('Error updating stage status ', '', {
+              duration: 3000,
+            });
+          });
+        })
+      );
+  }
 }

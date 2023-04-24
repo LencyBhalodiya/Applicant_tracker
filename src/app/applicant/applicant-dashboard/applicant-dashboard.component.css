@@ -41,7 +41,6 @@ mat-card-header{
   margin-top: 20px;
   font-size: 20px;
 }
-
 .row{
   display: flex;
   flex-direction: row;
@@ -57,4 +56,13 @@ mat-card-header{
   display: flex;
   justify-content: center;
   padding: 20px;
+}
+.btn-purple{
+  padding: 20px;
+  margin-left: 50%;
+  transform: translate(-50%);
+  background-color: #6476ed;
+  color: white;
+  border: none;
+  margin-top: 50px;
 }
