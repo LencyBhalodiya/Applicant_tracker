@@ -140,7 +140,7 @@ export class ManageApplicantComponent {
   addToProcess(data:INewApplicants) {
     let response: any = {};
     response['stage'] = 'Screening Stage';
-    response['status'] = 'pending';
+    response['status'] = 'Pending';
     response['round'] = 'Screening Test';
     response['tracking'] = {
       recruiter: {
