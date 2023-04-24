@@ -3,7 +3,7 @@
 -------------------------------------*/
 
 .section div {
-  padding: 10px;
+  padding: 0.625rem;
 }
 
 /*-------------------------------------
@@ -11,14 +11,14 @@
 -------------------------------------*/
 
 mat-card {
-  border-radius: 5px;
+  border-radius: 1.875rem;
   width: 40%;
   box-shadow: var(--box-shadow)
 }
 
 mat-card:not(#stream):hover {
   transition: scale 1s ease;
-  box-shadow: 4px 4px 5px #B0DAFF;
+  box-shadow: 0.25rem  0.25rem  0.313rem var(--main-color);
 }
 
 .section div mat-card {
@@ -32,8 +32,7 @@ mat-card:not(#stream):hover {
 [mat-fab] {
   float: right;
   background-color: var(--main-color);
-  color:white;
-  height: 50px;
+  height: 3.125rem;
 }
 
 button:hover {
@@ -44,9 +43,9 @@ button:hover {
 }
 
 #inputStream {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
-  padding: 20px
+  padding: 1.25rem;
 }
 
 .section div mat-card #img {
@@ -55,22 +54,28 @@ button:hover {
 
 input {
   border: hidden;
-  padding-top: 15px;
+  padding-top: 0.938rem;
   width: 40%;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
+
 }
 
 #inputStream:focus {
+
+  /* border-bottom-style: groove;
+  border-bottom: 4px solid #e5e5e5; */
   outline: none;
   border-color: #B0DAFF;
+
+
 }
 
 /*-------------------------------------
   Media Queries For Responsiveness
 -------------------------------------*/
 
-@media only screen and (width<1300px) {
+@media only screen and (width<81.25rem) {
 
   .section div mat-card {
     width: 100%;
@@ -78,11 +83,11 @@ input {
 
   .section div mat-card #img {
     width: 4%;
-    margin-top: -10px
+    margin-top: -0.625rem
   }
 }
 
-@media only screen and (width<1000px) {
+@media only screen and (width<62.5rem) {
   #img {
     display: none;
   }

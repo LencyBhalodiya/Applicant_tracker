@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatFabButton } from '@angular/material/button';
 import { ManageStreamService } from './service/manage-stream.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-manage-streams',
@@ -8,28 +10,32 @@ import { ManageStreamService } from './service/manage-stream.service';
   styleUrls: ['./manage-streams.component.css'],
 })
 export class ManageStreamsComponent implements OnInit {
-  stream!: any[];
 
-  constructor(private data: ManageStreamService) {}
+
+  stream!:any[]
+  
+  constructor(private data: ManageStreamService) { }
 
   //Function to add New Stream
-  addStream(inputStream: any) {
-    if (inputStream.value == '') {
+  addStream(inputStream: HTMLInputElement) {
+    if(inputStream.value=="")
+    {
       return;
     }
-    this.data
-      .setStreams({ streamName: inputStream.value })
-      .subscribe((response) => this.stream.push(response));
-    this.data.getStreams().subscribe((stream) => {
-      this.stream = stream.filter((item) => item.isActive == true);
-    });
-    inputStream.value = '';
+    this.data.setStreams({streamName:inputStream.value}).subscribe((response)=>this.stream.push(response))
+    inputStream.value=''
+    setTimeout(()=>{
+      this.data.getStreams().subscribe((stream) => {
+        this.stream=stream.filter((item)=> item.isActive==true)
+    })
+    },200)
+   
   }
 
-  //Calling API
+  //Calling API to get Stream
   ngOnInit() {
     this.data.getStreams().subscribe((stream) => {
-      this.stream=stream.filter((item)=> item.isActive==true)
+        this.stream=stream.filter((item)=> item.isActive==true)
     })
   }
 
@@ -40,5 +46,21 @@ export class ManageStreamsComponent implements OnInit {
     } else {
       btn.disabled = false;
     }
+  }
+  addvalue(event:HTMLInputElement){
+
+  }
+  enterStrem(event:any,inputStream: HTMLInputElement){
+    if(event.keyCode==13){
+      this.data.setStreams({streamName:inputStream.value}).subscribe((response)=>this.stream.push(response))
+      inputStream.value=''
+      console.log("Value updated")
+    }
+      setTimeout(()=>{
+      this.data.getStreams().subscribe((stream) => {
+        this.stream=stream.filter((item)=> item.isActive==true)
+    })
+    },200)
+    
   }
 }

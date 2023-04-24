@@ -1,8 +1,7 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
 import { PassDataService } from './services/pass-data.service';
 
 @Component({
@@ -19,16 +18,23 @@ export class CustomRolesComponent implements OnInit{
   @ViewChild('roleInput') roleInput!: ElementRef<HTMLInputElement>;
   @ViewChildren('check') private myCheckboxes !: QueryList<any>;
 
-  constructor(private _snackBar: MatSnackBar, private passDataroles: PassDataService) { }
+  constructor(private _snackBar: MatSnackBar, private passDataroles: PassDataService) {}
 
   //Getting Roles Data
   ngOnInit() {
-    this.passDataroles.getPermisson().subscribe((role) =>{
-      this.managePermissions = role
+    let tempSubscription:Subscription=this.passDataroles.getPermisson().subscribe({
+      next:(role) =>{
+        this.managePermissions = role
+      },
+      error:(error:Error)=>{
+        tempSubscription.unsubscribe()
+        console.log(error.message)
+      },
+      complete: ()=>{
+        tempSubscription.unsubscribe()
+      }
     })
-    this.passDataroles.getRoles().subscribe((role) => {
-      this.rolesData = role
-    })
+   this.getRolesData()
   }
 
   openSnackBar(message: string) {
@@ -42,7 +48,6 @@ export class CustomRolesComponent implements OnInit{
       this.selectedOptions=this.selectedOptions.filter((item)=>{return item.id !== val})
     }
     else{
-      
       this.selectedOptions.push({id:val,name:name})
     }
         
@@ -56,15 +61,39 @@ export class CustomRolesComponent implements OnInit{
           return
       }
     }
-    this.passDataroles.setRoles({rolename:name.value,permissions:this.selectedOptions}).subscribe((res)=>console.log(res))
+    let tempSubscription=this.passDataroles.setRoles({rolename:name.value,permissions:this.selectedOptions}).subscribe({
+      next:()=>{
+          console.log("Successfully Added")
+      },
+      error : (error:Error)=>{
+          tempSubscription.unsubscribe()
+          console.log(error.message)
+      },
+      complete : ()=>{
+          tempSubscription.unsubscribe()
+      }
+    })
     this.openSnackBar('Roles Added')
     name.value = "";
     (<HTMLButtonElement>btn).disabled = true;
     setTimeout(()=>{
-      this.passDataroles.getRoles().subscribe((role) => {
-        this.rolesData = role
-      })
+      this.getRolesData()
     },1500)
+  }
+
+  getRolesData(){
+    let tempSubscription:Subscription = this.passDataroles.getRoles().subscribe({
+      next:(role) => {
+        this.rolesData = role
+      },
+      error : (error : Error)=>{
+        tempSubscription.unsubscribe()
+        console.log(error.message)
+      },
+      complete : ()=>{
+        tempSubscription.unsubscribe()
+      }
+    })
   }
 
   //Input Validation
@@ -82,7 +111,18 @@ export class CustomRolesComponent implements OnInit{
     const index = this.rolesData[ind].permissions.indexOf(roles);
     if (index >= 0) {
       this.rolesData[ind].permissions.splice(index, 1);
-      this.passDataroles.updateRoles({id:this.rolesData[ind].id,rolename:this.rolesData[ind].rolename,permissions: this.rolesData[ind].permissions}).subscribe(res=>console.log(res))
+      let tempSubscription:Subscription=this.passDataroles.updateRoles({id:this.rolesData[ind].id,rolename:this.rolesData[ind].rolename,permissions: this.rolesData[ind].permissions}).subscribe({
+        next:()=>{
+          console.log("Successfully Updated")
+        },
+        error:(error:Error)=>{
+          tempSubscription.unsubscribe()
+          console.log(error.message)
+        },
+        complete : ()=>{
+          tempSubscription.unsubscribe()
+        }
+      })
     }
   }
 
@@ -100,7 +140,18 @@ export class CustomRolesComponent implements OnInit{
       this.rolesData[index].permissions.push({id:event.option.value.id,name:event.option.value.name});
       this.roleInput.nativeElement.value = '';
       console.log(this.rolesData[index])
-      this.passDataroles.updateRoles({id:this.rolesData[index].id,rolename:this.rolesData[index].rolename,permissions: this.rolesData[index].permissions}).subscribe(res=>console.log(res))
+      let tempSubsscription:Subscription=this.passDataroles.updateRoles({id:this.rolesData[index].id,rolename:this.rolesData[index].rolename,permissions: this.rolesData[index].permissions}).subscribe({
+        next:()=>{
+          console.log("Successfully Updated")
+        },
+        error : (error:Error)=>{
+          tempSubsscription.unsubscribe()
+          console.log(error.message)
+        },
+        complete : ()=>{
+          tempSubsscription.unsubscribe()
+        },
+      })
     }
   }
 

@@ -3,143 +3,142 @@
 -------------------------------------*/
 
 .section div {
-    padding: 10px;
-  }
-  
-  .header h1 {
-    font-weight: bold;
-    font-size: 40px;
-    color: var(--main-color);
+  padding: 10px;
+}
 
+.header h1 {
+  font-weight: bold;
+  font-size: 40px;
+  color: var(--main-color)
+}
+
+.header {
+  padding: 10px;
+}
+
+mat-card {
+  width: 100%;
+}
+
+
+/*-------------------------------------
+  Header Mat-Card Styles
+-------------------------------------*/
+
+.header mat-card {
+  width: 100%
+}
+
+.header mat-card h1 {
+  padding: 20px
+}
+
+/*-------------------------------------
+  Body Mat-Card Styles
+-------------------------------------*/
+
+#firstCard #inputCard {
+  height: 6em;
+}
+
+/*-------------------------------------
+  Input Mat-Card Styles
+-------------------------------------*/
+
+[mat-fab] {
+  float: right;
+  background-color: var(  --main-color);
+  color:white;
+  height: 50px;
+}
+
+input {
+  border: hidden;
+  padding-top: 15px;
+  width: 40%;
+  font-size: 18px;
+  font-weight: bold;
+
+}
+
+.no-outline:focus {
+
+  border-bottom-style: groove;
+  border-bottom: 4px solid #e5e5e5;
+  outline: none;
+  animation: line 0.5s;
+  border-color: var(  --main-color);
+
+
+}
+
+@keyframes line {
+  from {
+    width: 0px;
   }
-  
-  .header {
-    padding: 10px;
-   
+
+  to {
+    width: 40%;
   }
-  
-  mat-card {
+}
+
+button:hover {
+
+  background-color: aliceblue;
+  color: black;
+
+}
+
+#firstCard mat-card {
+  width: 40%;
+  border-radius: 30px;
+  box-shadow: var(--box-shadow);
+}
+
+.section #img {
+  width: 59%;
+  height: 38em;
+  margin-top: -40px;
+  float: right;
+}
+
+.section .dataContainer mat-card-content #firstCard #inputCard mat-card-content #asite {
+  width: 6%;
+  margin-top: -10px
+}
+
+.section .dataContainer #firstCard #inputCard mat-card-content input {
+  padding: 20px
+}
+
+/*-------------------------------------
+  Media Queries For Responsiveness
+-------------------------------------*/
+
+@media only screen and (width<1300px) {
+  #img {
+    display: none;
+  }
+
+  .section #inputCard {
     width: 100%;
   }
-  
-  
-  /*-------------------------------------
-    Header Mat-Card Styles
-  -------------------------------------*/
-  
-  .header mat-card {
-    width: 100%
-  }
-  
-  .header mat-card h1 {
-    padding: 20px
-  }
-  
-  /*-------------------------------------
-    Body Mat-Card Styles
-  -------------------------------------*/
-  
-  #firstCard #inputCard {
-    height: 6em;
-  }
-  
-  /*-------------------------------------
-    Input Mat-Card Styles
-  -------------------------------------*/
-  
-  [mat-fab] {
-    float: right;
-    background-color: var(--main-color);
-    color:white;
-    height: 50px;
-  }
-  
-  input {
-    border: hidden;
-    padding-top: 15px;
-    width: 40%;
-    font-size: 18px;
-    font-weight: bold;
-  
-  }
-  
-  .no-outline:focus {
-  
-    border-bottom-style: groove;
-    border-bottom: 4px solid #e5e5e5;
-    outline: none;
-    animation: line 0.5s;
-    border-color: #B0DAFF;
-  
-  
-  }
-  
-  @keyframes line {
-    from {
-      width: 0px;
-    }
-  
-    to {
-      width: 40%;
-    }
-  }
-  
-  button:hover {
-  
-    background-color: aliceblue;
-    color: black;
-  
-  }
-  
-  #firstCard mat-card {
-    width: 40%;
-    border-radius: 5px;
-    box-shadow: var(--box-shadow);
-  }
-  
-  .section #img {
-    width: 59%;
-    margin-top: -40px;
-    float: right;
-  }
-  
+
+
   .section .dataContainer mat-card-content #firstCard #inputCard mat-card-content #asite {
-    width: 6%;
+    width: 4%;
+    margin-top: -10px
   }
-  
-  .section .dataContainer #firstCard #inputCard mat-card-content input {
-    padding: 20px
+}
+
+@media only screen and (width<401px) {
+  .header h1 {
+    font-size: 30px
   }
-  
-  /*-------------------------------------
-    Media Queries For Responsiveness
-  -------------------------------------*/
-  
-  @media only screen and (width<1300px) {
-    #img {
-      display: none;
-    }
-  
-    .section #inputCard {
-      width: 100%;
-    }
-  
-  
-    .section .dataContainer mat-card-content #firstCard #inputCard mat-card-content #asite {
-      width: 4%;
-      margin-top: -10px
-    }
+}
+
+@media only screen and (width<1000px) {
+  #asite {
+    display: none;
   }
-  
-  @media only screen and (width<401px) {
-    .header h1 {
-      font-size: 30px
-    }
-  }
-  
-  @media only screen and (width<1000px) {
-    #asite {
-      display: none;
-    }
-  }
-  
+}
