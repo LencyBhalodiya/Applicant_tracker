@@ -1,6 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MaterialDesignModule } from 'src/app/shared/material-design/material-design.module';
 
 import { ApplicantDashboardComponent } from './applicant-dashboard.component';
 
@@ -10,9 +8,7 @@ describe('ApplicantDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [  ],
-      imports : [ MaterialDesignModule , HttpClientModule ],
-      providers : [ ApplicantDashboardComponent ]
+      declarations: [ ApplicantDashboardComponent ]
     })
     .compileComponents();
 
