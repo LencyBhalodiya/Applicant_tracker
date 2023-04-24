@@ -151,5 +151,6 @@ export class ManageApplicantComponent {
       },
     };
     this._aService.addToProcess(response);
+    this.getNewApplicants();
   }
 }

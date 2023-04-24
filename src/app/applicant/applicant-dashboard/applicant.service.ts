@@ -20,6 +20,11 @@ export class ApplicantService {
       })
     );
   }
+
+  getUserTracking(uid:number){
+    console.log("UID",uid);
+    return this.http.get('http://192.168.102.92:8002/main/api/user/current/status/'+ uid)
+  }
   
   getRoundsByStage(stageId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/getAllStage`).pipe(

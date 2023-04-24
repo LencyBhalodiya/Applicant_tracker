@@ -22,28 +22,29 @@
          
          <!-- Round Information Cards -->
           <hr>
-          <button ngClass="btn-purple" *ngIf="showstatus" (click)="getRoundOnShowStatus()">Show Status</button>
+          <button ngClass="btn-purple" *ngIf="showstatus" (click)="getRoundOnShowStatus(stage)">Show Status</button>
           <p class="stage-name" *ngIf="noStageName">{{stage.stageName}}</p>
-          <div class="flex" *ngFor="let round of rounds">
+          <div class="flex" *ngFor="let status of currentStatus">
             <mat-card>
               <mat-card-header>
-                <mat-card-title>{{round.roundName}}</mat-card-title><br>
+                <mat-card-title>{{status.round}}</mat-card-title><br>
               </mat-card-header>
               <mat-card-content>
                 <div class="row">
                   <div class="column">
-                      <p>Current Status:</p>
+                      <p>Current Status:{{status.status}}</p>
+                      <!-- <div class="row">
+                        {{status.status}}
+                      </div> -->
+                      <!-- <p>Stage:</p>
                       <div class="row">
-                      </div>
-                      <p>Stage:</p>
-                      <div class="row">
-                      </div>
+                      </div> -->
                   </div>
                   <div class="column">
-                      <p>Assignee:</p>
-                      <div class="row">
-                          
-                      </div>
+                      <p>Reivew:{{status.review || 'No Review'}}</p>
+                      <!-- <div class="row">
+                          {{status.review}}
+                      </div> -->
                   </div>
               </div>
               </mat-card-content>
