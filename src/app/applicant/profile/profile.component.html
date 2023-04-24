@@ -32,16 +32,13 @@
   <div class="profile-wrapper">
     <div class="left-profile">
       <div class="profile-image">
-        <img
-          src="https://customerthink.com/wp-content/uploads/kissclipart-professional-man-and-woman-cartoon-clipart-busines-5fe2dff6275ed00e.jpg"
-          alt="profile"
-        />
+        <img src="{{ imgUrl }}" />
       </div>
       <div class="profile-name">
         <span>{{ profileData.firstname }} {{ profileData.lastname }} </span>
         <p>UI/UX Designer</p>
 
-        <button class="btn">Resume</button>
+        <button class="btn" (click)="openPdfViewer()">Resume</button>
       </div>
     </div>
     <div class="right-profile">
@@ -116,7 +113,9 @@
         <hr />
       </div>
 
-      <button class="btn btn-edit" (click)="openDialog()" *ngIf="getRole()">Edit</button>
+      <button class="btn btn-edit" (click)="openDialog()" *ngIf="getRole()">
+        Edit
+      </button>
     </div>
   </div>
 </div>

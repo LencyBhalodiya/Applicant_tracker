@@ -43,13 +43,6 @@ export class EditHrComponent implements OnInit {
     });
   }
 
-  playSound() {
-    console.log('click');
-    let audio = new Audio();
-    audio.src = '../../../../assets/sounds/n1.mp3';
-    audio.play();
-  }
-
   updateHr(data: any): void {
     console.log(data);
     let res = {
@@ -72,11 +65,7 @@ export class EditHrComponent implements OnInit {
     role.id = role1.id;
     role.rolename = role1.rolename;
 
-    // this.rolen.id = data.role.id;
-    // this.rolen.name = data.role.rolename;
     res.role = role;
-
-    //console.log(res);
 
     this.hrSer.editHr(res, this.editData.id).subscribe({
       next: (res) => {

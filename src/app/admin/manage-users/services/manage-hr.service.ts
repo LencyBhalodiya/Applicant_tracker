@@ -13,7 +13,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class ManageHrService {
-  public dataSource = new BehaviorSubject({});
+  // public dataSource = new BehaviorSubject({});
 
   // private _api:string = 'http://192.168.102.92:8002/main/api/admin/';
   private _getAllHr: string =
@@ -35,11 +35,7 @@ export class ManageHrService {
   constructor(private _http: HttpClient) {}
 
   getData() {
-    this._http.get(this._getAllHr).subscribe((res) => {
-      this.dataSource.next(res);
-    });
-
-    return this.dataSource;
+    return this._http.get(this._getAllHr);
   }
 
   getRole() {

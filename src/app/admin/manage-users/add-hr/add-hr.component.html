@@ -67,7 +67,7 @@
               formControlName="dob"
               value="matInput"
             />
-            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+
             <mat-datepicker-toggle
               matIconSuffix
               [for]="picker"
@@ -110,7 +110,7 @@
               class="btn-save"
               [class.deactive]="this.addHrForm.invalid"
               [disabled]="this.addHrForm.invalid"
-              (click)="addHr(addHrForm.value); playSound()"
+              (click)="addHr(addHrForm.value)"
             >
               Save
             </button>

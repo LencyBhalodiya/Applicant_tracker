@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from '../profile-service/profile.service';
 import { EditmodalComponent } from './editmodal/editmodal.component';
+import { ResumeComponent } from './resume/resume.component';
 import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
 @Component({
   selector: 'app-profile',
@@ -23,6 +24,7 @@ export class ProfileComponent {
   profileAddressData: any;
   public currentAdd!: string;
   public permAdd!: string;
+  public imgUrl!: string;
   openDialog() {
     this.dialog.open(EditmodalComponent, {
       data: this.profileData,
@@ -34,6 +36,7 @@ export class ProfileComponent {
     this.getUserInfo();
 
     this.getUserAddress();
+    this.getImage();
   }
   getUserInfo() {
     this._profileService.getProfileData(this._userId).subscribe((res) => {
@@ -64,14 +67,28 @@ export class ProfileComponent {
       console.log(res);
     });
   }
-
+  openPdfViewer() {
+    const dialogRef = this.dialog.open(ResumeComponent, {
+      data: {
+        id: this._userId,
+      },
+      width: '600px',
+      height: '800px',
+    });
+  }
+  getImage() {
+    this._profileService.getImage(this._userId).subscribe((url) => {
+      const file = new Blob([url], { type: 'image/jpeg' });
+      this.imgUrl = URL.createObjectURL(file);
+    });
+  }
   doLogout() {
     this.authService.logOut();
   }
 
   getRole() {
     let role = this.authService.getTokenRole();
-    console.log(role);
+    // console.log(role);
     return role == 'user' ? true : false;
   }
 }

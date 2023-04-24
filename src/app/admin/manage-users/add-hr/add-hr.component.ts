@@ -62,11 +62,6 @@ export class AddHrComponent implements OnInit {
       console.log(res);
     });
   }
-  playSound() {
-    let audio = new Audio();
-    audio.src = '../../../../assets/sounds/n1.mp3';
-    audio.play();
-  }
 
   addHr(data: any): any {
     data.dob = this.datePipe.transform(data.dob, 'yyyy-MM-dd');

@@ -73,6 +73,8 @@ export class ManageUsersComponent {
         this.dataSource.sort = this.sort;
       },
       error: (error) => {
+        console.log('error');
+
         this._snackBar.open('something went wrong', 'ok', { duration: 2000 });
       },
     });
@@ -98,7 +100,7 @@ export class ManageUsersComponent {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.manageHrService.getData();
+      this.getAllApplicants();
     });
   }
 
@@ -118,7 +120,7 @@ export class ManageUsersComponent {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.manageHrService.getData();
+      this.getAllApplicants();
     });
   }
 
