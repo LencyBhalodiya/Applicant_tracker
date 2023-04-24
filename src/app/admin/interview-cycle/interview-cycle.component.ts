@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddRoundDialog } from './add-stage-round-dialog/addround-dialog';
+import { AddStageDialog } from './add-stage-dialog/addstage-dialog';
+import { AddRoundDialog } from './add-round-dialog/addround-dialog';
+import { EditStageDialog } from './edit-stage-dialog/editstage-dialog';
 import { InterviewCycleService } from './services/interview-cycle.service';
 
 @Component({
@@ -9,31 +11,71 @@ import { InterviewCycleService } from './services/interview-cycle.service';
   styleUrls: ['./interview-cycle.component.css'],
 })
 export class InterviewCycleComponent {
-  stages!: any[];
-  rounds!: any[];
+  stages: Stage[] = [];
+  rounds: Round[] = [];
   constructor(
     public dialog: MatDialog,
     private interviewService: InterviewCycleService
   ) {
-    this.interviewService.getStages().subscribe((data) => {
-      this.stages = data;
+    this.interviewService.getStages().subscribe((stages: Stage[]) => {
+      this.stages = stages;
     });
   }
   ngOnInit() {}
+
   getRoundsByStage(stageId: number) {
-    this.interviewService.getRoundsByStage(stageId).subscribe((rounds) => {
-      this.rounds = rounds;
-    });
+    this.interviewService
+      .getRoundsByStage(stageId)
+      .subscribe((round: Round[]) => {
+        this.rounds = round;
+      });
   }
-  updateStageStatus(stage: any) {
-    stage.isActive = stage.isActive === true ? false : true;
+
+  updateStageStatus(stage: Stage) {
+    stage.isActive = !stage.isActive;
     this.interviewService
       .updateStageStatus(stage.stageId, stage.isActive)
       .subscribe((data) => {
         console.log(data);
       });
   }
-  openDialog() {
-    this.dialog.open(AddRoundDialog);
+
+  openStageDialog() {
+    this.dialog.open(AddStageDialog, {
+      width: '400px',
+      height: '300px',
+    });
   }
+  openRoundDialog() {
+    let dialogRef = this.dialog.open(AddRoundDialog, {
+      width: '400px',
+      height: '300px',
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.interviewService.getStages();
+    });
+  }
+  openEditStageDialog(stageId: number, stageName: string, sequenceNo: number) {
+    this.dialog.open(EditStageDialog, {
+      width: '400px',
+      height: '300px',
+      data: { stageId: stageId, stageName: stageName, sequenceNo: sequenceNo },
+    });
+  }
+}
+export interface Stage {
+  stageId: number;
+  stageName: string;
+  createdTime: string;
+  createdBy: string;
+  isActive: boolean;
+  sequenceNo: number;
+  rounds: Round[];
+}
+
+export interface Round {
+  roundId: number;
+  roundName: string;
+  createdTime: string;
+  createdBy: string;
 }

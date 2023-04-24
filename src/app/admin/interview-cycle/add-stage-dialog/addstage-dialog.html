@@ -1,0 +1,17 @@
+<div class="dialog-title">Add Stage</div>
+<div class="dialog-container">
+  <form [formGroup]="addStage" (ngSubmit)="addNewStage">
+    <mat-form-field>
+      <mat-label>Enter Stage Name</mat-label>
+      <input matInput formControlName="stagename" />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      class="add-btn"
+      (click)="addNewStage()"
+      [disabled]="addStage.invalid"
+    >
+      Add New Stage
+    </button>
+  </form>
+</div>
