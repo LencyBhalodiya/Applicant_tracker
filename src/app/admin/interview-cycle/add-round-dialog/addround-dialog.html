@@ -1,8 +1,6 @@
+<div class="dialog-title">Add Round</div>
 <div class="dialog-container">
   <form [formGroup]="addRound" (ngSubmit)="addRoundToSelectedStage()">
-    <mat-card-header>
-      <mat-card-title>Add Round To Stage</mat-card-title></mat-card-header
-    >
     <mat-form-field>
       <mat-label>Select Stage</mat-label>
       <mat-select formControlName="stagename">
@@ -17,20 +15,13 @@
       <mat-label>Add New Round</mat-label>
       <input formControlName="stageround" matInput />
     </mat-form-field>
-    <button mat-raised-button class="add-btn" [disabled]="addRound.invalid">
-      Add Round to Selected Stage
-    </button>
-  </form>
-  <form [formGroup]="addStage" (ngSubmit)="addNewStage">
-    <mat-card-header>
-      <mat-card-title>Add New Stage</mat-card-title></mat-card-header
+    <button
+      mat-raised-button
+      class="add-btn"
+      type="submit"
+      [disabled]="addRound.invalid"
     >
-    <mat-form-field>
-      <mat-label>Add New Stage</mat-label>
-      <input matInput formControlName="stagename" />
-    </mat-form-field>
-    <button mat-raised-button class="add-btn" (click)="addNewStage()">
-      Add New Stage
+      Add Round to Selected Stage
     </button>
   </form>
 </div>
