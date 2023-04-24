@@ -4,10 +4,10 @@
     <mat-toolbar>
       <span>Dashboard</span>
       <span class="spacer"></span>
-      <button mat-icon-button class="profile-icon" aria-label="icon-button with profile icon" [routerLink]="['profile']">
+      <button mat-icon-button class="profile-icon" aria-label="icon-button with profile icon" (click)="navigate()">
         <mat-icon>perm_identity</mat-icon>
       </button>
-      <button mat-icon-button class="edit-icon" aria-label="icon-button with edit icon">
+      <button mat-icon-button class="edit-icon" aria-label="icon-button with edit icon" routerLink="register">
         <mat-icon>edit</mat-icon>
       </button>
     </mat-toolbar>

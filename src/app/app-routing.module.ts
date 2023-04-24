@@ -29,10 +29,6 @@ const routes: Routes = [
     component: ResetPasswordComponent,
   },
   {
-    path: 'auth/register',
-    component: RegisterationComponent,
-  },
-  {
     path: 'applicant',
     canLoad: [UserCheckGuard],
     loadChildren: () =>

@@ -4,6 +4,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { MatStep, MatStepper } from '@angular/material/stepper';
 import { InterviewCycleService } from 'src/app/admin/interview-cycle/services/interview-cycle.service';
+import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-applicant-dashboard',
@@ -18,7 +20,7 @@ export class ApplicantDashboardComponent{
 
   @ViewChildren(MatStep)stepper!:QueryList<MatStep>;
 
-  constructor(private http:HttpClient,private applicantService:ApplicantService, private interviewService: InterviewCycleService){
+  constructor(private http:HttpClient,private applicantService:ApplicantService, private interviewService: InterviewCycleService,private authService: AuthService,private router:Router){
     this.applicantService.getStages().subscribe((data: any) => {
       this.stages = data;
       // for(let stage of this.stages){
@@ -30,6 +32,12 @@ export class ApplicantDashboardComponent{
     this.showstatus = true;
     
     
+  }
+  getId(){
+    return this.authService.getUserId();
+  }
+  navigate(){
+    this.router.navigate(['/applicant/profile/'+this.getId()]);
   }
 
   // updateStageStatus(stage: any) {

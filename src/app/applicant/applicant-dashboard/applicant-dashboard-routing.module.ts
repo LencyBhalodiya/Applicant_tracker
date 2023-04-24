@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserCheckGuard } from 'src/app/shared/auth/auth-services/user-check.guard';
+import { RegisterationComponent } from '../registeration/registeration.component';
 import { ApplicantDashboardComponent } from './applicant-dashboard.component';
 
 const routes: Routes = [
@@ -11,6 +12,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('../profile/profile.module').then((m) => m.ProfileModule),
   },
+  {
+    path: 'register',
+    component: RegisterationComponent
+  }
 ];
 
 @NgModule({
