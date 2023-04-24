@@ -1,23 +1,45 @@
 <div class="main">
   <div class="heading">
-    <h2><span>Admin ></span> Manage-Interview</h2>
+    <h2><span class="head-span">admin></span> Manage Interview</h2>
     <hr />
   </div>
   <div class="main-container">
     
     <mat-card>
-      <mat-card-header>
+      <mat-card-header class="card-header">
         <mat-card-title>Stages</mat-card-title>
+        <button
+          mat-mini-fab
+          class="mat-mini"
+          class="mat-mini"
+          (click)="openStageDialog()"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
       </mat-card-header>
+      <div class="stages-title">
+        <mat-card-subtitle>Stage Name</mat-card-subtitle>
+        <mat-card-subtitle>Stage Status</mat-card-subtitle>
+      </div>
       <mat-card-content>
-        <div class="stages-title">
-          <mat-card-subtitle>Stage Name</mat-card-subtitle>
-          <mat-card-subtitle>Stage Status</mat-card-subtitle>
-        </div>
         <mat-list *ngFor="let stage of stages">
           <mat-list-item (click)="getRoundsByStage(stage.stageId)">
             <span class="stage-list">
-              {{ stage.stageName }}
+              <span class="stage-name">{{ stage.stageName }}</span>
+              <button
+                [disabled]="!stage.isActive"
+                class="edit-btn"
+                mat-icon-button
+                (click)="
+                  openEditStageDialog(
+                    stage.stageId,
+                    stage.stageName,
+                    stage.sequenceNo
+                  )
+                "
+              >
+                <mat-icon class="edit-icon">edit</mat-icon>
+              </button>
               <mat-slide-toggle
                 color="var(--main-color)"
                 [checked]="stage.isActive"
@@ -30,13 +52,16 @@
       </mat-card-content>
     </mat-card>
     <mat-card>
-      <mat-card-header>
+      <mat-card-header class="card-header">
         <mat-card-title>Rounds</mat-card-title>
+        <button mat-mini-fab class="mat-mini" (click)="openRoundDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
       </mat-card-header>
+      <div class="stages-title">
+        <mat-card-subtitle>Round Name</mat-card-subtitle>
+      </div>
       <mat-card-content>
-        <div class="stages-title">
-          <mat-card-subtitle>Round Name</mat-card-subtitle>
-        </div>
         <mat-list *ngFor="let round of rounds">
           <mat-list-item>
             <span class="stage-list">
@@ -46,8 +71,5 @@
         </mat-list>
       </mat-card-content>
     </mat-card>
-    <button mat-raised-button class="add-btn" (click)="openDialog()">
-      Add Stage And Round
-    </button>
   </div>
 </div>

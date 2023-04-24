@@ -1,6 +1,6 @@
 <div class="container">
   <div class="heading">
-    <h2><span>Admin ></span> Manage Hr</h2>
+    <h2><span>admin ></span> Manage HR</h2>
     <hr />
   </div>
 
@@ -76,7 +76,7 @@
               class="toggle-btn"
               color="primary"
               [checked]="row.isActive"
-              (change)="changeStatus(row, $event)"
+              (change)="changeStatus(row.id, row.status, $event)"
             >
             </mat-slide-toggle>
           </span>

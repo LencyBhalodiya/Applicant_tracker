@@ -47,32 +47,51 @@ span {
     cursor: pointer;
   }
 
-mat-card-subtitle{
-  margin-left:16px;
+mat-card-subtitle {
+  margin-left: 16px;
 }
-  mat-card-header {
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 1.5rem;
-  }
-  mat-card-content {
-    height: 25rem; 
-    overflow-y: auto; 
-  }
-  
-  mat-card-title {
-    font-size: 2rem;
-    font-weight: 500;
-      color:var(--text-color);
-  }
-  mat-list-item {
-    margin-top: 0.25rem;
-    margin-bottom: 1rem;
-    border-radius: 5px;
-    font-size: 1.25rem;
-    font-weight: 500;
-  }
-  .add-btn{
-    background-color: var(--main-color) !important;
-    color:#fff !important;
-  }
-  
+mat-card-header,
+.stages-title {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1.5rem;
+}
+mat-card-content {
+  height: 25rem;
+  overflow-y: auto;
+}
+.mat-mini {
+  background-color: var(--main-color) !important;
+  margin-right: 16px;
+}
+mat-card-title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+mat-list-item {
+  margin-top: 0.15rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  border: solid 1px #474747;
+}
+.edit-icon {
+  color: var(--main-color);
+  font-size: 20px;
+  margin-left: 10%;
+}
+.stage-name {
+  width: 22rem !important;
+}
+.heading {
+  margin-bottom: 2rem;
+}
+.head-span {
+  color: rgb(106, 105, 105);
+}
+h2 {
+  margin: 1rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #012970;
+}

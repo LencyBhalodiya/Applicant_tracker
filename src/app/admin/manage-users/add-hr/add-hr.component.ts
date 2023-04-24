@@ -35,7 +35,10 @@ export class AddHrComponent implements OnInit {
 
   ngOnInit(): void {
     this.addHrForm = this.fb.group({
-      firstname: new FormControl('', [Validators.required]),
+      firstname: new FormControl('', [
+        Validators.required,
+        Validators.pattern(''),
+      ]),
       lastname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [
@@ -59,42 +62,6 @@ export class AddHrComponent implements OnInit {
       console.log(res);
     });
   }
-  playSound() {
-    let audio = new Audio();
-    audio.src = '../../../../assets/sounds/n1.mp3';
-    audio.play();
-  }
-
-  // get firstname()
-  // {
-  //   return this.addHrForm.get('firstname');
-
-  // }
-
-  //   get lastname()
-  // {
-  //   return this.addHrForm.get('lastname');
-  // }
-
-  // get email()
-  // {
-  //   return this.addHrForm.get('email');
-  // }
-
-  // get password()
-  // {
-  //   return this.addHrForm.get('password');
-  // }
-
-  // get dob()
-  // {
-  //   return this.addHrForm.get('dob');
-  // }
-
-  // get role()
-  // {
-  //   return this.addHrForm.get('role');
-  // }
 
   addHr(data: any): any {
     data.dob = this.datePipe.transform(data.dob, 'yyyy-MM-dd');
@@ -105,11 +72,6 @@ export class AddHrComponent implements OnInit {
     console.log(data);
 
     this.hrSer.addhr(data).subscribe({
-      // (res) => {
-      //   console.log(res);
-      // },
-      // (error) => console.log(error),
-      // () => console.log('user added')
       next: (res) => {
         this.snackbar.open('User Added Sucessfully', 'OK', { duration: 3000 });
       },
