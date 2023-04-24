@@ -4,58 +4,57 @@
     <mat-toolbar>
       <span>Dashboard</span>
       <span class="spacer"></span>
-      <button
-        mat-icon-button
-        class="profile-icon"
-        aria-label="icon-button with profile icon"
-        [routerLink]="['profile/' + getUserId()]"
-      >
+      <button mat-icon-button class="profile-icon" aria-label="icon-button with profile icon" [routerLink]="['profile']">
         <mat-icon>perm_identity</mat-icon>
       </button>
-      <button
-        mat-icon-button
-        class="edit-icon"
-        aria-label="icon-button with edit icon"
-      >
+      <button mat-icon-button class="edit-icon" aria-label="icon-button with edit icon">
         <mat-icon>edit</mat-icon>
       </button>
     </mat-toolbar>
   </p>
 </div>
-<div>
-  <mat-horizontal-stepper>
-    <mat-step label="Screening Test">
-      <p>Screening Test</p>
-      <button mat-button matStepperNext>Check Next States</button>
-    </mat-step>
-    <mat-step label="Online Test">
-      <p>Online Test</p>
-      <button mat-button matStepperPrevious>Check Previous States</button>
-      <button mat-button matStepperNext>Check Next States</button>
-    </mat-step>
-    <mat-step label="Techenical Test">
-      <p>Techenical Test</p>
-      <button mat-button matStepperPrevious>Check Previous States</button>
-      <button mat-button matStepperNext>Check Next States</button>
-    </mat-step>
-    <mat-step label="HR Interview">
-      <p>HR Interview</p>
-      <button mat-button matStepperPrevious>Check Previous States</button>
-      <button mat-button matStepperNext>Check Next States</button>
-    </mat-step>
-    <mat-step label="Result">
-      <p>Result</p>
-      <button mat-button matStepperPrevious>Check Previous States</button>
-    </mat-step>
+
+<!-- Stepper Header-->
+<div >
+  <mat-horizontal-stepper (selectionChange)="getRoundsByStage($event)"  #stepper>
+    <ng-container  *ngFor="let stage of stages" >
+        <mat-step *ngIf="stage.isActive" [label] = "stage.stageName">
+         
+         <!-- Round Information Cards -->
+          <hr>
+          <button ngClass="btn-purple" *ngIf="showstatus" (click)="getRoundOnShowStatus()">Show Status</button>
+          <p class="stage-name" *ngIf="noStageName">{{stage.stageName}}</p>
+          <div class="flex" *ngFor="let round of rounds">
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>{{round.roundName}}</mat-card-title><br>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="row">
+                  <div class="column">
+                      <p>Current Status:</p>
+                      <div class="row">
+                      </div>
+                      <p>Stage:</p>
+                      <div class="row">
+                      </div>
+                  </div>
+                  <div class="column">
+                      <p>Assignee:</p>
+                      <div class="row">
+                          
+                      </div>
+                  </div>
+              </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </mat-step>
+        <button mat-button matStepperPrevious ngClass="btn-purple">Check Previous States</button>
+        <button mat-button matStepperNext ngClass="btn-purple">Check Next States</button>
+    </ng-container>
   </mat-horizontal-stepper>
 </div>
-<div>
-  <mat-tab-group dynamicHeight>
-    <mat-tab label="Round Information">
-      <div class="status mat-elevation-z4">Round Information</div>
-    </mat-tab>
-    <mat-tab label="Status">
-      <div class="status mat-elevation-z4">Your Status</div>
-    </mat-tab>
-  </mat-tab-group>
-</div>
+
+
+

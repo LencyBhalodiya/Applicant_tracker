@@ -9,6 +9,20 @@
     margin: 0 10% 0 10%;
    
   }
+
+.heading {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  margin: 1rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #012970;
+}
+
+span {
+  color: rgb(106, 105, 105);
+}
   .stage-list,.stages-title{
     display: flex;
     flex-direction:row;
@@ -21,7 +35,7 @@
     border-radius: 0.5rem;
     box-shadow: var(--box-shadow);
     padding: 2.5rem;
-    margin-top: 8rem;
+    margin-top: 4rem;
     min-height: 30rem;
     min-width: 25rem;
     height: 100%; 
