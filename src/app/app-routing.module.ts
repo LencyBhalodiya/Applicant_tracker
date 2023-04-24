@@ -79,13 +79,6 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'manage-applicants/profile/:id',
-        loadChildren: () =>
-          import('./applicant/profile/profile.module').then(
-            (m) => m.ProfileModule
-          ),
-      },
-      {
         path: 'manage-users',
         loadChildren: () =>
           import('./admin/manage-users/manage-users.module').then(

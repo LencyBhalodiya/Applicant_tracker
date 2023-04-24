@@ -9,6 +9,7 @@ import { EditHrComponent } from './edit-hr/edit-hr.component';
 import { ManageHrService } from './services/manage-hr.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { BehaviorSubject } from 'rxjs';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { IApplicants } from './models/applicants';
 
 @Component({
@@ -31,8 +32,6 @@ export class ManageUsersComponent {
   public Elementdata!: IApplicants[];
   public response!: any;
   public dataSource!: MatTableDataSource<any>;
-  private _checkedArr: number[] = [];
-  public isActive: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -41,27 +40,24 @@ export class ManageUsersComponent {
   constructor(
     private _snackBar: MatSnackBar,
     private manageHrService: ManageHrService,
-    private _formBuilder: FormBuilder,
     public dialog: MatDialog
   ) {}
 
-  changeStatus(data: any, event: any) {
-    data.status = data.status === 'Active' ? 'Inactive' : 'Active';
-    //console.log('data: ' + data.isActive);
+  changeStatus(id: number, status: string, event: MatSlideToggleChange) {
+    console.log(id);
+
+    status = status === 'Active' ? 'Inactive' : 'Active';
     console.log(event.checked);
     event.checked === false
-      ? this.manageHrService.inactiveHr(data.id).subscribe((msg) => {
-          console.log('inactive api: ' + data);
+      ? this.manageHrService.inactiveHr(id).subscribe({
+          next: (msg) => console.log(msg),
+          error: (error) => console.log(error),
         })
-      : this.manageHrService.activeHr(data.id).subscribe(
-          (msg) => {
-            console.log('active api: ' + msg);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-    console.log(data);
+      : this.manageHrService.activeHr(id).subscribe({
+          next: (msg) => console.log(msg),
+          error: (error) => console.log(error),
+        });
+    console.log(id, status);
   }
 
   ngOnInit() {
@@ -76,9 +72,10 @@ export class ManageUsersComponent {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
-      error(err) {
-        //let snackBarRef = this._snackBar.open('Message archived');
-        console.error(err.message);
+      error: (error) => {
+        console.log('error');
+
+        this._snackBar.open('something went wrong', 'ok', { duration: 2000 });
       },
     });
   }
@@ -103,7 +100,7 @@ export class ManageUsersComponent {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.manageHrService.getData();
+      this.getAllApplicants();
     });
   }
 
@@ -123,7 +120,7 @@ export class ManageUsersComponent {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.manageHrService.getData();
+      this.getAllApplicants();
     });
   }
 

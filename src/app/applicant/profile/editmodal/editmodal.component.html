@@ -1,21 +1,21 @@
 <div class="edit-form">
-  <h1 mat-dialog-title>Edit Details</h1>
-  <mat-form-field class="example-full-width">
+  <div class="dialog-title">Edit Details</div>
+  <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Name</mat-label>
     <input matInput placeholder="Name" value="{{ data.firstname }}" />
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Email</mat-label>
     <input matInput placeholder="Email" value="{{ data.email }}" />
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Phone</mat-label>
     <input matInput placeholder="Phone" value="{{ data.phoneNumber }}" />
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Date Of Birth</mat-label>
     <input matInput [matDatepicker]="picker" />
     <mat-hint>MM/DD/YYYY</mat-hint>
@@ -23,12 +23,12 @@
     <mat-datepicker #picker>{{ data.dob }}</mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Permananent Address</mat-label>
     <input matInput placeholder="Permananent Address" value="" />
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field appearance="outline" class="example-full-width">
     <mat-label>Present Address</mat-label>
     <input matInput placeholder="present Address" value="" />
   </mat-form-field>

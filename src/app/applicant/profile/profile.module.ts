@@ -5,17 +5,16 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { MaterialDesignModule } from 'src/app/shared/material-design/material-design.module';
 import { EditmodalComponent } from './editmodal/editmodal.component';
-
+import { ResumeComponent } from './resume/resume.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
-  declarations: [
-    ProfileComponent,
-    EditmodalComponent
-  ],
+  declarations: [ProfileComponent, EditmodalComponent, ResumeComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    MaterialDesignModule
-  ]
+    MaterialDesignModule,
+    PdfViewerModule,
+  ],
 })
-export class ProfileModule { }
+export class ProfileModule {}
