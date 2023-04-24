@@ -13,9 +13,22 @@
 .heading {
   margin-bottom: 2rem;
 }
-
+mat-card {
+  flex: 0 0 calc(50% - 1.5rem);
+  margin-bottom: 1.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  padding: 2.5rem;
+  margin-top: 1rem;
+  min-height: 30rem;
+  min-width: 25rem;
+  height: 100%;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
 h2 {
-  margin: 1rem;
+  margin:1rem;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: #012970;
 }
@@ -82,7 +95,7 @@ mat-list-item {
   margin-left: 10%;
 }
 .stage-name {
-  width: 22rem !important;
+  width: 24rem !important;
 }
 .heading {
   margin-bottom: 2rem;
