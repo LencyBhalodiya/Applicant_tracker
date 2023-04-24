@@ -1,0 +1,44 @@
+.dialog-container {
+  max-width: 600px;
+  padding-left: 20%;
+  padding-right: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.dialog-title {
+  display: flex;
+  height: 30px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  vertical-align: middle;
+  background-color: var(--main-color);
+}
+form {
+  padding-top: 20px;
+}
+mat-form-field {
+  padding-top: 10px;
+  width: 80%;
+  min-width: 20%;
+}
+button {
+  margin-top: 10px;
+  width: 80%;
+}
+.add-btn {
+  background-color: var(--main-color) !important;
+  color: #fff !important;
+}
+mat-label {
+  color: var(--text-color);
+}
+mat-select {
+  color: var(--text-color);
+}
+mat-option-value {
+  color: var(--text-color);
+}

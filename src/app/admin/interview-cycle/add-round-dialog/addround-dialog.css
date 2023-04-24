@@ -6,6 +6,17 @@
   justify-content: center;
   flex-direction: column;
 }
+.dialog-title {
+  display: flex;
+  height: 30px;
+  padding-left: 10px;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  vertical-align: middle;
+  background-color: var(--main-color);
+}
 form {
   padding-top: 20px;
 }
@@ -13,12 +24,10 @@ mat-form-field {
   padding-top: 10px;
   width: 80%;
   min-width: 20%;
-
 }
 button {
   margin-top: 10px;
   width: 80%;
-
 }
 .add-btn {
   background-color: var(--main-color) !important;
