@@ -21,7 +21,8 @@ export class ProfileComponent {
   private _userId!: string;
   profileData: any;
   profileAddressData: any;
-
+  public currentAdd!: string;
+  public permAdd!: string;
   openDialog() {
     this.dialog.open(EditmodalComponent, {
       data: this.profileData,
@@ -37,16 +38,30 @@ export class ProfileComponent {
   getUserInfo() {
     this._profileService.getProfileData(this._userId).subscribe((res) => {
       this.profileData = res;
-      console.log('ddd' + res);
     });
   }
 
   getUserAddress() {
     this._profileService.getUserAddress(this._userId).subscribe((res) => {
       this.profileAddressData = res;
-      console.log(res);
+      if (this.profileAddressData[0].addressType == "permenant residence's") {
+        this.permAdd =
+          this.profileAddressData[0].street +
+          ', ' +
+          this.profileAddressData[0].city +
+          ', ' +
+          this.profileAddressData[0].state;
+      }
+      this.currentAdd =
+        this.profileAddressData[0].street +
+        ', ' +
+        this.profileAddressData[0].city +
+        ', ' +
+        this.profileAddressData[0].state;
 
-      //console.log(this.profileData);
+      //console.log('data' + this.currentAdd);
+
+      console.log(res);
     });
   }
 

@@ -26,7 +26,6 @@ mat-grid-tile {
   width: 25%;
 }
 
-
 .dialog-title {
   display: flex;
   height: 50px;
@@ -39,11 +38,9 @@ mat-grid-tile {
   background-color: var(--main-color);
 }
 
-
 .btn-save {
   background-color: var(--main-color);
   color: var(--div-color);
-
 }
 
 .btn-close {

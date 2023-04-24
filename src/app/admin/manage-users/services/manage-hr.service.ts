@@ -54,11 +54,11 @@ export class ManageHrService {
     return this._http.post(this._editHr + id, data);
   }
 
-  inactiveHr(id: any) {
+  inactiveHr(id: number) {
     return this._http.put(this._inactiveHr + id, {});
   }
 
-  activeHr(id: any) {
+  activeHr(id: number) {
     return this._http.put(this._activeHr + id, {});
   }
 }

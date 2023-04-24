@@ -1,13 +1,25 @@
 <div class="container">
-  <div class="dialog-title">Add Hr Details </div>
+  <div class="dialog-title">Add Hr Details</div>
   <form [formGroup]="addHrForm">
     <mat-grid-list cols="1" rowHeight="650px">
       <mat-grid-tile>
-     
         <div class="example-container">
           <mat-form-field appearance="outline" class="width-50">
-            <mat-label>First Name</mat-label>
+            <mat-label
+              >First Name
+              <span *ngIf="addHrForm.controls['firstname'].errors?.['pattern']">
+                Not Valid
+              </span></mat-label
+            >
             <input matInput formControlName="firstname" />
+            <div
+              *ngIf="
+                addHrForm.controls['firstname'].invalid &&
+                (addHrForm.controls['firstname'].dirty ||
+                  addHrForm.controls['firstname'].touched)
+              "
+              class="alert"
+            ></div>
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="width-50 ml-2">
@@ -44,7 +56,7 @@
           <br />
           <mat-form-field appearance="outline" class="width-100">
             <mat-label>Mobile No</mat-label>
-            <input matInput formControlName="phoneNumber" type="number"/>
+            <input matInput formControlName="phoneNumber" type="number" />
           </mat-form-field>
           <br />
           <mat-form-field appearance="outline" class="width-100">
@@ -96,10 +108,9 @@
               mat-raised-button
               mat-dialog-close
               class="btn-save"
-              [class.deactive]="this.addHrForm.invalid" 
+              [class.deactive]="this.addHrForm.invalid"
               [disabled]="this.addHrForm.invalid"
-              (click)="addHr(addHrForm.value);playSound()"
-              
+              (click)="addHr(addHrForm.value); playSound()"
             >
               Save
             </button>

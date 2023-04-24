@@ -82,9 +82,7 @@
         <div class="profile-details">
           <h3 class="profile-content">Present Address</h3>
           <p class="p-value">
-            {{
-              profileData.presentAddress || "G-9, Iscon Cross Road, Ahemadabad"
-            }}
+            {{ currentAdd || "Not available" }}
           </p>
         </div>
         <hr />
@@ -94,7 +92,7 @@
         <div class="profile-details">
           <h3 class="profile-content">Permananent Address</h3>
           <p class="p-value">
-            {{ profileAddressData[0].city || "Bhuj Kutch" }}
+            {{ permAdd || "Not available" }}
           </p>
         </div>
         <hr />

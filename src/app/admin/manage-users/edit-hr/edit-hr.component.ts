@@ -7,8 +7,8 @@ import {
 } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ManageHrService } from '../services/manage-hr.service';
-import { BehaviorSubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { IRoles } from '../models/applicants';
 
 @Component({
   selector: 'app-edit-hr',
@@ -16,7 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./edit-hr.component.css'],
 })
 export class EditHrComponent implements OnInit {
-  roles: any;
+  roles!: any;
 
   rolen: any = {};
 
@@ -38,7 +38,7 @@ export class EditHrComponent implements OnInit {
     });
 
     this.hrSer.getRole().subscribe((res) => {
-      console.log(res, 'duhejkms');
+      console.log(res);
       this.roles = res;
     });
   }
