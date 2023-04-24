@@ -18,8 +18,8 @@
   </button>
   <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
     <button mat-menu-item routerLink="#">
-      <mat-icon>person</mat-icon><span>My Account</span>
-    </button>
+      <mat-icon>person</mat-icon><span>My Account</span></button
+    >Paul
     <mat-divider></mat-divider>
     <button mat-menu-item routerLink="#" (click)="doLogout()">
       <mat-icon>exit_to_app</mat-icon>Logout
@@ -35,7 +35,9 @@
         <img src="{{ imgUrl }}" />
       </div>
       <div class="profile-name">
-        <span>{{ profileData.firstname }} {{ profileData.lastname }} </span>
+        <span
+          >{{ profileData.firstname + " " + profileData.lastname | titlecase }}
+        </span>
 
         <button class="btn" (click)="openPdfViewer()">Resume</button>
       </div>
@@ -45,7 +47,7 @@
         <div class="profile-details">
           <h3 class="profile-content">Name</h3>
           <p class="p-value">
-            {{ profileData.firstname }} {{ profileData.lastname }}
+            {{ profileData.firstname + " " + profileData.lastname | titlecase }}
           </p>
         </div>
         <hr />
@@ -61,7 +63,7 @@
       <div class="details-wrapper">
         <div class="profile-details">
           <h3 class="profile-content">Phone</h3>
-          <p class="p-value">{{ profileData.phoneNumber || 89899898989 }}</p>
+          <p class="p-value">{{ profileData.phoneNumber || 9955487859 }}</p>
         </div>
         <hr />
       </div>

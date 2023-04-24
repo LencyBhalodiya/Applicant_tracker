@@ -15,10 +15,10 @@ table {
   position: relative;
 }
 
-mat-spinner{
+mat-spinner {
   position: absolute;
-  left:45%;
-  top:40%;
+  left: 45%;
+  top: 40%;
 }
 
 .table-container {
@@ -50,7 +50,6 @@ mat-spinner{
   }
 }
 
-
 .header {
   background-color: var(--main-color) !important;
   color: #fff !important;
@@ -79,8 +78,6 @@ mat-spinner{
   display: flex;
   justify-content: space-between;
 }
-
-
 
 .table-header {
   background-color: var(--main-color);
@@ -131,18 +128,17 @@ mat-spinner{
 
 .col {
   display: flex;
-  align-items: center;  
+  align-items: center;
   padding: 5px 5px;
   text-align: center;
   font-size: 1em;
   justify-content: space-evenly;
 }
 
-
 .button-container {
   display: flex;
   margin: 2rem 0rem 2rem 0rem;
-  justify-content: flex-end  ;
+  justify-content: flex-end;
 }
 
 .heading {
@@ -157,9 +153,8 @@ span {
   color: rgb(106, 105, 105);
 }
 
-
-button{
-  font-size:1em;
+button {
+  font-size: 1em;
   font-weight: 700;
   height: 48px;
 }
