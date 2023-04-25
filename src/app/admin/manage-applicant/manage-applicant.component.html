@@ -29,8 +29,7 @@
             <div class="col col-7">Status</div>
             <div class="col col-8">Action</div>
         </li>
-
-        <li *ngIf="dataSource.length<1">No Data Found</li>
+        <li class="table-row li err-display" *ngIf="dataSource.length<1">No Data Found</li>
 
         <li *ngFor="let i of dataSource | paginate: {itemsPerPage: 15, currentPage: p, totalItems: total}"
             class="table-row li">
