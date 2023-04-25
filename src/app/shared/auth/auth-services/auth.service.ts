@@ -1,13 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { duration } from 'html2canvas/dist/types/css/property-descriptors/duration';
 import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, public router: Router) {}
+  constructor(private http: HttpClient, public router: Router, public snackBar:MatSnackBar) {}
   private roleName!: string;
   signIn(data: any) {
     let api =
@@ -21,8 +23,8 @@ export class AuthService {
         else this.router.navigate(['admin']);
       },
       (error) => {
-        console.log(error);
-        alert('Invalid Credentials');
+        console.log(error)
+        this.snackBar.open("Invalid Credentials", "ok",{duration: 2000})
       }
     );
   }
@@ -36,15 +38,8 @@ export class AuthService {
     data.gender = data.gender.toUpperCase();
     data.role = role;
 
-    return this.http.post(api, data).subscribe(
-      (res: any) => {
-        console.log(res, 'res:  sucess');
-        alert('registration successful, please login to continue');
-      },
-      (error) => {
-        console.log('registeration:  ', error);
-      }
-    );
+    return this.http.post(api, data)
+
   }
 
   getToken() {

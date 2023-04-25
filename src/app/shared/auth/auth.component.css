@@ -64,6 +64,7 @@ mat-form-field {
   max-width: 9.375rem;
   height: 3.125rem;
   background-color: var(--main-color) !important;
+  color: #fff !important;
 }
 .login-btn:hover {
   cursor: pointer;
@@ -103,4 +104,10 @@ button{
 
 :host.example-floating .example-tel-input-spacer {
   opacity: 1;
+}
+
+.switchcase {
+  font-size: 1.3rem;
+  padding: 0.3rem;
+  color: #5E3C8F;
 }
