@@ -26,7 +26,7 @@ export class ColorPipe implements PipeTransform {
         args[0].style.color = "brown";
         break
 
-      case "Backed-out":
+      case "BackedOut":
         args[0].style.color = "grey";
         break
     
