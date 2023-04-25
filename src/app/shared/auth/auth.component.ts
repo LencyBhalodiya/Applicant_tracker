@@ -66,7 +66,6 @@ export class AuthComponent implements OnInit {
     var setDob = datePipe.transform(this.registerForm.value.dob, 'yyyy-MM-dd');
 
     setDob = this.registerForm.value.dob = setDob;
-    console.log(this.registerForm.value);
 
     this.auth.signUp(this.registerForm.value).subscribe(
       (res) => {
@@ -88,7 +87,6 @@ export class AuthComponent implements OnInit {
 
   checkToken() {
     let token = localStorage.getItem('access_token');
-    console.log(token);
 
     if (token === 'null' || !token || token === null) {      
       localStorage.removeItem('access_token');

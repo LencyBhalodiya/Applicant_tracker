@@ -5,9 +5,9 @@ import { AuthGuard } from './shared/auth/auth-services/auth.guard';
 import { UserCheckGuard } from './shared/auth/auth-services/user-check.guard';
 import { AuthComponent } from './shared/auth/auth.component';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { ForgotPasswordComponent } from './shared/forgot-password/forgot-password.component';
 import { NavbarsComponent } from './shared/navbars/navbars.component';
-import { ForgotPasswordComponent } from './shared/forgot-password/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './shared/reset-password/reset-password/reset-password.component';
+import { ResetPasswordComponent } from './shared/reset-password/reset-password.component';
 
 
 const routes: Routes = [

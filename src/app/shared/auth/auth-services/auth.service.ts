@@ -20,7 +20,6 @@ export class AuthService {
         message = res
         localStorage.setItem('access_token', res.token);
         const role = this.getTokenRole();
-        console.log(role);
         
         if (role === 'user') this.router.navigate(['applicant']);
         else this.router.navigate(['admin']);
@@ -30,7 +29,6 @@ export class AuthService {
         
       },
       (error) => {
-        console.log(error)
         this.snackBar.open("Invalid Credentials", "ok",{duration: 2000})
       }
     );
@@ -64,7 +62,6 @@ export class AuthService {
     let role: any = jwt_decode(token!);
 
     role = role.sub.split(',')[1];
-    //console.log(role);
 
     return role;
   }

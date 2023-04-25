@@ -28,7 +28,6 @@ export class CustomRolesComponent implements OnInit{
       },
       error:(error:Error)=>{
         tempSubscription.unsubscribe()
-        console.log(error.message)
       },
       complete: ()=>{
         tempSubscription.unsubscribe()

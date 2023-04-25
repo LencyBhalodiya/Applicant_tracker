@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, DoCheck, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -39,6 +39,8 @@ export class ManageUsersComponent {
   @ViewChild(MatSort) sort!: MatSort;
   checked: boolean = false;
 
+
+
   constructor(
     private _snackBar: MatSnackBar,
     private manageHrService: ManageHrService,
@@ -46,7 +48,6 @@ export class ManageUsersComponent {
   ) {}
 
   changeStatus(id: number, status: string, event: MatSlideToggleChange) {
-    console.log(id);
 
     status = status === 'Active' ? 'Inactive' : 'Active';
     console.log(event.checked);

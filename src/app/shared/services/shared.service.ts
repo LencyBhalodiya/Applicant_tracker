@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, catchError } from 'rxjs';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { BehaviorSubject, catchError } from 'rxjs';
 export class SharedService {
   public successEmailStatus = new BehaviorSubject<number>(0);
   public successPasswordFlag = new BehaviorSubject<boolean>(false);
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, public snackBar:MatSnackBar) { }
 
   //  post request to for email
   postEmail(value: string): BehaviorSubject<number> {
@@ -17,10 +18,17 @@ export class SharedService {
       .subscribe({
         next: (res: any) => {
           this.successEmailStatus.next(200)
+          this.snackBar.open("Email sent successfully", "Close", {duration: 2000});
+
         },
         error: (err: any) => {
-          console.log("error: ", parseInt(err.status));
-          this.successEmailStatus.next(err.status);
+          if (err.status === 200) {
+            this.snackBar.open("Email sent successfully", "Close", {duration: 2000});
+          }
+          else{
+            this.snackBar.open("something went wrong", "Close", {duration: 2000});
+          }
+         
         },
       }
       // return this.successEmailStatus
@@ -34,6 +42,16 @@ export class SharedService {
       .subscribe({
         next: (res) => {
           this.successPasswordFlag.next(true);
+          this.snackBar.open("password set successfull", "Close", {duration: 2000});
+          
+        },
+        error: (err: any) => {
+          if (err.status === 200) {
+            this.snackBar.open("password set successfull", "Close", {duration: 2000});            
+          }
+          else{
+            this.snackBar.open("something went wrong", "Close", {duration: 2000});
+          }
         }
       })
     return this.successPasswordFlag
