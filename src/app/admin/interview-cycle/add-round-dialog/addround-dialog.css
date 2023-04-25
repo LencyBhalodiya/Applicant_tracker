@@ -1,6 +1,7 @@
 .dialog-container {
   max-width: 600px;
   padding-left: 20%;
+  padding-top: 5%;
   padding-right: 10%;
   display: flex;
   justify-content: center;
@@ -32,6 +33,8 @@ button {
 .add-btn {
   background-color: var(--main-color) !important;
   color: #fff !important;
+  font-weight: 400;
+  font-size: 1.25rem;
 }
 mat-label {
   color: var(--text-color);

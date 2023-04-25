@@ -1,13 +1,13 @@
 .main {
   background-color: var(--background-color);
   min-height: 100%;
+  padding: 0rem 2rem 3rem 2rem;
 }
 
 .main-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 10% 0 10%;
 }
 .stage-list,
 .stages-title,
@@ -80,7 +80,6 @@ mat-list-item {
 }
 h2 {
   margin: 1rem;
-  margin-left: 3rem;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #012970;
 }

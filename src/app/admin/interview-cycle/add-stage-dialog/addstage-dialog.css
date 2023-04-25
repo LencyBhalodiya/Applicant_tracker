@@ -19,7 +19,7 @@
   background-color: var(--main-color);
 }
 form {
-  padding-top: 20px;
+  padding-top: 40px;
 }
 mat-form-field {
   padding-top: 10px;
@@ -33,6 +33,8 @@ button {
 .add-btn {
   background-color: var(--main-color) !important;
   color: #fff !important;
+  font-weight: 400;
+  font-size: 1.25rem;
 }
 mat-label {
   color: var(--text-color);

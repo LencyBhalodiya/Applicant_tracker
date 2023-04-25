@@ -42,13 +42,13 @@ export class InterviewCycleComponent {
 
   openStageDialog() {
     this.dialog.open(AddStageDialog, {
-      width: '500px',
+      width: '600px',
       height: '400px',
     });
   }
   openRoundDialog() {
     let dialogRef = this.dialog.open(AddRoundDialog, {
-      width: '500px',
+      width: '600px',
       height: '400px',
     });
     dialogRef.afterClosed().subscribe(() => {
