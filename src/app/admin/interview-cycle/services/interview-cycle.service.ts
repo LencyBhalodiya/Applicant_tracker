@@ -153,12 +153,18 @@ export class InterviewCycleService {
             });
           });
         }),
-        tap((response) => {
+        switchMap((response) => {
           if (response) {
-            this.snackBar.open(`Stage Detail's Updated Successfully!`, '', {
+            this.snackBar.open('Stage Updated Successfully!', '', {
               duration: 3000,
             });
+            return this.getStages();
           }
+          return throwError(() => {
+            this.snackBar.open('Failed to update stage details', '', {
+              duration: 3000,
+            });
+          });
         })
       );
   }
