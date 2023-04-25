@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-// import { ManageApplicantService } from '../services/manage-applicant.service';
-// import { Stage,Round } from '../models/models.interfaces';
 import { InterviewCycleService } from '../../interview-cycle/services/interview-cycle.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { debounceTime, fromEvent, map } from 'rxjs';

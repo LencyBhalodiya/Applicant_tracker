@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { duration } from 'html2canvas/dist/types/css/property-descriptors/duration';
 import jwt_decode from 'jwt-decode';
 
 @Injectable({

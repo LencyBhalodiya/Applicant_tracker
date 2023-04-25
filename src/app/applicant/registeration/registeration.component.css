@@ -1,75 +1,263 @@
-.mat-stepper-horizontal {
-    margin-top: 8px;
-  }
+body{
+  border: 1px solid green;
+}
+.container{
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  background-color: #cdd3f7;
+  min-height: 49.2rem;
+  height: fit-content;
+  width: auto;
+  margin: 0;
+  padding: 4.25rem;
+}
+.form{
+  margin: auto;
+  height: fit-content;
+}
+.mat-horizontal-stepper-header-container {
+  height: fit-content !important;
+}
+.mat-mdc-form-field {
+  margin-top: 50px;
+  height: max-content;
+}
+
+.address {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+form {
+  width: 80%;
+  margin: 2em auto;
+  padding: 2em;
   
-  .mat-mdc-form-field {
-    margin-top: 16px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+}
+
+.radioContainer {
+  width: fit-content;
+}
+
+.radioGroupContainer {
+  display: grid;
+}
+
+.previousBtn {
+  margin-top: 25px;
+  float: left;
+}
+
+.nextBtn {
+  margin-top: 25px;
+  float: right;
+}
+
+.submitBtn {
+  margin-top: 25px;
+}
+
+.profileDropBox{
+  display: block;
+ 
+}
+
+.resumeDropBox{
+  display: block;
+}
+
+.uploadImage{
+  height: 40%;
+  width: 35%;
+}
+
+.mainDiv{
+  margin: 100px;
+  display: flex;
+}
+
+.card{
+flex: 1;
+border-radius: 20%;
+}
+
+#asterix--after:after {
+  content: "*";
+  color: red;
+}
+@media (max-width:700px){
+  .container{
+    margin: 0;
   }
-  
-  .address {
-    width: 100%;
+  .form{
+    width: 28rem;
+    margin-left: 0;
+    margin-right: 0;
   }
-  
-  mat-form-field {
-    width: 100%;
+}
+@media(max-width:500px){
+  .form{
+    width: 25rem;
   }
-  
-  form {
-    width: 80%;
-    margin: 2em auto;
-    padding: 2em;
+}
+@media(max-width:450px){
+  .form{
+    width: 20rem;
   }
-  
-  .gridContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1em;
+}
+.my-drop-zone {
+  border: dotted 3px lightgray;
+  padding: 10px;
+}
+
+.nv-file-over {
+  border: dotted 3px red;
+}
+
+.another-file-over-class {
+  border: dotted 3px green;
+}
+
+#cvDrop{
+  padding: 60px;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: white;
+}
+
+.container2 {
+  background-color: white;
+  border-radius: 1rem;
+  margin-top: 3rem;
+  padding: 3rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.details {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.details div {
+  height: 10rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cloud {
+
+  width: fit-content;
+  height: auto;
+  font-size: 40px;
+}
+
+table,td,th
+ {
+  border: 1px solid black;
+}
+table {
+  width: 75.4rem;
+  text-align: center;
+}
+
+.btn {
+  margin: 5px !important;
+}
+
+.file_name {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media(max-width:1700px){
+  table{
+    width: 60rem;
   }
-  
-  .radioContainer {
-    width: fit-content;
+}
+
+@media(max-width:1400px) {
+  table {
+      width: 48rem;
   }
-  
-  .radioGroupContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+
+  .btn {
+      width: 80px !important;
   }
-  
-  .previousBtn {
-    margin-top: 25px;
-    float: left;
+}
+
+@media(max-width:1200px) {
+  table {
+      width: 45rem;
   }
-  
-  .nextBtn {
-    margin-top: 25px;
-    float: right;
+
+  .btn {
+      width: 50px !important;
   }
-  
-  .submitBtn {
-    margin-top: 25px;
+}
+
+@media(max-width:991px) {
+  table {
+      width: 30rem;
   }
-  
-  .profileDropBox{
-    display: block;
-   
+
+  .text {
+      display: none;
   }
-  
-  .resumeDropBox{
-    display: block;
-    
+}
+
+@media(max-width:767px) {
+  table {
+      width: 25rem;
   }
-  
-  .uploadImage{
-    height: 40%;
-    width: 35%;
+
+  .text {
+      display: none;
   }
-  
-  .mainDiv{
-    margin: 200px;
-    display: flex;
+}
+
+@media(max-width:575px) {
+  .container {
+      width: 27rem;
   }
-  
-  .card{
-  flex: 1;
-  border-radius: 20%;
+
+  table {
+      width: 21.5rem;
   }
+  .file_name{
+      width: 100px;
+  }
+  .text {
+      display: none;
+  }
+}
+
+/* @media(max-width:460px) {
+  .container {
+      width: 20rem;
+  }
+
+  table {
+      width: 10rem;
+  }
+
+  .text {
+      display: none;
+  }
+} */
