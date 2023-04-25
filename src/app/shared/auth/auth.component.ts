@@ -16,7 +16,7 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.checkToken();
-    }, 2000);
+    }, 1500);
   }
   constructor(
     private auth: AuthService,
@@ -77,10 +77,12 @@ export class AuthComponent implements OnInit {
         msg = res;
         if (msg.message.includes('Already'))
           this.snackBar.open('Email already exists', 'ok', { duration: 2000 });
-        else
+        else{
           this.snackBar.open('Registered Successfully', 'ok', {
             duration: 2000,
           });
+          this.switch();
+        }
       },
       (error) => {
         this.snackBar.open('Some Error Occured', 'ok', { duration: 2000 });
@@ -92,7 +94,7 @@ export class AuthComponent implements OnInit {
     let token = localStorage.getItem('access_token');
     console.log(token);
 
-    if (token === 'null' || !token) {
+    if (token === 'null' || !token || token === null) {      
       localStorage.removeItem('access_token');
     } else {
       let role = this.auth.getTokenRole();

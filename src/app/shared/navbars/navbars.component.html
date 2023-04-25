@@ -13,7 +13,7 @@
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
-    <button mat-menu-item routerLink="#">
+    <button mat-menu-item>
       <mat-icon>person</mat-icon><span>My Account</span>
     </button>
     <mat-divider></mat-divider>
@@ -33,13 +33,17 @@
     opened="true"
   >
     <mat-nav-list>
-      <mat-list-item [routerLink]="'/admin'">
+      <mat-list-item
+        [routerLink]="'/admin'"
+        *ngIf="permission.has('Dashboard')"
+      >
         <mat-icon>dashboard</mat-icon>&nbsp;<span class="dashboard-text"
           >Dashboard</span
         >
       </mat-list-item>
-      <!-- <hr>   -->
+
       <mat-list-item
+        *ngIf="permission.has('Manage-Users')"
         [routerLink]="['manage-users']"
         class="hover-sidenav-items"
       >
@@ -48,12 +52,14 @@
       </mat-list-item>
 
       <mat-list-item
+        *ngIf="permission.has('Manage-Applicants')"
         [routerLink]="['manage-applicants']"
         class="hover-sidenav-items"
       >
         <i class="bi bi-person-plus"></i> <span>Manage Applicants</span>
       </mat-list-item>
       <mat-list-item
+        *ngIf="permission.has('Manage-Interview')"
         [routerLink]="['interview-cycle']"
         class="hover-sidenav-items"
       >
@@ -61,21 +67,29 @@
         <span>Manage Interview</span>
       </mat-list-item>
       <mat-list-item
+        *ngIf="permission.has('Manage-streams')"
         [routerLink]="['manage-streams']"
         class="hover-sidenav-items"
       >
         <i class="bi bi-card-list"></i> <span>Manage Streams</span>
       </mat-list-item>
       <mat-list-item
+        *ngIf="permission.has('Custom-Role')"
         [routerLink]="['custom-roles']"
         class="hover-sidenav-items"
       >
         <i class="bi bi-person-gear"></i> <span>Define Custom Roles</span>
       </mat-list-item>
-      <mat-list-item [routerLink]="['reports']" class="hover-sidenav-items">
+      <mat-list-item
+        *ngIf="permission.has('Reports')"
+       [routerLink]="['reports']" class="hover-sidenav-items">
         <i class="bi bi-graph-up-arrow"></i><span>Reports</span>
       </mat-list-item>
-      <mat-list-item [routerLink]="['future-reference']" class="hover-sidenav-items">
+      <mat-list-item
+        *ngIf="permission.has('Future-Reference')"
+        [routerLink]="['future-reference']"
+        class="hover-sidenav-items"
+      >
         <i class="bi bi-flag"></i><span>Future Reference</span>
       </mat-list-item>
     </mat-nav-list>

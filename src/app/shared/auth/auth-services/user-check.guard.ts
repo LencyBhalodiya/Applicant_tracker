@@ -12,8 +12,8 @@ export class UserCheckGuard implements CanLoad {
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-      // if(!this._authService.getToken())
-      //  this.router.navigate(['auth']);
+      if(!this._authService.getToken())
+       this.router.navigate(['auth']);
 
        return true;
   }
