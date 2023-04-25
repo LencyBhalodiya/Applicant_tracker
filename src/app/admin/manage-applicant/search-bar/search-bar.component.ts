@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ManageApplicantService } from '../services/manage-applicant.service';
 import { Stage,Round } from '../models/models.interfaces';
 import { InterviewCycleService } from '../../interview-cycle/services/interview-cycle.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { debounceTime, fromEvent, map } from 'rxjs';
+import { catchError, debounceTime, fromEvent, map, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-search-bar',
@@ -29,7 +29,8 @@ export class SearchBarComponent implements OnInit , AfterViewInit{
     private snackBar : MatSnackBar
   ) {}
 
-  // ng on Init
+  @Output() searchEvent = new EventEmitter<any>();
+
   ngOnInit(): void {
     this.filterForm = this.fb.group({
       // rounds: new FormControl(''),
@@ -49,18 +50,24 @@ export class SearchBarComponent implements OnInit , AfterViewInit{
     // this._aService.getStages().subscribe((stages) => (this.stages = stages));
     this.iService.getStages().subscribe((stages) => (this.stages = stages));
     this._aService
-      .getStreams()
+      .getStreams().pipe(catchError((error)=>{
+        console.log("error while fetching streams..",error);
+        return throwError(()=>{
+          this.snackBar.open("Could not fetch Streams",'',{duration:2000})
+        })
+      }))
       .subscribe((streams) => (this.streams = streams));
   }
 
   ngAfterViewInit():void{
-    const query = fromEvent<any>(this.searchInput.nativeElement,'keyup').pipe(map(event=>event.target.value),debounceTime(300));
+    const query = fromEvent<any>(this.searchInput.nativeElement,'keyup').pipe(map(event=>event.target.value),debounceTime(250));
 
     query.subscribe((res)=>{
       if(res)
-      this._aService.search(res);
-      else
-        this._aService.getData(0);
+      this._aService.search(res).subscribe((res)=>this.searchEvent.emit(res));
+      else{
+        this.searchEvent.emit(null);
+      }
     });
   }
 
@@ -73,11 +80,13 @@ export class SearchBarComponent implements OnInit , AfterViewInit{
     }
   }
 
-  // advance filter  panel
+  // advance filter  panel toggle
   openFilter() {
     this.filterHide = !this.filterHide;
     this.filterForm.reset();
-    this._aService.getData(0);
+    this._aService.getData(1);
+    this.searchForm.reset();
+    this.searchEvent.emit(null);
   }
 
   // apply filter
@@ -108,9 +117,8 @@ export class SearchBarComponent implements OnInit , AfterViewInit{
       this.snackBar.open("Invalid Filter",'',{duration:2000})
       return;
     }
-
     console.log(url);
-    this._aService.applyFilter(url);
+    this._aService.applyFilter(url).subscribe(res=>this.searchEvent.emit(res));
   }
 
   // search data
@@ -119,7 +127,5 @@ export class SearchBarComponent implements OnInit , AfterViewInit{
   //   else this._aService.search(this.searchForm.value['query']);
   // }
 }
-function ngAfterViewInit() {
-  throw new Error('Function not implemented.');
-}
+
 

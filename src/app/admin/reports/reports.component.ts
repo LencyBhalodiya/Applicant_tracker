@@ -7,6 +7,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/shared/auth/auth-services/auth.service'; 
 import { ManageApplicantService } from '../manage-applicant/services/manage-applicant.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 /**
@@ -30,11 +31,11 @@ export class ReportsComponent {
   ];
   public Elementdata!: IApplicants[];
   public response!: any;
-  public dataSource!: any;
+  public dataSource!: MatTableDataSource<any>;
   visibleFlag: boolean = false;
   errorApplicant!: string;
   errorNewApplicant!: string;
-  p: number = 0;
+  p: number = 1;
   total: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -52,10 +53,17 @@ export class ReportsComponent {
     this.getAllApplicants();
   }
 
+  searchEvent(data:any){
+    if(data)
+      this.dataSource=data;
+    else  
+      this.getAllApplicants();
+  }
+
   getAllApplicants() {
     this._aService.getData(this.p).subscribe({
       next: (res: any) => {
-        this.dataSource = res as IApplicants[];
+        this.dataSource = res.content;
       },
       error: (err: any) => {
         // this.errorApplicant = this._aService.handleError(err);

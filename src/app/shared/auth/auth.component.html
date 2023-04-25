@@ -95,7 +95,13 @@
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Phone number</mat-label>
             <mat-icon matPrefix>phone</mat-icon>
-            <input matInput formControlName="phoneNumber" />
+            <input
+              type="number"
+              minlength="10"
+              maxlength="10"
+              matInput
+              formControlName="phoneNumber"
+            />
           </mat-form-field>
           <mat-form-field>
             <mat-label>Password</mat-label>

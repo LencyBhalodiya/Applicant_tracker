@@ -8,21 +8,27 @@ table {
   width: 100%;
 }
 
+.main-container{
+  padding-bottom:2rem;
+}
+
 .container {
   padding: 0rem 2rem 3rem 2rem;
   background-color: var(--background-color);
   height: 100vh;
   position: relative;
+  overflow: hidden;
 }
 
-mat-spinner{
+mat-spinner {
   position: absolute;
-  left:45%;
-  top:40%;
+  left: 45%;
+  top: 40%;
 }
 
 .table-container {
   border-radius: 10px;
+  margin-bottom:1rem;
 }
 
 @media (max-width: 600px) {
@@ -49,7 +55,6 @@ mat-spinner{
     margin: 0.5rem;
   }
 }
-
 
 .header {
   background-color: var(--main-color) !important;
@@ -79,8 +84,6 @@ mat-spinner{
   display: flex;
   justify-content: space-between;
 }
-
-
 
 .table-header {
   background-color: var(--main-color);
@@ -131,18 +134,17 @@ mat-spinner{
 
 .col {
   display: flex;
-  align-items: center;  
+  align-items: center;
   padding: 5px 5px;
   text-align: center;
   font-size: 1em;
   justify-content: space-evenly;
 }
 
-
 .button-container {
   display: flex;
   margin: 2rem 0rem 2rem 0rem;
-  justify-content: flex-end  ;
+  justify-content: flex-end;
 }
 
 .heading {
@@ -157,9 +159,15 @@ span {
   color: rgb(106, 105, 105);
 }
 
-
-button{
-  font-size:1em;
+button {
+  font-size: 1em;
   font-weight: 700;
   height: 48px;
+}
+
+.err-display {
+  color: red;
+  font-weight: 500;
+  padding:1rem;
+  padding-left: 45%;
 }

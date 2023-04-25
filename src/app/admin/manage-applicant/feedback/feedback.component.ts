@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -17,10 +17,11 @@ import { IDs } from '../models/models.interfaces';
 })
 export class FeedbackComponent implements OnInit {
   statuses!: string[];
-  options = ['Technical Skill', 'Communication Skills', 'Other'];
+  options = ["Unsatisfactory","Below Expectation","Meets Expectation","Exceeds Expectation","Outstanding"];
   datePipe = new DatePipe('en-US');
   feedbackForm!: FormGroup;
   rejectionHide: boolean = false;
+  isSubmitForm=false;
 
   constructor(
     private fb: FormBuilder,
@@ -28,12 +29,15 @@ export class FeedbackComponent implements OnInit {
     private _aService: ManageApplicantService
   ) {}
 
+  // @Output() feedbackEvent = new EventEmitter<any>();
+
   rejectionToggle(value: string) {
     this.rejectionHide = value === 'Rejected';
   }
 
   // on init
   ngOnInit(): void {
+    console.log("data",this.data);
     this.statuses = this._aService.getStatuses();
     this.feedbackForm = this.fb.group({
       status: new FormControl('Pending', { validators: [Validators.required] }),
@@ -46,6 +50,7 @@ export class FeedbackComponent implements OnInit {
 
   // submit feedback
   submitFeedback() {
+    this.isSubmitForm=true;
     this.feedbackForm.value['end_date'] = this.datePipe.transform(
       new Date(),
       'yyyy/mm/dd hh:mm:ss'

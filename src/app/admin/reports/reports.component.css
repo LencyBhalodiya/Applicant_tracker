@@ -45,10 +45,11 @@ span {
 }
 
 .container {
-  padding: 2rem 2rem 3rem 2rem;
-  border-radius: 2px;
+  padding: 0rem 2rem 3rem 2rem;
   background-color: var(--background-color);
   height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
 .table-container {

@@ -56,11 +56,7 @@ export class AuthComponent implements OnInit {
       Validators.minLength(8),
       Validators.required,
     ]),
-    phoneNumber: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(10),
-      Validators.minLength(10),
-    ]),
+    phoneNumber: new FormControl('', [ Validators.required, Validators.pattern('[0-9]{10}'), ]),
     dob: new FormControl('', [Validators.required]),
     gender: new FormControl('', [Validators.required]),
   });

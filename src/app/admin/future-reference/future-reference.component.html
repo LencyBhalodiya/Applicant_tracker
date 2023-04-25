@@ -1,6 +1,6 @@
 <div class="container">
   <div class="heading">
-    <h2> <span>Admin ></span> Future Reference</h2>
+    <h2> <span>admin ></span> Future Reference</h2>
     <hr>
   </div>
   <mat-form-field>
@@ -26,7 +26,7 @@
       <div class="col col-3" data-label="stream">{{user.stream}}</div>
       <div class="col col-4" data-label="stage">{{user.stage}} </div>
       <div class="col col-5" data-label="stage">{{user.round}} </div>
-      <div class="col col-6" #status data-label="Status">{{user.status}} </div>
+      <div class="col col-6" #status data-label="Status">{{user.status | color:status}} </div>
       <div class="col col-7" data-label="actions">
         <button mat-icon-button matTooltip="Profile" (click)="onRoute(user.uid)">
       <mat-icon>account_circle</mat-icon>
