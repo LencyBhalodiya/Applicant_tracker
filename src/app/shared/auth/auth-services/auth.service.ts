@@ -11,15 +11,23 @@ export class AuthService {
   constructor(private http: HttpClient, public router: Router, public snackBar:MatSnackBar) {}
   private roleName!: string;
   signIn(data: any) {
+    let message: any;
     let api =
       'http://192.168.102.92:8002/authentication/api/v1/auth/authenticate';
 
     return this.http.post(api, data).subscribe(
       (res: any) => {
+        message = res
         localStorage.setItem('access_token', res.token);
         const role = this.getTokenRole();
+        console.log(role);
+        
         if (role === 'user') this.router.navigate(['applicant']);
         else this.router.navigate(['admin']);
+
+        if(res.message.includes('Invalid'))
+          this.snackBar.open("Invalid Credentials", "ok",{duration: 2000})
+        
       },
       (error) => {
         console.log(error)
