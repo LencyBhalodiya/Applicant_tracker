@@ -1,8 +1,8 @@
 .dialog-container {
   max-width: 600px;
   padding-left: 20%;
-  padding-right: 10%;
   padding-top: 5%;
+  padding-right: 10%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -19,7 +19,7 @@
   background-color: var(--main-color);
 }
 form {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 mat-form-field {
   padding-top: 10px;
