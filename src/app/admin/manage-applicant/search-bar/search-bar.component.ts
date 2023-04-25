@@ -60,7 +60,7 @@ export class SearchBarComponent implements OnInit , AfterViewInit{
   }
 
   ngAfterViewInit():void{
-    const query = fromEvent<any>(this.searchInput.nativeElement,'keyup').pipe(map(event=>event.target.value),debounceTime(300));
+    const query = fromEvent<any>(this.searchInput.nativeElement,'keyup').pipe(map(event=>event.target.value),debounceTime(250));
 
     query.subscribe((res)=>{
       if(res)

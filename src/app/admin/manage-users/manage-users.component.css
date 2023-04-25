@@ -49,6 +49,7 @@ span {
   border-radius: 2px;
   background-color: var(--background-color);
   height: 100vh;
+  overflow: hidden;
 }
 
 .table-container {

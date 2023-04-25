@@ -2,9 +2,13 @@
 .dash-content{
     background-color: var(--background-color);
     padding: 1.5rem;
+    overflow: hidden;
   }
 .dashboard .dash-content{
     padding-top: 50px;   
+}
+mat-drawer-content {
+  overflow: hidden;
 }
 .dash-content .title{
     display: flex;

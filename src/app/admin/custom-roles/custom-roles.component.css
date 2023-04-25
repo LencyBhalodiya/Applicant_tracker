@@ -2,7 +2,7 @@ body{
     background-color: var(--background-color);
 }
 .heading {
-    margin-bottom: 2rem;
+    padding: 1.3rem;
   }
   
   h2 {
@@ -25,16 +25,25 @@ mat-card {
     margin-left: 30px;
     background-color: var(--div-color);
     box-shadow: var(--box-shadow);
+    overflow: hidden;
+
+}
+mat-sidenav-container{
+    overflow: hidden;
 }
 
 .header {
-    padding: 20px
+    padding: 20px;
+    overflow: hidden;
+
 }
 
 .roles {
     padding: 20px;
     height: fit-content;
     padding-top: 0px;
+    overflow: hidden;
+
 }
 
 Button:not(#chip){
