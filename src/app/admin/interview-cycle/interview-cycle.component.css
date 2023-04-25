@@ -1,12 +1,12 @@
 .main {
   background-color: var(--background-color);
   min-height: 100%;
+  padding: 0rem 2rem 3rem 2rem;
 }
 .main-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 10% 0 10%;
 }
 .stage-list,
 .stages-title,
@@ -64,7 +64,6 @@ mat-list-item {
   border: solid 1px #474747;
 }
 .edit-icon {
-  color: var(--main-color);
   font-size: 20px;
   margin-left: 10%;
 }

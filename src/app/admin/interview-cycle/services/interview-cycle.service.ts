@@ -63,7 +63,7 @@ export class InterviewCycleService {
           });
         });
       }),
-      map((response: any) => {
+      tap((response) => {
         if (response) {
           this.snackBar.open('Stage Added Successfully!', '', {
             duration: 3000,
@@ -122,7 +122,7 @@ export class InterviewCycleService {
         catchError((error) => {
           console.error('Error updating stage status', error);
           return throwError(() => {
-            this.snackBar.open('Error updating stage status ', '', {
+            this.snackBar.open('Updated Stage Status Successfully ', '', {
               duration: 3000,
             });
           });
@@ -147,6 +147,13 @@ export class InterviewCycleService {
               duration: 3000,
             });
           });
+        }),
+        tap((response) => {
+          if (response) {
+            this.snackBar.open(`Stage Detail's Updated Successfully!`, '', {
+              duration: 3000,
+            });
+          }
         })
       );
   }

@@ -1,7 +1,7 @@
 <div class="dialog-title">Add Round</div>
 <div class="dialog-container">
   <form [formGroup]="addRound" (ngSubmit)="addRoundToSelectedStage()">
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Select Stage</mat-label>
       <mat-select formControlName="stagename">
         <ng-container *ngFor="let stage of stages">
@@ -11,7 +11,7 @@
         </ng-container>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Add New Round</mat-label>
       <input formControlName="stageround" matInput />
     </mat-form-field>

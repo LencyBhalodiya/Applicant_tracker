@@ -42,14 +42,14 @@ export class InterviewCycleComponent {
 
   openStageDialog() {
     this.dialog.open(AddStageDialog, {
-      width: '400px',
-      height: '300px',
+      width: '600px',
+      height: '400px',
     });
   }
   openRoundDialog() {
     let dialogRef = this.dialog.open(AddRoundDialog, {
-      width: '400px',
-      height: '300px',
+      width: '600px',
+      height: '400px',
     });
     dialogRef.afterClosed().subscribe(() => {
       this.interviewService.getStages();
@@ -57,12 +57,13 @@ export class InterviewCycleComponent {
   }
   openEditStageDialog(stageId: number, stageName: string, sequenceNo: number) {
     this.dialog.open(EditStageDialog, {
-      width: '400px',
-      height: '300px',
+      width: '600px',
+      height: '400px',
       data: { stageId: stageId, stageName: stageName, sequenceNo: sequenceNo },
     });
   }
 }
+
 export interface Stage {
   stageId: number;
   stageName: string;
