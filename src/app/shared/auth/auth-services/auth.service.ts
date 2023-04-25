@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
-
+import { API_URL } from 'src/assets/config/config';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,7 +13,7 @@ export class AuthService {
   signIn(data: any) {
     let message: any;
     let api =
-      'http://192.168.102.92:8002/authentication/api/v1/auth/authenticate';
+      API_URL+'/authentication/api/v1/auth/authenticate';
 
     return this.http.post(api, data).subscribe(
       (res: any) => {
@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   signUp(data: any) {
-    let api = 'http://192.168.102.92:8002/authentication/api/v1/auth/register';
+    let api =  API_URL+'/authentication/api/v1/auth/register';
     let role = {
       id: 3,
       rolename: 'user',
