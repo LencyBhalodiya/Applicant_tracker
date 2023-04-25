@@ -9,6 +9,7 @@ import { InterviewCycleService } from '../services/interview-cycle.service';
 })
 export class AddRoundDialog implements OnInit {
   stages: Stage[] = [];
+  readonly NoWhitespaceRegExp: RegExp = new RegExp('\\S');
   constructor(private interviewService: InterviewCycleService) {
     this.interviewService.getStages().subscribe((data) => {
       this.stages = data;
@@ -16,7 +17,13 @@ export class AddRoundDialog implements OnInit {
   }
   addRound = new FormGroup({
     stagename: new FormControl('', Validators.required),
-    stageround: new FormControl('', Validators.required),
+    stageround: new FormControl(
+      '',
+      Validators.compose([
+        Validators.required,
+        Validators.pattern(this.NoWhitespaceRegExp),
+      ])
+    ),
   });
 
   addRoundToSelectedStage() {

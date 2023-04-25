@@ -63,7 +63,7 @@ export class InterviewCycleService {
           });
         });
       }),
-      map((response: any) => {
+      map((response) => {
         if (response) {
           this.snackBar.open('Stage Added Successfully!', '', {
             duration: 3000,

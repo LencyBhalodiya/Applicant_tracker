@@ -63,6 +63,7 @@ export class InterviewCycleComponent {
     });
   }
 }
+
 export interface Stage {
   stageId: number;
   stageName: string;

@@ -10,21 +10,28 @@ import { InterviewCycleService } from '../services/interview-cycle.service';
 })
 export class EditStageDialog {
   stages: Stage[] = [];
+  readonly NoWhitespaceRegExp: RegExp = new RegExp('\\S');
+  editStage = new FormGroup({
+    stagename: new FormControl(
+      '',
+      Validators.compose([
+        Validators.required,
+        Validators.pattern(this.NoWhitespaceRegExp),
+      ])
+    ),
+    stagesequence: new FormControl('', [Validators.required]),
+  });
   constructor(
     private interviewService: InterviewCycleService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
-  editStage = new FormGroup({
-    stagename: new FormControl('', Validators.required),
-    stageround: new FormControl('', Validators.required),
-  });
 
   editStageDetails() {
     this.interviewService
       .updateStageDetails(
         this.data.stageId,
         this.editStage.value.stagename!,
-        this.editStage.value.stageround!
+        this.editStage.value.stagesequence!
       )
       .subscribe((data) => {
         console.log(data);
