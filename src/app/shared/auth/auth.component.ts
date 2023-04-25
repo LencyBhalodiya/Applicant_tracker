@@ -16,7 +16,7 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.checkToken();
-    }, 2000);
+    }, 1500);
   }
   constructor(
     private auth: AuthService,
