@@ -13,13 +13,13 @@ export class EditStageDialog {
   readonly NoWhitespaceRegExp: RegExp = new RegExp('\\S');
   editStage = new FormGroup({
     stagename: new FormControl(
-      '',
+      this.data.stageName,
       Validators.compose([
         Validators.required,
         Validators.pattern(this.NoWhitespaceRegExp),
       ])
     ),
-    stagesequence: new FormControl('', [Validators.required]),
+    stagesequence: new FormControl(this.data.sequenceNo, [Validators.required]),
   });
   constructor(
     private interviewService: InterviewCycleService,
