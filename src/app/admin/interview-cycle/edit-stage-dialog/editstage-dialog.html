@@ -3,21 +3,11 @@
   <form [formGroup]="editStage" (submit)="editStageDetails()">
     <mat-form-field appearance="outline">
       <mat-label>Stage Name</mat-label>
-      <input
-        matInput
-        [(ngModel)]="data.stageName"
-        formControlName="stagename"
-      />
+      <input matInput formControlName="stagename" />
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Stage Sequence</mat-label>
-      <input
-        type="number"
-        [(ngModel)]="data.sequenceNo"
-        formControlName="stagesequence"
-        min="1"
-        matInput
-      />
+      <input type="number" formControlName="stagesequence" min="1" matInput />
     </mat-form-field>
     <button
       mat-raised-button
