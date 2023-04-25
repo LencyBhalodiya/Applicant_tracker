@@ -4,8 +4,15 @@
 body {
   background-color: var(--main-color) !important;
 }
-.section div {
+/* .section div {
   padding: 10px;
+} */
+
+.section {
+  padding: 0rem 2rem 3rem 2rem;
+  background-color: var(--background-color);
+  height: 100vh;
+  position: relative;
 }
 
 .header h1 {
@@ -19,7 +26,7 @@ body {
 
 h2 {
   margin: 1rem;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #012970;
 }
 .heading {
@@ -28,7 +35,7 @@ h2 {
 
 h2 {
   margin: 1rem;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #012970;
 }
 
@@ -70,7 +77,7 @@ mat-card {
 [mat-fab] {
   float: right;
   background-color: #324896;
-  color:white;
+  color: white;
   height: 50px;
 }
 

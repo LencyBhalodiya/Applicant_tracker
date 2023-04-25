@@ -1,57 +1,61 @@
-body{
-    background-color: var(--background-color);
+body {
+  background-color: var(--background-color);
 }
 .heading {
-    padding: 1.3rem;
-  }
-  
-  h2 {
-    margin: 1rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #012970;
-  }
-  
-  span {
-    color: rgb(106, 105, 105);
-  }
+  margin-bottom: 2rem;
+}
+.container {
+  padding: 0rem 2rem 3rem 2rem;
+  background-color: var(--background-color);
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+h2 {
+  padding: 1rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #012970;
+}
+
+span {
+  color: rgb(106, 105, 105);
+}
 .header h1 {
-    padding: 5px;
-    font-weight: bold;
-    font-size: 20px;
-    color: var(--main-color)
+  padding: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--main-color);
 }
 
 mat-card {
-    margin-left: 30px;
-    background-color: var(--div-color);
-    box-shadow: var(--box-shadow);
-    overflow: hidden;
-
+  margin-left: 30px;
+  background-color: var(--div-color);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
 }
-mat-sidenav-container{
-    overflow: hidden;
+mat-sidenav-container {
+  overflow: hidden;
 }
 
 .header {
-    padding: 20px;
-    overflow: hidden;
-
+  padding: 20px;
+  overflow: hidden;
 }
 
 .roles {
-    padding: 20px;
-    height: fit-content;
-    padding-top: 0px;
-    overflow: hidden;
-
+  padding: 20px;
+  height: fit-content;
+  padding-top: 0px;
+  overflow: hidden;
 }
 
-Button:not(#chip){
-    border-radius: 30px;
-    box-shadow: var(--box-shadow);
-    background-color: var(--main-color);
-    color:whitesmoke;
-    cursor: pointer;
+Button:not(#chip) {
+  border-radius: 30px;
+  box-shadow: var(--box-shadow);
+  background-color: var(--main-color);
+  color: whitesmoke;
+  cursor: pointer;
 }
 
 /*-----------------------------------
@@ -59,31 +63,31 @@ Button:not(#chip){
 -----------------------------------*/
 
 #data #showData {
-    width: 50%;
-    float: right;
-    margin: 0px 0px 20px 20px;
+  width: 50%;
+  float: right;
+  margin: 0px 0px 20px 20px;
 }
 
 #userName {
-    margin: 30px
+  margin: 30px;
 }
 
 #showData select {
-    margin-left: 50px
+  margin-left: 50px;
 }
 
 [appearance="fill"] {
-    margin-left: 50px;
+  margin-left: 50px;
 }
 
-#data #showData #formdata{
-    margin-left:-50px;
-    display:flex;
-    flex-direction: column;
+#data #showData #formdata {
+  margin-left: -50px;
+  display: flex;
+  flex-direction: column;
 }
 
-[placeholder]{
-    background-color: inherit;
+[placeholder] {
+  background-color: inherit;
 }
 
 /*-----------------------------------
@@ -91,38 +95,35 @@ Button:not(#chip){
 -----------------------------------*/
 
 input {
-    border: hidden;
-    padding-top: 15px;
-    width: 45%;
-    font-size: 18px;
-    font-weight: bold;
-    background-color: var(--div-color);
-    color: var(--text-color);
+  border: hidden;
+  padding-top: 15px;
+  width: 45%;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: var(--div-color);
+  color: var(--text-color);
 }
 
 .no-outline:focus {
-
-    border-bottom-style: groove;
-    border-bottom: 4px solid #e5e5e5;
-    outline: none;
-    animation: line 0.5s;
-    border-color: #7887F5;
-
+  border-bottom-style: groove;
+  border-bottom: 4px solid #e5e5e5;
+  outline: none;
+  animation: line 0.5s;
+  border-color: #7887f5;
 }
 
-
 @keyframes line {
-    from {
-        width: 0px;
-    }
+  from {
+    width: 0px;
+  }
 
-    to {
-        width: 40%;
-    }
+  to {
+    width: 40%;
+  }
 }
 
 .inputCard #matcontentsize {
-    width: 44.7%;
+  width: 44.7%;
 }
 
 /*-----------------------------------
@@ -130,32 +131,32 @@ input {
 -----------------------------------*/
 
 .adjustalign {
-    margin-top: 10px;
-    font-size: large;
+  margin-top: 10px;
+  font-size: large;
 }
 
 .spacing mat-card:hover {
-    transition: scale 1s ease;
-    box-shadow: var(--box-shadow);
+  transition: scale 1s ease;
+  box-shadow: var(--box-shadow);
 }
 
 .spacing mat-card {
-    width: 45%;
+  width: 45%;
 }
 
 .spacing {
-    margin: 10px 10px 10px 0px;
+  margin: 10px 10px 10px 0px;
 }
 
 #addRoles {
-    font-size: 25px;
-    margin-left: 280px;
-    width: 10%;
-    height: 2em;
+  font-size: 25px;
+  margin-left: 280px;
+  width: 10%;
+  height: 2em;
 }
 
 #checkbox {
-    float: right;
+  float: right;
 }
 
 /*-----------------------------------
@@ -163,85 +164,78 @@ input {
 -----------------------------------*/
 
 @media only screen and (width<1510px) {
-    #data {
-        display: flex;
-        flex-direction: column;
-    }
+  #data {
+    display: flex;
+    flex-direction: column;
+  }
 
-    #data #showData {
-        width: 100%;
+  #data #showData {
+    width: 100%;
+  }
 
-    }
+  #data {
+    margin-right: 20px;
+    margin-left: 15px;
+  }
 
-    #data {
-        margin-right: 20px;
-        margin-left: 15px;
-    }
+  #roleDetail,
+  .inputCard {
+    margin-right: 30px;
+  }
 
-    #roleDetail,
-    .inputCard {
-        margin-right: 30px
-    }
+  .inputCard #matcontentsize {
+    width: 100%;
+    margin-top: 10px;
+  }
 
-    .inputCard #matcontentsize {
-        width: 100%;
-        margin-top: 10px
-    }
+  .roles #roleDetail mat-card {
+    width: 100%;
+  }
 
-    .roles #roleDetail mat-card {
-        width: 100%
-    }
-
-    #addRoles {
-        height: fit-content;
-        width: fit-content;
-        border-radius:none;
-        padding:10px
-    }
+  #addRoles {
+    height: fit-content;
+    width: fit-content;
+    border-radius: none;
+    padding: 10px;
+  }
 }
 
 @media only screen and (width<1000px) {
-    #addRoles {
-        margin-left: 30px;
-        height: fit-content;
-        width: fit-content;
-        font-size: 20px;
-    }
+  #addRoles {
+    margin-left: 30px;
+    height: fit-content;
+    width: fit-content;
+    font-size: 20px;
+  }
 }
 
 @media only screen and (width<650px) {
+  [appearance] {
+    margin: 0px;
+  }
 
+  #data #showData #userName {
+    display: block;
+    margin: 10px;
+  }
 
-    [appearance] {
-        margin: 0px;
-    }
+  #data #showData [appearance] {
+    display: block;
+  }
 
-    #data #showData #userName {
-        display: block;
-        margin: 10px;
-    }
+  #data #showData #userName {
+    margin-top: 20px;
+    margin-left: 0px;
+  }
 
-    #data #showData [appearance] {
-        display: block
-    }
-
-    #data #showData #userName{
-        margin-top:20px;
-        margin-left:0px;
-    }
-
-    #data #showData #formdata{
-        margin-top:20px;
-        margin-left:auto
-    }
-
+  #data #showData #formdata {
+    margin-top: 20px;
+    margin-left: auto;
+  }
 }
 
 @media only screen and (width<432px) {
-
-    .roles {
-        padding: 0px;
-    }
+  .roles {
+    padding: 0px;
+  }
 }
-
-
