@@ -36,7 +36,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     FormsModule,
     ReactiveFormsModule,
     NgxFileDropModule,
-    FileUploadModule
+    FileUploadModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

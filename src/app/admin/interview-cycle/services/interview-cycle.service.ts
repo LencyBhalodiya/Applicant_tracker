@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Stage } from '../interview-cycle.component';
 
@@ -58,18 +58,23 @@ export class InterviewCycleService {
       catchError((error) => {
         console.error('Error adding new stage', error);
         return throwError(() => {
-          this.snackBar.open('Error adding newstage ', '', {
+          this.snackBar.open('Error adding new stage', '', {
             duration: 3000,
           });
         });
       }),
-      tap((response) => {
+      switchMap((response) => {
         if (response) {
           this.snackBar.open('Stage Added Successfully!', '', {
             duration: 3000,
           });
+          return this.getStages();
         }
-        return response;
+        return throwError(() => {
+          this.snackBar.open('Failed to add stage', '', {
+            duration: 3000,
+          });
+        });
       })
     );
   }
@@ -148,12 +153,18 @@ export class InterviewCycleService {
             });
           });
         }),
-        tap((response) => {
+        switchMap((response) => {
           if (response) {
-            this.snackBar.open(`Stage Detail's Updated Successfully!`, '', {
+            this.snackBar.open('Stage Updated Successfully!', '', {
               duration: 3000,
             });
+            return this.getStages();
           }
+          return throwError(() => {
+            this.snackBar.open('Failed to update stage details', '', {
+              duration: 3000,
+            });
+          });
         })
       );
   }
