@@ -105,8 +105,9 @@ export class ManageUsersComponent {
 
     dialogRef.afterClosed().subscribe((res) => {
       console.log("after closed");
-      this.getAllApplicants();
-      
+      // this.getAllApplicants();
+      let component = dialogRef.componentInstance;
+      this.manageHrService.addhr(component.response).subscribe((res)=>this.getAllApplicants());
     });
   }
 

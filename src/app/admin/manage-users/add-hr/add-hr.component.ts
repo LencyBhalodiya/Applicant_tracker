@@ -27,6 +27,7 @@ export class AddHrComponent implements OnInit {
 
   addHrForm!: FormGroup;
   isFormSubmitted = false;
+  response:any;
 
   constructor(
     private fb: FormBuilder,
@@ -72,8 +73,9 @@ export class AddHrComponent implements OnInit {
     data.role = this.rolen;
     // console.log(this.rolen);
     console.log(data);
+    this.response=data;
 
-    this.hrSer.addhr(data);
+    // this.hrSer.addhr(data);
 
     // this.hrSer.getData().subscribe((res) => {
     //   console.log(res);

@@ -44,13 +44,14 @@ export class ManageHrService {
   }
 
   addhr(data: any) {
-    return this._http.post(this._AddHr, data).subscribe({
-      next: (res) => {
-        this.snackbar.open('User Added Sucessfully', 'OK', { duration: 3000 });
-      },
-      error: (e) => console.log(e),
-      complete: () => console.log('user added'),
-    });
+    // return this._http.post(this._AddHr, data).subscribe({
+    //   next: (res) => {
+    //     this.snackbar.open('User Added Sucessfully', 'OK', { duration: 3000 });
+    //   },
+    //   error: (e) => console.log(e),
+    //   complete: () => console.log('user added'),
+    // });
+    return this._http.post(this._AddHr, data);
   }
 
   editHr(data: any, id: any) {

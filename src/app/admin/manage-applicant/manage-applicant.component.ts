@@ -94,6 +94,7 @@ export class ManageApplicantComponent {
       }else{
         this._aService.updateFeedback(component.response).subscribe(res=>this.getAllApplicants());
       }
+      this._checkedArr = [];
     });
   }
 
@@ -114,6 +115,7 @@ export class ManageApplicantComponent {
       }else{
         this._aService.promoteApplicant(component.response).subscribe(res=>this.getAllApplicants());
       }
+      this._checkedArr = [];
     });
   }
 
