@@ -127,7 +127,9 @@ export class ManageUsersComponent {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      this.getAllApplicants();
+      // this.getAllApplicants();
+      let component = dialogRef.componentInstance;
+      this.manageHrService.editHr(component.response,component.editData.id).subscribe((res)=>this.getAllApplicants());
     });
   }
 

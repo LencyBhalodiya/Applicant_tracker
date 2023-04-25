@@ -19,6 +19,7 @@ export class EditHrComponent implements OnInit {
   roles!: any;
 
   rolen: any = {};
+  response:any;
 
   editHrForm!: FormGroup;
 
@@ -66,15 +67,17 @@ export class EditHrComponent implements OnInit {
     role.rolename = role1.rolename;
 
     res.role = role;
+    this.response=res;
 
-    this.hrSer.editHr(res, this.editData.id).subscribe({
-      next: (res) => {
-        this.snackbar.open('User Updated Sucessfully', 'OK', {
-          duration: 3000,
-        });
-      },
-      error: (e) => console.log(e),
-      complete: () => console.log('user edited'),
-    });
+    // this.hrSer.editHr(res, this.editData.id).subscribe({
+    //   next: (res) => {
+    //     this.snackbar.open('User Updated Sucessfully', 'OK', {
+    //       duration: 3000,
+    //     });
+    //   },
+    //   error: (e) => console.log(e),
+    //   complete: () => console.log('user edited'),
+    // });
+  
   }
 }
