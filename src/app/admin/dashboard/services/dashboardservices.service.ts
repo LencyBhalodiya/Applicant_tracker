@@ -56,7 +56,7 @@ export class DashboardservicesService {
             '#8463FF',  
             '#6384FF',
             '#84FF63',
-            '#63FF84',
+            'lightblue',
 
           ],
         },

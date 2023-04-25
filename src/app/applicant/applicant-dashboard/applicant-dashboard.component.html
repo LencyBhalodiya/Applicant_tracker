@@ -4,10 +4,10 @@
     <mat-toolbar>
       <span>Dashboard</span>
       <span class="spacer"></span>
-      <button mat-icon-button class="profile-icon" aria-label="icon-button with profile icon" [routerLink]="['profile']">
+      <button mat-icon-button class="profile-icon" aria-label="icon-button with profile icon" (click)="navigate()">
         <mat-icon>perm_identity</mat-icon>
       </button>
-      <button mat-icon-button class="edit-icon" aria-label="icon-button with edit icon">
+      <button mat-icon-button class="edit-icon" aria-label="icon-button with edit icon" routerLink="register">
         <mat-icon>edit</mat-icon>
       </button>
     </mat-toolbar>
@@ -21,7 +21,7 @@
         <mat-step *ngIf="stage.isActive" [label] = "stage.stageName">
          
          <!-- Round Information Cards -->
-          <hr>
+          <!-- <hr> -->
           <button ngClass="btn-purple" *ngIf="showstatus" (click)="getRoundOnShowStatus(stage)">Show Status</button>
           <p class="stage-name" *ngIf="noStageName">{{stage.stageName}}</p>
           <div class="flex" *ngFor="let status of currentStatus">
@@ -32,24 +32,21 @@
               <mat-card-content>
                 <div class="row">
                   <div class="column">
-                      <p>Current Status:{{status.status}}</p>
-                      <!-- <div class="row">
-                        {{status.status}}
-                      </div> -->
-                      <!-- <p>Stage:</p>
-                      <div class="row">
-                      </div> -->
+                      <p> <span class="round-color">Current Status:</span>  {{status.status}}</p>
                   </div>
                   <div class="column">
-                      <p>Reivew:{{status.review || 'No Review'}}</p>
-                      <!-- <div class="row">
-                          {{status.review}}
-                      </div> -->
+                      <p> <span class="round-color"> Review: </span>{{status.review || 'No Review'}}</p>
                   </div>
               </div>
               </mat-card-content>
             </mat-card>
+
           </div>
+          <div class="image-div">
+          <img src="../../../assets/images/cartoon.jpg" alt="this is image of man">
+
+          </div>
+
         </mat-step>
         <button mat-button matStepperPrevious ngClass="btn-purple">Check Previous States</button>
         <button mat-button matStepperNext ngClass="btn-purple">Check Next States</button>

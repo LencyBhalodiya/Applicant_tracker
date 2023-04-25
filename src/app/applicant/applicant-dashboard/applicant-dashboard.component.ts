@@ -30,13 +30,8 @@ export class ApplicantDashboardComponent implements OnInit {
 
   @ViewChildren(MatStep) stepper!: QueryList<MatStep>;
 
-  constructor(
-    private http: HttpClient,
-    private applicantService: ApplicantService,
-    private interviewService: InterviewCycleService,
-    private authService: AuthService,
-    private router:Router
-  ) {
+  constructor(private http:HttpClient,private applicantService:ApplicantService, private interviewService: InterviewCycleService,private authService: AuthService,private router:Router){
+
     this.applicantService.getStages().subscribe((data: any) => {
       this.stages = data;
       // for(let stage of this.stages){
@@ -52,6 +47,12 @@ export class ApplicantDashboardComponent implements OnInit {
     this.applicantService
       .getUserTracking(this.authService.getUserId())
       .subscribe((res) => (this.userHistory = res));
+  }
+  getId(){
+    return this.authService.getUserId();
+  }
+  navigate(){
+    this.router.navigate(['/applicant/profile/'+this.getId()]);
   }
 
   // updateStageStatus(stage: any) {
@@ -109,10 +110,5 @@ export class ApplicantDashboardComponent implements OnInit {
     );
   }
 
-  getId() {
-    return this.authService.getUserId();
-  }
-  navigate() {
-    this.router.navigate(['/applicant/profile/' + this.getId()]);
-  }
+
 }

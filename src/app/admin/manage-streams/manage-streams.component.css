@@ -59,7 +59,7 @@ mat-card {
 
 [mat-fab] {
   float: right;
-  background-color: var(  --main-color);
+  background-color: #324896;
   color:white;
   height: 50px;
 }
