@@ -1,333 +1,319 @@
-<mat-stepper [linear]="isLinear" #stepper>
-  <mat-step>
-    <form [formGroup]="firstFormGroup" (keydown.enter)="(true)">
-      <ng-template matStepLabel>Address Details</ng-template>
-      <div class="formGroupContainer">
-        <mat-form-field appearance="outline" class="address">
-          <mat-label>Which Residence's information you are filling?</mat-label>
-          <mat-select formControlName="ChooseResidence" required>
-            <mat-option value="permenant residence's"
-              >permenant residence's</mat-option
-            >
-            <mat-option value="current residence's"
-              >current residence's</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
-        <br />
-        <mat-form-field class="address" appearance="outline">
-          <mat-label>Address</mat-label>
-          <textarea
-            matInput
-            placeholder="Address"
-            formControlName="address"
-          ></textarea>
-        </mat-form-field>
-        <br />
-        <div class="gridContainer">
-          <mat-form-field class="country" appearance="outline">
-            <mat-label>Country</mat-label>
-            <input matInput placeholder="India" formControlName="country" />
+<!--is linear for the disabling the button-->
+<div class="form">
+  <mat-stepper [linear]="isLinear" #stepper class="stepper">
+    <!-- This form step contain Address Details -->
+    <mat-step [stepControl]="firstFormGroup">
+      <!-- AddressDetail FormGroup -->
+      <form [formGroup]="firstFormGroup" (keydown.enter)="true" (ngSubmit)="submitAddressForm()">
+        <ng-template matStepLabel>Address Details</ng-template>
+        <div class="formGroupContainer">
+          <!--Choose Recidence-->
+          <mat-form-field appearance="outline" class="address">
+            <mat-label>Which Residence's information you are filling?</mat-label>
+            <mat-select formControlName="addressType">
+              <mat-option value="permenant residence's">permenant residence's</mat-option>
+              <mat-option value="current residence's">current residence's</mat-option>
+            </mat-select>
           </mat-form-field>
-          <mat-form-field class="state" appearance="outline">
-            <mat-label>State</mat-label>
-            <input matInput placeholder="Gujarat" formControlName="state" />
+          <br>
+          <!-- Street Address -->
+          <mat-form-field class="address" appearance="outline">
+            <mat-label>Street Address</mat-label>
+            <textarea matInput placeholder="Street Address" maxlength="50" formControlName="street"></textarea>
           </mat-form-field>
-          <mat-form-field class="city" appearance="outline">
-            <mat-label>City</mat-label>
-            <input matInput placeholder="Rajkot" formControlName="city" />
-          </mat-form-field>
-          <mat-form-field class="postalCode" appearance="outline">
-            <mat-label>Postal Code</mat-label>
-            <input
-              matInput
-              #postalCode
-              maxlength="10"
-              placeholder="Ex. 360003"
-              formControlName="postalCode"
-            />
-            <mat-hint align="end">{{ postalCode.value.length }} / 10</mat-hint>
-          </mat-form-field>
-        </div>
-
-        <div>
-          <button
-            class="nextBtn"
-            mat-raised-button
-            color="primary"
-            matStepperNext
-          >
-            Check Next Status
-          </button>
-        </div>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Profile Details</ng-template>
-      <mat-form-field appearance="outline">
-        <mat-label>Streams</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let streams of streamList" [value]="streams">{{
-            streams
-          }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <br />
-      <mat-form-field appearance="outline">
-        <mat-label>Positions</mat-label>
-        <mat-select>
-          <mat-option
-            *ngFor="let positions of positionList"
-            [value]="positions"
-            >{{ positions }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
-      <br />
-      <mat-form-field class="designation" appearance="outline">
-        <mat-label>What is your current designation</mat-label>
-        <textarea matInput placeholder="designation"></textarea>
-      </mat-form-field>
-      <br />
-      <mat-form-field class="info-about-roles" appearance="outline">
-        <mat-label>Few lines about your roles</mat-label>
-        <textarea matInput placeholder="Few lines about your roles"></textarea>
-      </mat-form-field>
-      <mat-form-field appearance="outline" appearance="outline">
-        <mat-label>How did you know about this position ?</mat-label>
-        <mat-select>
-          <mat-option
-            *ngFor="let reference of referenceList"
-            [value]="reference"
-          >
-            {{ reference }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div class="radioGroupContainer">
-        <div class="radioContainer">
-          <label class="radioLabel">Any offer in hand?</label>
-          <mat-radio-group formControlName="anyOffer">
-            <mat-radio-button>Yes</mat-radio-button>
-            <mat-radio-button>No</mat-radio-button>
-          </mat-radio-group>
-        </div>
-        <div class="radioContainer">
-          <label class="radioLabe">Any interview lined-up?</label>
-          <mat-radio-group formControlName="anyInterview">
-            <mat-radio-button>Yes</mat-radio-button>
-            <mat-radio-button>No</mat-radio-button>
-          </mat-radio-group>
-        </div>
-        <div class="radioContainer">
-          <label class="radioLabel"
-            >Are you willing to relocate to ahmedabad?</label
-          >
-          <mat-radio-group formControlName="willingToRelocate">
-            <mat-radio-button>Yes</mat-radio-button>
-            <mat-radio-button>No</mat-radio-button>
-          </mat-radio-group>
-        </div>
-        <div>
-          <div class="radioContainer">
-            <mat-label class="radioLabel"
-              >Choose you are Fresher Or Experienced ?</mat-label
-            >
-            <mat-radio-group formControlName="freshersOrexperienced">
-              <mat-radio-button (click)="fresherFunction()" name="radio"
-                >Fresher</mat-radio-button
-              >
-              <mat-radio-button (click)="experiencedFunction()" name="radio"
-                >Experienced</mat-radio-button
-              >
-            </mat-radio-group>
+          <br>
+          <!-- Country -->
+          <div class="gridContainer">
+            <mat-form-field class="country" appearance="outline">
+              <mat-label>Country</mat-label>
+              <input matInput placeholder="India" maxlength="10" formControlName="country">
+            </mat-form-field>
+            <!-- State -->
+            <mat-form-field class="state" appearance="outline">
+              <mat-label>State</mat-label>
+              <input matInput placeholder="Gujarat" maxlength="10" formControlName="state">
+            </mat-form-field>
+            <!-- City -->
+            <mat-form-field class="city" appearance="outline">
+              <mat-label>City</mat-label>
+              <input matInput placeholder="Rajkot" maxlength="20" formControlName="city">
+            </mat-form-field>
+            <!-- Postal Code -->
+            <mat-form-field class="postalCode" appearance="outline">
+              <mat-label>Postal Code</mat-label>
+              <input type="text" matInput maxlength="10" placeholder="Ex. 360003" formControlName="pincode">
+            </mat-form-field>
+          </div>
+          <!-- Next Button -->
+          <div>
+            <button class="nextBtn" mat-raised-button color="primary"
+              matStepperNext>Next</button>
           </div>
         </div>
-      </div>
-
-      <div class="f&e" *ngIf="Fresh">
-        <b class="fre">Fresher</b>
-        <div>
-          <mat-form-field class="freshers-experience" appearance="outline">
-            <mat-label
-              >If you have any experience then mantion it here</mat-label
-            >
-            <textarea matInput placeholder="Your Experience"></textarea>
-          </mat-form-field>
+      </form>
+    </mat-step>
+    <!-- This form step contains Profile Details -->
+    <mat-step [stepControl]="secondFormGroup">
+      <!-- Profile Detail Form Group -->
+      <form [formGroup]="secondFormGroup" (keydown.enter)="true" (ngSubmit)="submitProfileForm()">
+        <ng-template matStepLabel>Profile Details</ng-template>
+        <!-- Stream -->
+        <mat-form-field appearance="outline">
+          <mat-label>Streams</mat-label>
+          <mat-select formControlName="stream">
+            <ng-container *ngFor="let streams of streamList">
+              <mat-option *ngIf="streams.isActive" [value]="streams.streamName">{{streams.streamName}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <!-- Positions -->
+        <mat-form-field appearance="outline">
+          <mat-label>Positions</mat-label>
+          <mat-select formControlName="roleAppliedFor">
+            <mat-option *ngFor="let positions of positionList" [value]="positions">{{positions}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <!-- Role -->
+        <mat-form-field class="info-about-roles" appearance="outline">
+          <mat-label>Few lines about your roles</mat-label>
+          <textarea matInput placeholder="Few lines about your roles" maxlength="50"
+            formControlName="jobDescription"></textarea>
+        </mat-form-field>
+        <!-- Refreance -->
+        <mat-form-field appearance="outline" appearance="outline">
+          <mat-label>How did you know about this position ?</mat-label>
+          <mat-select formControlName="referralSource">
+            <mat-option *ngFor="let reference of referenceList" [value]="reference">
+              {{reference}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="radioGroupContainer">
+          <div class="radioContainer">
+            <!-- Any Offer -->
+            <label class="radioLabel">Any offer in hand?</label><br>
+            <mat-radio-group formControlName="anyCurrentOffer">
+              <mat-radio-button onclick="changeToTrueOffer()" [value]="true">Yes</mat-radio-button>
+              <mat-radio-button onclick="changeToFalseOffer()" [value]="false">No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="radioContainer">
+            <!-- Any Interview -->
+            <label class="radioLabel rad">Any interview lined-up?</label><br>
+            <mat-radio-group formControlName="upcomingInterview">
+              <mat-radio-button onclick="changeToTrueInterview() " [value]="true" value="Yes">Yes</mat-radio-button>
+              <mat-radio-button onclick="changeToFalseInterview()" [value]="false" value="No">No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="radioContainer">
+            <!-- Willing To Relocate -->
+            <label class="radioLabel" id="asterix--after">Are you willing to relocate to London?</label><br>
+            <mat-radio-group formControlName="willingToRelocate" required="required">
+              <mat-radio-button onclick="changeToTrueRelocate()" [value]="true" value="Yes">Yes</mat-radio-button>
+              <mat-radio-button onclick="changeToFalseRelocate()" [value]="false" value="No">No</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div>
+            <div class="radioContainer">
+              <!-- Fresher Or Experience -->
+              <mat-label class="radioLabel" id="asterix--after">Are You Fresher Or Experienced ?</mat-label><br>
+              <mat-radio-group formControlName="isFresher" required="required">
+                <mat-radio-button onclick="changeToTrueFreshOrExp()" [value]="true" (click)="fresherFunction()"
+                  name="radio" value="Fresher">Fresher</mat-radio-button>
+                <mat-radio-button onclick="changeToFalseFreshOrExp()" [value]="false" (click)="experiencedFunction()"
+                  name="radio" click="experiencedValidator()" value="Experienced">Experienced</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="f&e" *ngIf="Expe">
-        <b class="exp">Experienced</b>
-        <div>
-          <mat-form-field class="freshers-experience" appearance="outline">
+        <div class="f&e" *ngIf="Fresh"></div>
+        <div class="f&e" *ngIf="Expe">
+          <!-- Experience -->
+          <mat-form-field class="totalExperience" appearance="outline">
             <mat-label>Please mantion your experience here</mat-label>
-            <textarea matInput placeholder="Your Experience"></textarea>
+            <input type="number" placeholder="mention in years" matInput formControlName="totalExpYears">
           </mat-form-field>
-        </div>
-        <br />
-        <div>
-          <mat-form-field class="freshers-experience" appearance="outline">
-            <mat-label
-              >If you have any experience then mantion it here</mat-label
-            >
-            <textarea matInput placeholder="Your Experience"></textarea>
+          <!-- Relevant no of exp -->
+          <mat-form-field class="relevantExpYears" appearance="outline">
+            <mat-label>Please mantion your relevant years of experience here</mat-label>
+            <input type="number" placeholder="mention in years" matInput formControlName="relevantExpYears">
           </mat-form-field>
-        </div>
-        <br />
-        <div>
+          <br>
+          <!-- Designation -->
+          <mat-form-field class="designation" appearance="outline">
+            <mat-label>What is your current designation</mat-label>
+            <textarea matInput placeholder="designation" formControlName="designation"></textarea>
+          </mat-form-field>
+          <br>
+          <!-- Old CTC -->
           <mat-form-field appearance="outline">
             <mat-label>What is your old CTC?</mat-label>
-            <textarea matInput placeholder="Old CTC"></textarea>
+            <input type="number" matInput formControlName="oldCtc">
           </mat-form-field>
+          <!-- Expexted CTC -->
           <mat-form-field appearance="outline">
             <mat-label>Write expected CTC?</mat-label>
-            <textarea
-              matInput
-              placeholder="Expected CTC"
-              formControlName="expectedCTC"
-            ></textarea>
+            <input type="number" matInput formControlName="expectedCtc">
           </mat-form-field>
-        </div>
-        <br />
-        <div>
+          <br>
+          <!-- Notice Period -->
           <mat-form-field class="noticePeriod" appearance="outline">
             <mat-label>Any Notice Period?</mat-label>
-            <textarea
-              matInput
-              placeholder="Enter on how much Notice Period you are?"
-            ></textarea>
+            <input type="number" matInput formControlName="noticePeriod">
           </mat-form-field>
+          <!-- Reason For Change -->
           <mat-form-field class="changeReason" appearance="outline">
             <mat-label>Reason for change?</mat-label>
-            <textarea matInput placeholder="Write Here.."></textarea>
+            <textarea matInput placeholder="Write Here.." formControlName="reasonForChange"></textarea>
           </mat-form-field>
         </div>
-      </div>
-      <div class="btnContainer">
-        <button
-          mat-raised-button
-          color="primary"
-          class="previousBtn"
-          matStepperPrevious
-        >
-          Check Previous Status
-        </button>
-        &nbsp;
-        <button
-          mat-raised-button
-          color="primary"
-          class="nextBtn"
-          matStepperNext
-        >
-          Check Next Status
-        </button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <form [formGroup]="thirdFormGroup">
-      <ng-template matStepLabel>Uploads</ng-template>
-      <div class="mainDiv">
-        <div class="card">
-          <mat-card>
-            <mat-card-content>
-              <div class="profileDropBox">
-                <h3>Upload your Profile Picture here</h3>
-                <ngx-file-drop
-                  dropZoneLabel="Drop your Profile Picture Here"
-                  (onFileDrop)="dropped($event)"
-                  (onFileOver)="onFileOver($event)"
-                  (onFileLeave)="onFileLeave($event)"
-                  accept=".png"
-                >
-                  <ng-template
-                    ngx-file-drop-content-tmp
-                    let-openFileSelector="openFileSelector"
-                  >
-                    <button
-                      mat-icon-button
-                      class="profile-icon"
-                      (click)="openFileSelector()"
-                      aria-label="icon-button with profile icon"
-                    >
-                      <mat-icon>upload_file</mat-icon>
-                    </button>
-                  </ng-template>
-                </ngx-file-drop>
-                <div class="UploadTable">
-                  <table>
-                    <tr>
-                      <td>Name</td>
-                    </tr>
-                    <tr *ngFor="let item of files; let i = index">
-                      <td>
-                        {{ item.relativePath }}
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
+        <div class="btnContainer">
+          <button mat-raised-button color="primary" class="previousBtn" matStepperPrevious>Previous</button>
+          <button class="nextBtn" mat-raised-button color="primary"
+            matStepperNext>Next</button>
         </div>
-        <div class="card">
-          <mat-card>
-            <mat-card-content>
-              <div class="resumeDropBox">
-                <h3>Upload your CV here</h3>
-                <ngx-file-drop
-                  dropZoneLabel="Drop your CV Here"
-                  (onFileDrop)="dropped($event)"
-                  (onFileOver)="onFileOver($event)"
-                  (onFileLeave)="onFileLeave($event)"
-                  accept=".pdf"
-                >
-                  <ng-template
-                    ngx-file-drop-content-tmp
-                    let-openFileSelector="openFileSelector"
-                  >
-                    <button
-                      mat-icon-button
-                      class="profile-icon"
-                      (click)="openFileSelector()"
-                      aria-label="icon-button with profile icon"
-                    >
-                      <mat-icon>upload_file</mat-icon>
-                    </button>
-                  </ng-template>
-                </ngx-file-drop>
+      </form>
+    </mat-step>
+    <!-- THis form step contain Upload Details -->
+    <mat-step [stepControl]="thirdFormGroup">
+      <form (keydown.enter)="true">
+        <ng-template matStepLabel>Uploads</ng-template>
+        <router-outlet></router-outlet>
+        <!-- <div class="container2"> -->
+        <div class="mat-card">
+          <div class="mat-card-content">
+            <div class="mat-grid-list" cols="1" rowHeight="150px">
+              <div class="mat-grid-tile">
+                <h3>Upload Details</h3>
+                <div class="details">
+                  <div ng2FileSelect ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                    (fileOver)="fileOverBase($event)" [uploader]="fileUploader" class="well my-drop-zone" id="cvDrop">
+                    <label for="cv-upload"><mat-icon class="cloud">cloud_queue</mat-icon><br> Drop Your
+                      CV</label>
+                    <input type="file" ng2FIleSelect id="cv-upload" name="upload_your_cv" style="display:none;"
+                      ng2FileSelect [uploader]="fileUploader" />
+                  </div>
+                  <div ng2FileDrop [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
+                    (fileOver)="fileOverAnother($event)" [uploader]="imgUploader" class="well my-drop-zone">
+                    <label for="profile-upload"><mat-icon class="cloud">cloud_queue</mat-icon><br> Drop Your
+                      Profile Picture</label>
+                    <input type="file" id="profile-upload" name="upload_your_profile" style="display: none;"
+                      ng2FileSelect [uploader]="imgUploader" />
+                  </div>
+                </div>
+                <br />
+              </div>
 
-                <div class="UploadTable">
-                  <table>
+              <div class="mat-grid-tile">
+
+                <h3>Upload queue</h3>
+                <p>PDF Queue Length:{{ fileUploader.queue.length }}</p>
+                <p>Image Queue Length:{{ imgUploader.queue.length }}</p>
+                <table class="mat-table">
+                  <thead>
                     <tr>
-                      <td>Name</td>
+                      <th width="25%">Name</th>
+                      <th width="25%">Size</th>
+                      <th width="25%">Status</th>
+                      <th width="25%">Actions</th>
                     </tr>
-                    <tr *ngFor="let item of files; let i = index">
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of fileUploader.queue">
+                      <td><strong class="file_name">{{ item?.file?.name }}</strong></td>
+                      <td *ngIf="fileUploader.options.isHTML5">{{ item?.file?.size/1024/1024 | number:'.2'}} MB</td>
+                      <td class="text-center">
+                        <span *ngIf="item.isSuccess"><mat-icon>check</mat-icon></span>
+                        <span *ngIf="item.isCancel"><mat-icon>cancel</mat-icon></span>
+                        <span *ngIf="item.isError"><mat-icon>error</mat-icon></span>
+                      </td>
                       <td>
-                        {{ item.relativePath }}
+                        <button class="btn" matTooltip="Upload" mat-raised-button color="primary"
+                          (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                          <mat-icon class="action">cloud_upload</mat-icon> <span class="text">Upload </span>
+                        </button>
+                        <button class="btn" matTooltip="Cancel" mat-raised-button color="warn" (click)="item.cancel()"
+                          [disabled]="!item.isUploading">
+                          <mat-icon class="action">cancel</mat-icon> <span class="text"> Cancel </span>
+                        </button>
+                        <button class="btn" matTooltip="Remove" mat-raised-button color="accent"
+                          (click)="item.remove()">
+                          <mat-icon class="action">delete</mat-icon> <span class="text"> Remove </span>
+                        </button>
                       </td>
                     </tr>
-                  </table>
+                    <tr *ngFor="let item of imgUploader.queue">
+                      <td><strong class="file_name">{{ item?.file?.name }}</strong></td>
+                      <td *ngIf="imgUploader.options.isHTML5">{{ item?.file?.size/1024/1024 | number:'.2'}} MB</td>
+                      <td class="text-center">
+                        <span *ngIf="item.isSuccess"><mat-icon>check</mat-icon></span>
+                        <span *ngIf="item.isCancel"><mat-icon>cancel</mat-icon></span>
+                        <span *ngIf="item.isError"><mat-icon>error</mat-icon></span>
+                      </td>
+                      <td>
+                        <button class="btn" matTooltip="Upload" mat-raised-button color="primary"
+                          (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                          <mat-icon class="action">cloud_upload</mat-icon> <span class="text">Upload</span>
+                        </button>
+                        <button class="btn" matTooltip="Cancel" mat-raised-button color="warn" (click)="item.cancel()"
+                          [disabled]="!item.isUploading">
+                          <mat-icon class="action">cancel</mat-icon> <span class="text">Cancel</span>
+                        </button>
+                        <button class="btn" matTooltip="Remove" mat-raised-button color="accent"
+                          (click)="item.remove()">
+                          <mat-icon class="action">delete</mat-icon> <span class="text">Remove</span>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <div>
+                    <br>
+                    Queue progress: <br><br>
+                    <mat-progress-bar mode="determinate" [value]="fileUploader.progress"></mat-progress-bar><br>
+                  </div>
+                  <button mat-raised-button color="primary" (click)="fileUploader.uploadAll()"
+                    [disabled]="!fileUploader.getNotUploadedItems().length">
+                    <mat-icon>cloud_upload</mat-icon> Upload all
+                  </button>
+                  <button mat-raised-button color="warn" (click)="fileUploader.cancelAll()"
+                    [disabled]="!fileUploader.isUploading">
+                    <mat-icon>cancel</mat-icon> Cancel all
+                  </button>
+                  <button mat-raised-button color="warn" (click)="fileUploader.clearQueue()"
+                    [disabled]="!fileUploader.queue.length">
+                    <mat-icon>delete</mat-icon> Remove all
+                  </button>
+                </div>
+                <div><br>
+                  <div>
+                    Queue progress: <br><br>
+                    <mat-progress-bar mode="determinate" [value]="imgUploader.progress"></mat-progress-bar><br>
+                  </div>
+                  <button mat-raised-button color="primary" (click)="imgUploader.uploadAll()"
+                    [disabled]="!imgUploader.getNotUploadedItems().length">
+                    <mat-icon>cloud_upload</mat-icon> Upload all
+                  </button>
+                  <button mat-raised-button color="warn" (click)="imgUploader.cancelAll()"
+                    [disabled]="!imgUploader.isUploading">
+                    <mat-icon>cancel</mat-icon> Cancel all
+                  </button>
+                  <button mat-raised-button color="warn" (click)="imgUploader.clearQueue()"
+                    [disabled]="!imgUploader.queue.length">
+                    <mat-icon>delete</mat-icon> Remove all
+                  </button>
                 </div>
               </div>
-            </mat-card-content>
-          </mat-card>
+            </div>
+          </div>
         </div>
-      </div>
-      <button
-        mat-raised-button
-        color="primary"
-        class="previousBtn"
-        matStepperPrevious
-      >
-        Check Previous Status
-      </button>
-      &nbsp;
-      <button mat-raised-button color="primary" class="submitBtn">
-        Submit
-      </button>
-    </form>
-  </mat-step>
-</mat-stepper>
+        <button mat-raised-button color="primary" class="previousBtn" matStepperPrevious>Previous</button>
+        &nbsp;
+        <button mat-raised-button color="primary" class="submitBtn">Submit</button>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</div>

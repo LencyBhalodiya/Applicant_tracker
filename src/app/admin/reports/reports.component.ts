@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/shared/auth/auth-services/auth.service'; 
+import { ManageApplicantService } from '../manage-applicant/services/manage-applicant.service';
 
 
 /**
@@ -21,8 +22,9 @@ export class ReportsComponent {
     // 'select',
     'id',
     'name',
-    'stream',
     'stage',
+    'round',
+    'stream',
     'status',
     // 'action',
   ];
@@ -40,7 +42,7 @@ export class ReportsComponent {
   
 
   constructor(
-    private _aService: ReportsService,
+    private _aService: ManageApplicantService,
     private _formBuilder: FormBuilder,
     private dialog: MatDialog,
     private authService: AuthService
@@ -56,7 +58,7 @@ export class ReportsComponent {
         this.dataSource = res as IApplicants[];
       },
       error: (err: any) => {
-        this.errorApplicant = this._aService.handleError(err);
+        // this.errorApplicant = this._aService.handleError(err);
       },
     });
   }

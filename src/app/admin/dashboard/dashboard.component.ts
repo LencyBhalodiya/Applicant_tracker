@@ -26,9 +26,9 @@ export class DashboardComponent implements OnInit{
       this.sumArray.selected = res.offered;
       this.sumArray.rejected = res.rejected;
       this.sumArray.backOut = res.BackedOut;
-      this.dashboardData.sumData.subscribe((res)=> {
-        this.sumArray.total = res;
-      });
+      // this.dashboardData.sumData.subscribe((res)=> {
+      //   this.sumArray.total = res;
+      // });
       
     });
   }

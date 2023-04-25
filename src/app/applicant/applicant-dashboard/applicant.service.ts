@@ -20,6 +20,11 @@ export class ApplicantService {
       })
     );
   }
+
+  getUserTracking(uid:number){
+    console.log("UID",uid);
+    return this.http.get('http://192.168.102.92:8002/main/api/user/current/status/'+ uid)
+  }
   
   getRoundsByStage(stageId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/getAllStage`).pipe(
@@ -51,5 +56,29 @@ export class ApplicantService {
           )
       )
     );
+  }
+
+  updateStageStatus(stageId: any, stageStatus: any): Observable<any> {
+    return this.http
+      .put(
+        `${this.apiUrl}/updateStage/${stageId}`,
+        {},
+        {
+          params: {
+            stageId,
+            isActive: stageStatus,
+          },
+        }
+      )
+      .pipe(
+        catchError((error) => {
+          console.error('Error updating stage status', error);
+          return throwError(() => {
+            this.snackBar.open('Error updating stage status ', '', {
+              duration: 3000,
+            });
+          });
+        })
+      );
   }
 }

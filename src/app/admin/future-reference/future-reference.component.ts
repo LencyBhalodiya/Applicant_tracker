@@ -33,6 +33,6 @@ export class FutureReferenceComponent implements OnInit {
     this.getData();
   }
   onRoute(id: number) {
-    this.router.navigate(['applicant/profile/', id]);
+    this.router.navigate(['admin/future-reference/profile', id]);
   }
 }

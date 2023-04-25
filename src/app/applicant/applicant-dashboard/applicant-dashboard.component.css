@@ -3,7 +3,6 @@
 }
 
 .status {
-  /* display: flex; */
   align-items: center;
   justify-content: center;
   margin: 26px;
@@ -15,6 +14,7 @@
 }
 .flex{
   display: flex;
+  flex-direction: column  ;
   justify-content: center;
   margin-top: 50px;
   gap: 50px;
@@ -24,27 +24,35 @@ hr{
   margin-top: 10px;
 }
 mat-card{
+  position: relative;
  display: flex;
- width: 50vw;
+ margin-top: 2rem ;
+ margin-left: 7rem;
+ width: 40vw;
  justify-content: center;
  text-align: center;
+ box-shadow: var(--box-shadow);
 }
 mat-card-header{
-  border-bottom: 1px solid black;
-  background-color: #6476ed;
+  background-color: var(--main-color);
   border-radius: 10px 10px 0 0;
   color: white;
   box-shadow: 7px 7px 12px -10px rgb(172, 167, 172) !important;
+  font-size: 1.4rem;
+  font-weight: 500;
 }
 .stage-name{
   text-align: center;
   margin-top: 20px;
-  font-size: 20px;
+  background-color: var(--main-color);
+  color: white;
+  padding: 1rem 1rem;
+font-weight: 500;
+  font-size: 23px;
 }
-
 .row{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
 }
 .column{
@@ -57,4 +65,73 @@ mat-card-header{
   display: flex;
   justify-content: center;
   padding: 20px;
+}
+.btn-purple{
+  padding: 14px;
+  margin-left: 50%;
+  border-radius: 5px;
+  transform: translate(-50%);
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  margin-top: 50px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+img{
+  position: absolute;
+  left: 60%;
+  height: 60%;
+  top: 32%;
+}
+
+image-div{
+  height: 39vh;
+}
+.round-color{
+font-size: 1.3rem; 
+font-weight: 500;
+color: rgb(121, 122, 123);
+}
+p{
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: green
+}
+@media only screen and (max-width: 1200px){
+  img{
+    position: absolute;
+    left: 50%;
+    height: 60%;
+    top: 32%;
+  }
+}
+@media only screen and (max-width: 1000px){
+  img{
+    position: absolute;
+    left: 60%;
+    height: 60%;
+    top: 32%;
+  }
+}
+@media only screen and (max-width: 900px){
+  img{
+    position: absolute;
+    left: 60%;
+    height: 60%;
+    top: 32%;
+  }
+  image-div{
+    display: none;
+  }
+  img{
+    display: none;
+  }
+  mat-card{
+  margin-left: 1rem;
+   width: 85vw;
+
+ justify-content: center;
+ text-align: center;
+  }
 }

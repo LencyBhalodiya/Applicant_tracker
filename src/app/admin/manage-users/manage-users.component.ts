@@ -11,6 +11,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { BehaviorSubject } from 'rxjs';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { IApplicants } from './models/applicants';
+import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
+import { ApplicantService } from 'src/app/applicant/applicant-dashboard/applicant.service';
 
 @Component({
   selector: 'app-manage-users',
@@ -40,7 +42,7 @@ export class ManageUsersComponent {
   constructor(
     private _snackBar: MatSnackBar,
     private manageHrService: ManageHrService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {}
 
   changeStatus(id: number, status: string, event: MatSlideToggleChange) {
@@ -61,7 +63,7 @@ export class ManageUsersComponent {
   }
 
   ngOnInit() {
-    this.getAllApplicants();
+    this.getAllApplicants();    
   }
 
   getAllApplicants() {

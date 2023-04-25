@@ -88,7 +88,6 @@ export class ProfileComponent {
 
   getRole() {
     let role = this.authService.getTokenRole();
-    // console.log(role);
     return role == 'user' ? true : false;
   }
 }

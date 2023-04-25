@@ -18,7 +18,7 @@ export class AdminChartsComponent implements OnInit, OnDestroy {
   constructor(private chartData: DashboardservicesService) {
     Chart.register(...registerables);
   }
-  isLoading:boolean = true;
+  isLoading: boolean = true;
   ngOnInit(): void {
     this.totalApplicantFn();
     this.offerGraphFn();
@@ -70,6 +70,5 @@ export class AdminChartsComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-  }
+  ngOnDestroy(): void {}
 }

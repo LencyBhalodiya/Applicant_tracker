@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject} from 'rxjs';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-
 
 @Injectable({
   providedIn: 'root',

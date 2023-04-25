@@ -18,7 +18,7 @@ mat-card {
 
 mat-card:not(#stream):hover {
   transition: scale 1s ease;
-  box-shadow: 0.25rem  0.25rem  0.313rem var(--main-color);
+  /* box-shadow: 0.25rem  0.25rem  0.313rem var(--main-color */
 }
 
 .section div mat-card {
@@ -31,7 +31,7 @@ mat-card:not(#stream):hover {
 
 [mat-fab] {
   float: right;
-  background-color: var(--main-color);
+  background-color: #324896;
   height: 3.125rem;
 }
 

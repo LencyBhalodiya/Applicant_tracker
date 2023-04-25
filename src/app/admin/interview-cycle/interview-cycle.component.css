@@ -3,7 +3,6 @@
   min-height: 100%;
   padding: 0rem 2rem 3rem 2rem;
 }
-
 .main-container {
   display: flex;
   flex-wrap: wrap;
@@ -35,7 +34,6 @@ mat-list-item:hover {
   background-color: #e6e6e6;
   cursor: pointer;
 }
-
 mat-card-subtitle {
   margin-left: 16px;
 }
@@ -83,3 +81,4 @@ h2 {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #012970;
 }
+  

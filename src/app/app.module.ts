@@ -15,6 +15,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 import { AuthInterceptor } from './shared/auth/auth-services/auth.interceptor';
 import { ForgotPasswordComponent } from './shared/forgot-password/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './shared/reset-password/reset-password/reset-password.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ResetPasswordComponent } from './shared/reset-password/reset-password/r
     FormsModule,
     ReactiveFormsModule,
     NgxFileDropModule,
+    FileUploadModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

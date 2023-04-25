@@ -11,7 +11,19 @@
   font-size: 40px;
   color: var(--main-color)
 }
+.heading {
+  margin-bottom: 2rem;
+}
 
+h2 {
+  margin: 1rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #012970;
+}
+
+span {
+  color: rgb(106, 105, 105);
+}
 .header {
   padding: 10px;
 }
@@ -47,7 +59,7 @@ mat-card {
 
 [mat-fab] {
   float: right;
-  background-color: var(  --main-color);
+  background-color: #324896;
   color:white;
   height: 50px;
 }
