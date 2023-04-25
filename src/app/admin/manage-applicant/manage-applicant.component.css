@@ -8,6 +8,10 @@ table {
   width: 100%;
 }
 
+.main-container{
+  padding-bottom:2rem;
+}
+
 .container {
   padding: 0rem 2rem 3rem 2rem;
   background-color: var(--background-color);
@@ -23,6 +27,7 @@ mat-spinner {
 
 .table-container {
   border-radius: 10px;
+  margin-bottom:1rem;
 }
 
 @media (max-width: 600px) {

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 // import { ManageApplicantService } from '../services/manage-applicant.service';
 // import { Stage,Round } from '../models/models.interfaces';
@@ -23,6 +23,7 @@ export class SearchBarComponent implements OnInit , AfterViewInit{
   filterHide: boolean = false;
   searchForm!: FormGroup;
   stageWiseRounds!: string[];
+  @Output() searchEvent = new EventEmitter<any>();
   @ViewChild('searchInput') searchInput !: ElementRef;
 
   constructor(
@@ -61,9 +62,9 @@ export class SearchBarComponent implements OnInit , AfterViewInit{
 
     query.subscribe((res)=>{
       if(res)
-      this._aService.search(res);
+      this._aService.search(res).subscribe(res=>this.searchEvent.emit(res));
       else
-        this._aService.getData(0);
+        this.searchEvent.emit(null);
     });
   }
 
@@ -80,7 +81,8 @@ export class SearchBarComponent implements OnInit , AfterViewInit{
   openFilter() {
     this.filterHide = !this.filterHide;
     this.filterForm.reset();
-    this._aService.getData(0);
+    this._aService.getData(1);
+    this.searchEvent.emit(null);
   }
 
   // apply filter
@@ -113,7 +115,8 @@ export class SearchBarComponent implements OnInit , AfterViewInit{
     }
 
     console.log(url);
-    this._aService.applyFilter(url);
+    this._aService.applyFilter(url).subscribe(res=>this.searchEvent.emit(res));
+    
   }
 
   exportexcel(): void

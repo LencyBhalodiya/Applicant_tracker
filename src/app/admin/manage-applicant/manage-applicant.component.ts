@@ -7,6 +7,7 @@ import { PromoteComponent } from './promote/promote.component';
 import { IApplicants, INewApplicants } from './models/models.interfaces';
 import { AuthService } from 'src/app/shared/auth/auth-services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { fromEvent } from 'rxjs';
 
 /**
  * @title Table with filtering
@@ -28,13 +29,13 @@ export class ManageApplicantComponent {
   ];
   isLoading:boolean=true;
   public Elementdata!: IApplicants[];
-  public dataSource!: any;
-  public dataSource2!: any;
+  public dataSource: any=[];
+  public dataSource2: any=[];
   _checkedArr: string[] = [];
   visibleFlag: boolean = false;
   newapplicantsFlag: boolean = false;
   btnLabel: string = 'New Applicants';
-  p: number = 0;
+  p: number = 1;
   total: number = 0;
  
   constructor(
@@ -53,7 +54,8 @@ export class ManageApplicantComponent {
   getAllApplicants() {
     this._aService.getData(this.p).subscribe({
       next: (res: any) => {
-        this.dataSource = res as IApplicants[];
+          this.dataSource = res.content as IApplicants[];
+          this.total = res.totalElements
         this.isLoading=false;
       },
       error: (err: any) => {
@@ -88,6 +90,10 @@ export class ManageApplicantComponent {
     feedbackdialog.afterClosed().subscribe((res)=>{
       this.getAllApplicants();
       this._checkedArr = [];
+      if(feedbackdialog.componentInstance.isSubmitForm){
+        this.getAllApplicants();
+        feedbackdialog.componentInstance.isSubmitForm=false;
+      }
     });
   }
 
@@ -104,10 +110,19 @@ export class ManageApplicantComponent {
     promotionDialog.afterClosed().subscribe((res)=>{
       this.getAllApplicants();
       this._checkedArr=[];
+      if(promotionDialog.componentInstance.isFormSubmitted){
+        this.getAllApplicants();
+        promotionDialog.componentInstance.isFormSubmitted=false;
+      }
     });
   }
 
-  
+  search(data:any){
+    if(data)
+    this.dataSource=data;
+    else
+      this.getAllApplicants();
+  }
 
   // get new applicants
   getNewApplicants() {
@@ -133,6 +148,7 @@ export class ManageApplicantComponent {
   // pagination event
   pageChangeEvent(event: number): void {
     this.p = event;
+    console.log(event);
     this.getAllApplicants();
   }
 
