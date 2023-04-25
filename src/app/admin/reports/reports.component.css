@@ -2,7 +2,6 @@
 table {
   width: 100%;
   /* background-color: var(--background-color); */
-
 }
 
 .heading {
@@ -11,7 +10,7 @@ table {
 
 h2 {
   margin: 1rem;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #012970;
 }
 
@@ -62,10 +61,10 @@ span {
 mat-spinner {
   position: absolute;
   left: 45%;
-  top: 53%
+  top: 53%;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .mobile-label {
     width: 80px;
     display: inline-block;
@@ -113,8 +112,7 @@ mat-spinner {
 }
 
 .my-custom-container {
-
-  border: 2px solid #6476ED;
+  border: 2px solid #6476ed;
   backdrop-filter: blur(5px);
 }
 
@@ -127,4 +125,7 @@ mat-spinner {
   font-weight: 500;
   padding-left: 45%;
   padding-top: 2%;
+}
+td {
+  max-width: 85px;
 }

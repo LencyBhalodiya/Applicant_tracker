@@ -38,7 +38,7 @@ h1 {
     border-radius: 0.75rem;
     background-color: #fff;
     border: none;
-   box-shadow: 7px 7px 12px -6px rgb(172, 167, 172) !important;
+   box-shadow: 7px 7px 12px -10px rgb(172, 167, 172) !important;
   }
 
   mat-spinner{
