@@ -16,6 +16,7 @@ import { InterviewCycleService } from '../../interview-cycle/services/interview-
 export class PromoteComponent {
   rounds!: Round[];
   statuses!: string[];
+  response:any;
 
   options: string[] = ['Technical Skill', 'Communication Skills', 'Other'];
   stages!: Stage[];
@@ -76,17 +77,17 @@ export class PromoteComponent {
       this.data.forEach((entity) => {
         arr.push({ trackingId: entity.trackingId });
       });
-      let response = {
+      this.response = {
         ids: arr,
         data: this.promotionForm.value,
       };
-      this._aService.bulkPromote(response);
+      // this._aService.bulkPromote(this.response);
     } else {
-      let response = this.promotionForm.value;
-      response['tracking'] = {
+      this.response = this.promotionForm.value;
+      this.response['tracking'] = {
         tid: this.data.trackingId,
       };
-      this._aService.promoteApplicant(response);
+      // this._aService.promoteApplicant(this.response);
     }
     this.promotionForm.reset();
   }

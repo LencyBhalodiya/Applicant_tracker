@@ -88,11 +88,11 @@ export class ManageApplicantComponent {
       disableClose:true
     });
     feedbackdialog.afterClosed().subscribe((res)=>{
-      this.getAllApplicants();
-      this._checkedArr = [];
-      if(feedbackdialog.componentInstance.isSubmitForm){
-        this.getAllApplicants();
-        feedbackdialog.componentInstance.isSubmitForm=false;
+      let component = feedbackdialog.componentInstance;
+      if(Array.isArray(component.data)){
+        this._aService.bulkFeedback(component.response).subscribe(res=>this.getAllApplicants())
+      }else{
+        this._aService.updateFeedback(component.response).subscribe(res=>this.getAllApplicants());
       }
     });
   }
@@ -108,11 +108,11 @@ export class ManageApplicantComponent {
     });
 
     promotionDialog.afterClosed().subscribe((res)=>{
-      this.getAllApplicants();
-      this._checkedArr=[];
-      if(promotionDialog.componentInstance.isFormSubmitted){
-        this.getAllApplicants();
-        promotionDialog.componentInstance.isFormSubmitted=false;
+      let component = promotionDialog.componentInstance;
+      if(Array.isArray(component.data)){
+        this._aService.bulkPromote(component.response).subscribe(res=>this.getAllApplicants());
+      }else{
+        this._aService.promoteApplicant(component.response).subscribe(res=>this.getAllApplicants());
       }
     });
   }

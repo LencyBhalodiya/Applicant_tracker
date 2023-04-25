@@ -22,6 +22,7 @@ export class FeedbackComponent implements OnInit {
   feedbackForm!: FormGroup;
   rejectionHide: boolean = false;
   isSubmitForm=false;
+  response : any;
 
   constructor(
     private fb: FormBuilder,
@@ -61,18 +62,18 @@ export class FeedbackComponent implements OnInit {
       this.data.forEach((entity) => {
         arr.push({ id: entity.id, trackingId: entity.trackingId });
       });
-      let response = {
+      this.response = {
         ids: arr,
         data: this.feedbackForm.value,
       };
-      this._aService.bulkFeedback(response);
+      // this._aService.bulkFeedback(response);
     } else {
-      let response = this.feedbackForm.value;
-      response['tracking'] = {
+      this.response = this.feedbackForm.value;
+      this.response['tracking'] = {
         tid: this.data.trackingId,
       };
-      response['id'] = this.data.id;
-      this._aService.updateFeedback(response);
+      this.response['id'] = this.data.id;
+      // this._aService.updateFeedback(response);
     }
     this.feedbackForm.reset();
   }

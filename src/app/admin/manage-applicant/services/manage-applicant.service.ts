@@ -70,7 +70,7 @@ export class ManageApplicantService {
           });
         })
       )
-      .subscribe((res) => console.log(res));
+      // .subscribe((res) => console.log(res));
   }
 
   // bulk feedback
@@ -87,7 +87,7 @@ export class ManageApplicantService {
           });
         })
       )
-      .subscribe((res) => console.log(res));
+      // .subscribe((res) => console.log(res));
   }
 
   // promote applicant
@@ -104,7 +104,7 @@ export class ManageApplicantService {
           });
         })
       )
-      .subscribe((res) => console.log(res));
+      // .subscribe((res) => console.log(res));
   }
 
   // bulk Promote
@@ -119,7 +119,7 @@ export class ManageApplicantService {
           });
         })
       )
-      .subscribe((res) => console.log(res));
+      // .subscribe((res) => console.log(res));
   }
 
  
