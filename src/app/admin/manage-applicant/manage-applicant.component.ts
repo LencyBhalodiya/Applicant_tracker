@@ -34,7 +34,7 @@ export class ManageApplicantComponent {
   _checkedArr: string[] = [];
   visibleFlag: boolean = false;
   newapplicantsFlag: boolean = false;
-  btnLabel: string = 'New Applicants';
+  btnLabel: string = 'Fresh Applicants';
   p: number = 1;
   total: number = 0;
  
@@ -137,11 +137,11 @@ export class ManageApplicantComponent {
           this.snackbar.open('Something Went Wrong','ok',{duration:2000});
         },
       });
-      this.btnLabel = 'Old Applicants';
+      this.btnLabel = 'Active Applicants';
     } else {
       this.newapplicantsFlag = false;
       this.getAllApplicants();
-      this.btnLabel = 'New Applicants';
+      this.btnLabel = 'Fresh Applicants';
     }
   }
 

@@ -50,7 +50,7 @@
                 <div class="col col-6" data-label="stage">{{i.round}}</div>
                 <div class="col col-7" #status data-label="Status">{{i.status | color:status}}</div>
                 <div class="col col-8" data-label="actions">
-                    <button mat-icon-button (click)="nextRound(i)" [disabled]="i.status==='Pending' || i.status==='Offered'"
+                    <button mat-icon-button (click)="nextRound(i)" [disabled]="i.status!=='Test Cleared'"
                         matTooltip="Promote">
                         <mat-icon>forward</mat-icon>
                     </button>
