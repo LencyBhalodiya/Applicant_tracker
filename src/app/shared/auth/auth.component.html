@@ -91,6 +91,7 @@
               placeholder="example@asite.com"
             />
             <mat-icon matPrefix>email</mat-icon>
+            <mat-error>Enter Valid Email</mat-error>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Password</mat-label>
@@ -104,8 +105,20 @@
             <mat-icon matSuffix (click)="togglePasswordVisibility()">
               {{ showPassword ? "visibility_off" : "visibility" }}
             </mat-icon>
+            <mat-error>Password Must Be Atleast 8 Characters</mat-error>
           </mat-form-field>
-
+          <mat-form-field appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <mat-icon matPrefix>phone</mat-icon>
+            <input
+              type="number"
+              minlength="10"
+              maxlength="10"
+              matInput
+              formControlName="phoneNumber"
+            />
+            <mat-error>Phone Number Must Be of 10 Digits</mat-error>
+          </mat-form-field>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Select Your Birth Date</mat-label>
             <mat-icon matPrefix>calendar_today</mat-icon>
@@ -115,11 +128,7 @@
             </mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Phone number</mat-label>
-            <mat-icon matPrefix>phone</mat-icon>
-            <input matInput formControlName="phoneNumber" />
-          </mat-form-field>
+
           <mat-label>Gender</mat-label>
           <mat-radio-group
             aria-label="Select an option"
