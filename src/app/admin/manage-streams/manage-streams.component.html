@@ -13,17 +13,31 @@
         <mat-card id="inputCard">
           <mat-card-content>
             <!-- <img src=" id="asite" /> -->
-            <input matInput type="text" #inputValue (input)="enable(btn,inputValue.value)" (keypress)="enterStrem($event,inputValue)"  class="no-outline"
-              placeholder="Enter The Stream">
-            <button mat-fab color="primary" (click)="addStream(inputValue)" disabled #btn>
+            <input
+              matInput
+              type="text"
+              #inputValue
+              (input)="enable(btn, inputValue.value)"
+              (keypress)="enterStrem($event, inputValue)"
+              class="no-outline"
+              placeholder="Enter The Stream"
+            />
+            <button
+              mat-fab
+              color="primary"
+              (click)="addStream(inputValue)"
+              disabled
+              #btn
+            >
               <mat-icon>add</mat-icon>
             </button>
           </mat-card-content>
         </mat-card>
-        <img src="./assets/images/role.jpg" id=img />
+        <img src="./assets/images/role.jpg" id="img" />
       </div>
-      <app-stream *ngFor="let item of stream" [streamData]="item">{{item}}</app-stream>
-      
+      <app-stream *ngFor="let item of stream" [streamData]="item">{{
+        item
+      }}</app-stream>
     </mat-card-content>
   </mat-card>
 </div>

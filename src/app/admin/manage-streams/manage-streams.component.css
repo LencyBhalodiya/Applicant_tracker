@@ -1,7 +1,9 @@
 /*-------------------------------------
   Common Styles
 -------------------------------------*/
-
+body {
+  background-color: var(--main-color) !important;
+}
 .section div {
   padding: 10px;
 }
@@ -9,7 +11,16 @@
 .header h1 {
   font-weight: bold;
   font-size: 40px;
-  color: var(--main-color)
+  color: var(--main-color);
+}
+.heading {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  margin: 1rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #012970;
 }
 .heading {
   margin-bottom: 2rem;
@@ -32,17 +43,16 @@ mat-card {
   width: 100%;
 }
 
-
 /*-------------------------------------
   Header Mat-Card Styles
 -------------------------------------*/
 
 .header mat-card {
-  width: 100%
+  width: 100%;
 }
 
 .header mat-card h1 {
-  padding: 20px
+  padding: 20px;
 }
 
 /*-------------------------------------
@@ -70,18 +80,14 @@ input {
   width: 40%;
   font-size: 18px;
   font-weight: bold;
-
 }
 
 .no-outline:focus {
-
   border-bottom-style: groove;
   border-bottom: 4px solid #e5e5e5;
   outline: none;
   animation: line 0.5s;
-  border-color: var(  --main-color);
-
-
+  border-color: var(--main-color);
 }
 
 @keyframes line {
@@ -95,10 +101,8 @@ input {
 }
 
 button:hover {
-
   background-color: aliceblue;
   color: black;
-
 }
 
 #firstCard mat-card {
@@ -114,13 +118,19 @@ button:hover {
   float: right;
 }
 
-.section .dataContainer mat-card-content #firstCard #inputCard mat-card-content #asite {
+.section
+  .dataContainer
+  mat-card-content
+  #firstCard
+  #inputCard
+  mat-card-content
+  #asite {
   width: 6%;
-  margin-top: -10px
+  margin-top: -10px;
 }
 
 .section .dataContainer #firstCard #inputCard mat-card-content input {
-  padding: 20px
+  padding: 20px;
 }
 
 /*-------------------------------------
@@ -136,16 +146,21 @@ button:hover {
     width: 100%;
   }
 
-
-  .section .dataContainer mat-card-content #firstCard #inputCard mat-card-content #asite {
+  .section
+    .dataContainer
+    mat-card-content
+    #firstCard
+    #inputCard
+    mat-card-content
+    #asite {
     width: 4%;
-    margin-top: -10px
+    margin-top: -10px;
   }
 }
 
 @media only screen and (width<401px) {
   .header h1 {
-    font-size: 30px
+    font-size: 30px;
   }
 }
 
