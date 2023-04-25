@@ -8,6 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IApplicants } from '../models/applicants';
 import { Subject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +33,7 @@ export class ManageHrService {
   private _editHr =
     'http://192.168.102.92:8002/main/api/user/updateUserDetails/';
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient,public snackbar:MatSnackBar) {}
 
   getData() {
     return this._http.get(this._getAllHr);
@@ -43,7 +44,13 @@ export class ManageHrService {
   }
 
   addhr(data: any) {
-    return this._http.post(this._AddHr, data);
+    return this._http.post(this._AddHr, data).subscribe({
+      next: (res) => {
+        this.snackbar.open('User Added Sucessfully', 'OK', { duration: 3000 });
+      },
+      error: (e) => console.log(e),
+      complete: () => console.log('user added'),
+    });
   }
 
   editHr(data: any, id: any) {

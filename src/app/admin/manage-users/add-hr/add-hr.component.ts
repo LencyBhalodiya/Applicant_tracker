@@ -26,6 +26,7 @@ export class AddHrComponent implements OnInit {
   datePipe = new DatePipe('en-US');
 
   addHrForm!: FormGroup;
+  isFormSubmitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -64,6 +65,7 @@ export class AddHrComponent implements OnInit {
   }
 
   addHr(data: any): any {
+    this.isFormSubmitted = true;
     data.dob = this.datePipe.transform(data.dob, 'yyyy-MM-dd');
     this.rolen.id = data.role.id;
     this.rolen.name = data.role.rolename;
@@ -71,16 +73,10 @@ export class AddHrComponent implements OnInit {
     // console.log(this.rolen);
     console.log(data);
 
-    this.hrSer.addhr(data).subscribe({
-      next: (res) => {
-        this.snackbar.open('User Added Sucessfully', 'OK', { duration: 3000 });
-      },
-      error: (e) => console.log(e),
-      complete: () => console.log('user added'),
-    });
+    this.hrSer.addhr(data);
 
-    this.hrSer.getData().subscribe((res) => {
-      console.log(res);
-    });
+    // this.hrSer.getData().subscribe((res) => {
+    //   console.log(res);
+    // });
   }
 }

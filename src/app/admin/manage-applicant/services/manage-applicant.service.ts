@@ -155,7 +155,6 @@ export class ManageApplicantService {
           });
         })
       )
-      .subscribe((res) => console.log(res));
   }
 
   search(url: string) {

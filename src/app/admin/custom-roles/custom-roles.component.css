@@ -9,7 +9,7 @@ body {
   background-color: var(--background-color);
   height: 100vh;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 h2 {

@@ -166,7 +166,7 @@ export class ManageApplicantComponent {
         uid: data.id,
       },
     };
-    this._aService.addToProcess(response);
+    this._aService.addToProcess(response).subscribe(res=>this.getAllApplicants())
     this.getNewApplicants();
   }
 }

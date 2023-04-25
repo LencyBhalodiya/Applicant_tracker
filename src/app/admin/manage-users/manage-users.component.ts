@@ -67,6 +67,7 @@ export class ManageUsersComponent {
   }
 
   getAllApplicants() {
+    console.log("get all applicants")
     this.manageHrService.getData().subscribe({
       next: (res) => {
         this.isLoading = false;
@@ -102,7 +103,9 @@ export class ManageUsersComponent {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
+      console.log("after closed");
       this.getAllApplicants();
+      
     });
   }
 
