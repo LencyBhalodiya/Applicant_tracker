@@ -24,6 +24,7 @@ export class PromoteComponent {
   promotionForm!: FormGroup;
   customReason: boolean = true;
   datePipe = new DatePipe('en-US');
+  isFormSubmitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -61,6 +62,7 @@ export class PromoteComponent {
 
   // submit feedback
   submitForm() {
+    this.isFormSubmitted=true;
     this.promotionForm.value['end_date'] = this.datePipe.transform(
       new Date(),
       'yyyy/mm/dd hh:mm:ss'

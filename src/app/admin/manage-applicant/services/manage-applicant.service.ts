@@ -34,16 +34,12 @@ export class ManageApplicantService {
 
   rounds!: string[];
   errorMessage!: string;
-  datasource = new BehaviorSubject<any>([]);
   constructor(private _http: HttpClient, private snackbar: MatSnackBar) {}
 
   // get all Approved applicants
   getData(page: number) {
-    this._http
-      .get(this._url + '/getAllUser/' + page + '/15/id')
-      .subscribe((res: any) => this.datasource.next(res.content));
-
-    return this.datasource;
+    return this._http
+      .get(this._url + `/getAllUser/${page-1}/10/id`)
   }
 
   // get new applicants
@@ -142,8 +138,7 @@ export class ManageApplicantService {
             });
           });
         })
-      )
-      .subscribe((res) => this.datasource.next(res));
+      );
   }
 
   // add to procedure
@@ -165,9 +160,7 @@ export class ManageApplicantService {
 
   search(url: string) {
     url = url.toLowerCase();
-    this._http
+    return this._http
       .get(this._url + '/SearchAllUser/' + url)
-      .subscribe((res) => this.datasource.next(res));
-    return this.datasource;
   }
 }

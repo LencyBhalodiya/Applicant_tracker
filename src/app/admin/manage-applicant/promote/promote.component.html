@@ -1,4 +1,4 @@
-<div class="dialog-title" *ngIf="data.name; else bulkTitle">Promote Applicant : {{data.name}}</div>
+<div class="dialog-title" *ngIf="data.firstname; else bulkTitle">Promote Applicant : {{(data.firstname + " " + data.lastname) | titlecase}}</div>
 <ng-template #bulkTitle>
   <div class="dialog-title">Batch Promotion</div>
 </ng-template>
